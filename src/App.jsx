@@ -679,7 +679,7 @@ function ProgressRing({ progress, size = 80, strokeWidth = 8 }) {
     <div className="relative" style={{ width: size, height: size }}>
       <svg className="transform -rotate-90" width={size} height={size}>
         <circle
-          className="text-gray-200"
+          className="text-purple-900/50"
           strokeWidth={strokeWidth}
           stroke="currentColor"
           fill="transparent"
@@ -688,7 +688,7 @@ function ProgressRing({ progress, size = 80, strokeWidth = 8 }) {
           cy={size / 2}
         />
         <circle
-          className="text-purple-600 transition-all duration-500"
+          className="text-white transition-all duration-500"
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={offset}
@@ -701,7 +701,7 @@ function ProgressRing({ progress, size = 80, strokeWidth = 8 }) {
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-lg font-bold text-gray-700">{Math.round(progress)}%</span>
+        <span className="text-lg font-bold text-white">{Math.round(progress)}%</span>
       </div>
     </div>
   );
