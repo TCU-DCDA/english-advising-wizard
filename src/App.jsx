@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { CheckCircle, Circle, ChevronDown, ChevronRight, BookOpen, PenTool, FileText, Calendar, GitBranch, Info, AlertCircle, GraduationCap } from 'lucide-react';
+import { CheckCircle, Circle, ChevronDown, ChevronRight, BookOpen, PenTool, FileText, Calendar, GitBranch, Info, AlertCircle, GraduationCap, Download, Printer } from 'lucide-react';
 
 // ============================================
 // TCU ENGLISH DEPARTMENT ADVISING PROGRAM
@@ -406,6 +406,264 @@ const FOUR_YEAR_PLANS = {
     }
   }
 };
+
+// ============================================
+// EXPORT FUNCTION
+// ============================================
+
+function generatePDFReport(majorData, completedCourses, studentName = '') {
+  // Calculate progress for each category
+  const categoryProgress = {};
+  let totalCompleted = 0;
+
+  Object.entries(majorData.requirements).forEach(([key, cat]) => {
+    const completed = cat.courses.filter(c => completedCourses.includes(c.code));
+    const hoursCompleted = completed.reduce((sum, c) => sum + c.hours, 0);
+    categoryProgress[key] = {
+      name: cat.name,
+      hoursRequired: cat.hours,
+      hoursCompleted: Math.min(hoursCompleted, cat.hours),
+      courses: completed
+    };
+    totalCompleted += Math.min(hoursCompleted, cat.hours);
+  });
+
+  const progress = Math.round((totalCompleted / majorData.totalHours) * 100);
+  const today = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  // Generate HTML for print
+  const printContent = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>TCU English Department - Advising Report</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+          font-family: Georgia, 'Times New Roman', serif;
+          padding: 40px;
+          max-width: 800px;
+          margin: 0 auto;
+          color: #1f2937;
+          line-height: 1.5;
+        }
+        .header {
+          text-align: center;
+          border-bottom: 3px solid #581c87;
+          padding-bottom: 20px;
+          margin-bottom: 30px;
+        }
+        .header h1 {
+          color: #581c87;
+          font-size: 24px;
+          margin-bottom: 5px;
+        }
+        .header h2 {
+          font-size: 18px;
+          font-weight: normal;
+          color: #6b7280;
+        }
+        .meta {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 30px;
+          padding: 15px;
+          background: #f3f4f6;
+          border-radius: 8px;
+        }
+        .meta-item { text-align: center; }
+        .meta-label { font-size: 12px; color: #6b7280; text-transform: uppercase; }
+        .meta-value { font-size: 18px; font-weight: bold; color: #581c87; }
+        .progress-section {
+          margin-bottom: 30px;
+          padding: 20px;
+          border: 2px solid #581c87;
+          border-radius: 8px;
+        }
+        .progress-bar-container {
+          height: 24px;
+          background: #e5e7eb;
+          border-radius: 12px;
+          overflow: hidden;
+          margin: 10px 0;
+        }
+        .progress-bar {
+          height: 100%;
+          background: linear-gradient(90deg, #581c87, #7c3aed);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 12px;
+        }
+        .category {
+          margin-bottom: 20px;
+          page-break-inside: avoid;
+        }
+        .category-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 15px;
+          background: #f9fafb;
+          border-left: 4px solid #581c87;
+          margin-bottom: 10px;
+        }
+        .category-name { font-weight: bold; }
+        .category-progress {
+          font-size: 14px;
+          color: #6b7280;
+        }
+        .category-complete { color: #059669; }
+        .course-list {
+          padding-left: 20px;
+          margin-left: 15px;
+          border-left: 2px solid #e5e7eb;
+        }
+        .course {
+          padding: 8px 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .course-check {
+          width: 16px;
+          height: 16px;
+          border: 2px solid #059669;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #059669;
+          color: white;
+          font-size: 10px;
+        }
+        .course-code {
+          font-family: 'Courier New', monospace;
+          color: #581c87;
+          font-size: 13px;
+        }
+        .course-title { color: #374151; }
+        .no-courses {
+          color: #9ca3af;
+          font-style: italic;
+          padding: 10px 0;
+          padding-left: 20px;
+        }
+        .footer {
+          margin-top: 40px;
+          padding-top: 20px;
+          border-top: 1px solid #e5e7eb;
+          text-align: center;
+          font-size: 12px;
+          color: #6b7280;
+        }
+        .signature-line {
+          margin-top: 50px;
+          display: flex;
+          justify-content: space-between;
+        }
+        .signature {
+          width: 45%;
+          border-top: 1px solid #1f2937;
+          padding-top: 5px;
+          font-size: 12px;
+        }
+        @media print {
+          body { padding: 20px; }
+          .no-print { display: none; }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>TCU English Department</h1>
+        <h2>${majorData.name} Major - Advising Report</h2>
+      </div>
+
+      <div class="meta">
+        <div class="meta-item">
+          <div class="meta-label">Student</div>
+          <div class="meta-value">${studentName || '_______________'}</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Date</div>
+          <div class="meta-value">${today}</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Hours Completed</div>
+          <div class="meta-value">${totalCompleted} / ${majorData.totalHours}</div>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <strong>Overall Progress</strong>
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: ${Math.max(progress, 10)}%">
+            ${progress}%
+          </div>
+        </div>
+        <div style="font-size: 14px; color: #6b7280; margin-top: 5px;">
+          ${totalCompleted} of ${majorData.totalHours} credit hours completed toward major
+        </div>
+      </div>
+
+      <h3 style="margin-bottom: 15px; color: #581c87;">Completed Courses by Category</h3>
+
+      ${Object.entries(categoryProgress).map(([key, cat]) => `
+        <div class="category">
+          <div class="category-header">
+            <span class="category-name">${cat.name}</span>
+            <span class="category-progress ${cat.hoursCompleted >= cat.hoursRequired ? 'category-complete' : ''}">
+              ${cat.hoursCompleted} / ${cat.hoursRequired} hrs
+              ${cat.hoursCompleted >= cat.hoursRequired ? ' ✓' : ''}
+            </span>
+          </div>
+          ${cat.courses.length > 0 ? `
+            <div class="course-list">
+              ${cat.courses.map(c => `
+                <div class="course">
+                  <span class="course-check">✓</span>
+                  <span class="course-code">${c.code}</span>
+                  <span class="course-title">${c.title}</span>
+                </div>
+              `).join('')}
+            </div>
+          ` : '<div class="no-courses">No courses completed in this category</div>'}
+        </div>
+      `).join('')}
+
+      <div class="signature-line">
+        <div class="signature">Student Signature</div>
+        <div class="signature">Advisor Signature</div>
+      </div>
+
+      <div class="footer">
+        <p>TCU English Department • ${today}</p>
+        <p>This report is for planning purposes only. Verify all requirements with your academic advisor.</p>
+        <p>Official advising page: addran.tcu.edu/english/academics/advising/</p>
+      </div>
+    </body>
+    </html>
+  `;
+
+  // Open print window
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(printContent);
+  printWindow.document.close();
+  printWindow.focus();
+
+  // Auto-trigger print dialog after a short delay
+  setTimeout(() => {
+    printWindow.print();
+  }, 250);
+}
 
 // ============================================
 // COMPONENTS
@@ -846,12 +1104,21 @@ export default function TCUEnglishAdvisingApp() {
       {/* Header */}
       <header className="bg-purple-900 text-white">
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-4">
-            <GraduationCap className="w-10 h-10" />
-            <div>
-              <h1 className="text-2xl font-bold">TCU English Department</h1>
-              <p className="text-purple-300">Academic Advising Program</p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <GraduationCap className="w-10 h-10" />
+              <div>
+                <h1 className="text-2xl font-bold">TCU English Department</h1>
+                <p className="text-purple-300">Academic Advising Program</p>
+              </div>
             </div>
+            <button
+              onClick={() => generatePDFReport(COURSE_DATA[selectedMajor], completedCourses)}
+              className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
+            >
+              <Printer className="w-5 h-5" />
+              <span className="hidden sm:inline">Export Report</span>
+            </button>
           </div>
         </div>
       </header>
