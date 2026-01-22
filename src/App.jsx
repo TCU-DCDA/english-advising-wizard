@@ -261,10 +261,10 @@ const COURSE_DATA = {
 
 // Prerequisite chains for visualization
 const PREREQUISITES = {
-  "CRWT 30343": ["CRWT 10203"],
-  "CRWT 30353": ["CRWT 10203"],
-  "CRWT 30233": ["CRWT 10203"],
-  "CRWT 30373": ["CRWT 10203"],
+  "CRWT 30343": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
+  "CRWT 30353": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
+  "CRWT 30233": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
+  "CRWT 30373": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
   "CRWT 40203": ["CRWT 30343"],
   "CRWT 40213": ["CRWT 30353"],
   "CRWT 40133": ["CRWT 30233"],
@@ -1083,10 +1083,18 @@ export default function TCUEnglishAdvisingApp() {
     // Enforce prerequisites when adding a course
     if (!completedCourses.includes(code)) {
       const prereqs = PREREQUISITES[code];
-      if (prereqs) {
-        const missingPrereqs = prereqs.filter(p => !completedCourses.includes(p));
-        if (missingPrereqs.length > 0) {
-          alert(`You must complete the following prerequisites before taking ${code}:\n\n${missingPrereqs.join(', ')}`);
+      if (prereqs && prereqs.length > 0) {
+        // Build readable list for alert
+        const prereqList = prereqs.map(p => {
+          // Find title mostly for better UX
+          // Helper function to finding title could be useful but we iterate data
+          return p;
+        });
+        
+        const hasPrereq = prereqs.some(p => completedCourses.includes(p));
+        
+        if (!hasPrereq) {
+          alert(`You must complete at least one of the following prerequisites before taking ${code}:\n\n${prereqList.join('\n')}`);
           return;
         }
       }
