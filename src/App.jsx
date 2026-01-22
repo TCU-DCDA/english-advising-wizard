@@ -1080,6 +1080,18 @@ export default function TCUEnglishAdvisingApp() {
   const [completedCourses, setCompletedCourses] = useState([]);
 
   const toggleCourse = (code) => {
+    // Enforce prerequisites when adding a course
+    if (!completedCourses.includes(code)) {
+      const prereqs = PREREQUISITES[code];
+      if (prereqs) {
+        const missingPrereqs = prereqs.filter(p => !completedCourses.includes(p));
+        if (missingPrereqs.length > 0) {
+          alert(`You must complete the following prerequisites before taking ${code}:\n\n${missingPrereqs.join(', ')}`);
+          return;
+        }
+      }
+    }
+
     setCompletedCourses(prev =>
       prev.includes(code)
         ? prev.filter(c => c !== code)
