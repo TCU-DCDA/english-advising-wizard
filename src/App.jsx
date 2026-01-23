@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { CheckCircle, Circle, ChevronDown, ChevronRight, BookOpen, PenTool, FileText, Calendar, GitBranch, Info, AlertCircle, GraduationCap, Download, Printer } from 'lucide-react';
+import { ALL_COURSES } from './allCourses';
 
 // ============================================
 // TCU ENGLISH DEPARTMENT ADVISING PROGRAM
@@ -841,6 +842,67 @@ function ProgressRing({ progress, size = 80, strokeWidth = 8 }) {
   );
 }
 
+// Full Course Catalog Component for Step 1
+function CatalogList({ completedCourses, onToggleCourse }) {
+  const [expanded, setExpanded] = useState(false);
+  
+  const groups = useMemo(() => {
+    const g = { ENGL: [], CRWT: [], WRIT: [] };
+    ALL_COURSES.forEach(c => {
+       const prefix = c.code.substring(0, 4);
+       if (g[prefix]) g[prefix].push(c);
+    });
+    return g;
+  }, []);
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
+      <button 
+        className="w-full flex items-center justify-between cursor-pointer focus:outline-none" 
+        onClick={() => setExpanded(!expanded)}
+      >
+        <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-green-600" />
+          Full Course Catalog (Select all completed courses)
+        </h3>
+        {expanded ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
+      </button>
+      
+      {expanded && (
+        <div className="mt-4 space-y-4">
+          <p className="text-sm text-gray-600 mb-2">Check the boxes for any courses you have completed. These will be marked as completed across the entire degree plan.</p>
+          {Object.entries(groups).map(([prefix, courses]) => (
+             courses.length > 0 && (
+              <div key={prefix} className="border border-gray-200 rounded-lg p-3">
+                 <h4 className="font-bold text-gray-800 mb-2">{prefix} Courses</h4>
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                   {courses.map(course => {
+                     const isCompleted = completedCourses.includes(course.code);
+                     return (
+                       <label key={course.code} className={`flex items-start gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer transition-colors ${isCompleted ? 'bg-green-50 ring-1 ring-green-200' : ''}`}>
+                         <input 
+                           type="checkbox" 
+                           checked={isCompleted}
+                           onChange={() => onToggleCourse(course.code)}
+                           className="mt-1 w-4 h-4 text-green-600 rounded focus:ring-green-500 border-gray-300"
+                         />
+                         <div>
+                           <div className="font-mono text-xs text-purple-700 font-bold">{course.code}</div>
+                           <div className="text-sm text-gray-700 leading-tight">{course.title}</div>
+                         </div>
+                       </label>
+                     );
+                   })}
+                 </div>
+              </div>
+             )
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Requirement Category Component
 function RequirementCategory({ category, completedCourses, plannedCourses = [], onToggleCourse, isExpanded, onToggleExpand, selectionStep = 1 }) {
   const hoursCompleted = category.courses.filter(c => completedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
@@ -1149,6 +1211,10 @@ function RequirementsChecklist({
           </div>
         )}
       </div>
+
+      {selectionStep === 1 && (
+        <CatalogList completedCourses={completedCourses} onToggleCourse={onToggleCourse} />
+      )}
 
       {/* Step 3: Future Planning UI */}
       {selectionStep === 3 && (
