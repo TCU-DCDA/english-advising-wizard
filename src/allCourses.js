@@ -1,4 +1,4 @@
-// Filtered 55000-level courses
+// Undergraduate courses only (10000-40000 level)
 export const ALL_COURSES = [
   {
     "code": "CRWT 10200",
@@ -20,7 +20,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "CRWT 20123",
-    "title": "Course Title Unavailable",
+    "title": "Travel Writing",
     "hours": 3,
     "description": "Introduces concepts of close reading and the creative writing workshop.  Engages the craft of travel writing within and across cultures as a way to deepen awareness of what it means to be a global citizen, while fostering a more nuanced view of the individual in the world."
   },
@@ -98,13 +98,13 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 10103",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Fiction",
     "hours": 3,
     "description": "Reading and analysis of prose fiction by a variety of authors.  The course may focus on a specific historical period or may cover a more extensive time span.  Students will become familiar with interpretive strategies and will examine the course texts in relation to literary antecedents, the conventions of various genres, and the cultural circumstances of composition."
   },
   {
     "code": "ENGL 10113",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Poetry",
     "hours": 3,
     "description": "Reading and analysis of a wide variety of American and British poetry.  The goal of the course will be to help students understand that poetry is not difficult and dull, but understandable, worthwhile, and enjoyable."
   },
@@ -116,7 +116,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 10133",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Literature",
     "hours": 3,
     "description": "Reading and analysis of a variety of genres by a variety of authors.  The course may focus on a specific historical period or may cover a more extensive time span.  Students will become familiar with interpretive strategies and will examine the course texts in relation to literary antecedents, literary analysis as a research method, and the cultural circumstances of composition.  Subtopics will often vary by section.  This course cannot be repeated for additional credit."
   },
@@ -134,7 +134,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 10503",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Nonfiction Genres",
     "hours": 3,
     "description": "This course provides an introductory-level study of a variety of genres that do not fit the mold of fiction, poetry or drama.  Readings will vary by semester, and may include such genres as oratory, essay, memoir, autobiography, oral history, diary, speeches, letters, belles lettres, chronicles, periodicals, treatises, manifestos, travelogues, weblogs, podcasts, dialogues, debates, didactic and religious writings and/or documentary film and television."
   },
@@ -164,25 +164,25 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 20203",
-    "title": "Course Title Unavailable",
+    "title": "Girls' Studies",
     "hours": 3,
     "description": "Girls' Studies examines the experiences and representation of girls in the U.S. and global cultures through various feminist theoretical lenses and considers girlhood as a gender category worthy of academic analysis.  Using academic and popular texts - including those produced in literature, online, and via television, film, and music - this course studies the category of girlhood in relation to dominant cultural practices and larger social, institutional, and political transformations."
   },
   {
     "code": "ENGL 20213",
-    "title": "Course Title Unavailable",
+    "title": "Global Women's Literature",
     "hours": 3,
     "description": "This course examines literature by women outside the United States and Europe, using a variety of recent theories about gender, nationalism, and historiography.  Students will consider the fundamental place of gender in shaping a cultural narrative, and we will concentrate on the ways in which gender and sexuality are configured in the literature of women in various national, cultural, social, and political contexts.  Themes considered may include sexuality, memory, race, decolonization, migration, nationalism, history, and diaspora."
   },
   {
     "code": "ENGL 20223",
-    "title": "Course Title Unavailable",
+    "title": "Gender, Culture and Representation",
     "hours": 3,
     "description": "This course will explore how gender is portrayed in cultural texts across a range of genres and introduce students to theories of representation.  Students will examine how gender difference is represented in literature, art or film; the cultural implications of those representations; and how texts may perpetuate, challenge, and/or subvert gendered stereotypes.  Texts might include novels, short stories, plays, film, television shows, web texts and social media, visual art, graphic novels, and essays."
   },
   {
     "code": "ENGL 20233",
-    "title": "Course Title Unavailable",
+    "title": "Sex and Gender in Literature",
     "hours": 3,
     "description": "An introductory course on interpreting gender, sex and sexuality in literature using a variety of methodologies.  Readings will vary by semester, but will always represent a spectrum of human sexual experience from diverse cultures, and draw on a variety of genres, such as poetry, drama, fiction, biography, film and essay."
   },
@@ -194,13 +194,13 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 20423",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Medieval Literature",
     "hours": 3,
     "description": "An introduction to many different genres of medieval literature including poetry, prose, epic, saga, romance, myth, frame tale, and drama from various medieval cultures around the world.  Students will become familiar with interpretive strategies and will examine the course texts in relation to the cultural and historical circumstances of composition."
   },
   {
     "code": "ENGL 20433",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Shakespeare",
     "hours": 3,
     "description": "Introduction to and analysis of 6-7 plays, with reference to the sociocultural context in which the plays were composed and the ways they (and their author) have been interpreted and appropriated since the late sixteenth century. This course is designed for undergraduates with little or no preparation in literary studies."
   },
@@ -218,37 +218,37 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 20523",
-    "title": "Course Title Unavailable",
+    "title": "Sports and American Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803.  ENGL 20803 may be taken concurrently with ENGL 20523.  An examination of the question of how and why American authors employ sports-centered materials in their work."
   },
   {
     "code": "ENGL 20533",
-    "title": "Course Title Unavailable",
+    "title": "The American Dream",
     "hours": 3,
     "description": "The American success dream as depicted and evaluated by major writers from Colonial times to the present."
   },
   {
     "code": "ENGL 20543",
-    "title": "Course Title Unavailable",
+    "title": "The American Short Story",
     "hours": 3,
     "description": "A survey of the American short story from its origins to the present."
   },
   {
     "code": "ENGL 20553",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to American Studies",
     "hours": 3,
     "description": "An introduction to the interdisciplinary field of American studies, which brings together work from across the humanities and social sciences to study the histories, ideas, and collectively told stories that constitute the nation and shape its culture.  Engages key concepts in the field, including the construction of difference and identity, racism and antiracism, war and empire, cultural memory, and globalization."
   },
   {
     "code": "ENGL 20563",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Latina/o Literature",
     "hours": 3,
     "description": "An introduction to writings of diverse genres and historical periods by Hispanic and/or Latina/o writers from what is now the U.S.A. Latina/o literature will serve as the primary readings for students to engage and examine key concepts of literary criticism and cultural history."
   },
   {
     "code": "ENGL 20573",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Native American Literatures",
     "hours": 3,
     "description": "An introduction to the diverse literatures of Native America.  The course may focus on a specific historical period or may cover a more extensive time span."
   },
@@ -260,85 +260,85 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 20593",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Literatures of the Global African Diaspora",
     "hours": 3,
     "description": "This course will introduce literary and cultural production (prose, poetry, nonfiction, drama and film) of the global African Diaspora with attention to themes of identity, language, exile, and legacies of colonialism and imperialism.  Students will examine this literature from aesthetic, historical, and social contexts."
   },
   {
     "code": "ENGL 20603",
-    "title": "Course Title Unavailable",
+    "title": "Western World Literature I",
     "hours": 3,
     "description": "Two period surveys, the first from ancient Greece to the Renaissance, and the second from the Enlightenment to the present. The primary emphasis will be historical, but individual instructors may vary the choice and treatment of texts to explore important developments of theme (e.g., the hero, journey, and monsters) or genre (e.g., tragedy, epic, romance, and lyric). Students may take both courses or either course."
   },
   {
     "code": "ENGL 20613",
-    "title": "Course Title Unavailable",
+    "title": "Western World Literature II",
     "hours": 3,
     "description": "Two period surveys, the first from ancient Greece to the Renaissance, and the second from the Enlightenment to the present. The primary emphasis will be historical, but individual instructors may vary the choice and treatment of texts to explore important developments of theme (e.g., the hero, journey, monsters) or genre (e.g., tragedy, epic, romance, lyric). Students may take both courses or either course."
   },
   {
     "code": "ENGL 20623",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Women's Writing",
     "hours": 3,
     "description": "This course examines women writers who create forms of expression as well as contribute to literature and/or rhetoric.  The course may focus on a specific historical period or may cover a more extensive time span."
   },
   {
     "code": "ENGL 20633",
-    "title": "Course Title Unavailable",
+    "title": "Mythology",
     "hours": 3,
     "description": "Study of major Greek and Roman myths, gods, and heroes, as these reflect cultural values and problems, and including some study of major literary forms."
   },
   {
     "code": "ENGL 20643",
-    "title": "Course Title Unavailable",
+    "title": "Fable and Fantasy",
     "hours": 3,
     "description": "An examination of a wide range of texts, some that are classified as fable or fantasy literature as well as some that incorporate elements from these genres. The course may focus on a specific historical period or may cover a more extensive time span."
   },
   {
     "code": "ENGL 20653",
-    "title": "Course Title Unavailable",
+    "title": "The Romantic Imagination",
     "hours": 3,
     "description": "A study of the means by which the spirit of romanticism is embodied in literature since the late 18th century."
   },
   {
     "code": "ENGL 20663",
-    "title": "Course Title Unavailable",
+    "title": "Why Read Literature?",
     "hours": 3,
     "description": "Why do people read literature, and in what ways might it matter?  This course explores the personal, civic, and cultural significance of reading literature through assigned readings and a service learning component.  Students will thus explore literary works and theories about literature's significance in multiple contexts: in individual reading and reflection, in group discussions in the classroom, and in dialogue with community residents in the civic context of Fort Worth."
   },
   {
     "code": "ENGL 20683",
-    "title": "Course Title Unavailable",
+    "title": "Young Adult Literature in American Culture",
     "hours": 3,
     "description": "Examines individual texts, authors, and recurring themes in Young Adult literature.  Students will analyze the genre's place in American culture by surveying its history, exploring the influence of major writers' diverse ethnic, class, and gendered backgrounds, and examining its interactions with other popular forms such as graphic and film texts.  Students will also examine the interactive relationship between YA texts and social issues, particularly those related to diversity, equity, and inclusion."
   },
   {
     "code": "ENGL 20703",
-    "title": "Course Title Unavailable",
+    "title": "Intro to Law and Literature",
     "hours": 3,
     "description": "Course examines interactions between literature and the law, with attention to the way in which literary texts enter debates over morality, justice, and the strengths and weaknesses of legal systems.  Texts from a variety of periods and national origins."
   },
   {
     "code": "ENGL 20713",
-    "title": "Course Title Unavailable",
+    "title": "Literature and Medicine",
     "hours": 3,
     "description": "This course examines literary works in a variety of genres that treat topics related to health care and medicine.  Students will consider ways in which narrative shapes cultural understandings of health, sickness, and the body as well as ways in which literary writers have used health and sickness as metaphors to explore the human condition.  Themes may include caregiving, doctor/patient relationships, chronic illness, reproduction, mental illness, infection and contagion, and disability."
   },
   {
     "code": "ENGL 20723",
-    "title": "Course Title Unavailable",
+    "title": "Introduction to Disability Studies",
     "hours": 3,
     "description": "This course introduces students to disability studies, a discipline at the intersection of humanities and social sciences that focuses on the lived experiences of disabled people and on the societal structures and systems of privilege and oppression that construct those experiences.  Students will read theory, social science, and literary texts on cultural conceptions of disability, and assignments will ask students to analyze representations of disability and disability access in assigned texts and in their communities."
   },
   {
     "code": "ENGL 20733",
-    "title": "Course Title Unavailable",
+    "title": "Science Fiction",
     "hours": 3,
     "description": "Historical development of science fiction as a literary genre with particular attention given to significant authors and themes."
   },
   {
     "code": "ENGL 20743",
-    "title": "Course Title Unavailable",
+    "title": "Crime Fiction",
     "hours": 3,
     "description": "Crime, detective and suspense fiction in its social and historical context, illustrated by selected major works and authors."
   },
@@ -362,19 +362,19 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 20913",
-    "title": "Course Title Unavailable",
+    "title": "Literature and Civilizations I",
     "hours": 3,
     "description": "This two-semester sequence explores the role of literary, rhetorical and dramatic expression in the development of cultural ideas, institutions and values.  The first semester will focus on the cultural foundations of Britain and the United States; the second semester will focus on responses to these developments registered within various literary and rhetorical texts from around the world."
   },
   {
     "code": "ENGL 20923",
-    "title": "Course Title Unavailable",
+    "title": "Literature and Civilizations II",
     "hours": 3,
     "description": "Along with ENGL 20913, this course explores the role of literary, rhetorical and dramatic expression in the development of cultural ideas, institutions and values.  This course focuses on responses to inherited cultural developments registered within various literary and rhetorical texts from around the world."
   },
   {
     "code": "ENGL 20933",
-    "title": "Course Title Unavailable",
+    "title": "Non-Western World Literature",
     "hours": 3,
     "description": "Examines a broad survey of non-Western literature, including work from Asia, Africa, the Middle East, and Latin America.  This course approaches the literature from a variety of cultural perspectives such as dissent and conformity, urbanity and rural life, religion and secular identity, and sex and gender.  Students will gain an understanding of non-Western authors and the cultures they represent, as well as investigate the ways literature contributes to global conversations about identity and creativity."
   },
@@ -392,13 +392,13 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30003",
-    "title": "Course Title Unavailable",
+    "title": "Honors Thesis Seminar I",
     "hours": 3,
     "description": "Independent projects in literature, writing,and creative writing."
   },
   {
     "code": "ENGL 30013",
-    "title": "Course Title Unavailable",
+    "title": "Distinction Program: Thesis I",
     "hours": 3,
     "description": "Course meets to support students' independent distinction projects in literature and writing."
   },
@@ -440,7 +440,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30163",
-    "title": "Course Title Unavailable",
+    "title": "Urban Experiences and American Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000- level ENGL/WRIT/CRWT course.  An examination of depictions of cities in American literature, with attention to the ways urban experiences shape Americans' lives, social interactions, and identities.  The historical period under inquiry may vary by semester.  Student cannot receive credit for ENGL 55743 and ENGL 30163."
   },
@@ -452,7 +452,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30183",
-    "title": "Course Title Unavailable",
+    "title": "Prison Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least onee additional 10000- or 20000-level ENGL/WRIT/CRWT course.  Study of literary works pertaining to the experience, concept, theory, politics, culture, history, and/or imaginary of prison and/or penal systems.  Themes of analysis may include politics, power, race, ethnicity, class, gender, and/or violence.  Topics and reading vary by semester."
   },
@@ -464,31 +464,31 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30413",
-    "title": "Course Title Unavailable",
+    "title": "Studies in Medieval Literature and Culture",
     "hours": 3,
     "description": "Prerequisite: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course. Concentrated study of Medieval literature and culture, 500-1500.  Topics, genres, authors, and approaches will vary by semester.  May be taken more than once for credit under different subheadings.  Student cannot receive credit for ENGL 55413 and ENGL 30413."
   },
   {
     "code": "ENGL 30423",
-    "title": "Course Title Unavailable",
+    "title": "Early British Drama",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Survey of early British dramatic literature, from morality- and mystery-plays of the 15th century through revenge tragedies and city comedies of the 16th and 17th.  The course examines drama as a cultural force and traces the growth of tragic and comic genres."
   },
   {
     "code": "ENGL 30433",
-    "title": "Course Title Unavailable",
+    "title": "Renaissance Poetry",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Survey of 16th- and 17th-century English verse, with particular attention to aesthetic, political, and religious functions of poetry; the status of poets in early modern England; and the effects of societal changes on the production of poetry in the period."
   },
   {
     "code": "ENGL 30443",
-    "title": "Course Title Unavailable",
+    "title": "Twentieth Century Irish Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A survey of drama, poetry, prose and film from all 32 counties of Ireland beginning with the Irish literary revival exemplified by, for example, W.B. Yeats, Augusta Gregory, James Joyce, J.M. Synge and concluding with Ireland's second renaissance e.g., works by Seamus Heaney, Paula Meehan, Roddy Doyle, Brian Friel, and Neil Jordan."
   },
   {
     "code": "ENGL 30453",
-    "title": "Course Title Unavailable",
+    "title": "The Victorian Novel",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  This course examines the genre of the Victorian novel, asking why it emerges in this period to challenge the preeminence of poetry, why realism becomes its dominant style, and how particular novelists respond to the substantial changes occurring in British society, including industrialization, political reform, and changing relations between the sexes and classes. Student cannot receive credit for ENGL 55383 and ENGL 30453."
   },
@@ -500,7 +500,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30473",
-    "title": "Course Title Unavailable",
+    "title": "Wilde Years: Oscar Wilde and the 1890s",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course. This course examines the writings of Oscar Wilde and his contemporaries to explore how literature constructs and reflects gender, sexuality, and social debates.  Particular attention will be given to diverse sexualities represented by New Woman writers, new theories of sexual inversion developed in the 1890s and Oscar Wilde's trials and imprisonment on the grounds of indecency with another man.  Student cannot receive credit for ENGL 55433 and ENGL 30473."
   },
@@ -518,7 +518,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30503",
-    "title": "Course Title Unavailable",
+    "title": "The Roaring Twenties",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT course.  A study of major American authors emerging in the Twenties, the cultural context for their art, and the influences of their achievements."
   },
@@ -530,7 +530,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30523",
-    "title": "Course Title Unavailable",
+    "title": "Popular Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A study of American literature's place in popular culture and of the intersections among popular forms and the literary.  The course may focus on different periods (e.g., historical or contemporary), different genres (e.g., mass market forms such as mysteries, romance, and biographies), different authors, and/or different reading practices (e.g., book clubs, etc.)."
   },
@@ -560,7 +560,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30583",
-    "title": "Course Title Unavailable",
+    "title": "Early American Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 , ENGL 20803 , and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  The development of American literature from the period of earliest settlement through the era of the Early Republic, emphasizing the religious and socio-political evolution of American thought; attention will also be given to the development of imaginative literature, such as the novel.  Among the figures included will be William Bradford, Anne Bradstreet, Edward Taylor, Thomas Jefferson, Benjamin Franklin, Susannah Rowson, and Charles Brockden Brown."
   },
@@ -572,7 +572,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30613",
-    "title": "Course Title Unavailable",
+    "title": "Women's Lives: Memoir and Fiction",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 , ENGL 20803 , and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Readings in contemporary women's writing that reflect women's lives and experiences with self, family, and society, with some attention to the theory and practice of writing the memoir. Discussion of works as both literature and social commentary."
   },
@@ -584,7 +584,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30633",
-    "title": "Course Title Unavailable",
+    "title": "Medieval and Early Modern Women Writers",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 , ENGL 20803  and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A study of one or more female authors writing in the medieval or early modern periods in Britain, with attention to the development of beliefs about women's roles and characters and the ways these beliefs were accepted, challenged, or discredited.  Genres, authors, and approaches may vary by section. Student cannot receive credit for ENGL 55323 and ENGL 30633."
   },
@@ -602,7 +602,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30683",
-    "title": "Course Title Unavailable",
+    "title": "Post-Colonial Anglophone Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 , ENGL 20803 , and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  This course examines contemporary writers of English whose literary works were influenced or shaped by colonialism or its aftermath.  Emphasis will be placed on writers from India, Australia, Ireland, Africa or the Caribbean."
   },
@@ -614,25 +614,25 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30703",
-    "title": "Course Title Unavailable",
+    "title": "Contemporary Latinx Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803 and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Study of literary works in English on various genres by U.S. authors of Puerto Rican, Mexican, Nicaraguan, Cuban, Dominican, and/or Chicano/a backgrounds.  Historical emphasis will be limited to the twentieth and twenty-first centuries.  Topics of analysis include race, gender, class, nationality, migration, immigration, and urban studies.  Student cannot receive credit for ENGL 55723 and ENGL 30703."
   },
   {
     "code": "ENGL 30713",
-    "title": "Course Title Unavailable",
+    "title": "Mexican American Culture",
     "hours": 3,
     "description": "Prerequisites:  ENGL 20803.  The course examines expressive culture that reflects and shapes the way people think, behave, and give their lives meaning.  The expressive culture includes history, literature, and lore considered as resources for people to address their needs and circumstances, especially in relation to social positions, gender, self-identification, politics, and ethics.  Other topics include U.S. Mexico relations, social conflict, resistance movements, religion, and cultural poetics.  Student cannot receive credit for ENGL 55713 and ENGL 30713."
   },
   {
     "code": "ENGL 30723",
-    "title": "Course Title Unavailable",
+    "title": "Short Story",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803 and at least one other 10000- or 20000-level ENGL/WRIT/CRWT course.  A survey of the development of the short story through the 19th and 20th centuries."
   },
   {
     "code": "ENGL 30733",
-    "title": "Course Title Unavailable",
+    "title": "Satire",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Examines the nature and uses of satire, concentrating on the variety of satiric forms. Readings will include prose fiction, essays, and poetry written by European and American satirists."
   },
@@ -644,7 +644,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30753",
-    "title": "Course Title Unavailable",
+    "title": "Literature and Film",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A study of aesthetic and ideological differences, considering both how various literary works have been filmed and how films images may be analyzed using interpretive techniques developed by literary criticism."
   },
@@ -656,19 +656,19 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30773",
-    "title": "Course Title Unavailable",
+    "title": "India: Texts and Traditions",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A consideration of selected classic works of religious and literary imagination in Indian culture.  Versions and interpretations of the Hindu epics Mahabharata and Ramayana will be examined in translation."
   },
   {
     "code": "ENGL 30783",
-    "title": "Course Title Unavailable",
+    "title": "Modern India: Literature and Culture",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 , ENGL 20803 and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A study of the literature and culture of modern, post-independence (post 1947) India through the lens of literature.  The course introduces students to India's history of colonization and religious diversity to understand Indian heritage and provide a context for modern Indian literature.  Literature is the focal point but the course includes readings about India's history, religion, and philosophy."
   },
   {
     "code": "ENGL 30793",
-    "title": "Course Title Unavailable",
+    "title": "Multi-Ethnic Literature of the World",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  An analysis of the fiction, poetry, drama and essays of major ethnic writers and new literatures in English from Britain, the Commonwealth, or other parts of the world.  From a comparative angle, this course will explore the historical, social, cultural and racial contexts which shape the literature.  Several critical approaches will be taken to show interrelationships among writers."
   },
@@ -680,7 +680,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30823",
-    "title": "Course Title Unavailable",
+    "title": "Law and Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one other 10000- or 20000-level ENGL/WRIT/CRWT course.  This course will explore the parallel interests and debates of literary and legal discourse.  Subtopics and time period may vary by semester.  Student cannot receive credit for ENGL 55753 and ENGL 30823."
   },
@@ -722,7 +722,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30970",
-    "title": "Course Title Unavailable",
+    "title": "Directed Studies in English",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Directed Study in English."
   },
@@ -764,7 +764,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 38013",
-    "title": "Course Title Unavailable",
+    "title": "Research Seminar in British Literature",
     "hours": 3,
     "description": "Prerequisites: English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course.  Introduces English majors and minors to a sustained, long-format research project over the course of the semester.  Students will discuss and examine the practical and professional aspects of the English major while attempting to synthesize and integrate their various learning experiences in British literature and writing."
   },
@@ -818,13 +818,13 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 40413",
-    "title": "Course Title Unavailable",
+    "title": "Renaissance in England",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  The prose writers, dramatists, and poets of sixteenth- and seventeenth-century England in relation to the cultural circumstances influencing and being influenced by their works. Topics may include the prospect and enactment of censorship; the centrality of the patronage system; courts and courtiers; changing views of monarchy and obedience; religious controversy; issues of gender, ethnicity, and class; literature and science; pseudo-nonfictional strategies; adaptations of the bible, history, and mythology; and early book production and circulation."
   },
   {
     "code": "ENGL 40423",
-    "title": "Course Title Unavailable",
+    "title": "Restoration and 18th Century Literature, 1660-1790",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  The poetry and prose of Pepys, Dryden, Prior, Pope, Swift, Defoe, Thomson, Goldsmith, Gray, Johnson, Burns, and others writing between 1660 and 1798."
   },
@@ -860,61 +860,61 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 40483",
-    "title": "Course Title Unavailable",
+    "title": "Shakespeare and Marlowe",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Comparative study of several plays each by Shakespeare and Marlowe, placing their work in historical and social contexts. Reading includes historical documents and literary theory.  Student cannot receive credit for ENGL 55173 and ENGL 40483."
   },
   {
     "code": "ENGL 40493",
-    "title": "Course Title Unavailable",
+    "title": "Shakespeare",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  An intensive study of Shakespeare's major works.  Emphasis will be on developing interpretive strategies for understanding Shakespeare's aesthetic achievement within larger literary and historical contexts.  Topics may include attention to how Shakespeare's works were written, performed, and published as ways of understanding their significance to both early modern and contemporary culture. Student cannot receive credit for ENGL 55333 and ENGL 40493."
   },
   {
     "code": "ENGL 40513",
-    "title": "Course Title Unavailable",
+    "title": "U.S. Women's Writing I",
     "hours": 3,
     "description": "A study of American women's writings from the colonial period through 1865, with attention to the ways the literature reflects, responds to, and shapes perceptions of women's roles, identities, and opportunities at various historical moments.  Topics, authors, genres, and approaches may vary by semester."
   },
   {
     "code": "ENGL 40533",
-    "title": "Course Title Unavailable",
+    "title": "Toni Morrison",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  An intensive study of the works of Toni Morrison. Attention will also be given to the cultural contexts (historical and contemporary) that structure the worlds of Morrison's fiction and influence the reception of her work.  Student cannot receive credit for ENGL 55563 and ENGL 40533."
   },
   {
     "code": "ENGL 40543",
-    "title": "Course Title Unavailable",
+    "title": "Studies in Early American Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and one 20000-level ENGL/WRIT/CRWT course.  Concentrated study of American literature before 1830.  Topics, genres, authors, and approaches will vary by semester.  May be taken more than once for credit under different sub-headings. Student cannot receive credit for ENGL 55503 and ENGL 40553."
   },
   {
     "code": "ENGL 40553",
-    "title": "Course Title Unavailable",
+    "title": "Studies in Nineteenth-Century American Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and one 20000-level ENGL/WRIT course.  Concentrated study of American literature, 1800-1899.  Topics, genres, authors, and approaches will vary by semester.  May be taken more than once for credit under different sub-headings"
   },
   {
     "code": "ENGL 40563",
-    "title": "Course Title Unavailable",
+    "title": "U.S. Women's Writing II",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A study of U.S. women's writings from 1865 to the present, with attention to the ways the literature reflects, responds to, and shapes perceptions of women's roles, identities, and opportunities at various historical moments.  Topics, authors, genres, and approaches may vary by semester.  This course may be taken more than once for credit under different subheadings."
   },
   {
     "code": "ENGL 40583",
-    "title": "Course Title Unavailable",
+    "title": "Contemporary American Poetry",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Intensive study of contemporary American poets, poetic movements and relevant issues in aesthetics."
   },
   {
     "code": "ENGL 40613",
-    "title": "Course Title Unavailable",
+    "title": "King Arthur in Modern Literature and Culture",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Surveys transatlantic responses to Arthurian legend in literature, art, and culture from 1800 to the present, with attention to Tennyson, Twain, T.H. White, and Marion Zimmer Bradley, among others. Student cannot receive credit for ENGL 55453 and ENGL 30673."
   },
   {
     "code": "ENGL 40633",
-    "title": "Course Title Unavailable",
+    "title": "Love, Sex, and Power in Renaissance England",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one additional 10000- or 20000-level ENGL/WRIT/CRWT course.  An advanced course on the subject of romantic love, gender relations, and sexuality in literature of the English Renaissance.  This course examines the political, cultural, and aesthetic contexts of love and sex that shaped representations of desire in some of the Renaissance's most enduring works, including drama and poetry by Shakespeare and others.  Student cannot receive credit for ENGL 55633 and ENGL 40633."
   },
@@ -926,25 +926,25 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 40653",
-    "title": "Course Title Unavailable",
+    "title": "Renaissance Literature and the 'New' Science",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  This course examines how and why artists and scientists in the century c. 1550-1650 interacted intellectually as they did.  Topics include influences of scientific developments and discoveries upon European (chiefly British) letters; strategies used by writers to appropriate, revise, or contest scientific development in astronomy, medicine, philosophy and other disciplines; and relationships between scientific and literary discourses of change."
   },
   {
     "code": "ENGL 40663",
-    "title": "Course Title Unavailable",
+    "title": "Transnational American Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENG/WRIT/CRWT course. Exploration of American literature from a transnational perspective.  Topics vary by semester.  May be taken only once for credit.  Student cannot receive credit for ENGL 55363 and ENGL 40663."
   },
   {
     "code": "ENGL 40673",
-    "title": "Course Title Unavailable",
+    "title": "Modern Drama",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Close study of representative plays marking significant movements in modern theater, including realism, surrealism, absurdism, and the theatre of alienation."
   },
   {
     "code": "ENGL 40683",
-    "title": "Course Title Unavailable",
+    "title": "Studies in 20th Century American Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Concentrated study of American literature, 1900 to the present.  Topics, genres, authors, ad approaches will vary by semester.  May be taken more than once for credit under different sub-headings.  Student cannot receive credit for ENGL 55373 and ENGL 40683."
   },
@@ -962,7 +962,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 40743",
-    "title": "Course Title Unavailable",
+    "title": "The Long Novel",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  An intensive study of the pleasures and difficulties of long novels, which represent a unique genre of literature.  Each semester focuses on three or four novels generally regarded as works of tremendous influence, but which may be too involved for study in survey courses.  The novels will be selected from different periods, cultures, and languages."
   },
@@ -971,36 +971,6 @@ export const ALL_COURSES = [
     "title": "Course Title Unavailable",
     "hours": 1,
     "description": "Prerequisites: English majors or Writing majors only; students must have senior standing and must have completed 21 hours in English courses beyond 10803/10833 and 20803/20833.  This seminar is intended as a capstone course for all English majors.  Students will discuss and examine the practical and professional aspects of the English major while attempting to synthesize and integrate their various learning experiences in literature and writing.  Students will also attend special workshops and seminars intended to inform them about various areas of professional activity (and as well meet professionals active in these areas.)  Students will prepare and submit a final writing portfolio, representing their work as an English major."
-  },
-  {
-    "code": "ENGL 50133",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "Prerequisites: Junior standing with a minimum of 9 hours in literature, history, and/or political science, or graduate standing in English or History.  Interdisciplinary study of society, culture, or politics through the literature and history of a given era (variable topic).  Open to graduate students and to advanced undergraduate students.  Students will receive instruction from both an English professor and a History professor in content (literary works, historical studies, primary documents in periodicals or archives) and discipline-specific research methods."
-  },
-  {
-    "code": "ENGL 50233",
-    "title": "Studies in Creative Writing",
-    "hours": 3,
-    "description": "Prerequisites: CRWT 10203, CRWT 20103, or CRWT 20133.  Prior to enrollment, students are also strongly encouraged to take an upper-division creative writing course. Studies in Creative Writing is an intensive creative writing workshop open to students (graduate and advanced undergraduates) who have a strong background in literature and imaginative writing.  Depending on the semester and the selected genre, this course will pay special attention to invention, point-of-view, voice, form, and genre-appropriate theory.  Student cannot receive credit for CRWT 55143 and ENGL 50233."
-  },
-  {
-    "code": "ENGL 50243",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A course for teachers of English combining theories of composition with practical pedagogy and classroom strategies for the teaching of writing. Not applicable toward degree requirements for the Ph.D. in English."
-  },
-  {
-    "code": "ENGL 50253",
-    "title": "Classical Rhetoric",
-    "hours": 3,
-    "description": "Prerequisite: Junior or senior standing, permission of instructor.  This course examines the emergence of rhetoric in Antiquity and traces the impact of classical rhetoric up to the Middle Ages.  A substantial amount of the course is devoted to learning about the relationship between oral and written discourse, the impact of literacy, and the adaptability of systems of communication to technology and society.  The implications of such phenomena are examined in different periods in an effort to develop an historical perspective about the relationship between cognition and expression within cultural conditions.  Student cannot receive credit for WRIT 55273 and ENGL 50253."
-  },
-  {
-    "code": "ENGL 50973",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Directed Study in English.  Student cannot receive credit for ENGL 55973 and ENGL 50973."
   },
   {
     "code": "WRIT 20113",
@@ -1042,7 +1012,7 @@ export const ALL_COURSES = [
     "code": "WRIT 20353",
     "title": "Black Rhetoric and Language",
     "hours": 3,
-    "description": "Prerequisites:  ENGL 10803.  Students examine Black communicative histories in the identities of Black activist groups, performers, artists, and public leaders. Students identify persuasive and linguistic strategies of multiple public texts that have channeled the racial justice issues of their time.\u00a0 They reframe key themes in communication studies as they imagine democracy from the context of Black freedom struggles in the United States."
+    "description": "Prerequisites:  ENGL 10803.  Students examine Black communicative histories in the identities of Black activist groups, performers, artists, and public leaders. Students identify persuasive and linguistic strategies of multiple public texts that have channeled the racial justice issues of their time.  They reframe key themes in communication studies as they imagine democracy from the context of Black freedom struggles in the United States."
   },
   {
     "code": "WRIT 20833",
