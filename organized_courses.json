@@ -1,0 +1,908 @@
+{
+  "americanLit": [
+    {
+      "code": "ENGL 20683",
+      "title": "Young Adult Literature in American Culture",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20503",
+      "title": "American Writers",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20523",
+      "title": "Sports and American Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20533",
+      "title": "The American Dream",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20543",
+      "title": "The American Short Story",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20553",
+      "title": "Introduction to American Studies",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20563",
+      "title": "Introduction to Latina/o Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20573",
+      "title": "Introduction to Native American Literatures",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 30133",
+      "title": "American Literature to 1865",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30143",
+      "title": "American Literature since 1865",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30163",
+      "title": "Urban Experiences and American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30513",
+      "title": "American Poetry",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30553",
+      "title": "19th Century American Novel",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30563",
+      "title": "American Drama",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30573",
+      "title": "African American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30583",
+      "title": "Early American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30593",
+      "title": "American Fiction, 1960 to the Present",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30693",
+      "title": "U.S. Multi-Ethnic Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30703",
+      "title": "Contemporary Latinx Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30713",
+      "title": "Mexican American Culture",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30853",
+      "title": "Asian American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 38023",
+      "title": "Research Seminar in American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40513",
+      "title": "U.S. Women's Writing I",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40543",
+      "title": "Studies in Early American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40553",
+      "title": "Studies in Nineteenth-Century American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40563",
+      "title": "U.S. Women's Writing II",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40583",
+      "title": "Contemporary American Poetry",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40663",
+      "title": "Transnational American Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40683",
+      "title": "Studies in 20th Century American Literature",
+      "hours": 3,
+      "level": null
+    }
+  ],
+  "britishLit": [
+    {
+      "code": "ENGL 40613",
+      "title": "King Arthur in Modern Literature and Culture",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 20403",
+      "title": "British Writers",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20433",
+      "title": "Introduction to Shakespeare",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 30113",
+      "title": "British Literature to 1800",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30123",
+      "title": "British Literature since 1800",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30423",
+      "title": "Early British Drama",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30433",
+      "title": "Renaissance Poetry",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30443",
+      "title": "Twentieth Century Irish Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30453",
+      "title": "The Victorian Novel",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30463",
+      "title": "British Literature: The Bloomsbury Group",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30653",
+      "title": "Jane Austen: Novels and Films",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30673",
+      "title": "King Arthur in Literature and Legend",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 38013",
+      "title": "Research Seminar in British Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40403",
+      "title": "Chaucer",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40413",
+      "title": "Renaissance in England",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40433",
+      "title": "19th Century British Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40443",
+      "title": "British Literature Since 1900",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40453",
+      "title": "British Novel to 1832",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40463",
+      "title": "British Novel since 1832",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40473",
+      "title": "Milton and his Contemporaries",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40483",
+      "title": "Shakespeare and Marlowe",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40493",
+      "title": "Shakespeare",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40633",
+      "title": "Love, Sex, and Power in Renaissance England",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40643",
+      "title": "British Romanticism",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40653",
+      "title": "Renaissance Literature and the 'New' Science",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40693",
+      "title": "British and Irish Poetry Since 1900",
+      "hours": 3,
+      "level": null
+    }
+  ],
+  "globalLit": [
+    {
+      "code": "ENGL 20213",
+      "title": "Global Women's Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20593",
+      "title": "Introduction to Literatures of the Global African Diaspora",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20603",
+      "title": "Western World Literature I",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20613",
+      "title": "Western World Literature II",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20933",
+      "title": "Non-Western World Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 30683",
+      "title": "Post-Colonial Anglophone Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30773",
+      "title": "India: Texts and Traditions",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30783",
+      "title": "Modern India: Literature and Culture",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30793",
+      "title": "Multi-Ethnic Literature of the World",
+      "hours": 3,
+      "level": null
+    }
+  ],
+  "writing": [],
+  "theory": [],
+  "creativeWriting": [
+    {
+      "code": "CRWT 20103",
+      "title": "Reading as a Writer",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "CRWT 20123",
+      "title": "Travel Writing",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "CRWT 20133",
+      "title": "Writing for Performance",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "CRWT 10203",
+      "title": "Introduction to Creative Writing",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "CRWT 30233",
+      "title": "Creative Nonfiction Workshop I",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 30343",
+      "title": "Fiction Writing Workshop I",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 30353",
+      "title": "Poetry Writing Workshop I",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 30363",
+      "title": "Digital Creative Writing",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 30373",
+      "title": "Drama Writing Workshop I",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 40133",
+      "title": "Creative Nonfiction Workshop II",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 40203",
+      "title": "Fiction Writing Workshop II",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 40213",
+      "title": "Poetry Writing Workshop II",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 40703",
+      "title": "Advanced Multi-Genre Workshop",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "CRWT 40803",
+      "title": "Advanced Literary Forms",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 50233",
+      "title": "Studies in Creative Writing",
+      "hours": 3,
+      "level": null
+    }
+  ],
+  "professionalWriting": [
+    {
+      "code": "WRIT 20113",
+      "title": "Technical and Professional Writing",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "WRIT 40283",
+      "title": "Editing and Publishing",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 30223",
+      "title": "Advanced Technical Writing",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40243",
+      "title": "Advanced Professional Writing",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40273",
+      "title": "Writing Internship",
+      "hours": 3,
+      "level": null
+    }
+  ],
+  "digitalRhetorics": [
+    {
+      "code": "WRIT 20303",
+      "title": "Writing Games",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "WRIT 20323",
+      "title": "Introduction to Multimedia Authoring",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "WRIT 20333",
+      "title": "Language, Technology, and Society",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20813",
+      "title": "Introduction to the Digital Humanities",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "WRIT 20833",
+      "title": "Introduction to Coding in the Humanities",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "WRIT 30603",
+      "title": "Rhetoric of Social Media",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 30893",
+      "title": "Digital Inclusiveness: Cultural Identity & Authoring",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40163",
+      "title": "Multimedia Authoring: Image and Hypertext",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40263",
+      "title": "Multimedia Authoring: Animation and Film",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40363",
+      "title": "Multimedia Authoring: Mobile Apps and eBooks",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40463",
+      "title": "Multimedia Authoring: Comics Production",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40563",
+      "title": "Multimedia Authoring: Sound & Podcasting",
+      "hours": 3,
+      "level": null
+    }
+  ],
+  "rhetoricsCultures": [
+    {
+      "code": "WRIT 20313",
+      "title": "Power and Protest",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "WRIT 20343",
+      "title": "The Rhetoric of Science",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "WRIT 30273",
+      "title": "Argument and Persuasion",
+      "hours": 3,
+      "level": null
+    }
+  ],
+  "general": [
+    {
+      "code": "ENGL 10103",
+      "title": "Introduction to Fiction",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 10113",
+      "title": "Introduction to Poetry",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 10123",
+      "title": "Introduction to Drama",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 10133",
+      "title": "Introduction to Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 10303",
+      "title": "Approaches to Film",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 10503",
+      "title": "Introduction to Nonfiction Genres",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20203",
+      "title": "Girls' Studies",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20223",
+      "title": "Gender, Culture and Representation",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20233",
+      "title": "Sex and Gender in Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20423",
+      "title": "Introduction to Medieval Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20623",
+      "title": "Introduction to Women's Writing",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20633",
+      "title": "Mythology",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20643",
+      "title": "Fable and Fantasy",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20653",
+      "title": "The Romantic Imagination",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20663",
+      "title": "Why Read Literature?",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20703",
+      "title": "Intro to Law and Literature",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20713",
+      "title": "Literature and Medicine",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20723",
+      "title": "Introduction to Disability Studies",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20733",
+      "title": "Science Fiction",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20743",
+      "title": "Crime Fiction",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20913",
+      "title": "Literature and Civilizations I",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 20923",
+      "title": "Literature and Civilizations II",
+      "hours": 3,
+      "level": "lower"
+    },
+    {
+      "code": "ENGL 30003",
+      "title": "Honors Thesis Seminar I",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30013",
+      "title": "Distinction Program: Thesis I",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 30390",
+      "title": "Publication Production",
+      "hours": 1,
+      "level": null
+    },
+    {
+      "code": "ENGL 30613",
+      "title": "Women's Lives: Memoir and Fiction",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30723",
+      "title": "Short Story",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30733",
+      "title": "Satire",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30753",
+      "title": "Literature and Film",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30970",
+      "title": "Directed Studies in English",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30823",
+      "title": "Law and Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40003",
+      "title": "Honors Thesis Seminar II",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40013",
+      "title": "Distinction Program: Thesis II",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40673",
+      "title": "Modern Drama",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40733",
+      "title": "Children's Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40743",
+      "title": "The Long Novel",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 30213",
+      "title": "Advanced Composition: Writing Genres",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 30263",
+      "title": "Style",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 30613",
+      "title": "Writing Cross-cultural Differences",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "WRIT 40233",
+      "title": "Writing for Publication",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30183",
+      "title": "Prison Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30503",
+      "title": "The Roaring Twenties",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30523",
+      "title": "Popular Literature",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30543",
+      "title": "Black Women's Writing",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40533",
+      "title": "Toni Morrison",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30413",
+      "title": "Studies in Medieval Literature and Culture",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30473",
+      "title": "Wilde Years: Oscar Wilde and the 1890s",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 30633",
+      "title": "Medieval and Early Modern Women Writers",
+      "hours": 3,
+      "level": null
+    },
+    {
+      "code": "ENGL 40423",
+      "title": "Restoration and 18th Century Literature, 1660-1790",
+      "hours": 3,
+      "level": null
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { CheckCircle, Circle, ChevronDown, ChevronRight, BookOpen, PenTool, FileText, Calendar, GitBranch, Info, AlertCircle, GraduationCap, Download, Printer } from 'lucide-react';
+import { CheckCircle, Circle, ChevronDown, ChevronRight, BookOpen, PenTool, FileText, Calendar, GitBranch, Info, AlertCircle, GraduationCap, Download, Printer, Search, X } from 'lucide-react';
 import { ALL_COURSES } from './allCourses';
 
 // ============================================
@@ -19,39 +19,117 @@ const COURSE_DATA = {
         name: "American Literature",
         hours: 6,
         courses: [
-          { code: "ENGL 30133", title: "American Lit to 1865", hours: 3 },
+          { code: "ENGL 20503", title: "American Writers", hours: 3, level: "lower" },
+          { code: "ENGL 20523", title: "Sports and American Literature", hours: 3, level: "lower" },
+          { code: "ENGL 20533", title: "The American Dream", hours: 3, level: "lower" },
+          { code: "ENGL 20543", title: "The American Short Story", hours: 3, level: "lower" },
+          { code: "ENGL 20553", title: "Introduction to American Studies", hours: 3, level: "lower" },
+          { code: "ENGL 20563", title: "Introduction to Latina/o Literature", hours: 3, level: "lower" },
+          { code: "ENGL 20573", title: "Introduction to Native American Literatures", hours: 3, level: "lower" },
+          { code: "ENGL 20683", title: "Young Adult Literature in American Culture", hours: 3, level: "lower" },
+          { code: "ENGL 30133", title: "American Literature to 1865", hours: 3 },
+          { code: "ENGL 30143", title: "American Literature since 1865", hours: 3 },
+          { code: "ENGL 30163", title: "Urban American Lit", hours: 3 },
+          { code: "ENGL 30513", title: "American Poetry", hours: 3 },
+          { code: "ENGL 30523", title: "American Popular Lit & Culture", hours: 3 },
+          { code: "ENGL 30553", title: "19th Century American Novel", hours: 3 },
+          { code: "ENGL 30563", title: "American Drama", hours: 3 },
+          { code: "ENGL 30573", title: "African American Literature", hours: 3 },
+          { code: "ENGL 30583", title: "Early American Lit", hours: 3 },
           { code: "ENGL 30593", title: "American Fiction, 1960 to Present", hours: 3 },
           { code: "ENGL 30693", title: "U.S. Multi-Ethnic Literature", hours: 3 },
-          { code: "ENGL 38023", title: "Research Seminar in American Lit", hours: 3 },
+          { code: "ENGL 30703", title: "Contemporary Latinx Literature", hours: 3 },
+          { code: "ENGL 30713", title: "Mexican American Culture", hours: 3 },
+          { code: "ENGL 30853", title: "Asian American Literature", hours: 3 },
+          { code: "ENGL 38023", title: "Research Seminar in American Literature", hours: 3 },
+          { code: "ENGL 40513", title: "U.S. Women's Writing I", hours: 3 },
+          { code: "ENGL 40543", title: "Studies in Early American Literature", hours: 3 },
+          { code: "ENGL 40553", title: "Studies in Nineteenth-Century American Literature", hours: 3 },
+          { code: "ENGL 40563", title: "U.S. Women's Writing II", hours: 3 },
+          { code: "ENGL 40583", title: "Contemporary American Poetry", hours: 3 },
+          { code: "ENGL 40663", title: "Transnational American Literature", hours: 3 },
+          { code: "ENGL 40683", title: "Studies in 20th Century American Literature", hours: 3 },
         ]
       },
       britishLit: {
         name: "British Literature",
         hours: 6,
         courses: [
-          { code: "ENGL 30653", title: "Jane Austen: Novels & Films", hours: 3 },
-          { code: "ENGL 30673", title: "King Arthur: Lit & Legend", hours: 3 },
-          { code: "ENGL 40473", title: "Milton and His Contemporaries", hours: 3 },
+          { code: "ENGL 20403", title: "British Writers", hours: 3, level: "lower" },
+          { code: "ENGL 20433", title: "Introduction to Shakespeare", hours: 3, level: "lower" },
+          { code: "ENGL 30113", title: "British Literature to 1800", hours: 3 },
+          { code: "ENGL 30123", title: "British Literature since 1800", hours: 3 },
+          { code: "ENGL 30423", title: "Early British Drama", hours: 3 },
+          { code: "ENGL 30433", title: "Renaissance Poetry", hours: 3 },
+          { code: "ENGL 30443", title: "Twentieth Century Irish Literature", hours: 3 },
+          { code: "ENGL 30453", title: "The Victorian Novel", hours: 3 },
+          { code: "ENGL 30463", title: "British Literature: The Bloomsbury Group", hours: 3 },
+          { code: "ENGL 30653", title: "Jane Austen: Novels and Films", hours: 3 },
+          { code: "ENGL 30673", title: "King Arthur in Literature and Legend", hours: 3 },
+          { code: "ENGL 38013", title: "Research Seminar in British Literature", hours: 3 },
+          { code: "ENGL 40403", title: "Chaucer", hours: 3 },
+          { code: "ENGL 40413", title: "Renaissance in England", hours: 3 },
+          { code: "ENGL 40433", title: "19th Century British Literature", hours: 3 },
+          { code: "ENGL 40443", title: "British Literature Since 1900", hours: 3 },
+          { code: "ENGL 40453", title: "British Novel to 1832", hours: 3 },
+          { code: "ENGL 40463", title: "British Novel since 1832", hours: 3 },
+          { code: "ENGL 40473", title: "Milton and his Contemporaries", hours: 3 },
+          { code: "ENGL 40483", title: "Shakespeare and Marlowe", hours: 3 },
+          { code: "ENGL 40493", title: "Shakespeare", hours: 3 },
+          { code: "ENGL 40613", title: "King Arthur in Modern Literature and Culture", hours: 3 },
+          { code: "ENGL 40633", title: "Love, Sex, and Power in Renaissance England", hours: 3 },
+          { code: "ENGL 40643", title: "British Romanticism", hours: 3 },
+          { code: "ENGL 40653", title: "Renaissance Literature and the 'New' Science", hours: 3 },
+          { code: "ENGL 40693", title: "British and Irish Poetry Since 1900", hours: 3 },
         ]
       },
       globalLit: {
         name: "Global & Diasporic Literature",
         hours: 3,
         courses: [
+          { code: "ENGL 20213", title: "Global Women's Literature", hours: 3, level: "lower" },
+          { code: "ENGL 20593", title: "Introduction to Literatures of the Global African Diaspora", hours: 3, level: "lower" },
+          { code: "ENGL 20603", title: "Western World Literature I", hours: 3, level: "lower" },
+          { code: "ENGL 20613", title: "Western World Literature II", hours: 3, level: "lower" },
+          { code: "ENGL 20933", title: "Non-Western World Literature", hours: 3, level: "lower" },
+          { code: "ENGL 30683", title: "Post-Colonial Anglophone Literature", hours: 3 },
           { code: "ENGL 30693", title: "U.S. Multi-Ethnic Literature", hours: 3 },
-          { code: "ENGL 38023", title: "Research Seminar in American Lit", hours: 3 },
+          { code: "ENGL 30773", title: "India: Texts and Traditions", hours: 3 },
+          { code: "ENGL 30783", title: "Modern India: Literature and Culture", hours: 3 },
+          { code: "ENGL 30793", title: "Multi-Ethnic Literature of the World", hours: 3 },
         ]
       },
       writing: {
         name: "Writing",
         hours: 3,
         courses: [
+          { code: "CRWT 10203", title: "Introduction to Creative Writing", hours: 3, level: "lower" },
+          { code: "CRWT 20103", title: "Reading as a Writer", hours: 3, level: "lower" },
+          { code: "CRWT 20123", title: "Travel Writing", hours: 3, level: "lower" },
+          { code: "CRWT 20133", title: "Writing for Performance", hours: 3, level: "lower" },
+          { code: "WRIT 20113", title: "Technical and Professional Writing", hours: 3, level: "lower" },
+          { code: "WRIT 20303", title: "Writing Games", hours: 3, level: "lower" },
+          { code: "WRIT 20323", title: "Introduction to Multimedia Authoring", hours: 3, level: "lower" },
+          { code: "CRWT 30233", title: "Creative Nonfiction Workshop I", hours: 3 },
           { code: "CRWT 30343", title: "Fiction Writing Workshop I", hours: 3 },
+          { code: "CRWT 30353", title: "Poetry Writing Workshop I", hours: 3 },
+          { code: "CRWT 30363", title: "Digital Creative Writing", hours: 3 },
           { code: "CRWT 30373", title: "Drama Writing Workshop I", hours: 3 },
+          { code: "WRIT 30223", title: "Advanced Technical Writing", hours: 3 },
+          { code: "CRWT 40133", title: "Creative Nonfiction Workshop II", hours: 3 },
+          { code: "WRIT 40163", title: "Multimedia Authoring: Image and Hypertext", hours: 3 },
           { code: "CRWT 40203", title: "Fiction Writing Workshop II", hours: 3 },
+          { code: "CRWT 40213", title: "Poetry Writing Workshop II", hours: 3 },
+          { code: "WRIT 40233", title: "Writing for Publication", hours: 3 },
+          { code: "WRIT 40243", title: "Advanced Professional Writing", hours: 3 },
+          { code: "WRIT 40263", title: "Multimedia Authoring: Animation and Film", hours: 3 },
+          { code: "WRIT 40273", title: "Writing Internship", hours: 3 },
+          { code: "WRIT 40283", title: "Editing and Publishing", hours: 3 },
+          { code: "WRIT 40363", title: "Multimedia Authoring: Mobile Apps and eBooks", hours: 3 },
+          { code: "WRIT 40463", title: "Multimedia Authoring: Comics Production", hours: 3 },
+          { code: "WRIT 40563", title: "Multimedia Authoring: Sound & Podcasting", hours: 3 },
           { code: "CRWT 40703", title: "Advanced Multi-Genre Workshop", hours: 3 },
-          { code: "WRIT 40563", title: "Multimedia Authoring: Sound & Podcast", hours: 3 },
-          { code: "ENGL 50233", title: "Studies in Creative Writing", hours: 3 },
+          { code: "CRWT 40803", title: "Advanced Literary Forms", hours: 3 },
         ]
       },
       theory: {
@@ -212,7 +290,6 @@ const COURSE_DATA = {
           { code: "CRWT 40223", title: "Drama Writing Workshop II", hours: 3 },
           { code: "CRWT 40703", title: "Advanced Multi-Genre Workshop", hours: 3 },
           { code: "CRWT 40803", title: "Advanced Literary Forms", hours: 3 },
-          { code: "ENGL 50233", title: "Studies in Creative Writing", hours: 3 },
         ]
       },
       advancedSeminar: {
@@ -221,7 +298,6 @@ const COURSE_DATA = {
         courses: [
           { code: "CRWT 40703", title: "Advanced Multi-Genre Workshop", hours: 3 },
           { code: "CRWT 40803", title: "Advanced Literary Forms", hours: 3 },
-          { code: "ENGL 50233", title: "Studies in Creative Writing", hours: 3 },
         ]
       },
       internship: {
@@ -262,20 +338,32 @@ const COURSE_DATA = {
 
 // Prerequisite chains for visualization
 const PREREQUISITES = {
+  // Creative Writing Workshop sequences
   "CRWT 30343": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
   "CRWT 30353": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
   "CRWT 30233": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
   "CRWT 30373": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
+  "CRWT 30363": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
   "CRWT 40203": ["CRWT 30343"],
   "CRWT 40213": ["CRWT 30353"],
   "CRWT 40133": ["CRWT 30233"],
   "CRWT 40223": ["CRWT 30373"],
   "CRWT 40703": ["CRWT 30343", "CRWT 30353", "CRWT 30233", "CRWT 30373"],
+  "CRWT 40803": ["CRWT 30343", "CRWT 30353", "CRWT 30373"],
+
+  // English seminars and research
   "ENGL 38023": ["ENGL 20803"],
+  "ENGL 38013": ["ENGL 20803"],
+
+  // Writing & Rhetoric sequences
   "WRIT 40273": ["WRIT 38063"],
   "WRIT 30390": [],
   "WRIT 40233": ["WRIT 20113"],
   "WRIT 40243": ["WRIT 20113"],
+  "WRIT 30223": ["WRIT 20113"],
+
+  // Note: Most 30000+ level ENGL courses require:
+  // ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course
 };
 
 // Sample 4-year plans
@@ -845,7 +933,8 @@ function ProgressRing({ progress, size = 80, strokeWidth = 8 }) {
 // Full Course Catalog Component for Step 1
 function CatalogList({ completedCourses, onToggleCourse }) {
   const [expanded, setExpanded] = useState(false);
-  
+  const [searchTerm, setSearchTerm] = useState('');
+
   const groups = useMemo(() => {
     const g = { ENGL: [], CRWT: [], WRIT: [] };
     ALL_COURSES.forEach(c => {
@@ -855,10 +944,36 @@ function CatalogList({ completedCourses, onToggleCourse }) {
     return g;
   }, []);
 
+  // Filter courses based on search term
+  const filteredGroups = useMemo(() => {
+    if (!searchTerm.trim()) return groups;
+
+    const filtered = { ENGL: [], CRWT: [], WRIT: [] };
+    const search = searchTerm.toLowerCase();
+
+    Object.entries(groups).forEach(([prefix, courses]) => {
+      filtered[prefix] = courses.filter(course =>
+        course.code.toLowerCase().includes(search) ||
+        course.title.toLowerCase().includes(search) ||
+        course.description?.toLowerCase().includes(search)
+      );
+    });
+
+    return filtered;
+  }, [groups, searchTerm]);
+
+  // Scroll to a specific section
+  const scrollToSection = (prefix) => {
+    const element = document.getElementById(`catalog-${prefix}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
-      <button 
-        className="w-full flex items-center justify-between cursor-pointer focus:outline-none" 
+      <button
+        className="w-full flex items-center justify-between cursor-pointer focus:outline-none"
         onClick={() => setExpanded(!expanded)}
       >
         <h3 className="font-semibold text-gray-900 flex items-center gap-2">
@@ -867,21 +982,66 @@ function CatalogList({ completedCourses, onToggleCourse }) {
         </h3>
         {expanded ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
       </button>
-      
+
       {expanded && (
         <div className="mt-4 space-y-4">
           <p className="text-sm text-gray-600 mb-2">Check the boxes for any courses you have completed. These will be marked as completed across the entire degree plan.</p>
-          {Object.entries(groups).map(([prefix, courses]) => (
+
+          {/* Search Bar */}
+          <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg p-3">
+            <Search className="w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search courses by code, title, or description..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="flex-1 bg-transparent border-none outline-none text-sm text-gray-700 placeholder-gray-400"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+
+          {/* Jump Menu */}
+          {!searchTerm && (
+            <div className="flex items-center gap-2 bg-purple-50 border border-purple-200 rounded-lg p-3">
+              <span className="text-sm font-medium text-purple-900">Jump to:</span>
+              {Object.keys(groups).map(prefix => (
+                <button
+                  key={prefix}
+                  onClick={() => scrollToSection(prefix)}
+                  className="px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded transition-colors"
+                >
+                  {prefix}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Search Results Count */}
+          {searchTerm && (
+            <div className="text-sm text-gray-600">
+              Found {Object.values(filteredGroups).reduce((sum, courses) => sum + courses.length, 0)} courses matching "{searchTerm}"
+            </div>
+          )}
+
+          {/* Course Groups */}
+          {Object.entries(filteredGroups).map(([prefix, courses]) => (
              courses.length > 0 && (
-              <div key={prefix} className="border border-gray-200 rounded-lg p-3">
-                 <h4 className="font-bold text-gray-800 mb-2">{prefix} Courses</h4>
+              <div key={prefix} id={`catalog-${prefix}`} className="border border-gray-200 rounded-lg p-3 scroll-mt-4">
+                 <h4 className="font-bold text-gray-800 mb-2">{prefix} Courses ({courses.length})</h4>
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                    {courses.map(course => {
                      const isCompleted = completedCourses.includes(course.code);
                      return (
                        <label key={course.code} className={`flex items-start gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer transition-colors ${isCompleted ? 'bg-green-50 ring-1 ring-green-200' : ''}`}>
-                         <input 
-                           type="checkbox" 
+                         <input
+                           type="checkbox"
                            checked={isCompleted}
                            onChange={() => onToggleCourse(course.code)}
                            className="mt-1 w-4 h-4 text-green-600 rounded focus:ring-green-500 border-gray-300"
@@ -897,6 +1057,14 @@ function CatalogList({ completedCourses, onToggleCourse }) {
               </div>
              )
           ))}
+
+          {/* No Results */}
+          {searchTerm && Object.values(filteredGroups).every(courses => courses.length === 0) && (
+            <div className="text-center py-8 text-gray-500">
+              <p className="text-sm">No courses found matching "{searchTerm}"</p>
+              <p className="text-xs mt-1">Try searching by course code (e.g., "ENGL 30133") or title (e.g., "American Literature")</p>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -1066,19 +1234,97 @@ function RequirementsChecklist({
     return sum + hours;
   }, 0);
 
-  // Get remaining courses not yet scheduled
-  const remainingCourses = useMemo(() => {
-    const allScheduled = new Set([...completedCourses, ...plannedCourses, ...allFutureCourses]);
+  // Get remaining categories that need courses
+  const remainingCategories = useMemo(() => {
     const remaining = [];
-    Object.values(majorData.requirements).forEach(cat => {
-      cat.courses.forEach(course => {
-        if (!allScheduled.has(course.code) && course.code !== 'ANY') {
-          remaining.push(course);
-        }
-      });
+    Object.entries(majorData.requirements).forEach(([key, cat]) => {
+      const completed = cat.courses.filter(c => completedCourses.includes(c.code));
+      const planned = cat.courses.filter(c => plannedCourses.includes(c.code));
+      const future = cat.courses.filter(c => allFutureCourses.includes(c.code));
+
+      const hoursCompleted = completed.reduce((sum, c) => sum + c.hours, 0);
+      const hoursPlanned = planned.reduce((sum, c) => sum + c.hours, 0);
+      const hoursFuture = future.reduce((sum, c) => sum + c.hours, 0);
+      const totalScheduled = hoursCompleted + hoursPlanned + hoursFuture;
+
+      if (totalScheduled < cat.hours) {
+        remaining.push({
+          key,
+          name: cat.name,
+          hoursNeeded: cat.hours - totalScheduled,
+          totalRequired: cat.hours,
+          scheduled: totalScheduled
+        });
+      }
     });
     return remaining;
   }, [completedCourses, plannedCourses, allFutureCourses, majorData]);
+
+  // Generate suggested semester sequence based on expected graduation
+  const suggestedSequence = useMemo(() => {
+    if (!expectedGraduation || remainingCategories.length === 0) return [];
+
+    const [semester, yearStr] = expectedGraduation.split(' ');
+    const gradYear = parseInt(yearStr);
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+
+    // Determine starting semester
+    let startSemester = currentMonth >= 8 ? 'Spring' : 'Fall';
+    let startYear = currentMonth >= 8 ? currentYear + 1 : currentYear;
+
+    // Generate semester slots until graduation
+    const semesters = [];
+    let year = startYear;
+    let sem = startSemester;
+
+    while (year < gradYear || (year === gradYear && (sem === 'Spring' || semester === 'Fall'))) {
+      semesters.push(`${sem} ${year}`);
+      if (sem === 'Spring') {
+        sem = 'Fall';
+      } else {
+        sem = 'Spring';
+        year++;
+      }
+
+      // Safety check
+      if (semesters.length > 12) break;
+
+      // Stop if we've reached the graduation semester
+      if (year === gradYear && sem === semester) {
+        semesters.push(`${sem} ${year}`);
+        break;
+      }
+    }
+
+    // Prioritize categories
+    const prioritized = [...remainingCategories].sort((a, b) => {
+      // Junior seminars should be in year 3
+      if (a.name.includes('Junior') || a.name.includes('Seminar')) return -1;
+      if (b.name.includes('Junior') || b.name.includes('Seminar')) return 1;
+
+      // Prerequisites should come first
+      if (a.name.includes('Prerequisite')) return -1;
+      if (b.name.includes('Prerequisite')) return 1;
+
+      // Larger requirements first to spread out workload
+      return b.hoursNeeded - a.hoursNeeded;
+    });
+
+    // Distribute categories across semesters
+    const distribution = semesters.map(sem => ({ semester: sem, categories: [] }));
+    let semesterIndex = 0;
+
+    prioritized.forEach(cat => {
+      if (semesterIndex >= distribution.length) {
+        semesterIndex = 0; // Wrap around if needed
+      }
+      distribution[semesterIndex].categories.push(cat);
+      semesterIndex++;
+    });
+
+    return distribution.filter(d => d.categories.length > 0);
+  }, [expectedGraduation, remainingCategories]);
 
   return (
     <div>
@@ -1104,6 +1350,40 @@ function RequirementsChecklist({
               Plan your courses to complete requirements by {expectedGraduation}
             </span>
           )}
+        </div>
+      </div>
+
+      {/* Progress Bar & Major Info */}
+      <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6 rounded-xl mb-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold">{majorData.name} Major</h2>
+            <p className="text-purple-200 mt-1">{majorData.description}</p>
+            <div className="mt-3 flex items-center gap-4 text-sm flex-wrap">
+              <span className="bg-purple-500/30 px-3 py-1 rounded-full">
+                {majorData.totalHours} Total Hours Required
+              </span>
+              <span className="bg-purple-500/30 px-3 py-1 rounded-full">
+                Max {majorData.maxLowerDivision} Lower-Division Hours
+              </span>
+              <span className="bg-green-500/40 px-3 py-1 rounded-full">
+                {totalCompleted} hrs completed
+              </span>
+              {totalPlanned > 0 && (
+                <span className="bg-blue-500/40 px-3 py-1 rounded-full">
+                  +{totalPlanned} hrs planned
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="text-center">
+            <ProgressRing progress={progress} />
+            {totalPlanned > 0 && (
+              <div className="text-xs text-purple-200 mt-1">
+                {Math.round(projectedProgress)}% after planned
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -1206,7 +1486,7 @@ function RequirementsChecklist({
         {selectionStep === 3 && (
           <div className="mt-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
             <p className="text-sm text-orange-800">
-              <strong>Step 3:</strong> Assign remaining courses to future semesters to complete your degree plan. Drag courses to semesters below.
+              <strong>Step 3:</strong> Plan which requirement categories you'll complete each semester. Since not all courses are offered every semester, plan by category rather than specific courses.
             </p>
           </div>
         )}
@@ -1221,129 +1501,104 @@ function RequirementsChecklist({
         <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
           <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <Calendar className="w-5 h-5 text-orange-600" />
-            Plan Remaining Courses
+            Plan Remaining Requirements
           </h3>
 
-          {remainingCourses.length === 0 ? (
+          {remainingCategories.length === 0 ? (
             <div className="text-center py-8 text-green-600">
               <CheckCircle className="w-12 h-12 mx-auto mb-2" />
-              <p className="font-medium">All courses have been scheduled!</p>
+              <p className="font-medium">All requirements are satisfied!</p>
+              <p className="text-sm text-gray-600 mt-1">You've completed or planned all required hours for this major.</p>
             </div>
           ) : (
-            <div className="grid lg:grid-cols-2 gap-6">
-              {/* Unscheduled Courses */}
-              <div>
-                <h4 className="text-sm font-medium text-gray-700 mb-3">
-                  Unscheduled Courses ({remainingCourses.length})
-                </h4>
-                <div className="border border-gray-200 rounded-lg p-3 max-h-64 overflow-y-auto">
-                  {remainingCourses.map(course => (
-                    <div key={course.code} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
-                      <div>
-                        <span className="font-mono text-sm text-purple-700">{course.code}</span>
-                        <span className="ml-2 text-sm text-gray-600">{course.title}</span>
-                      </div>
-                      <select
-                        className="text-sm border border-gray-300 rounded px-2 py-1"
-                        onChange={(e) => {
-                          if (e.target.value) {
-                            onToggleCourse(course.code, e.target.value);
-                          }
-                        }}
-                        defaultValue=""
-                      >
-                        <option value="">Assign to...</option>
-                        {semesterOptions.slice(0, 12).map(opt => (
-                          <option key={opt.value} value={opt.value}>{opt.label}</option>
-                        ))}
-                      </select>
-                    </div>
-                  ))}
+            <div className="space-y-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <div className="flex items-start gap-2">
+                  <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-blue-800">
+                    <p className="font-medium mb-1">Category-Based Planning</p>
+                    <p>Plan which requirement categories to complete each semester. When it's time to register, choose specific courses from each category based on availability and your interests.</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Scheduled Future Semesters */}
-              <div>
-                <h4 className="text-sm font-medium text-gray-700 mb-3">
-                  Future Semesters ({totalFutureHours} hours planned)
+              <div className="space-y-3">
+                <h4 className="text-sm font-medium text-gray-700">
+                  Requirements Still Needed ({remainingCategories.length} categories)
                 </h4>
-                <div className="space-y-3 max-h-64 overflow-y-auto">
-                  {Object.entries(futureCourses || {})
-                    .filter(([_, courses]) => courses.length > 0)
-                    .sort(([a], [b]) => {
-                      const [aSem, aYear] = a.split(' ');
-                      const [bSem, bYear] = b.split(' ');
-                      if (aYear !== bYear) return parseInt(aYear) - parseInt(bYear);
-                      return aSem === 'Spring' ? -1 : 1;
-                    })
-                    .map(([semester, courses]) => (
-                      <div key={semester} className="border border-orange-200 rounded-lg p-3 bg-orange-50">
-                        <div className="font-medium text-orange-800 mb-2">{semester}</div>
-                        {courses.map(code => {
-                          let courseData = null;
-                          Object.values(majorData.requirements).forEach(cat => {
-                            const found = cat.courses.find(c => c.code === code);
-                            if (found) courseData = found;
-                          });
-                          return courseData ? (
-                            <div key={code} className="flex items-center justify-between py-1">
-                              <span className="text-sm">
-                                <span className="font-mono text-purple-700">{code}</span>
-                                <span className="ml-2 text-gray-600">{courseData.title}</span>
-                              </span>
-                              <button
-                                onClick={() => onRemoveFutureCourse(code, semester)}
-                                className="text-red-500 text-xs hover:underline"
-                              >
-                                Remove
-                              </button>
-                            </div>
-                          ) : null;
-                        })}
+                {remainingCategories.map(cat => (
+                  <div key={cat.key} className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="font-medium text-gray-900">{cat.name}</div>
+                        <div className="text-sm text-gray-600 mt-1">
+                          Need {cat.hoursNeeded} more hours ({cat.scheduled}/{cat.totalRequired} scheduled)
+                        </div>
+                        <div className="mt-2 text-xs text-gray-500">
+                          Available courses in {cat.name} - check course catalog or advisor for current offerings
+                        </div>
                       </div>
-                    ))}
-                  {Object.values(futureCourses || {}).every(arr => arr.length === 0) && (
-                    <p className="text-sm text-gray-500 italic">No future courses assigned yet. Use the dropdown menus to assign courses to semesters.</p>
-                  )}
+                      <div className="ml-4">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+                          {cat.hoursNeeded} hrs
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {suggestedSequence.length > 0 && expectedGraduation && (
+                <div className="mt-6">
+                  <h4 className="text-sm font-medium text-gray-700 mb-3 flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-purple-600" />
+                    Suggested Sequence to {expectedGraduation}
+                  </h4>
+                  <div className="space-y-3">
+                    {suggestedSequence.map((sem, idx) => {
+                      const totalHours = sem.categories.reduce((sum, cat) => sum + cat.hoursNeeded, 0);
+                      return (
+                        <div key={sem.semester} className="border border-purple-200 rounded-lg p-4 bg-purple-50">
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="font-medium text-purple-900">{sem.semester}</div>
+                            <div className="text-sm text-purple-700">{totalHours} hours</div>
+                          </div>
+                          <div className="space-y-2">
+                            {sem.categories.map(cat => (
+                              <div key={cat.key} className="flex items-center justify-between text-sm">
+                                <span className="text-gray-700">{cat.name}</span>
+                                <span className="text-purple-600 font-medium">{cat.hoursNeeded} hrs</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="mt-3 text-xs text-gray-600 italic">
+                    This is a suggested distribution. Adjust based on course availability and your schedule.
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                <div className="flex items-start gap-2">
+                  <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-amber-800">
+                    <p className="font-medium mb-1">Planning Tips</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>Not all courses are offered every semester - check with your advisor</li>
+                      <li>Some courses have prerequisites that must be completed first</li>
+                      <li>Plan to complete requirements progressively across semesters</li>
+                      <li>Junior seminars should be taken in your junior year</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           )}
         </div>
       )}
-
-      <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6 rounded-xl mb-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">{majorData.name} Major</h2>
-            <p className="text-purple-200 mt-1">{majorData.description}</p>
-            <div className="mt-3 flex items-center gap-4 text-sm flex-wrap">
-              <span className="bg-purple-500/30 px-3 py-1 rounded-full">
-                {majorData.totalHours} Total Hours Required
-              </span>
-              <span className="bg-purple-500/30 px-3 py-1 rounded-full">
-                Max {majorData.maxLowerDivision} Lower-Division Hours
-              </span>
-              <span className="bg-green-500/40 px-3 py-1 rounded-full">
-                {totalCompleted} hrs completed
-              </span>
-              {totalPlanned > 0 && (
-                <span className="bg-blue-500/40 px-3 py-1 rounded-full">
-                  +{totalPlanned} hrs planned
-                </span>
-              )}
-            </div>
-          </div>
-          <div className="text-center">
-            <ProgressRing progress={progress} />
-            {totalPlanned > 0 && (
-              <div className="text-xs text-purple-200 mt-1">
-                {Math.round(projectedProgress)}% after planned
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
@@ -1516,12 +1771,20 @@ function PrerequisiteMap({ major }) {
         { code: 'CRWT 30373', title: 'Drama Writing Workshop I' },
         { code: 'CRWT 40223', title: 'Drama Writing Workshop II' },
       ];
+      chainMap['Digital Creative Writing'] = [
+        { code: 'CRWT 10203', title: 'Intro to Creative Writing' },
+        { code: 'CRWT 30363', title: 'Digital Creative Writing' },
+      ];
     }
 
     if (major === 'writing') {
       chainMap['Professional Writing'] = [
         { code: 'WRIT 20113', title: 'Technical and Professional Writing' },
         { code: 'WRIT 40243', title: 'Advanced Professional Writing' },
+      ];
+      chainMap['Technical Writing'] = [
+        { code: 'WRIT 20113', title: 'Technical and Professional Writing' },
+        { code: 'WRIT 30223', title: 'Advanced Technical Writing' },
       ];
       chainMap['Writing Major Sequence'] = [
         { code: 'WRIT 38063', title: 'Writing Major Seminar (Junior)' },
@@ -1576,18 +1839,70 @@ function PrerequisiteMap({ major }) {
         ))}
       </div>
 
-      <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-6">
+      {/* General Prerequisites Section */}
+      <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
+        <h3 className="font-bold text-blue-900 flex items-center gap-2 mb-4">
+          <Info className="w-5 h-5" />
+          General Prerequisites for Upper-Division Courses
+        </h3>
+        <div className="bg-white rounded-lg p-4 border border-blue-100 mb-4">
+          <p className="text-sm text-blue-900 font-medium mb-2">Most 30000+ level ENGL courses require ALL of the following:</p>
+          <div className="flex flex-col gap-2 ml-4">
+            <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span><strong>ENGL 10803</strong> - First-Year Writing</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span><strong>ENGL 20803</strong> - Writing Arguments</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span><strong>At least one 10000- or 20000-level</strong> ENGL/WRIT/CRWT course</span>
+            </div>
+          </div>
+        </div>
+        <p className="text-xs text-blue-700 italic">
+          These "gateway" courses build foundational skills for advanced literature and writing courses.
+        </p>
+      </div>
+
+      <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-6">
         <h3 className="font-bold text-amber-900 flex items-center gap-2 mb-3">
           <AlertCircle className="w-5 h-5" />
-          Important Notes
+          Important Planning Notes
         </h3>
         <ul className="text-sm text-amber-800 space-y-2">
-          <li>• Workshop II courses require completion of Workshop I in the same genre</li>
-          <li>• Advanced Multi-Genre Workshop requires at least one Workshop I course</li>
-          <li>• Junior Seminar should be taken in the fall of junior year</li>
-          <li>• Internship is typically taken after the Junior Seminar</li>
-          <li>• Check with your advisor for any additional prerequisites or co-requisites</li>
+          <li>• <strong>Workshop II courses</strong> require completion of Workshop I in the same genre</li>
+          <li>• <strong>Advanced Multi-Genre Workshop</strong> requires completion of at least one 30000-level workshop</li>
+          <li>• <strong>Junior Seminars</strong> (38000-level) should be taken in fall of junior year</li>
+          <li>• <strong>Writing Internship</strong> requires completion of the Writing Major Seminar first</li>
+          <li>• <strong>40000-level courses</strong> may have additional prerequisites beyond the general requirements</li>
+          <li>• Always check the course catalog for specific prerequisites and consult your advisor</li>
         </ul>
+      </div>
+
+      {/* Quick Reference */}
+      <div className="mt-6 bg-purple-50 border border-purple-200 rounded-xl p-6">
+        <h3 className="font-bold text-purple-900 mb-3">Quick Reference: Course Levels</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div className="bg-white rounded-lg p-3 border border-purple-100">
+            <div className="font-semibold text-purple-900 mb-1">10000-level</div>
+            <div className="text-gray-600">Introductory courses, no prerequisites</div>
+          </div>
+          <div className="bg-white rounded-lg p-3 border border-purple-100">
+            <div className="font-semibold text-purple-900 mb-1">20000-level</div>
+            <div className="text-gray-600">Lower-division, may require ENGL 10803</div>
+          </div>
+          <div className="bg-white rounded-lg p-3 border border-purple-100">
+            <div className="font-semibold text-purple-900 mb-1">30000-level</div>
+            <div className="text-gray-600">Upper-division, requires gateway courses</div>
+          </div>
+          <div className="bg-white rounded-lg p-3 border border-purple-100">
+            <div className="font-semibold text-purple-900 mb-1">40000-level</div>
+            <div className="text-gray-600">Advanced, may have additional prerequisites</div>
+          </div>
+        </div>
       </div>
     </div>
   );
