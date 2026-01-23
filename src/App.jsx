@@ -1329,16 +1329,16 @@ function RequirementsChecklist({
   return (
     <div>
       {/* Graduation Semester Input */}
-      <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-6">
-        <div className="flex items-center gap-4 flex-wrap">
+      <div className="bg-purple-50 border border-purple-200 rounded-xl p-3 sm:p-4 mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-2">
-            <GraduationCap className="w-5 h-5 text-purple-600" />
-            <label className="font-medium text-purple-900">Expected Graduation:</label>
+            <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 flex-shrink-0" />
+            <label className="font-medium text-purple-900 text-sm sm:text-base whitespace-nowrap">Expected Graduation:</label>
           </div>
           <select
             value={expectedGraduation}
             onChange={(e) => onGraduationChange(e.target.value)}
-            className="px-4 py-2 border border-purple-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-3 sm:px-4 py-2 border border-purple-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm sm:text-base w-full sm:w-auto"
           >
             <option value="">Select semester...</option>
             {semesterOptions.map(opt => (
@@ -1346,7 +1346,7 @@ function RequirementsChecklist({
             ))}
           </select>
           {expectedGraduation && (
-            <span className="text-sm text-purple-700">
+            <span className="text-xs sm:text-sm text-purple-700 break-words">
               Plan your courses to complete requirements by {expectedGraduation}
             </span>
           )}
@@ -1354,32 +1354,32 @@ function RequirementsChecklist({
       </div>
 
       {/* Progress Bar & Major Info */}
-      <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6 rounded-xl mb-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">{majorData.name} Major</h2>
-            <p className="text-purple-200 mt-1">{majorData.description}</p>
-            <div className="mt-3 flex items-center gap-4 text-sm flex-wrap">
-              <span className="bg-purple-500/30 px-3 py-1 rounded-full">
+      <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-4 sm:p-6 rounded-xl mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex-1 min-w-0">
+            <h2 className="text-xl sm:text-2xl font-bold break-words">{majorData.name} Major</h2>
+            <p className="text-purple-200 mt-1 text-sm sm:text-base break-words">{majorData.description}</p>
+            <div className="mt-3 flex items-center gap-2 sm:gap-4 text-xs sm:text-sm flex-wrap">
+              <span className="bg-purple-500/30 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
                 {majorData.totalHours} Total Hours Required
               </span>
-              <span className="bg-purple-500/30 px-3 py-1 rounded-full">
+              <span className="bg-purple-500/30 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
                 Max {majorData.maxLowerDivision} Lower-Division Hours
               </span>
-              <span className="bg-green-500/40 px-3 py-1 rounded-full">
+              <span className="bg-green-500/40 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
                 {totalCompleted} hrs completed
               </span>
               {totalPlanned > 0 && (
-                <span className="bg-blue-500/40 px-3 py-1 rounded-full">
+                <span className="bg-blue-500/40 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
                   +{totalPlanned} hrs planned
                 </span>
               )}
             </div>
           </div>
-          <div className="text-center">
+          <div className="text-center flex-shrink-0">
             <ProgressRing progress={progress} />
             {totalPlanned > 0 && (
-              <div className="text-xs text-purple-200 mt-1">
+              <div className="text-xs text-purple-200 mt-1 whitespace-nowrap">
                 {Math.round(projectedProgress)}% after planned
               </div>
             )}
@@ -1388,14 +1388,14 @@ function RequirementsChecklist({
       </div>
 
       {/* Step Indicator */}
-      <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-gray-900">Course Selection</h3>
-          <div className="text-sm text-gray-500">
+      <div className="bg-white border border-gray-200 rounded-xl p-3 sm:p-4 mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 mb-4">
+          <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Course Selection</h3>
+          <div className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">
             {completedCourses.length} completed • {plannedCourses.length} next semester • {allFutureCourses.length} future
           </div>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
           <button
             onClick={() => onStepChange(1)}
             className={`flex-1 p-3 rounded-lg border-2 transition-all ${
@@ -1527,19 +1527,19 @@ function RequirementsChecklist({
                   Requirements Still Needed ({remainingCategories.length} categories)
                 </h4>
                 {remainingCategories.map(cat => (
-                  <div key={cat.key} className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="font-medium text-gray-900">{cat.name}</div>
-                        <div className="text-sm text-gray-600 mt-1">
+                  <div key={cat.key} className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:bg-gray-50">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium text-gray-900 text-sm sm:text-base break-words">{cat.name}</div>
+                        <div className="text-xs sm:text-sm text-gray-600 mt-1">
                           Need {cat.hoursNeeded} more hours ({cat.scheduled}/{cat.totalRequired} scheduled)
                         </div>
-                        <div className="mt-2 text-xs text-gray-500">
+                        <div className="mt-2 text-xs text-gray-500 break-words">
                           Available courses in {cat.name} - check course catalog or advisor for current offerings
                         </div>
                       </div>
-                      <div className="ml-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+                      <div className="flex-shrink-0">
+                        <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-orange-100 text-orange-800 whitespace-nowrap">
                           {cat.hoursNeeded} hrs
                         </span>
                       </div>
@@ -1558,16 +1558,16 @@ function RequirementsChecklist({
                     {suggestedSequence.map((sem, idx) => {
                       const totalHours = sem.categories.reduce((sum, cat) => sum + cat.hoursNeeded, 0);
                       return (
-                        <div key={sem.semester} className="border border-purple-200 rounded-lg p-4 bg-purple-50">
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="font-medium text-purple-900">{sem.semester}</div>
-                            <div className="text-sm text-purple-700">{totalHours} hours</div>
+                        <div key={sem.semester} className="border border-purple-200 rounded-lg p-3 sm:p-4 bg-purple-50">
+                          <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                            <div className="font-medium text-purple-900 text-sm sm:text-base">{sem.semester}</div>
+                            <div className="text-xs sm:text-sm text-purple-700 whitespace-nowrap">{totalHours} hours</div>
                           </div>
                           <div className="space-y-2">
                             {sem.categories.map(cat => (
-                              <div key={cat.key} className="flex items-center justify-between text-sm">
-                                <span className="text-gray-700">{cat.name}</span>
-                                <span className="text-purple-600 font-medium">{cat.hoursNeeded} hrs</span>
+                              <div key={cat.key} className="flex items-start justify-between gap-2 text-sm">
+                                <span className="text-gray-700 break-words flex-1 min-w-0">{cat.name}</span>
+                                <span className="text-purple-600 font-medium whitespace-nowrap flex-shrink-0">{cat.hoursNeeded} hrs</span>
                               </div>
                             ))}
                           </div>
@@ -2054,20 +2054,20 @@ export default function TCUEnglishAdvisingApp() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-purple-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <GraduationCap className="w-10 h-10" />
-              <div>
-                <h1 className="text-2xl font-bold">TCU English Department</h1>
-                <p className="text-purple-300">Academic Advising Program</p>
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
+              <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-lg sm:text-2xl font-bold break-words">TCU English Department</h1>
+                <p className="text-purple-300 text-xs sm:text-base">Academic Advising Program</p>
               </div>
             </div>
             <button
               onClick={() => generatePDFReport(COURSE_DATA[selectedMajor], completedCourses, plannedCourses, futureCourses, expectedGraduation)}
-              className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors flex-shrink-0"
             >
-              <Printer className="w-5 h-5" />
+              <Printer className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="hidden sm:inline">Export Report</span>
             </button>
           </div>
@@ -2076,22 +2076,22 @@ export default function TCUEnglishAdvisingApp() {
 
       {/* Major Selector */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex gap-2 py-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <div className="flex flex-col sm:flex-row gap-2 py-3 sm:py-4">
             {majors.map(major => {
               const Icon = major.icon;
               return (
                 <button
                   key={major.id}
                   onClick={() => setSelectedMajor(major.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                  className={`flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
                     selectedMajor === major.id
                       ? 'bg-purple-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
-                  {major.name}
+                  <Icon className="w-4 h-4 flex-shrink-0" />
+                  <span className="whitespace-nowrap">{major.name}</span>
                 </button>
               );
             })}
@@ -2101,22 +2101,22 @@ export default function TCUEnglishAdvisingApp() {
 
       {/* Tab Navigation */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex gap-6">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <div className="flex gap-3 sm:gap-6 overflow-x-auto">
             {tabs.map(tab => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-1 py-4 border-b-2 font-medium transition-colors ${
+                  className={`flex items-center gap-2 px-1 py-3 sm:py-4 border-b-2 font-medium transition-colors whitespace-nowrap text-sm sm:text-base ${
                     activeTab === tab.id
                       ? 'border-purple-600 text-purple-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
-                  {tab.name}
+                  <Icon className="w-4 h-4 flex-shrink-0" />
+                  <span className="whitespace-nowrap">{tab.name}</span>
                 </button>
               );
             })}
