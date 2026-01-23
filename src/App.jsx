@@ -411,24 +411,41 @@ const FOUR_YEAR_PLANS = {
 // EXPORT FUNCTION
 // ============================================
 
-function generatePDFReport(majorData, completedCourses, studentName = '') {
+function generatePDFReport(majorData, completedCourses, plannedCourses = [], futureCourses = {}, expectedGraduation = '', studentName = '') {
   // Calculate progress for each category
   const categoryProgress = {};
   let totalCompleted = 0;
+  let totalPlanned = 0;
+  let totalFuture = 0;
+
+  const allFutureCourses = Object.values(futureCourses).flat();
 
   Object.entries(majorData.requirements).forEach(([key, cat]) => {
     const completed = cat.courses.filter(c => completedCourses.includes(c.code));
+    const planned = cat.courses.filter(c => plannedCourses.includes(c.code));
+    const future = cat.courses.filter(c => allFutureCourses.includes(c.code));
+
     const hoursCompleted = completed.reduce((sum, c) => sum + c.hours, 0);
+    const hoursPlanned = planned.reduce((sum, c) => sum + c.hours, 0);
+    const hoursFuture = future.reduce((sum, c) => sum + c.hours, 0);
+
     categoryProgress[key] = {
       name: cat.name,
       hoursRequired: cat.hours,
       hoursCompleted: Math.min(hoursCompleted, cat.hours),
-      courses: completed
+      hoursPlanned: hoursPlanned,
+      hoursFuture: hoursFuture,
+      completedCourses: completed,
+      plannedCourses: planned,
+      futureCourses: future
     };
     totalCompleted += Math.min(hoursCompleted, cat.hours);
+    totalPlanned += hoursPlanned;
+    totalFuture += hoursFuture;
   });
 
   const progress = Math.round((totalCompleted / majorData.totalHours) * 100);
+  const projectedProgress = Math.round(((totalCompleted + totalPlanned + totalFuture) / majorData.totalHours) * 100);
   const today = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -470,14 +487,16 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
         .meta {
           display: flex;
           justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 10px;
           margin-bottom: 30px;
           padding: 15px;
           background: #f3f4f6;
           border-radius: 8px;
         }
-        .meta-item { text-align: center; }
-        .meta-label { font-size: 12px; color: #6b7280; text-transform: uppercase; }
-        .meta-value { font-size: 18px; font-weight: bold; color: #581c87; }
+        .meta-item { text-align: center; flex: 1; min-width: 120px; }
+        .meta-label { font-size: 11px; color: #6b7280; text-transform: uppercase; }
+        .meta-value { font-size: 16px; font-weight: bold; color: #581c87; }
         .progress-section {
           margin-bottom: 30px;
           padding: 20px;
@@ -490,10 +509,11 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
           border-radius: 12px;
           overflow: hidden;
           margin: 10px 0;
+          position: relative;
         }
         .progress-bar {
           height: 100%;
-          background: linear-gradient(90deg, #581c87, #7c3aed);
+          background: linear-gradient(90deg, #059669, #10b981);
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -501,6 +521,15 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
           color: white;
           font-weight: bold;
           font-size: 12px;
+        }
+        .progress-bar-projected {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background: linear-gradient(90deg, #3b82f6, #60a5fa);
+          opacity: 0.5;
+          border-radius: 12px;
         }
         .category {
           margin-bottom: 20px;
@@ -516,10 +545,7 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
           margin-bottom: 10px;
         }
         .category-name { font-weight: bold; }
-        .category-progress {
-          font-size: 14px;
-          color: #6b7280;
-        }
+        .category-progress { font-size: 14px; color: #6b7280; }
         .category-complete { color: #059669; }
         .course-list {
           padding-left: 20px;
@@ -527,7 +553,7 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
           border-left: 2px solid #e5e7eb;
         }
         .course {
-          padding: 8px 0;
+          padding: 6px 0;
           display: flex;
           align-items: center;
           gap: 10px;
@@ -535,27 +561,52 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
         .course-check {
           width: 16px;
           height: 16px;
-          border: 2px solid #059669;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #059669;
-          color: white;
           font-size: 10px;
         }
+        .course-check.completed { background: #059669; color: white; }
+        .course-check.planned { background: #3b82f6; color: white; }
+        .course-check.future { background: #f97316; color: white; }
         .course-code {
           font-family: 'Courier New', monospace;
           color: #581c87;
           font-size: 13px;
         }
         .course-title { color: #374151; }
+        .course-status {
+          font-size: 10px;
+          padding: 2px 6px;
+          border-radius: 4px;
+          margin-left: 8px;
+        }
+        .status-completed { background: #d1fae5; color: #059669; }
+        .status-planned { background: #dbeafe; color: #2563eb; }
+        .status-future { background: #ffedd5; color: #ea580c; }
         .no-courses {
           color: #9ca3af;
           font-style: italic;
           padding: 10px 0;
           padding-left: 20px;
         }
+        .future-plan {
+          margin-top: 30px;
+          padding: 20px;
+          border: 2px solid #f97316;
+          border-radius: 8px;
+          background: #fff7ed;
+        }
+        .future-plan h3 { color: #ea580c; margin-bottom: 15px; }
+        .semester-block {
+          margin-bottom: 15px;
+          padding: 10px;
+          background: white;
+          border-radius: 6px;
+          border: 1px solid #fed7aa;
+        }
+        .semester-title { font-weight: bold; color: #c2410c; margin-bottom: 8px; }
         .footer {
           margin-top: 40px;
           padding-top: 20px;
@@ -574,6 +625,18 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
           border-top: 1px solid #1f2937;
           padding-top: 5px;
           font-size: 12px;
+        }
+        .legend {
+          display: flex;
+          gap: 20px;
+          margin-top: 10px;
+          font-size: 12px;
+        }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
         }
         @media print {
           body { padding: 20px; }
@@ -596,48 +659,119 @@ function generatePDFReport(majorData, completedCourses, studentName = '') {
           <div class="meta-label">Date</div>
           <div class="meta-value">${today}</div>
         </div>
+        ${expectedGraduation ? `
         <div class="meta-item">
-          <div class="meta-label">Hours Completed</div>
-          <div class="meta-value">${totalCompleted} / ${majorData.totalHours}</div>
+          <div class="meta-label">Expected Graduation</div>
+          <div class="meta-value">${expectedGraduation}</div>
+        </div>
+        ` : ''}
+        <div class="meta-item">
+          <div class="meta-label">Completed</div>
+          <div class="meta-value">${totalCompleted} hrs</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Planned</div>
+          <div class="meta-value">${totalPlanned + totalFuture} hrs</div>
         </div>
       </div>
 
       <div class="progress-section">
         <strong>Overall Progress</strong>
         <div class="progress-bar-container">
-          <div class="progress-bar" style="width: ${Math.max(progress, 10)}%">
+          <div class="progress-bar-projected" style="width: ${Math.min(projectedProgress, 100)}%"></div>
+          <div class="progress-bar" style="width: ${Math.max(progress, 5)}%">
             ${progress}%
           </div>
         </div>
         <div style="font-size: 14px; color: #6b7280; margin-top: 5px;">
-          ${totalCompleted} of ${majorData.totalHours} credit hours completed toward major
+          ${totalCompleted} of ${majorData.totalHours} hours completed
+          ${totalPlanned + totalFuture > 0 ? ` • ${totalPlanned + totalFuture} hours planned (${projectedProgress}% projected)` : ''}
+        </div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background: #059669;"></div> Completed</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #3b82f6;"></div> Coming Semester</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #f97316;"></div> Future</div>
         </div>
       </div>
 
-      <h3 style="margin-bottom: 15px; color: #581c87;">Completed Courses by Category</h3>
+      <h3 style="margin-bottom: 15px; color: #581c87;">Courses by Category</h3>
 
       ${Object.entries(categoryProgress).map(([key, cat]) => `
         <div class="category">
           <div class="category-header">
             <span class="category-name">${cat.name}</span>
             <span class="category-progress ${cat.hoursCompleted >= cat.hoursRequired ? 'category-complete' : ''}">
-              ${cat.hoursCompleted} / ${cat.hoursRequired} hrs
-              ${cat.hoursCompleted >= cat.hoursRequired ? ' ✓' : ''}
+              ${cat.hoursCompleted}/${cat.hoursRequired} hrs completed
+              ${cat.hoursPlanned > 0 ? ` +${cat.hoursPlanned} planned` : ''}
+              ${cat.hoursFuture > 0 ? ` +${cat.hoursFuture} future` : ''}
             </span>
           </div>
-          ${cat.courses.length > 0 ? `
+          ${cat.completedCourses.length > 0 || cat.plannedCourses.length > 0 || cat.futureCourses.length > 0 ? `
             <div class="course-list">
-              ${cat.courses.map(c => `
+              ${cat.completedCourses.map(c => `
                 <div class="course">
-                  <span class="course-check">✓</span>
+                  <span class="course-check completed">✓</span>
                   <span class="course-code">${c.code}</span>
                   <span class="course-title">${c.title}</span>
+                  <span class="course-status status-completed">Completed</span>
+                </div>
+              `).join('')}
+              ${cat.plannedCourses.map(c => `
+                <div class="course">
+                  <span class="course-check planned">→</span>
+                  <span class="course-code">${c.code}</span>
+                  <span class="course-title">${c.title}</span>
+                  <span class="course-status status-planned">Coming Semester</span>
+                </div>
+              `).join('')}
+              ${cat.futureCourses.map(c => `
+                <div class="course">
+                  <span class="course-check future">○</span>
+                  <span class="course-code">${c.code}</span>
+                  <span class="course-title">${c.title}</span>
+                  <span class="course-status status-future">Future</span>
                 </div>
               `).join('')}
             </div>
-          ` : '<div class="no-courses">No courses completed in this category</div>'}
+          ` : '<div class="no-courses">No courses scheduled for this category</div>'}
         </div>
       `).join('')}
+
+      ${Object.keys(futureCourses).length > 0 && Object.values(futureCourses).some(arr => arr.length > 0) ? `
+        <div class="future-plan">
+          <h3>📅 Future Semester Plan</h3>
+          ${Object.entries(futureCourses)
+            .filter(([_, courses]) => courses.length > 0)
+            .sort(([a], [b]) => {
+              const [aSem, aYear] = a.split(' ');
+              const [bSem, bYear] = b.split(' ');
+              if (aYear !== bYear) return parseInt(aYear) - parseInt(bYear);
+              return aSem === 'Spring' ? -1 : 1;
+            })
+            .map(([semester, codes]) => {
+              const semesterCourses = codes.map(code => {
+                let found = null;
+                Object.values(majorData.requirements).forEach(cat => {
+                  const c = cat.courses.find(course => course.code === code);
+                  if (c) found = c;
+                });
+                return found;
+              }).filter(Boolean);
+              const semesterHours = semesterCourses.reduce((sum, c) => sum + c.hours, 0);
+              return `
+                <div class="semester-block">
+                  <div class="semester-title">${semester} (${semesterHours} hrs)</div>
+                  ${semesterCourses.map(c => `
+                    <div style="font-size: 13px; padding: 3px 0;">
+                      <span style="font-family: monospace; color: #581c87;">${c.code}</span>
+                      <span style="color: #374151;"> - ${c.title}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              `;
+            }).join('')}
+        </div>
+      ` : ''}
 
       <div class="signature-line">
         <div class="signature">Student Signature</div>
@@ -708,30 +842,38 @@ function ProgressRing({ progress, size = 80, strokeWidth = 8 }) {
 }
 
 // Requirement Category Component
-function RequirementCategory({ category, completedCourses, onToggleCourse, isExpanded, onToggleExpand }) {
-  const completedInCategory = category.courses.filter(c => completedCourses.includes(c.code)).length;
+function RequirementCategory({ category, completedCourses, plannedCourses = [], onToggleCourse, isExpanded, onToggleExpand, selectionStep = 1 }) {
   const hoursCompleted = category.courses.filter(c => completedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+  const hoursPlanned = category.courses.filter(c => plannedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
   const isComplete = hoursCompleted >= category.hours;
+  const willBeComplete = (hoursCompleted + hoursPlanned) >= category.hours;
 
   return (
     <div className="border border-gray-200 rounded-lg mb-3 overflow-hidden">
       <button
         onClick={onToggleExpand}
         className={`w-full px-4 py-3 flex items-center justify-between text-left transition-colors ${
-          isComplete ? 'bg-green-50' : 'bg-gray-50 hover:bg-gray-100'
+          isComplete ? 'bg-green-50' : willBeComplete ? 'bg-blue-50' : 'bg-gray-50 hover:bg-gray-100'
         }`}
       >
         <div className="flex items-center gap-3">
           {isComplete ? (
             <CheckCircle className="w-5 h-5 text-green-600" />
+          ) : willBeComplete ? (
+            <Circle className="w-5 h-5 text-blue-500" />
           ) : (
             <Circle className="w-5 h-5 text-gray-400" />
           )}
           <div>
             <span className="font-medium text-gray-900">{category.name}</span>
             <span className="ml-2 text-sm text-gray-500">
-              ({hoursCompleted}/{category.hours} hrs)
+              ({hoursCompleted}/{category.hours} hrs completed)
             </span>
+            {hoursPlanned > 0 && (
+              <span className="ml-1 text-sm text-blue-600">
+                +{hoursPlanned} planned
+              </span>
+            )}
           </div>
         </div>
         {isExpanded ? (
@@ -750,29 +892,53 @@ function RequirementCategory({ category, completedCourses, onToggleCourse, isExp
             </div>
           )}
           <div className="space-y-2">
-            {category.courses.map(course => (
-              <label
-                key={course.code}
-                className="flex items-center gap-3 p-2 rounded hover:bg-gray-50 cursor-pointer"
-              >
-                <input
-                  type="checkbox"
-                  checked={completedCourses.includes(course.code)}
-                  onChange={() => onToggleCourse(course.code)}
-                  className="w-4 h-4 text-purple-600 rounded focus:ring-purple-500"
-                />
-                <div className="flex-1">
-                  <span className="font-mono text-sm text-purple-700">{course.code}</span>
-                  <span className="ml-2 text-gray-700">{course.title}</span>
-                  {course.level === 'lower' && (
-                    <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded">
-                      Lower Division
-                    </span>
-                  )}
-                </div>
-                <span className="text-sm text-gray-500">{course.hours} hrs</span>
-              </label>
-            ))}
+            {category.courses.map(course => {
+              const isCompleted = completedCourses.includes(course.code);
+              const isPlanned = plannedCourses.includes(course.code);
+              const isChecked = selectionStep === 1 ? isCompleted : isPlanned;
+              const isDisabled = selectionStep === 2 && isCompleted; // Can't plan already completed
+
+              return (
+                <label
+                  key={course.code}
+                  className={`flex items-center gap-3 p-2 rounded cursor-pointer transition-colors ${
+                    isCompleted ? 'bg-green-50' : isPlanned ? 'bg-blue-50' : 'hover:bg-gray-50'
+                  } ${isDisabled ? 'opacity-60 cursor-not-allowed' : ''}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={() => !isDisabled && onToggleCourse(course.code)}
+                    disabled={isDisabled}
+                    className={`w-4 h-4 rounded focus:ring-2 ${
+                      selectionStep === 1
+                        ? 'text-green-600 focus:ring-green-500'
+                        : 'text-blue-600 focus:ring-blue-500'
+                    }`}
+                  />
+                  <div className="flex-1">
+                    <span className="font-mono text-sm text-purple-700">{course.code}</span>
+                    <span className="ml-2 text-gray-700">{course.title}</span>
+                    {course.level === 'lower' && (
+                      <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded">
+                        Lower Division
+                      </span>
+                    )}
+                    {isCompleted && selectionStep === 2 && (
+                      <span className="ml-2 text-xs bg-green-100 text-green-800 px-1.5 py-0.5 rounded">
+                        ✓ Completed
+                      </span>
+                    )}
+                    {isPlanned && selectionStep === 1 && (
+                      <span className="ml-2 text-xs bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded">
+                        Planned
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-sm text-gray-500">{course.hours} hrs</span>
+                </label>
+              );
+            })}
           </div>
         </div>
       )}
@@ -781,7 +947,18 @@ function RequirementCategory({ category, completedCourses, onToggleCourse, isExp
 }
 
 // Requirements Checklist Tab
-function RequirementsChecklist({ major, completedCourses, onToggleCourse }) {
+function RequirementsChecklist({
+  major,
+  completedCourses,
+  plannedCourses,
+  futureCourses,
+  onToggleCourse,
+  onRemoveFutureCourse,
+  selectionStep,
+  onStepChange,
+  expectedGraduation,
+  onGraduationChange
+}) {
   const [expandedCategories, setExpandedCategories] = useState(new Set(['americanLit', 'writingPublishing', 'prerequisite']));
   const majorData = COURSE_DATA[major];
 
@@ -804,25 +981,301 @@ function RequirementsChecklist({ major, completedCourses, onToggleCourse }) {
     return hours;
   }, [completedCourses, majorData]);
 
+  const totalPlanned = useMemo(() => {
+    let hours = 0;
+    Object.values(majorData.requirements).forEach(cat => {
+      const catHours = cat.courses.filter(c => plannedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+      hours += Math.min(catHours, cat.hours);
+    });
+    return hours;
+  }, [plannedCourses, majorData]);
+
   const progress = (totalCompleted / majorData.totalHours) * 100;
+  const projectedProgress = ((totalCompleted + totalPlanned) / majorData.totalHours) * 100;
+
+  const semesterOptions = generateSemesterOptions();
+  const allFutureCourses = Object.values(futureCourses || {}).flat();
+  const totalFutureHours = allFutureCourses.reduce((sum, code) => {
+    let hours = 0;
+    Object.values(majorData.requirements).forEach(cat => {
+      const course = cat.courses.find(c => c.code === code);
+      if (course) hours = course.hours;
+    });
+    return sum + hours;
+  }, 0);
+
+  // Get remaining courses not yet scheduled
+  const remainingCourses = useMemo(() => {
+    const allScheduled = new Set([...completedCourses, ...plannedCourses, ...allFutureCourses]);
+    const remaining = [];
+    Object.values(majorData.requirements).forEach(cat => {
+      cat.courses.forEach(course => {
+        if (!allScheduled.has(course.code) && course.code !== 'ANY') {
+          remaining.push(course);
+        }
+      });
+    });
+    return remaining;
+  }, [completedCourses, plannedCourses, allFutureCourses, majorData]);
 
   return (
     <div>
+      {/* Graduation Semester Input */}
+      <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-6">
+        <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="w-5 h-5 text-purple-600" />
+            <label className="font-medium text-purple-900">Expected Graduation:</label>
+          </div>
+          <select
+            value={expectedGraduation}
+            onChange={(e) => onGraduationChange(e.target.value)}
+            className="px-4 py-2 border border-purple-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+          >
+            <option value="">Select semester...</option>
+            {semesterOptions.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+          {expectedGraduation && (
+            <span className="text-sm text-purple-700">
+              Plan your courses to complete requirements by {expectedGraduation}
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Step Indicator */}
+      <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-semibold text-gray-900">Course Selection</h3>
+          <div className="text-sm text-gray-500">
+            {completedCourses.length} completed • {plannedCourses.length} next semester • {allFutureCourses.length} future
+          </div>
+        </div>
+        <div className="flex gap-3">
+          <button
+            onClick={() => onStepChange(1)}
+            className={`flex-1 p-3 rounded-lg border-2 transition-all ${
+              selectionStep === 1
+                ? 'border-green-500 bg-green-50'
+                : 'border-gray-200 hover:border-gray-300'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm ${
+                selectionStep === 1 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'
+              }`}>
+                1
+              </div>
+              <div className="text-left">
+                <div className={`font-medium text-sm ${selectionStep === 1 ? 'text-green-700' : 'text-gray-700'}`}>
+                  Completed
+                </div>
+                <div className="text-xs text-gray-500">
+                  Courses already taken
+                </div>
+              </div>
+            </div>
+          </button>
+          <button
+            onClick={() => onStepChange(2)}
+            className={`flex-1 p-3 rounded-lg border-2 transition-all ${
+              selectionStep === 2
+                ? 'border-blue-500 bg-blue-50'
+                : 'border-gray-200 hover:border-gray-300'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm ${
+                selectionStep === 2 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'
+              }`}>
+                2
+              </div>
+              <div className="text-left">
+                <div className={`font-medium text-sm ${selectionStep === 2 ? 'text-blue-700' : 'text-gray-700'}`}>
+                  Coming Semester
+                </div>
+                <div className="text-xs text-gray-500">
+                  Next semester plan
+                </div>
+              </div>
+            </div>
+          </button>
+          <button
+            onClick={() => onStepChange(3)}
+            className={`flex-1 p-3 rounded-lg border-2 transition-all ${
+              selectionStep === 3
+                ? 'border-orange-500 bg-orange-50'
+                : 'border-gray-200 hover:border-gray-300'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm ${
+                selectionStep === 3 ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-600'
+              }`}>
+                3
+              </div>
+              <div className="text-left">
+                <div className={`font-medium text-sm ${selectionStep === 3 ? 'text-orange-700' : 'text-gray-700'}`}>
+                  Future Plan
+                </div>
+                <div className="text-xs text-gray-500">
+                  Remaining courses
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+        {selectionStep === 1 && (
+          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-sm text-green-800">
+              <strong>Step 1:</strong> Check the boxes next to courses you have already completed. These will be marked in green.
+            </p>
+          </div>
+        )}
+        {selectionStep === 2 && (
+          <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-800">
+              <strong>Step 2:</strong> Check the boxes next to courses you plan to take next semester. Completed courses are locked. Planned courses will be marked in blue.
+            </p>
+          </div>
+        )}
+        {selectionStep === 3 && (
+          <div className="mt-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+            <p className="text-sm text-orange-800">
+              <strong>Step 3:</strong> Assign remaining courses to future semesters to complete your degree plan. Drag courses to semesters below.
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Step 3: Future Planning UI */}
+      {selectionStep === 3 && (
+        <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
+          <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <Calendar className="w-5 h-5 text-orange-600" />
+            Plan Remaining Courses
+          </h3>
+
+          {remainingCourses.length === 0 ? (
+            <div className="text-center py-8 text-green-600">
+              <CheckCircle className="w-12 h-12 mx-auto mb-2" />
+              <p className="font-medium">All courses have been scheduled!</p>
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* Unscheduled Courses */}
+              <div>
+                <h4 className="text-sm font-medium text-gray-700 mb-3">
+                  Unscheduled Courses ({remainingCourses.length})
+                </h4>
+                <div className="border border-gray-200 rounded-lg p-3 max-h-64 overflow-y-auto">
+                  {remainingCourses.map(course => (
+                    <div key={course.code} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                      <div>
+                        <span className="font-mono text-sm text-purple-700">{course.code}</span>
+                        <span className="ml-2 text-sm text-gray-600">{course.title}</span>
+                      </div>
+                      <select
+                        className="text-sm border border-gray-300 rounded px-2 py-1"
+                        onChange={(e) => {
+                          if (e.target.value) {
+                            onToggleCourse(course.code, e.target.value);
+                          }
+                        }}
+                        defaultValue=""
+                      >
+                        <option value="">Assign to...</option>
+                        {semesterOptions.slice(0, 12).map(opt => (
+                          <option key={opt.value} value={opt.value}>{opt.label}</option>
+                        ))}
+                      </select>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Scheduled Future Semesters */}
+              <div>
+                <h4 className="text-sm font-medium text-gray-700 mb-3">
+                  Future Semesters ({totalFutureHours} hours planned)
+                </h4>
+                <div className="space-y-3 max-h-64 overflow-y-auto">
+                  {Object.entries(futureCourses || {})
+                    .filter(([_, courses]) => courses.length > 0)
+                    .sort(([a], [b]) => {
+                      const [aSem, aYear] = a.split(' ');
+                      const [bSem, bYear] = b.split(' ');
+                      if (aYear !== bYear) return parseInt(aYear) - parseInt(bYear);
+                      return aSem === 'Spring' ? -1 : 1;
+                    })
+                    .map(([semester, courses]) => (
+                      <div key={semester} className="border border-orange-200 rounded-lg p-3 bg-orange-50">
+                        <div className="font-medium text-orange-800 mb-2">{semester}</div>
+                        {courses.map(code => {
+                          let courseData = null;
+                          Object.values(majorData.requirements).forEach(cat => {
+                            const found = cat.courses.find(c => c.code === code);
+                            if (found) courseData = found;
+                          });
+                          return courseData ? (
+                            <div key={code} className="flex items-center justify-between py-1">
+                              <span className="text-sm">
+                                <span className="font-mono text-purple-700">{code}</span>
+                                <span className="ml-2 text-gray-600">{courseData.title}</span>
+                              </span>
+                              <button
+                                onClick={() => onRemoveFutureCourse(code, semester)}
+                                className="text-red-500 text-xs hover:underline"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ) : null;
+                        })}
+                      </div>
+                    ))}
+                  {Object.values(futureCourses || {}).every(arr => arr.length === 0) && (
+                    <p className="text-sm text-gray-500 italic">No future courses assigned yet. Use the dropdown menus to assign courses to semesters.</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6 rounded-xl mb-6">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold">{majorData.name} Major</h2>
             <p className="text-purple-200 mt-1">{majorData.description}</p>
-            <div className="mt-3 flex items-center gap-4 text-sm">
+            <div className="mt-3 flex items-center gap-4 text-sm flex-wrap">
               <span className="bg-purple-500/30 px-3 py-1 rounded-full">
                 {majorData.totalHours} Total Hours Required
               </span>
               <span className="bg-purple-500/30 px-3 py-1 rounded-full">
                 Max {majorData.maxLowerDivision} Lower-Division Hours
               </span>
+              <span className="bg-green-500/40 px-3 py-1 rounded-full">
+                {totalCompleted} hrs completed
+              </span>
+              {totalPlanned > 0 && (
+                <span className="bg-blue-500/40 px-3 py-1 rounded-full">
+                  +{totalPlanned} hrs planned
+                </span>
+              )}
             </div>
           </div>
-          <ProgressRing progress={progress} />
+          <div className="text-center">
+            <ProgressRing progress={progress} />
+            {totalPlanned > 0 && (
+              <div className="text-xs text-purple-200 mt-1">
+                {Math.round(projectedProgress)}% after planned
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -837,9 +1290,11 @@ function RequirementsChecklist({ major, completedCourses, onToggleCourse }) {
               key={key}
               category={category}
               completedCourses={completedCourses}
+              plannedCourses={plannedCourses}
               onToggleCourse={onToggleCourse}
               isExpanded={expandedCategories.has(key)}
               onToggleExpand={() => toggleCategory(key)}
+              selectionStep={selectionStep}
             />
           ))}
         </div>
@@ -863,9 +1318,11 @@ function RequirementsChecklist({ major, completedCourses, onToggleCourse }) {
                 key={key}
                 category={category}
                 completedCourses={completedCourses}
+                plannedCourses={plannedCourses}
                 onToggleCourse={onToggleCourse}
                 isExpanded={expandedCategories.has(key)}
                 onToggleExpand={() => toggleCategory(key)}
+                selectionStep={selectionStep}
               />
             ))}
           </div>
@@ -1074,37 +1531,130 @@ function PrerequisiteMap({ major }) {
 // MAIN APP
 // ============================================
 
+// Generate semester options for graduation picker
+function generateSemesterOptions() {
+  const options = [];
+  const currentYear = new Date().getFullYear();
+  for (let year = currentYear; year <= currentYear + 6; year++) {
+    options.push({ value: `Spring ${year}`, label: `Spring ${year}` });
+    options.push({ value: `Fall ${year}`, label: `Fall ${year}` });
+  }
+  return options;
+}
+
 export default function TCUEnglishAdvisingApp() {
   const [selectedMajor, setSelectedMajor] = useState('english');
   const [activeTab, setActiveTab] = useState('requirements');
   const [completedCourses, setCompletedCourses] = useState([]);
+  const [plannedCourses, setPlannedCourses] = useState([]);  // Coming semester
+  const [futureCourses, setFutureCourses] = useState({});    // Future semesters: { "Fall 2026": ["ENGL 30103"], ... }
+  const [selectionStep, setSelectionStep] = useState(1);      // 1 = completed, 2 = planned, 3 = future
+  const [expectedGraduation, setExpectedGraduation] = useState('');
 
-  const toggleCourse = (code) => {
-    // Enforce prerequisites when adding a course
-    if (!completedCourses.includes(code)) {
-      const prereqs = PREREQUISITES[code];
-      if (prereqs && prereqs.length > 0) {
-        // Build readable list for alert
-        const prereqList = prereqs.map(p => {
-          // Find title mostly for better UX
-          // Helper function to finding title could be useful but we iterate data
-          return p;
-        });
-        
-        const hasPrereq = prereqs.some(p => completedCourses.includes(p));
-        
-        if (!hasPrereq) {
-          alert(`You must complete at least one of the following prerequisites before taking ${code}:\n\n${prereqList.join('\n')}`);
-          return;
+  // Get all future planned courses (across all future semesters)
+  const allFutureCourses = useMemo(() => {
+    return Object.values(futureCourses).flat();
+  }, [futureCourses]);
+
+  const toggleCourse = (code, targetSemester = null) => {
+    if (selectionStep === 1) {
+      // Step 1: Selecting completed courses
+      if (!completedCourses.includes(code)) {
+        const prereqs = PREREQUISITES[code];
+        if (prereqs && prereqs.length > 0) {
+          const prereqList = prereqs.map(p => p);
+          const hasPrereq = prereqs.some(p => completedCourses.includes(p));
+
+          if (!hasPrereq) {
+            alert(`You must complete at least one of the following prerequisites before taking ${code}:\n\n${prereqList.join('\n')}`);
+            return;
+          }
         }
       }
-    }
 
-    setCompletedCourses(prev =>
-      prev.includes(code)
-        ? prev.filter(c => c !== code)
-        : [...prev, code]
-    );
+      // If removing from completed, also remove from planned and future
+      if (completedCourses.includes(code)) {
+        setPlannedCourses(prev => prev.filter(c => c !== code));
+        setFutureCourses(prev => {
+          const updated = {};
+          Object.entries(prev).forEach(([sem, courses]) => {
+            updated[sem] = courses.filter(c => c !== code);
+          });
+          return updated;
+        });
+      }
+
+      setCompletedCourses(prev =>
+        prev.includes(code)
+          ? prev.filter(c => c !== code)
+          : [...prev, code]
+      );
+    } else if (selectionStep === 2) {
+      // Step 2: Selecting planned courses for coming semester
+      if (completedCourses.includes(code)) return;
+
+      if (!plannedCourses.includes(code)) {
+        const prereqs = PREREQUISITES[code];
+        if (prereqs && prereqs.length > 0) {
+          const prereqList = prereqs.map(p => p);
+          const hasPrereq = prereqs.some(p => completedCourses.includes(p) || plannedCourses.includes(p));
+
+          if (!hasPrereq) {
+            alert(`You must have completed (or plan to take) at least one of these prerequisites before ${code}:\n\n${prereqList.join('\n')}`);
+            return;
+          }
+        }
+      }
+
+      // Remove from future if adding to planned
+      if (!plannedCourses.includes(code)) {
+        setFutureCourses(prev => {
+          const updated = {};
+          Object.entries(prev).forEach(([sem, courses]) => {
+            updated[sem] = courses.filter(c => c !== code);
+          });
+          return updated;
+        });
+      }
+
+      setPlannedCourses(prev =>
+        prev.includes(code)
+          ? prev.filter(c => c !== code)
+          : [...prev, code]
+      );
+    } else if (selectionStep === 3 && targetSemester) {
+      // Step 3: Assigning courses to future semesters
+      if (completedCourses.includes(code) || plannedCourses.includes(code)) return;
+
+      setFutureCourses(prev => {
+        const updated = { ...prev };
+
+        // Remove from any other semester first
+        Object.keys(updated).forEach(sem => {
+          if (updated[sem]) {
+            updated[sem] = updated[sem].filter(c => c !== code);
+          }
+        });
+
+        // Add to target semester
+        if (!updated[targetSemester]) {
+          updated[targetSemester] = [];
+        }
+
+        if (!updated[targetSemester].includes(code)) {
+          updated[targetSemester] = [...updated[targetSemester], code];
+        }
+
+        return updated;
+      });
+    }
+  };
+
+  const removeFutureCourse = (code, semester) => {
+    setFutureCourses(prev => ({
+      ...prev,
+      [semester]: (prev[semester] || []).filter(c => c !== code)
+    }));
   };
 
   const majors = [
@@ -1133,7 +1683,7 @@ export default function TCUEnglishAdvisingApp() {
               </div>
             </div>
             <button
-              onClick={() => generatePDFReport(COURSE_DATA[selectedMajor], completedCourses)}
+              onClick={() => generatePDFReport(COURSE_DATA[selectedMajor], completedCourses, plannedCourses, futureCourses, expectedGraduation)}
               className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
             >
               <Printer className="w-5 h-5" />
@@ -1199,7 +1749,14 @@ export default function TCUEnglishAdvisingApp() {
           <RequirementsChecklist
             major={selectedMajor}
             completedCourses={completedCourses}
+            plannedCourses={plannedCourses}
+            futureCourses={futureCourses}
             onToggleCourse={toggleCourse}
+            onRemoveFutureCourse={removeFutureCourse}
+            selectionStep={selectionStep}
+            onStepChange={setSelectionStep}
+            expectedGraduation={expectedGraduation}
+            onGraduationChange={setExpectedGraduation}
           />
         )}
         {activeTab === 'plan' && (
