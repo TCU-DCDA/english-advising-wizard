@@ -1,16 +1,18 @@
-# AddRan Wizard Integration Execution Plan
+# AddRan Advising Ecosystem — Execution Plan
 
 Date: 2026-02-13
 Status: Execution baseline
 
 ## Purpose
 
-This document is the implementation contract for integrating department wizard data into Sandra. It captures finalized decisions only.
+This document is the implementation contract for integrating department wizard data into Sandra as part of the **AddRan Advising Ecosystem**. It captures finalized decisions only.
 
 Use this document for build and rollout work across:
 - [`tcu-english-advising`](https://github.com/curtrode/tcu-english-advising)
 - [`dcda-advisor-mobile`](https://github.com/curtrode/dcda-advisor-mobile)
 - [`chat-ran-bot`](https://github.com/TCU-DCDA/chat-ran-bot)
+
+**Related:** [TCU AI Innovation Prize](https://www.tcu.edu/ai/innovation-prize.php)
 
 > **Document location:** This file currently lives in `tcu-english-advising` because Phase 1 is the active work. After Phase 1, move it once to `chat-ran-bot` (the integration consumer) and keep permanent pointer files in wizard repos. When a shared coordination repo exists (Phase 5+), move it there as the canonical home and preserve pointer files in previous locations.
 
