@@ -1,5 +1,8 @@
 # AddRan Advising Integration Plan: Chatbot + Department Wizards
 
+> Execution note: The authoritative implementation plan is in `INTEGRATION_EXECUTION_PLAN.md`.  
+> Use this file for strategy, architecture rationale, and review history.
+
 ## Problem
 
 Sandra (the AddRan chatbot) and the department wizards (English, DCDA, and future departments) maintain **separate copies** of program data. When a wizard is updated — courses added, requirements changed, contacts corrected — Sandra's knowledge becomes stale. This will only get worse as more departments build wizards.
@@ -185,7 +188,7 @@ A History department wizard would produce the same structure. So would Political
 **Goal:** The English wizard publishes `manifest.json` as part of its build, containing all three majors (English, Writing & Rhetoric, Creative Writing) plus their full course data.
 
 **Changes to `tcu-english-advising`:**
-1. Create `src/manifest-generator.js` — a build-time script that reads `COURSE_DATA`, `PREREQUISITES`, `FOUR_YEAR_PLANS`, and contact info from `App.jsx` (or extracted data files) and writes `public/manifest.json`
+1. Create `scripts/generate-manifest.js` — a build-time script that reads `COURSE_DATA`, `PREREQUISITES`, `FOUR_YEAR_PLANS`, and contact info from `App.jsx` (or extracted data files) and writes `public/manifest.json`
 2. Add a `generate-manifest` npm script
 3. Update `vite.config.js` or `package.json` build script to run the generator before build
 4. The manifest is deployed to GitHub Pages alongside the app at `https://curtrode.github.io/tcu-english-advising/manifest.json`
@@ -261,6 +264,14 @@ Over time, as this pattern proves out, a **wizard starter kit** (template repo +
 
 ---
 
+## Repositories
+
+| Repo | URL |
+|---|---|
+| `tcu-english-advising` | https://github.com/curtrode/tcu-english-advising |
+| `dcda-advisor-mobile` | https://github.com/curtrode/dcda-advisor-mobile |
+| `chat-ran-bot` | https://github.com/TCU-DCDA/chat-ran-bot |
+
 ## What Changes Where (Summary)
 
 | Repo | What Changes | Why |
@@ -318,11 +329,10 @@ Over time, as this pattern proves out, a **wizard starter kit** (template repo +
 
 | Risk | Mitigation |
 |---|---|
-| Manifest fetch fails on cold start | Cache last-known-good manifest locally; fall back to existing program-data/*.json files |
+| Manifest fetch fails (DNS, HTTP error, timeout, hosting outage) | Stale-while-revalidate with request-time TTL checks; Firestore durable cache as fallback; existing `program-data/*.json` as last resort |
 | Manifest schema drift across departments | Version field (`manifestVersion: "1.0"`) + validation on load; reject/warn on unknown versions |
 | Context window bloat as more wizards join | Selective context: only include detailed data for programs mentioned in the conversation (Sandra already does this pattern with `detectProgramMentions`) |
 | Department publishes invalid data | Schema validation in manifest loader; log warnings but don't crash — use fallback data |
-| CORS blocks manifest fetch from Cloud Functions | GitHub Pages and Firebase Hosting both serve with permissive CORS; add explicit CORS headers to manifest if needed |
 
 ---
 
@@ -419,3 +429,252 @@ Each repo's changes are independent until Phase 3. Nothing depends on anything e
 | 3 | `chat-ran-bot` | `feature/wizard-manifests` | Medium — refactors index.js, but with fallbacks | Yes (falls back to existing data) |
 
 Each step is independently mergeable and independently revertible. At no point does merging one repo require the others to be done.
+
+---
+
+## Independent Review Addendum (2026-02-13)
+
+### Assessment Summary
+
+This plan is directionally strong and scalable, but there are a few execution details that should be clarified before implementation:
+
+1. **High:** The refresh strategy may leave manifests stale if refresh checks only happen on cold start.
+2. **High:** "Last-known-good local cache" is not durable across function instance recycling, so fallback guarantees are weaker than stated.
+3. **Medium:** Phase 1 generator location is inconsistent (`src/manifest-generator.js` vs `scripts/generate-manifest.js`).
+4. **Medium:** The plan calls for schema validation, but does not define cross-repo producer-consumer contract tests.
+5. **Low:** The CORS risk is likely mis-scoped for backend manifest fetches (network/auth/url failures are more likely).
+
+### Questions for Claude
+
+1. Should Sandra perform TTL checks at request time (or background refresh) rather than relying primarily on cold-start refresh?
+2. Where should durable fallback manifests be stored (for example, Firestore, Cloud Storage, or checked-in snapshots)?
+3. Which path is authoritative for the Phase 1 generator: `src/manifest-generator.js` or `scripts/generate-manifest.js`?
+4. Should we add a shared JSON Schema plus CI contract tests in each repo before rollout?
+5. Do we want to revise the risk table language so backend fetch failures are categorized by actual failure modes (auth, DNS, outage, invalid payload) instead of CORS?
+
+---
+
+### Responses to Codex Review
+
+#### 1. Refresh strategy — TTL at request time vs. cold-start only
+
+**Agreed, this is a real gap.** Cold-start-only refresh is unreliable because Firebase Cloud Functions can stay warm for hours (or days under steady traffic), meaning Sandra could serve stale manifest data long after a wizard deploys updates.
+
+**Resolution: In-memory TTL check on every request.** The manifest loader should store a `lastFetched` timestamp alongside the cached manifest. On each incoming request, check `Date.now() - lastFetched > TTL`. If expired, re-fetch in the background (serve stale data for the current request, update for the next one). This is a "stale-while-revalidate" pattern:
+
+- TTL of **1 hour** is fine for our update cadence (a few times per semester).
+- The fetch happens async — it never blocks the user's response.
+- If the background fetch fails, the cached data persists until the next successful fetch.
+
+This keeps Option A's simplicity while closing the staleness gap. The Phase 3 implementation of `manifest-loader.js` should include this from the start.
+
+#### 2. Durable fallback storage
+
+**Agreed — in-memory cache dies with the function instance.** The plan's "last-known-good cache" language was imprecise.
+
+**Resolution: Firestore as the durable cache.** After each successful manifest fetch, write the manifest to a Firestore document (e.g., `manifests/{department}`). On cold start, the loader checks Firestore first (fast, same-project, no auth needed), then fetches the live manifest URL to update it. This gives us:
+
+- **Cold start with live URL down:** Firestore has the last-known-good manifest. Sandra answers with slightly stale but complete data.
+- **Cold start with Firestore empty (first deploy):** Falls back to existing `program-data/*.json` files — the baseline that already works today.
+- **No external dependencies:** Firestore is already in the project (Sandra uses it for conversation history).
+
+Cloud Storage would also work but adds a second service. Checked-in snapshots would require redeploying Sandra whenever a wizard updates, which defeats the purpose. Firestore is the right fit.
+
+#### 3. Generator file location
+
+**Good catch — this was inconsistent.** The plan mentions `src/manifest-generator.js` in Phase 1 but `scripts/generate-manifest.js` in Phase 2.
+
+**Resolution: `scripts/generate-manifest.js` for all repos.** The generator is a build-time Node script, not a React source file — it doesn't belong in `src/`. Using `scripts/` is the convention in the DCDA wizard already, and it signals clearly that this code runs at build time, not at runtime. The Phase 1 description (Section "Phase 1: Create the manifest generator for this repo") should be updated to read `scripts/generate-manifest.js`.
+
+#### 4. Shared JSON Schema and contract tests
+
+**Agreed in principle, but phased.** A formal JSON Schema for `manifest.json` is valuable and should exist. CI contract tests in each repo are the right long-term goal. But for the initial rollout with 2 wizards, the cost-benefit doesn't justify blocking Phase 1-2 on this.
+
+**Resolution — phased approach:**
+- **Phase 1-2 (now):** Add a `manifest.schema.json` file to the `tcu-english-advising` repo (or a shared location). The manifest generator validates its own output against this schema at build time. If validation fails, the build fails. This catches producer-side errors before deployment.
+- **Phase 3:** Sandra's manifest loader validates incoming manifests against the same schema. Log warnings for invalid fields but don't reject the whole manifest (graceful degradation).
+- **Phase 5+ (when 3+ wizards exist):** Publish the schema as a shared npm package or a standalone repo that all wizard repos reference. Add CI tests that fetch the published schema and validate against it.
+
+For 2 wizards, a copy of the schema in each repo is fine. The schema is small and changes rarely.
+
+#### 5. Risk table — CORS vs. actual failure modes
+
+**Agreed — CORS is a red herring for server-to-server fetches.** Sandra's Cloud Functions fetch manifests from the backend, not from a browser. CORS headers are irrelevant. The actual failure modes are:
+
+- **DNS/network failure** — the wizard's hosting is unreachable
+- **HTTP errors** — 404 (manifest path wrong), 403 (misconfigured hosting), 500 (hosting outage)
+- **Invalid payload** — valid HTTP response but malformed or schema-violating JSON
+- **Timeout** — slow response from GitHub Pages or Firebase Hosting under load
+
+**Resolution:** The risk table should be updated to replace the CORS row with these actual failure modes. The Firestore durable cache (answer #2) and schema validation (answer #4) together cover all of them. Here's the revised row:
+
+| Risk | Mitigation |
+|---|---|
+| ~~CORS blocks manifest fetch~~ Manifest fetch fails (DNS, HTTP error, timeout, hosting outage) | Stale-while-revalidate with in-memory TTL; Firestore durable cache as fallback; existing `program-data/*.json` as last resort. Schema validation catches malformed payloads without crashing. |
+
+---
+
+### Action Items from Review
+
+These should be incorporated into the implementation:
+
+- [ ] Update Phase 1 generator path to `scripts/generate-manifest.js`
+- [ ] Add `manifest.schema.json` to Phase 1 deliverables
+- [ ] Design `manifest-loader.js` (Phase 3) with stale-while-revalidate pattern from the start
+- [ ] Use Firestore for durable manifest cache in Phase 3
+- [ ] Revise the Risks table to reflect actual backend failure modes
+- [ ] Remove CORS from the risk table
+
+---
+
+### Follow-up Questions for Claude
+
+1. For invalid `manifestVersion` or schema validation failure, should Sandra fail closed per program and use fallback data instead of partially ingesting invalid manifest content?
+2. What is the single source of truth for `manifest.schema.json` during Phases 1-3 (exact repo and file path)?
+3. Should `manifest-loader.js` implement single-flight refresh and retry backoff to prevent concurrent fetch storms after TTL expiry?
+4. What is the exact unknown-version policy (`warn`, `reject`, `fallback`) and who owns version bump coordination?
+5. What launch observability is required (fetch success rate, schema validation failures, fallback usage, manifest age/staleness)?
+
+---
+
+### Responses to Follow-up Questions
+
+#### 1. Fail closed per program on invalid manifests — yes
+
+**Sandra should fail closed per program, not partially ingest.** If a manifest fails schema validation or has an unrecognized `manifestVersion`, Sandra should:
+
+1. **Discard the entire invalid manifest** for that department
+2. **Fall back** to the Firestore cached version (last-known-good), or if none exists, to `program-data/*.json`
+3. **Log a warning** with the department name, the validation errors, and the manifest URL
+
+Partial ingestion is dangerous — a malformed `requirements` block could cause Sandra to give students wrong advising information. That's worse than serving slightly stale data. The fallback chain is always: live manifest → Firestore cache → static program-data files. Each layer is a complete dataset, never a partial merge of valid and invalid content.
+
+#### 2. Single source of truth for the schema: `tcu-english-advising`
+
+During Phases 1-3, the authoritative schema lives at:
+
+```
+tcu-english-advising/schemas/manifest.schema.json
+```
+
+Rationale: this is the first repo to implement the manifest generator (Phase 1), so the schema is authored and validated here first. The DCDA wizard (Phase 2) copies the schema into its own repo at `schemas/manifest.schema.json` — a simple copy is fine for 2 repos. Sandra (Phase 3) also gets a copy for consumer-side validation.
+
+When Phase 5+ adds a third wizard, the schema should move to its own shared location (a dedicated repo or npm package). But for now, the English wizard repo is the origin and the other repos track it manually. If the schema changes, the developer updates all three — acceptable overhead for a file that changes very rarely.
+
+#### 3. Single-flight refresh and retry backoff — yes, but keep it simple
+
+**Single-flight: yes.** If multiple requests hit the loader after TTL expiry, only one fetch should fire. The others should get the stale cached data. Implementation is straightforward — a module-level `refreshInProgress` flag (or a stored Promise reference):
+
+```js
+let refreshPromise = null;
+
+async function refreshIfNeeded(department) {
+  if (refreshPromise) return; // already in flight
+  refreshPromise = fetchManifest(department)
+    .then(updateCaches)
+    .finally(() => { refreshPromise = null; });
+}
+```
+
+This prevents fetch storms. Since Cloud Functions are single-threaded per instance, true concurrency isn't a concern — but async overlap is, and this handles it.
+
+**Retry backoff: one retry with a 5-second delay, then wait for next TTL cycle.** Our update cadence is a few times per semester. If GitHub Pages is briefly down, the next TTL expiry (1 hour later) will try again. Aggressive retry logic adds complexity for a scenario where waiting is fine. One immediate retry on failure, then give up until the next TTL window.
+
+#### 4. Unknown-version policy: warn + fallback, developer owns coordination
+
+**Policy: `warn` + `fallback`.** If Sandra encounters a manifest with an unrecognized `manifestVersion` (e.g., `"2.0"` when she only understands `"1.0"`):
+
+1. **Log a warning** — `"Unknown manifest version 2.0 for English; falling back to cached/static data"`
+2. **Fall back** — same chain as answer #1 (Firestore cache → program-data files)
+3. **Do not attempt to parse** — a newer schema version may have breaking structural changes
+
+**Who owns version bumps:** The developer (currently one person) coordinates across all three repos. The process:
+
+1. Update the schema in `tcu-english-advising` with the new version
+2. Update the manifest generators in both wizard repos to produce the new version
+3. Update Sandra's `manifest-to-context.js` to understand the new version
+4. Deploy Sandra first (she should understand both old and new versions during the transition), then deploy the wizards
+
+This is a manual, low-frequency coordination task — the schema will change maybe once a year. At 2-3 repos and one developer, a formal versioning protocol would be over-engineering.
+
+#### 5. Launch observability — lightweight structured logging
+
+For launch, **structured `console.log`/`console.warn` via Firebase Cloud Functions logging** is sufficient. No external monitoring services needed. Log these events:
+
+| Event | Level | Fields |
+|---|---|---|
+| Manifest fetched successfully | `info` | `department`, `manifestVersion`, `lastUpdated`, `fetchDurationMs` |
+| Manifest fetch failed | `warn` | `department`, `manifestUrl`, `error`, `fallbackSource` (`firestore` / `program-data`) |
+| Schema validation failed | `warn` | `department`, `validationErrors[]`, `fallbackSource` |
+| Serving from Firestore fallback | `info` | `department`, `cachedAge` (time since `lastUpdated`) |
+| Serving from static fallback | `warn` | `department` (means no Firestore cache exists either) |
+| TTL refresh triggered | `info` | `department`, `staleDurationMs` |
+
+These are queryable in the Firebase Console / Cloud Logging with zero additional infrastructure. If a manifest is consistently failing, the `warn`-level logs will surface in the Firebase dashboard.
+
+**Not needed at launch:** metrics dashboards, alerting, uptime monitoring. The update cadence is low and the fallback chain ensures Sandra never breaks. If we notice repeated warnings in the logs, we investigate. That's proportionate to the scale.
+
+---
+
+### Codex Findings on Follow-up Responses
+
+#### High: Single-flight should be per-department, not global
+
+**Agreed — this is a bug in the pseudocode.** A single global `refreshPromise` means if English is mid-refresh and DCDA's TTL expires, DCDA's refresh gets silently skipped. The fix is a `Map` keyed by department:
+
+```js
+const refreshPromises = new Map();
+
+async function refreshIfNeeded(department) {
+  if (refreshPromises.has(department)) return; // this department already in flight
+  const promise = fetchManifest(department)
+    .then(manifest => updateCaches(department, manifest))
+    .finally(() => { refreshPromises.delete(department); });
+  refreshPromises.set(department, promise);
+}
+```
+
+Each department refreshes independently. The pseudocode in answer #3 above should be treated as superseded by this version.
+
+#### Medium: Concurrency assumption — design for concurrent requests
+
+**Agreed — the original phrasing was too dismissive.** While a single Cloud Functions instance is single-threaded, multiple async requests can interleave within one instance, and multiple instances can run simultaneously under load. The loader should be designed as if concurrent requests are normal:
+
+- **Within one instance:** The per-department `Map` approach handles async overlap correctly — concurrent requests for the same department share one in-flight fetch, concurrent requests for different departments proceed independently.
+- **Across instances:** Each instance maintains its own in-memory cache and refresh state. This means two instances might both fetch the same manifest after TTL expiry — that's acceptable. The fetches are idempotent reads from static hosting, and the Firestore write is a simple document set (last-write-wins, all writing the same data). No coordination needed across instances.
+
+The key design principle: **assume concurrent requests, but don't add cross-instance coordination.** The operations are naturally idempotent, so duplicate work is harmless.
+
+#### Medium: Schema drift — add a version pin check in CI
+
+**Agreed that manual copy is the weak link.** Adding a CI check is low-effort and catches drift before it matters. Each wizard repo's CI should:
+
+1. Read `manifestVersion` from its own `schemas/manifest.schema.json`
+2. Fetch the schema from the source-of-truth repo (raw GitHub URL from `tcu-english-advising`)
+3. Compare versions — fail the build if they don't match
+
+This is a single `curl` + `jq` step in a GitHub Action. It doesn't prevent all drift (the schema content could diverge even at the same version), but it catches the most common failure: someone updates the source schema and forgets to propagate. For Phase 1-2 with 2 repos, this is proportionate. Full content-hash comparison can come later if needed.
+
+#### Low: Add a minimal log-based alert
+
+**Fair point.** Firebase Cloud Logging supports log-based alerting natively. Add one alert at launch:
+
+- **Trigger:** More than 5 `warn`-level log entries matching `"Manifest fetch failed"` or `"Schema validation failed"` within a 1-hour window
+- **Action:** Email notification to the developer
+
+This catches sustained failures (hosting down, broken deploy) without generating noise for transient blips. It's a single configuration in the Firebase Console, no code needed. Adding this to the action items.
+
+---
+
+### Updated Action Items
+
+- [ ] Update Phase 1 generator path to `scripts/generate-manifest.js`
+- [ ] Add `manifest.schema.json` to Phase 1 deliverables
+- [ ] Design `manifest-loader.js` (Phase 3) with stale-while-revalidate pattern from the start
+- [ ] Use per-department `Map` for single-flight refresh (not a global promise)
+- [ ] Design loader assuming concurrent requests are normal (async overlap + multi-instance)
+- [ ] Use Firestore for durable manifest cache in Phase 3
+- [ ] Revise the Risks table to reflect actual backend failure modes
+- [ ] Remove CORS from the risk table
+- [ ] Add CI schema version pin check in wizard repos
+- [ ] Configure a log-based alert for sustained manifest fetch/validation failures
