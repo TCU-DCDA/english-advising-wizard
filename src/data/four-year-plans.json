@@ -1,0 +1,125 @@
+{
+  "english": {
+    "year1": {
+      "fall": [
+        { "code": "ENGL 10803", "title": "Introductory Composition: Writing as Inquiry", "hours": 3, "note": "TCU Core WCO" }
+      ],
+      "spring": [
+        { "code": "ENGL 20XX", "title": "Lower-Division Elective", "hours": 3 }
+      ]
+    },
+    "year2": {
+      "fall": [
+        { "code": "ENGL 20803", "title": "Writing Arguments", "hours": 3, "note": "TCU Core WCO (requires 30 hrs)" },
+        { "code": "ENGL 30133", "title": "American Lit to 1865", "hours": 3, "category": "American Lit" },
+        { "code": "ENGL 30103", "title": "Intro to Literary Theory", "hours": 3, "category": "Theory" }
+      ],
+      "spring": [
+        { "code": "ENGL 30673", "title": "King Arthur: Lit & Legend", "hours": 3, "category": "British Lit / Early Lit" },
+        { "code": "ENGL 30693", "title": "U.S. Multi-Ethnic Literature", "hours": 3, "category": "American Lit / Global" }
+      ]
+    },
+    "year3": {
+      "fall": [
+        { "code": "ENGL 30653", "title": "Jane Austen: Novels & Films", "hours": 3, "category": "British Lit" },
+        { "code": "ENGL 38023", "title": "Research Seminar in American Lit", "hours": 3, "category": "Junior Seminar" }
+      ],
+      "spring": [
+        { "code": "ENGL 40473", "title": "Milton and His Contemporaries", "hours": 3, "category": "Early Lit" },
+        { "code": "CRWT 30343", "title": "Fiction Writing Workshop I", "hours": 3, "category": "Writing" }
+      ]
+    },
+    "year4": {
+      "fall": [
+        { "code": "ENGL 30XX", "title": "Upper-Division Elective", "hours": 3, "category": "Elective" },
+        { "code": "ENGL 30XX", "title": "Upper-Division Elective", "hours": 3, "category": "Elective" }
+      ],
+      "spring": [
+        { "code": "ENGL 40XX", "title": "Upper-Division Elective", "hours": 3, "category": "Elective" },
+        { "code": "ENGL 40XX", "title": "Upper-Division Elective", "hours": 3, "category": "Elective" }
+      ]
+    }
+  },
+  "writing": {
+    "year1": {
+      "fall": [
+        { "code": "ENGL 10803", "title": "Introductory Composition: Writing as Inquiry", "hours": 3, "note": "TCU Core WCO" },
+        { "code": "WRIT 20113", "title": "Technical and Professional Writing", "hours": 3, "category": "Writing & Publishing" }
+      ],
+      "spring": [
+        { "code": "WRIT 20313", "title": "Power & Protest", "hours": 3, "category": "Rhetorics & Cultures" }
+      ]
+    },
+    "year2": {
+      "fall": [
+        { "code": "ENGL 20803", "title": "Writing Arguments", "hours": 3, "note": "TCU Core WCO (requires 30 hrs)" },
+        { "code": "WRIT 30243", "title": "Rhetorical Practices in Culture", "hours": 3, "category": "Rhetorics & Cultures" }
+      ],
+      "spring": [
+        { "code": "WRIT 30213", "title": "Advanced Composition: Writing Genres", "hours": 3, "category": "Writing & Publishing" },
+        { "code": "WRIT 30XX", "title": "Elective", "hours": 3, "category": "Elective" }
+      ]
+    },
+    "year3": {
+      "fall": [
+        { "code": "WRIT 38063", "title": "Writing Major Seminar", "hours": 3, "category": "Junior Seminar" },
+        { "code": "WRIT 40333", "title": "Language, Rhetoric, & Culture", "hours": 3, "category": "Rhetorics & Cultures" }
+      ],
+      "spring": [
+        { "code": "WRIT 40273", "title": "Writing Internship", "hours": 3, "category": "Internship" },
+        { "code": "WRIT 40XX", "title": "Elective", "hours": 3, "category": "Elective" }
+      ]
+    },
+    "year4": {
+      "fall": [
+        { "code": "WRIT 40563", "title": "Multimedia Authoring: Sound & Podcasting", "hours": 3, "category": "Digital Rhetorics" },
+        { "code": "WRIT 40XX", "title": "Elective", "hours": 3, "category": "Elective" }
+      ],
+      "spring": [
+        { "code": "ENGL 30XX", "title": "Elective", "hours": 3, "category": "Elective" },
+        { "code": "CRWT 30XX", "title": "Elective", "hours": 3, "category": "Elective" }
+      ]
+    }
+  },
+  "creativeWriting": {
+    "year1": {
+      "fall": [
+        { "code": "ENGL 10803", "title": "Introductory Composition: Writing as Inquiry", "hours": 3, "note": "TCU Core WCO" },
+        { "code": "CRWT 10203", "title": "Intro to Creative Writing", "hours": 3, "category": "Prerequisite" }
+      ],
+      "spring": [
+        { "code": "CRWT 20103", "title": "Reading as a Writer", "hours": 3, "category": "Prerequisite (alternate)" }
+      ]
+    },
+    "year2": {
+      "fall": [
+        { "code": "ENGL 20803", "title": "Writing Arguments", "hours": 3, "note": "TCU Core WCO (requires 30 hrs)" },
+        { "code": "CRWT 30343", "title": "Fiction Writing Workshop I", "hours": 3, "category": "Upper Division CW" }
+      ],
+      "spring": [
+        { "code": "CRWT 30353", "title": "Poetry Writing Workshop I", "hours": 3, "category": "Upper Division CW" },
+        { "code": "WRIT 30243", "title": "Rhetorical Practice in Culture", "hours": 3, "category": "WRIT Elective" }
+      ]
+    },
+    "year3": {
+      "fall": [
+        { "code": "CRWT 40203", "title": "Fiction Writing Workshop II", "hours": 3, "category": "Upper Division CW" },
+        { "code": "ENGL 30693", "title": "U.S. Multi-Ethnic Literature", "hours": 3, "category": "ENGL Elective" }
+      ],
+      "spring": [
+        { "code": "CRWT 30233", "title": "Creative Nonfiction Workshop I", "hours": 3, "category": "Upper Division CW" },
+        { "code": "WRIT 40333", "title": "Language, Rhetoric, & Culture", "hours": 3, "category": "WRIT Elective" }
+      ]
+    },
+    "year4": {
+      "fall": [
+        { "code": "CRWT 40703", "title": "Advanced Multi-Genre Workshop", "hours": 3, "category": "Advanced Seminar" },
+        { "code": "WRIT 30390", "title": "Publication Production", "hours": 3, "category": "Internship" }
+      ],
+      "spring": [
+        { "code": "WRIT 30390", "title": "Publication Production (cont.)", "hours": 0, "note": "Continue from Fall" },
+        { "code": "ENGL 30XX", "title": "Upper-Division ENGL", "hours": 3, "category": "ENGL Elective" }
+      ]
+    }
+  }
+}

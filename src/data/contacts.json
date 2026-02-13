@@ -1,0 +1,16 @@
+[
+  {
+    "role": "Department Chair",
+    "name": "Dr. Sharon Weltman",
+    "email": "sharon.weltman@tcu.edu",
+    "phone": "817-257-7240",
+    "office": "Reed 314A"
+  },
+  {
+    "role": "Academic Advisor",
+    "name": "English Department Office",
+    "email": "english@tcu.edu",
+    "phone": "817-257-7240",
+    "office": "Reed Hall 3rd Floor"
+  }
+]

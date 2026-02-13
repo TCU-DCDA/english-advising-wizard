@@ -1,0 +1,44 @@
+{
+  "english": [
+    "Lawyer",
+    "Digital Content Manager",
+    "Editor",
+    "Publishing Professional",
+    "Teacher / Professor",
+    "Journalist",
+    "Marketing Specialist",
+    "Content Strategist",
+    "Literary Agent",
+    "Technical Writer",
+    "Grant Writer",
+    "Communications Director"
+  ],
+  "writing": [
+    "Technical Writer",
+    "Content Strategist",
+    "Digital Marketing Manager",
+    "UX Writer",
+    "Social Media Manager",
+    "Communications Specialist",
+    "Multimedia Producer",
+    "Corporate Trainer",
+    "Grant Writer",
+    "Editor",
+    "Copywriter",
+    "Public Relations Specialist"
+  ],
+  "creativeWriting": [
+    "Author / Novelist",
+    "Poet",
+    "Screenwriter",
+    "Playwright",
+    "Editor",
+    "Publishing Professional",
+    "Literary Agent",
+    "Creative Director",
+    "Content Creator",
+    "Copywriter",
+    "Teacher / Professor",
+    "Journalist"
+  ]
+}

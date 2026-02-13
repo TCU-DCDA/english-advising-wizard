@@ -1,0 +1,47 @@
+{
+  "term": "Spring 2026",
+  "courses": [
+    {
+      "code": "ENGL 30653",
+      "title": "Jane Austen: Novels and Films",
+      "hours": 3,
+      "description": "Explore Jane Austen's novels and their film adaptations"
+    },
+    {
+      "code": "ENGL 30693",
+      "title": "U.S. Multi-Ethnic Literature",
+      "hours": 3,
+      "description": "Study diverse voices in American literature"
+    },
+    {
+      "code": "CRWT 30343",
+      "title": "Fiction Writing Workshop I",
+      "hours": 3,
+      "description": "Workshop-based fiction writing course"
+    },
+    {
+      "code": "WRIT 30603",
+      "title": "Rhetoric of Social Media",
+      "hours": 3,
+      "description": "Analyze rhetorical strategies in digital communication"
+    },
+    {
+      "code": "ENGL 40473",
+      "title": "Milton and his Contemporaries",
+      "hours": 3,
+      "description": "In-depth study of Milton and 17th-century literature"
+    },
+    {
+      "code": "WRIT 40563",
+      "title": "Multimedia Authoring: Sound & Podcasting",
+      "hours": 3,
+      "description": "Create audio content and podcast productions"
+    },
+    {
+      "code": "ENGL 30573",
+      "title": "African American Literature",
+      "hours": 3,
+      "description": "Survey of African American literary traditions"
+    }
+  ]
+}

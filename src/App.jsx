@@ -7,494 +7,13 @@ import { ALL_COURSES } from './allCourses';
 // Covers: English, Writing & Rhetoric, Creative Writing
 // ============================================
 
-// Course data for all three majors
-const COURSE_DATA = {
-  english: {
-    name: "English",
-    totalHours: 33,
-    maxLowerDivision: 9,
-    description: "The English major focuses on literature, literary theory, and cultural studies across American, British, and global traditions.",
-    requirements: {
-      americanLit: {
-        name: "American Literature",
-        hours: 6,
-        courses: [
-          { code: "ENGL 20503", title: "American Writers", hours: 3, level: "lower" },
-          { code: "ENGL 20523", title: "Sports and American Literature", hours: 3, level: "lower" },
-          { code: "ENGL 20533", title: "The American Dream", hours: 3, level: "lower" },
-          { code: "ENGL 20543", title: "The American Short Story", hours: 3, level: "lower" },
-          { code: "ENGL 20553", title: "Introduction to American Studies", hours: 3, level: "lower" },
-          { code: "ENGL 20563", title: "Introduction to Latina/o Literature", hours: 3, level: "lower" },
-          { code: "ENGL 20573", title: "Introduction to Native American Literatures", hours: 3, level: "lower" },
-          { code: "ENGL 20683", title: "Young Adult Literature in American Culture", hours: 3, level: "lower" },
-          { code: "ENGL 30133", title: "American Literature to 1865", hours: 3 },
-          { code: "ENGL 30143", title: "American Literature since 1865", hours: 3 },
-          { code: "ENGL 30163", title: "Urban American Lit", hours: 3 },
-          { code: "ENGL 30513", title: "American Poetry", hours: 3 },
-          { code: "ENGL 30523", title: "American Popular Lit & Culture", hours: 3 },
-          { code: "ENGL 30553", title: "19th Century American Novel", hours: 3 },
-          { code: "ENGL 30563", title: "American Drama", hours: 3 },
-          { code: "ENGL 30573", title: "African American Literature", hours: 3 },
-          { code: "ENGL 30583", title: "Early American Lit", hours: 3 },
-          { code: "ENGL 30593", title: "American Fiction, 1960 to Present", hours: 3 },
-          { code: "ENGL 30693", title: "U.S. Multi-Ethnic Literature", hours: 3 },
-          { code: "ENGL 30703", title: "Contemporary Latinx Literature", hours: 3 },
-          { code: "ENGL 30713", title: "Mexican American Culture", hours: 3 },
-          { code: "ENGL 30853", title: "Asian American Literature", hours: 3 },
-          { code: "ENGL 38023", title: "Research Seminar in American Literature", hours: 3 },
-          { code: "ENGL 40513", title: "U.S. Women's Writing I", hours: 3 },
-          { code: "ENGL 40543", title: "Studies in Early American Literature", hours: 3 },
-          { code: "ENGL 40553", title: "Studies in Nineteenth-Century American Literature", hours: 3 },
-          { code: "ENGL 40563", title: "U.S. Women's Writing II", hours: 3 },
-          { code: "ENGL 40583", title: "Contemporary American Poetry", hours: 3 },
-          { code: "ENGL 40663", title: "Transnational American Literature", hours: 3 },
-          { code: "ENGL 40683", title: "Studies in 20th Century American Literature", hours: 3 },
-        ]
-      },
-      britishLit: {
-        name: "British Literature",
-        hours: 6,
-        courses: [
-          { code: "ENGL 20403", title: "British Writers", hours: 3, level: "lower" },
-          { code: "ENGL 20433", title: "Introduction to Shakespeare", hours: 3, level: "lower" },
-          { code: "ENGL 30113", title: "British Literature to 1800", hours: 3 },
-          { code: "ENGL 30123", title: "British Literature since 1800", hours: 3 },
-          { code: "ENGL 30423", title: "Early British Drama", hours: 3 },
-          { code: "ENGL 30433", title: "Renaissance Poetry", hours: 3 },
-          { code: "ENGL 30443", title: "Twentieth Century Irish Literature", hours: 3 },
-          { code: "ENGL 30453", title: "The Victorian Novel", hours: 3 },
-          { code: "ENGL 30463", title: "British Literature: The Bloomsbury Group", hours: 3 },
-          { code: "ENGL 30653", title: "Jane Austen: Novels and Films", hours: 3 },
-          { code: "ENGL 30673", title: "King Arthur in Literature and Legend", hours: 3 },
-          { code: "ENGL 38013", title: "Research Seminar in British Literature", hours: 3 },
-          { code: "ENGL 40403", title: "Chaucer", hours: 3 },
-          { code: "ENGL 40413", title: "Renaissance in England", hours: 3 },
-          { code: "ENGL 40433", title: "19th Century British Literature", hours: 3 },
-          { code: "ENGL 40443", title: "British Literature Since 1900", hours: 3 },
-          { code: "ENGL 40453", title: "British Novel to 1832", hours: 3 },
-          { code: "ENGL 40463", title: "British Novel since 1832", hours: 3 },
-          { code: "ENGL 40473", title: "Milton and his Contemporaries", hours: 3 },
-          { code: "ENGL 40483", title: "Shakespeare and Marlowe", hours: 3 },
-          { code: "ENGL 40493", title: "Shakespeare", hours: 3 },
-          { code: "ENGL 40613", title: "King Arthur in Modern Literature and Culture", hours: 3 },
-          { code: "ENGL 40633", title: "Love, Sex, and Power in Renaissance England", hours: 3 },
-          { code: "ENGL 40643", title: "British Romanticism", hours: 3 },
-          { code: "ENGL 40653", title: "Renaissance Literature and the 'New' Science", hours: 3 },
-          { code: "ENGL 40693", title: "British and Irish Poetry Since 1900", hours: 3 },
-        ]
-      },
-      globalLit: {
-        name: "Global & Diasporic Literature",
-        hours: 3,
-        courses: [
-          { code: "ENGL 20213", title: "Global Women's Literature", hours: 3, level: "lower" },
-          { code: "ENGL 20593", title: "Introduction to Literatures of the Global African Diaspora", hours: 3, level: "lower" },
-          { code: "ENGL 20603", title: "Western World Literature I", hours: 3, level: "lower" },
-          { code: "ENGL 20613", title: "Western World Literature II", hours: 3, level: "lower" },
-          { code: "ENGL 20933", title: "Non-Western World Literature", hours: 3, level: "lower" },
-          { code: "ENGL 30683", title: "Post-Colonial Anglophone Literature", hours: 3 },
-          { code: "ENGL 30693", title: "U.S. Multi-Ethnic Literature", hours: 3 },
-          { code: "ENGL 30773", title: "India: Texts and Traditions", hours: 3 },
-          { code: "ENGL 30783", title: "Modern India: Literature and Culture", hours: 3 },
-          { code: "ENGL 30793", title: "Multi-Ethnic Literature of the World", hours: 3 },
-        ]
-      },
-      writing: {
-        name: "Writing",
-        hours: 3,
-        courses: [
-          { code: "CRWT 10203", title: "Introduction to Creative Writing", hours: 3, level: "lower" },
-          { code: "CRWT 20103", title: "Reading as a Writer", hours: 3, level: "lower" },
-          { code: "CRWT 20123", title: "Travel Writing", hours: 3, level: "lower" },
-          { code: "CRWT 20133", title: "Writing for Performance", hours: 3, level: "lower" },
-          { code: "WRIT 20113", title: "Technical and Professional Writing", hours: 3, level: "lower" },
-          { code: "WRIT 20303", title: "Writing Games", hours: 3, level: "lower" },
-          { code: "WRIT 20323", title: "Introduction to Multimedia Authoring", hours: 3, level: "lower" },
-          { code: "CRWT 30233", title: "Creative Nonfiction Workshop I", hours: 3 },
-          { code: "CRWT 30343", title: "Fiction Writing Workshop I", hours: 3 },
-          { code: "CRWT 30353", title: "Poetry Writing Workshop I", hours: 3 },
-          { code: "CRWT 30363", title: "Digital Creative Writing", hours: 3 },
-          { code: "CRWT 30373", title: "Drama Writing Workshop I", hours: 3 },
-          { code: "WRIT 30223", title: "Advanced Technical Writing", hours: 3 },
-          { code: "CRWT 40133", title: "Creative Nonfiction Workshop II", hours: 3 },
-          { code: "WRIT 40163", title: "Multimedia Authoring: Image and Hypertext", hours: 3 },
-          { code: "CRWT 40203", title: "Fiction Writing Workshop II", hours: 3 },
-          { code: "CRWT 40213", title: "Poetry Writing Workshop II", hours: 3 },
-          { code: "WRIT 40233", title: "Writing for Publication", hours: 3 },
-          { code: "WRIT 40243", title: "Advanced Professional Writing", hours: 3 },
-          { code: "WRIT 40263", title: "Multimedia Authoring: Animation and Film", hours: 3 },
-          { code: "WRIT 40273", title: "Writing Internship", hours: 3 },
-          { code: "WRIT 40283", title: "Editing and Publishing", hours: 3 },
-          { code: "WRIT 40363", title: "Multimedia Authoring: Mobile Apps and eBooks", hours: 3 },
-          { code: "WRIT 40463", title: "Multimedia Authoring: Comics Production", hours: 3 },
-          { code: "WRIT 40563", title: "Multimedia Authoring: Sound & Podcasting", hours: 3 },
-          { code: "CRWT 40703", title: "Advanced Multi-Genre Workshop", hours: 3 },
-          { code: "CRWT 40803", title: "Advanced Literary Forms", hours: 3 },
-        ]
-      },
-      theory: {
-        name: "Theory",
-        hours: 3,
-        courses: [
-          { code: "ENGL 30103", title: "Intro to Literary Theory", hours: 3 },
-          { code: "ENGL 30803", title: "Theories of Cinema", hours: 3 },
-          { code: "WRIT 30243", title: "Rhetorical Practices in Culture", hours: 3 },
-          { code: "WRIT 40333", title: "Language, Rhetoric & Culture", hours: 3 },
-          { code: "WRIT 40373", title: "Rhetoric of Revolution", hours: 3 },
-        ]
-      },
-      electives: {
-        name: "Electives",
-        hours: 12,
-        note: "No more than 9 hours of lower-division courses total",
-        courses: [
-          { code: "ANY", title: "Any ENGL, WRIT, or CRWT class", hours: 3 },
-          { code: "WRIT 30390", title: "Publication Production (3 credits total)", hours: 3 },
-          { code: "ENGL 40003", title: "Honors Thesis Seminar II", hours: 3 },
-          { code: "ENGL 40013", title: "Distinction Program: Thesis II", hours: 3 },
-        ]
-      }
-    },
-    overlays: {
-      earlyLit: {
-        name: "Early Literature & Culture",
-        hours: 6,
-        courses: [
-          { code: "ENGL 30673", title: "King Arthur: Lit & Legend", hours: 3 },
-          { code: "ENGL 40473", title: "Milton and His Contemporaries", hours: 3 },
-        ]
-      },
-      juniorSeminar: {
-        name: "Junior Research Seminar",
-        hours: 3,
-        courses: [
-          { code: "ENGL 38023", title: "Research Seminar in American Lit", hours: 3 },
-        ]
-      }
-    }
-  },
+// Import data from extracted JSON files (Phase 1 refactoring)
+import COURSE_DATA from './data/programs.json';
+import PREREQUISITES from './data/prerequisites.json';
+import FOUR_YEAR_PLANS from './data/four-year-plans.json';
 
-  writing: {
-    name: "Writing & Rhetoric",
-    totalHours: 33,
-    maxLowerDivision: 9,
-    note: "Students who declared Fall 2025 may count 12 lower-division hours",
-    description: "The Writing & Rhetoric major prepares students for careers in professional writing, digital media, and communication.",
-    requirements: {
-      writingPublishing: {
-        name: "Writing & Publishing",
-        hours: 3,
-        courses: [
-          { code: "WRIT 20113", title: "Technical and Professional Writing", hours: 3, level: "lower" },
-          { code: "WRIT 20323", title: "Introduction to Multimedia Authoring", hours: 3, level: "lower" },
-          { code: "WRIT 30213", title: "Advanced Composition: Writing Genres", hours: 3 },
-          { code: "WRIT 30223", title: "Advanced Technical Writing", hours: 3 },
-          { code: "WRIT 30263", title: "Style", hours: 3 },
-          { code: "WRIT 30273", title: "Argument and Persuasion", hours: 3 },
-          { code: "WRIT 30390", title: "Publication Production (3 credits total)", hours: 3 },
-          { code: "WRIT 40233", title: "Writing for Publication", hours: 3 },
-          { code: "WRIT 40243", title: "Advanced Professional Writing", hours: 3 },
-          { code: "WRIT 40283", title: "Editing and Publishing", hours: 3 },
-        ]
-      },
-      rhetoricsCultures: {
-        name: "Rhetorics & Cultures",
-        hours: 6,
-        courses: [
-          { code: "WRIT 20313", title: "Power & Protest", hours: 3, level: "lower" },
-          { code: "WRIT 20343", title: "The Rhetoric of Science", hours: 3, level: "lower" },
-          { code: "WRIT 20353", title: "Black Rhetoric and Language", hours: 3, level: "lower" },
-          { code: "WRIT 30203", title: "Urban Rhetorics", hours: 3 },
-          { code: "WRIT 30243", title: "Rhetorical Practices in Culture", hours: 3 },
-          { code: "WRIT 30253", title: "Rhetorical Traditions", hours: 3 },
-          { code: "WRIT 30293", title: "Non-Human Rhetoric and Representation", hours: 3 },
-          { code: "WRIT 30613", title: "Writing Cross-culture Differences", hours: 3 },
-          { code: "WRIT 30623", title: "Rhetorics of American Identities", hours: 3 },
-          { code: "WRIT 30663", title: "Women's Rhetorics", hours: 3 },
-          { code: "WRIT 40253", title: "Propaganda Analysis & Persuasion", hours: 3 },
-          { code: "WRIT 40333", title: "Language, Rhetoric, & Culture", hours: 3 },
-          { code: "WRIT 40373", title: "The Rhetoric of Revolution", hours: 3 },
-          { code: "ENGL 30803", title: "Theories of Cinema", hours: 3 },
-        ]
-      },
-      digitalRhetorics: {
-        name: "Digital Rhetorics & Design",
-        hours: 3,
-        courses: [
-          { code: "WRIT 20303", title: "Writing Games", hours: 3, level: "lower" },
-          { code: "WRIT 20333", title: "Language, Technology and Society", hours: 3, level: "lower" },
-          { code: "WRIT 20833", title: "Intro to Coding in the Humanities", hours: 3, level: "lower" },
-          { code: "ENGL 20813", title: "Introduction to the Digital Humanities", hours: 3, level: "lower" },
-          { code: "WRIT 30283", title: "Cyberliteracy", hours: 3 },
-          { code: "WRIT 30603", title: "Rhetoric of Social Media", hours: 3 },
-          { code: "WRIT 30893", title: "Digital Inclusiveness", hours: 3 },
-          { code: "WRIT 40163", title: "Multimedia Author: Image & Hypertext", hours: 3 },
-          { code: "WRIT 40263", title: "Multimedia Authoring: Animation & Film", hours: 3 },
-          { code: "WRIT 40363", title: "Multimedia Authoring: Mobile Apps & eBooks", hours: 3 },
-          { code: "WRIT 40463", title: "Multimed Author: Comics Production", hours: 3 },
-          { code: "WRIT 40563", title: "Multimedia Authoring: Sound & Podcasting", hours: 3 },
-        ]
-      },
-      internship: {
-        name: "Writing Internship",
-        hours: 3,
-        courses: [
-          { code: "WRIT 40273", title: "Writing Internship", hours: 3 },
-        ]
-      },
-      juniorSeminar: {
-        name: "Junior Writing Major Seminar",
-        hours: 3,
-        courses: [
-          { code: "WRIT 38063", title: "Writing Major Seminar", hours: 3 },
-        ]
-      },
-      electives: {
-        name: "Electives (ENGL, WRIT, CRWT)",
-        hours: 12,
-        courses: [
-          { code: "ANY", title: "Any ENGL, WRIT, or CRWT class", hours: 3 },
-          { code: "ENGL 20803", title: "Intermed Comp: Writing Argument (Fall 2025 declares only)", hours: 3, level: "lower" },
-        ]
-      }
-    }
-  },
-
-  creativeWriting: {
-    name: "Creative Writing",
-    totalHours: 33,
-    maxLowerDivision: 3,
-    description: "The Creative Writing major develops skills in fiction, poetry, creative nonfiction, and drama through workshop-based instruction.",
-    requirements: {
-      prerequisite: {
-        name: "Prerequisite",
-        hours: 3,
-        courses: [
-          { code: "CRWT 10203", title: "Intro to Creative Writing", hours: 3, level: "lower" },
-          { code: "CRWT 20103", title: "Reading as a Writer", hours: 3, level: "lower" },
-          { code: "CRWT 20133", title: "Writing for Performance", hours: 3, level: "lower" },
-        ]
-      },
-      upperDivisionCW: {
-        name: "Upper Division Creative Writing",
-        hours: 12,
-        courses: [
-          { code: "CRWT 30233", title: "Creative Nonfiction Workshop I", hours: 3 },
-          { code: "CRWT 30343", title: "Fiction Writing Workshop I", hours: 3 },
-          { code: "CRWT 30353", title: "Poetry Writing Workshop I", hours: 3 },
-          { code: "CRWT 30363", title: "Digital Creative Writing", hours: 3 },
-          { code: "CRWT 30373", title: "Drama Writing Workshop I", hours: 3 },
-          { code: "CRWT 40133", title: "Creative Nonfiction Workshop II", hours: 3 },
-          { code: "CRWT 40203", title: "Fiction Writing Workshop II", hours: 3 },
-          { code: "CRWT 40213", title: "Poetry Writing Workshop II", hours: 3 },
-          { code: "CRWT 40223", title: "Drama Writing Workshop II", hours: 3 },
-          { code: "CRWT 40703", title: "Advanced Multi-Genre Workshop", hours: 3 },
-          { code: "CRWT 40803", title: "Advanced Literary Forms", hours: 3 },
-        ]
-      },
-      advancedSeminar: {
-        name: "Advanced Creative Writing Seminar",
-        hours: 3,
-        courses: [
-          { code: "CRWT 40703", title: "Advanced Multi-Genre Workshop", hours: 3 },
-          { code: "CRWT 40803", title: "Advanced Literary Forms", hours: 3 },
-        ]
-      },
-      internship: {
-        name: "Internship",
-        hours: 3,
-        courses: [
-          { code: "WRIT 30390", title: "Publication Production (3 credits total)", hours: 3 },
-          { code: "WRIT 40273", title: "Writing Internship", hours: 3 },
-        ]
-      },
-      englElectives: {
-        name: "Upper-Division ENGL Electives",
-        hours: 6,
-        courses: [
-          { code: "ENGL 30103", title: "Intro to Literary Theory", hours: 3 },
-          { code: "ENGL 30133", title: "American Lit to 1865", hours: 3 },
-          { code: "ENGL 30593", title: "American Fiction, 1960 to the Present", hours: 3 },
-          { code: "ENGL 30653", title: "Jane Austen: Novels and Films", hours: 3 },
-          { code: "ENGL 30673", title: "King Arthur in Literature & Legend", hours: 3 },
-          { code: "ENGL 30693", title: "U.S. Multi-Ethnic Literature", hours: 3 },
-          { code: "ENGL 30803", title: "Theories of Cinema", hours: 3 },
-          { code: "ENGL 40473", title: "Milton and his Contemporaries", hours: 3 },
-        ]
-      },
-      writElectives: {
-        name: "Upper-Division WRIT Electives",
-        hours: 6,
-        courses: [
-          { code: "WRIT 30243", title: "Rhetorical Practice in Culture – Global Rhetorics", hours: 3 },
-          { code: "WRIT 40333", title: "Language, Rhetoric, & Culture", hours: 3 },
-          { code: "WRIT 40373", title: "The Rhetoric of Revolution", hours: 3 },
-          { code: "WRIT 40563", title: "Multimedia Authoring: Sound & Podcast", hours: 3 },
-        ]
-      }
-    }
-  }
-};
-
-// Prerequisite chains for visualization
-const PREREQUISITES = {
-  // Creative Writing Workshop sequences
-  "CRWT 30343": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
-  "CRWT 30353": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
-  "CRWT 30233": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
-  "CRWT 30373": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
-  "CRWT 30363": ["CRWT 10203", "CRWT 20103", "CRWT 20133"],
-  "CRWT 40203": ["CRWT 30343"],
-  "CRWT 40213": ["CRWT 30353"],
-  "CRWT 40133": ["CRWT 30233"],
-  "CRWT 40223": ["CRWT 30373"],
-  "CRWT 40703": ["CRWT 30343", "CRWT 30353", "CRWT 30233", "CRWT 30373"],
-  "CRWT 40803": ["CRWT 30343", "CRWT 30353", "CRWT 30373"],
-
-  // English seminars and research
-  "ENGL 38023": ["ENGL 20803"],
-  "ENGL 38013": ["ENGL 20803"],
-
-  // Writing & Rhetoric sequences
-  "WRIT 40273": ["WRIT 38063"],
-  "WRIT 30390": [],
-  "WRIT 40233": ["WRIT 20113"],
-  "WRIT 40243": ["WRIT 20113"],
-  "WRIT 30223": ["WRIT 20113"],
-
-  // Note: Most 30000+ level ENGL courses require:
-  // ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course
-};
-
-// Sample 4-year plans
-const FOUR_YEAR_PLANS = {
-  english: {
-    year1: {
-      fall: [
-        { code: "ENGL 10803", title: "Intro to Literature", hours: 3, note: "TCU Core" },
-        { code: "ENGL 20803", title: "Writing Arguments", hours: 3, note: "TCU Core/Prereq" },
-      ],
-      spring: [
-        { code: "ENGL 20XX", title: "Lower-Division Elective", hours: 3 },
-        { code: "ENGL 20XX", title: "Lower-Division Elective", hours: 3 },
-      ]
-    },
-    year2: {
-      fall: [
-        { code: "ENGL 30133", title: "American Lit to 1865", hours: 3, category: "American Lit" },
-        { code: "ENGL 30103", title: "Intro to Literary Theory", hours: 3, category: "Theory" },
-      ],
-      spring: [
-        { code: "ENGL 30673", title: "King Arthur: Lit & Legend", hours: 3, category: "British Lit / Early Lit" },
-        { code: "ENGL 30693", title: "U.S. Multi-Ethnic Literature", hours: 3, category: "American Lit / Global" },
-      ]
-    },
-    year3: {
-      fall: [
-        { code: "ENGL 30653", title: "Jane Austen: Novels & Films", hours: 3, category: "British Lit" },
-        { code: "ENGL 38023", title: "Research Seminar in American Lit", hours: 3, category: "Junior Seminar" },
-      ],
-      spring: [
-        { code: "ENGL 40473", title: "Milton and His Contemporaries", hours: 3, category: "Early Lit" },
-        { code: "CRWT 30343", title: "Fiction Writing Workshop I", hours: 3, category: "Writing" },
-      ]
-    },
-    year4: {
-      fall: [
-        { code: "ENGL 30XX", title: "Upper-Division Elective", hours: 3, category: "Elective" },
-        { code: "ENGL 30XX", title: "Upper-Division Elective", hours: 3, category: "Elective" },
-      ],
-      spring: [
-        { code: "ENGL 40XX", title: "Upper-Division Elective", hours: 3, category: "Elective" },
-        { code: "ENGL 40XX", title: "Upper-Division Elective", hours: 3, category: "Elective" },
-      ]
-    }
-  },
-  writing: {
-    year1: {
-      fall: [
-        { code: "ENGL 10803", title: "Intro to Literature", hours: 3, note: "TCU Core" },
-        { code: "WRIT 20113", title: "Technical and Professional Writing", hours: 3, category: "Writing & Publishing" },
-      ],
-      spring: [
-        { code: "WRIT 20313", title: "Power & Protest", hours: 3, category: "Rhetorics & Cultures" },
-        { code: "WRIT 20323", title: "Intro to Multimedia Authoring", hours: 3, category: "Digital Rhetorics" },
-      ]
-    },
-    year2: {
-      fall: [
-        { code: "WRIT 30243", title: "Rhetorical Practices in Culture", hours: 3, category: "Rhetorics & Cultures" },
-        { code: "WRIT 30283", title: "Cyberliteracy", hours: 3, category: "Digital Rhetorics" },
-      ],
-      spring: [
-        { code: "WRIT 30213", title: "Advanced Composition: Writing Genres", hours: 3, category: "Writing & Publishing" },
-        { code: "WRIT 30XX", title: "Elective", hours: 3, category: "Elective" },
-      ]
-    },
-    year3: {
-      fall: [
-        { code: "WRIT 38063", title: "Writing Major Seminar", hours: 3, category: "Junior Seminar" },
-        { code: "WRIT 40333", title: "Language, Rhetoric, & Culture", hours: 3, category: "Rhetorics & Cultures" },
-      ],
-      spring: [
-        { code: "WRIT 40273", title: "Writing Internship", hours: 3, category: "Internship" },
-        { code: "WRIT 40XX", title: "Elective", hours: 3, category: "Elective" },
-      ]
-    },
-    year4: {
-      fall: [
-        { code: "WRIT 40563", title: "Multimedia Authoring: Sound & Podcasting", hours: 3, category: "Digital Rhetorics" },
-        { code: "WRIT 40XX", title: "Elective", hours: 3, category: "Elective" },
-      ],
-      spring: [
-        { code: "ENGL 30XX", title: "Elective", hours: 3, category: "Elective" },
-        { code: "CRWT 30XX", title: "Elective", hours: 3, category: "Elective" },
-      ]
-    }
-  },
-  creativeWriting: {
-    year1: {
-      fall: [
-        { code: "ENGL 10803", title: "Intro to Literature", hours: 3, note: "TCU Core" },
-        { code: "CRWT 10203", title: "Intro to Creative Writing", hours: 3, category: "Prerequisite" },
-      ],
-      spring: [
-        { code: "CRWT 20103", title: "Reading as a Writer", hours: 3, category: "Prerequisite (alternate)" },
-        { code: "ENGL 20XX", title: "Lower-Division Lit", hours: 3 },
-      ]
-    },
-    year2: {
-      fall: [
-        { code: "CRWT 30343", title: "Fiction Writing Workshop I", hours: 3, category: "Upper Division CW" },
-        { code: "ENGL 30103", title: "Intro to Literary Theory", hours: 3, category: "ENGL Elective" },
-      ],
-      spring: [
-        { code: "CRWT 30353", title: "Poetry Writing Workshop I", hours: 3, category: "Upper Division CW" },
-        { code: "WRIT 30243", title: "Rhetorical Practice in Culture", hours: 3, category: "WRIT Elective" },
-      ]
-    },
-    year3: {
-      fall: [
-        { code: "CRWT 40203", title: "Fiction Writing Workshop II", hours: 3, category: "Upper Division CW" },
-        { code: "ENGL 30693", title: "U.S. Multi-Ethnic Literature", hours: 3, category: "ENGL Elective" },
-      ],
-      spring: [
-        { code: "CRWT 30233", title: "Creative Nonfiction Workshop I", hours: 3, category: "Upper Division CW" },
-        { code: "WRIT 40333", title: "Language, Rhetoric, & Culture", hours: 3, category: "WRIT Elective" },
-      ]
-    },
-    year4: {
-      fall: [
-        { code: "CRWT 40703", title: "Advanced Multi-Genre Workshop", hours: 3, category: "Advanced Seminar" },
-        { code: "WRIT 30390", title: "Publication Production", hours: 3, category: "Internship" },
-      ],
-      spring: [
-        { code: "WRIT 30390", title: "Publication Production (cont.)", hours: 0, note: "Continue from Fall" },
-        { code: "ENGL 30XX", title: "Upper-Division ENGL", hours: 3, category: "ENGL Elective" },
-      ]
-    }
-  }
-};
+// TCU Core WCO courses that don't count toward major hours
+const TCU_CORE_COURSES = ['ENGL 10803', 'ENGL 20803'];
 
 // ============================================
 // EXPORT FUNCTION
@@ -936,10 +455,17 @@ function CatalogList({ completedCourses, onToggleCourse }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const groups = useMemo(() => {
-    const g = { ENGL: [], CRWT: [], WRIT: [] };
+    const WCO_COURSES = ['ENGL 10803', 'ENGL 20803']; // Writing Competencies (TCU Core)
+    const g = { WCO: [], ENGL: [], CRWT: [], WRIT: [] };
+
     ALL_COURSES.forEach(c => {
-       const prefix = c.code.substring(0, 4);
-       if (g[prefix]) g[prefix].push(c);
+       // Check if it's a WCO course first
+       if (WCO_COURSES.includes(c.code)) {
+         g.WCO.push(c);
+       } else {
+         const prefix = c.code.substring(0, 4);
+         if (g[prefix]) g[prefix].push(c);
+       }
     });
     return g;
   }, []);
@@ -948,7 +474,7 @@ function CatalogList({ completedCourses, onToggleCourse }) {
   const filteredGroups = useMemo(() => {
     if (!searchTerm.trim()) return groups;
 
-    const filtered = { ENGL: [], CRWT: [], WRIT: [] };
+    const filtered = { WCO: [], ENGL: [], CRWT: [], WRIT: [] };
     const search = searchTerm.toLowerCase();
 
     Object.entries(groups).forEach(([prefix, courses]) => {
@@ -978,7 +504,12 @@ function CatalogList({ completedCourses, onToggleCourse }) {
       >
         <h3 className="font-semibold text-gray-900 flex items-center gap-2">
           <BookOpen className="w-5 h-5 text-green-600" />
-          Full Course Catalog (Select all completed courses)
+          <span className="flex items-center gap-2">
+            Full Course Catalog (Select all completed courses)
+            <span className="px-2 py-0.5 bg-green-600 text-white text-xs font-bold rounded uppercase tracking-wide">
+              Start Here
+            </span>
+          </span>
         </h3>
         {expanded ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
       </button>
@@ -1031,10 +562,19 @@ function CatalogList({ completedCourses, onToggleCourse }) {
           )}
 
           {/* Course Groups */}
-          {Object.entries(filteredGroups).map(([prefix, courses]) => (
-             courses.length > 0 && (
-              <div key={prefix} id={`catalog-${prefix}`} className="border border-gray-200 rounded-lg p-3 scroll-mt-4">
-                 <h4 className="font-bold text-gray-800 mb-2">{prefix} Courses ({courses.length})</h4>
+          {Object.entries(filteredGroups).map(([prefix, courses]) => {
+             if (courses.length === 0) return null;
+
+             const groupLabel = prefix === 'WCO'
+               ? 'Writing Competencies (TCU Core)'
+               : `${prefix} Courses`;
+
+             return (
+              <div key={prefix} id={`catalog-${prefix}`} className={`border rounded-lg p-3 scroll-mt-4 ${prefix === 'WCO' ? 'border-purple-300 bg-purple-50' : 'border-gray-200'}`}>
+                 <h4 className="font-bold text-gray-800 mb-2">
+                   {groupLabel} ({courses.length})
+                   {prefix === 'WCO' && <span className="ml-2 px-2 py-0.5 bg-purple-600 text-white text-xs font-bold rounded uppercase">Core</span>}
+                 </h4>
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                    {courses.map(course => {
                      const isCompleted = completedCourses.includes(course.code);
@@ -1055,8 +595,8 @@ function CatalogList({ completedCourses, onToggleCourse }) {
                    })}
                  </div>
               </div>
-             )
-          ))}
+             );
+          })}
 
           {/* No Results */}
           {searchTerm && Object.values(filteredGroups).every(courses => courses.length === 0) && (
@@ -1072,11 +612,73 @@ function CatalogList({ completedCourses, onToggleCourse }) {
 }
 
 // Requirement Category Component
-function RequirementCategory({ category, completedCourses, plannedCourses = [], onToggleCourse, isExpanded, onToggleExpand, selectionStep = 1 }) {
-  const hoursCompleted = category.courses.filter(c => completedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
-  const hoursPlanned = category.courses.filter(c => plannedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+function RequirementCategory({ category, completedCourses, plannedCourses = [], onToggleCourse, isExpanded, onToggleExpand, selectionStep = 1, allRequirements = {} }) {
+  // Check if this is an elective category (has course with code "ANY")
+  const isElectiveCategory = category.courses.some(c => c.code === 'ANY');
+
+  let hoursCompleted, hoursPlanned;
+
+  if (isElectiveCategory) {
+    // For elective categories, count all ENGL/WRIT/CRWT courses that aren't already counted in other categories
+    const coursesInOtherCategories = new Set();
+    Object.entries(allRequirements).forEach(([key, reqCategory]) => {
+      // Skip elective categories when building the exclusion list
+      if (!reqCategory.courses.some(c => c.code === 'ANY')) {
+        reqCategory.courses.forEach(c => {
+          if (c.code !== 'ANY') {
+            coursesInOtherCategories.add(c.code);
+          }
+        });
+      }
+    });
+
+    // Count completed courses that aren't in other categories (and exclude TCU Core)
+    hoursCompleted = completedCourses
+      .filter(code => !coursesInOtherCategories.has(code) && !TCU_CORE_COURSES.includes(code))
+      .reduce((sum, code) => {
+        const course = ALL_COURSES.find(c => c.code === code);
+        return sum + (course?.hours || 0);
+      }, 0);
+
+    // Count planned courses that aren't in other categories (and exclude TCU Core)
+    hoursPlanned = plannedCourses
+      .filter(code => !coursesInOtherCategories.has(code) && !TCU_CORE_COURSES.includes(code))
+      .reduce((sum, code) => {
+        const course = ALL_COURSES.find(c => c.code === code);
+        return sum + (course?.hours || 0);
+      }, 0);
+  } else {
+    // Normal category - count courses that match this category's course list
+    hoursCompleted = category.courses.filter(c => completedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+    hoursPlanned = category.courses.filter(c => plannedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+  }
+
   const isComplete = hoursCompleted >= category.hours;
   const willBeComplete = (hoursCompleted + hoursPlanned) >= category.hours;
+
+  // For elective categories, build the actual list of courses to display
+  let coursesToDisplay = category.courses;
+  if (isElectiveCategory) {
+    const coursesInOtherCategories = new Set();
+    Object.entries(allRequirements).forEach(([key, reqCategory]) => {
+      if (!reqCategory.courses.some(c => c.code === 'ANY')) {
+        reqCategory.courses.forEach(c => {
+          if (c.code !== 'ANY') {
+            coursesInOtherCategories.add(c.code);
+          }
+        });
+      }
+    });
+
+    // Get all completed and planned courses that aren't in other categories (and exclude TCU Core)
+    const electiveCoursesCodes = [...new Set([...completedCourses, ...plannedCourses])]
+      .filter(code => !coursesInOtherCategories.has(code) && !TCU_CORE_COURSES.includes(code));
+
+    // Map to full course objects from ALL_COURSES
+    coursesToDisplay = electiveCoursesCodes
+      .map(code => ALL_COURSES.find(c => c.code === code))
+      .filter(c => c !== undefined);
+  }
 
   return (
     <div className="border border-gray-200 rounded-lg mb-3 overflow-hidden">
@@ -1122,7 +724,7 @@ function RequirementCategory({ category, completedCourses, plannedCourses = [], 
             </div>
           )}
           <div className="space-y-2">
-            {category.courses.map(course => {
+            {coursesToDisplay.map(course => {
               const isCompleted = completedCourses.includes(course.code);
               const isPlanned = plannedCourses.includes(course.code);
               const isChecked = selectionStep === 1 ? isCompleted : isPlanned;
@@ -1189,7 +791,7 @@ function RequirementsChecklist({
   expectedGraduation,
   onGraduationChange
 }) {
-  const [expandedCategories, setExpandedCategories] = useState(new Set(['americanLit', 'writingPublishing', 'prerequisite']));
+  const [expandedCategories, setExpandedCategories] = useState(new Set());
   const majorData = COURSE_DATA[major];
 
   const toggleCategory = (key) => {
@@ -1205,7 +807,32 @@ function RequirementsChecklist({
   const totalCompleted = useMemo(() => {
     let hours = 0;
     Object.values(majorData.requirements).forEach(cat => {
-      const catHours = cat.courses.filter(c => completedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+      const isElectiveCategory = cat.courses.some(c => c.code === 'ANY');
+
+      let catHours;
+      if (isElectiveCategory) {
+        // For elective categories, count all courses not in other specific categories
+        const coursesInOtherCategories = new Set();
+        Object.values(majorData.requirements).forEach(reqCat => {
+          if (!reqCat.courses.some(c => c.code === 'ANY')) {
+            reqCat.courses.forEach(c => {
+              if (c.code !== 'ANY') {
+                coursesInOtherCategories.add(c.code);
+              }
+            });
+          }
+        });
+
+        catHours = completedCourses
+          .filter(code => !coursesInOtherCategories.has(code) && !TCU_CORE_COURSES.includes(code))
+          .reduce((sum, code) => {
+            const course = ALL_COURSES.find(c => c.code === code);
+            return sum + (course?.hours || 0);
+          }, 0);
+      } else {
+        catHours = cat.courses.filter(c => completedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+      }
+
       hours += Math.min(catHours, cat.hours);
     });
     return hours;
@@ -1214,7 +841,32 @@ function RequirementsChecklist({
   const totalPlanned = useMemo(() => {
     let hours = 0;
     Object.values(majorData.requirements).forEach(cat => {
-      const catHours = cat.courses.filter(c => plannedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+      const isElectiveCategory = cat.courses.some(c => c.code === 'ANY');
+
+      let catHours;
+      if (isElectiveCategory) {
+        // For elective categories, count all courses not in other specific categories
+        const coursesInOtherCategories = new Set();
+        Object.values(majorData.requirements).forEach(reqCat => {
+          if (!reqCat.courses.some(c => c.code === 'ANY')) {
+            reqCat.courses.forEach(c => {
+              if (c.code !== 'ANY') {
+                coursesInOtherCategories.add(c.code);
+              }
+            });
+          }
+        });
+
+        catHours = plannedCourses
+          .filter(code => !coursesInOtherCategories.has(code) && !TCU_CORE_COURSES.includes(code))
+          .reduce((sum, code) => {
+            const course = ALL_COURSES.find(c => c.code === code);
+            return sum + (course?.hours || 0);
+          }, 0);
+      } else {
+        catHours = cat.courses.filter(c => plannedCourses.includes(c.code)).reduce((sum, c) => sum + c.hours, 0);
+      }
+
       hours += Math.min(catHours, cat.hours);
     });
     return hours;
@@ -1222,6 +874,36 @@ function RequirementsChecklist({
 
   const progress = (totalCompleted / majorData.totalHours) * 100;
   const projectedProgress = ((totalCompleted + totalPlanned) / majorData.totalHours) * 100;
+
+  // Calculate lower-division hours (10000-29999 level courses, excluding TCU Core)
+  const lowerDivisionHours = useMemo(() => {
+    const allFutureCoursesFlat = Object.values(futureCourses || {}).flat();
+    const allSelectedCourses = [...completedCourses, ...plannedCourses, ...allFutureCoursesFlat];
+    return allSelectedCourses.reduce((total, code) => {
+      // Exclude TCU Core courses from lower-division count
+      if (TCU_CORE_COURSES.includes(code)) {
+        return total;
+      }
+      const course = ALL_COURSES.find(c => c.code === code);
+      if (course) {
+        // Extract course number (e.g., "ENGL 10803" -> "10803")
+        const match = code.match(/(\d{5})/);
+        if (match) {
+          const courseNum = parseInt(match[1]);
+          // Lower-division is 10000-29999
+          if (courseNum >= 10000 && courseNum < 30000) {
+            return total + course.hours;
+          }
+        }
+      }
+      return total;
+    }, 0);
+  }, [completedCourses, plannedCourses, futureCourses]);
+
+  // Determine lower-division status
+  const lowerDivisionStatus = lowerDivisionHours <= majorData.maxLowerDivision ? 'ok'
+    : lowerDivisionHours <= majorData.maxLowerDivision + 3 ? 'warning'
+    : 'over';
 
   const semesterOptions = generateSemesterOptions();
   const allFutureCourses = Object.values(futureCourses || {}).flat();
@@ -1360,18 +1042,19 @@ function RequirementsChecklist({
             <h2 className="text-xl sm:text-2xl font-bold break-words">{majorData.name} Major</h2>
             <p className="text-purple-200 mt-1 text-sm sm:text-base break-words">{majorData.description}</p>
             <div className="mt-3 flex items-center gap-2 sm:gap-4 text-xs sm:text-sm flex-wrap">
-              <span className="bg-purple-500/30 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
-                {majorData.totalHours} Total Hours Required
+              <span className="bg-green-500/40 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap font-medium">
+                {totalCompleted}/{majorData.totalHours} Total Hours
               </span>
-              <span className="bg-purple-500/30 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
-                Max {majorData.maxLowerDivision} Lower-Division Hours
-              </span>
-              <span className="bg-green-500/40 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
-                {totalCompleted} hrs completed
+              <span className={`px-2 sm:px-3 py-1 rounded-full whitespace-nowrap font-medium ${
+                lowerDivisionStatus === 'ok' ? 'bg-green-500/40' :
+                lowerDivisionStatus === 'warning' ? 'bg-yellow-500/40' :
+                'bg-red-500/40'
+              }`}>
+                {lowerDivisionHours}/{majorData.maxLowerDivision} Lower-Div {lowerDivisionHours > majorData.maxLowerDivision && '⚠️'}
               </span>
               {totalPlanned > 0 && (
                 <span className="bg-blue-500/40 px-2 sm:px-3 py-1 rounded-full whitespace-nowrap">
-                  +{totalPlanned} hrs planned
+                  +{totalPlanned} planned
                 </span>
               )}
             </div>
@@ -1385,6 +1068,32 @@ function RequirementsChecklist({
             )}
           </div>
         </div>
+      </div>
+
+      {/* Important Advising Notes */}
+      <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-4 sm:p-5 mb-6">
+        <h3 className="font-bold text-amber-900 mb-3 flex items-center gap-2 text-base sm:text-lg">
+          <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 flex-shrink-0" />
+          Important Advising Notes
+        </h3>
+        <ul className="space-y-2 text-sm sm:text-base">
+          <li className="flex items-start gap-2 text-amber-900">
+            <span className="text-amber-600 font-bold mt-0.5 flex-shrink-0">•</span>
+            <span><strong>30000+ level ENGL courses:</strong> Most require ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course</span>
+          </li>
+          <li className="flex items-start gap-2 text-amber-900">
+            <span className="text-amber-600 font-bold mt-0.5 flex-shrink-0">•</span>
+            <span><strong>Writing & Rhetoric:</strong> Students who declared Fall 2025 may count 12 lower-division hours (normally 9 hours)</span>
+          </li>
+          <li className="flex items-start gap-2 text-amber-900">
+            <span className="text-amber-600 font-bold mt-0.5 flex-shrink-0">•</span>
+            <span><strong>Creative Writing:</strong> Only 3 lower-division hours count toward the major</span>
+          </li>
+          <li className="flex items-start gap-2 text-amber-900">
+            <span className="text-amber-600 font-bold mt-0.5 flex-shrink-0">•</span>
+            <span><strong>English:</strong> No more than 9 hours of lower-division courses total count toward the major</span>
+          </li>
+        </ul>
       </div>
 
       {/* Step Indicator */}
@@ -1616,6 +1325,7 @@ function RequirementsChecklist({
               isExpanded={expandedCategories.has(key)}
               onToggleExpand={() => toggleCategory(key)}
               selectionStep={selectionStep}
+              allRequirements={majorData.requirements}
             />
           ))}
         </div>
@@ -1644,6 +1354,7 @@ function RequirementsChecklist({
                 isExpanded={expandedCategories.has(key)}
                 onToggleExpand={() => toggleCategory(key)}
                 selectionStep={selectionStep}
+                allRequirements={majorData.requirements}
               />
             ))}
           </div>
@@ -1659,7 +1370,7 @@ function FourYearPlan({ major }) {
   const majorData = COURSE_DATA[major];
 
   const years = ['year1', 'year2', 'year3', 'year4'];
-  const yearLabels = ['Freshman Year', 'Sophomore Year', 'Junior Year', 'Senior Year'];
+  const yearLabels = ['First Year', 'Sophomore Year', 'Junior Year', 'Senior Year'];
 
   return (
     <div>
@@ -1931,6 +1642,7 @@ export default function TCUEnglishAdvisingApp() {
   const [futureCourses, setFutureCourses] = useState({});    // Future semesters: { "Fall 2026": ["ENGL 30103"], ... }
   const [selectionStep, setSelectionStep] = useState(1);      // 1 = completed, 2 = planned, 3 = future
   const [expectedGraduation, setExpectedGraduation] = useState('');
+  const [totalCreditHours, setTotalCreditHours] = useState(0); // Total college credit hours earned
 
   // Get all future planned courses (across all future semesters)
   const allFutureCourses = useMemo(() => {
@@ -1941,6 +1653,14 @@ export default function TCUEnglishAdvisingApp() {
     if (selectionStep === 1) {
       // Step 1: Selecting completed courses
       if (!completedCourses.includes(code)) {
+        // Special check for ENGL 20803: requires 30 credit hours
+        if (code === 'ENGL 20803') {
+          if (totalCreditHours < 30) {
+            alert(`ENGL 20803 requires 30 total credit hours to enroll.\n\nYou currently have ${totalCreditHours} credit hours entered.\nYou need ${30 - totalCreditHours} more credit hours before taking this course.\n\nUpdate your total credit hours in the field above if needed.`);
+            return;
+          }
+        }
+
         const prereqs = PREREQUISITES[code];
         if (prereqs && prereqs.length > 0) {
           const prereqList = prereqs.map(p => p);
@@ -1949,6 +1669,51 @@ export default function TCUEnglishAdvisingApp() {
           if (!hasPrereq) {
             alert(`You must complete at least one of the following prerequisites before taking ${code}:\n\n${prereqList.join('\n')}`);
             return;
+          }
+        }
+
+        // Check lower-division hour limits
+        const course = ALL_COURSES.find(c => c.code === code);
+        const majorData = COURSE_DATA[selectedMajor];
+
+        // Check if this course is lower-division (10000-29999) and not a TCU Core course
+        const match = code.match(/(\d{5})/);
+        const isLowerDiv = match && parseInt(match[1]) >= 10000 && parseInt(match[1]) < 30000;
+        const isNotCoreExclusion = !TCU_CORE_COURSES.includes(code);
+
+        if (course && isLowerDiv && isNotCoreExclusion) {
+          const currentLowerDivHours = [...completedCourses, ...plannedCourses, ...allFutureCourses]
+            .reduce((total, c) => {
+              if (TCU_CORE_COURSES.includes(c)) return total; // Exclude TCU Core
+              const crs = ALL_COURSES.find(course => course.code === c);
+              if (crs) {
+                const match = c.match(/(\d{5})/);
+                if (match) {
+                  const courseNum = parseInt(match[1]);
+                  if (courseNum >= 10000 && courseNum < 30000) {
+                    return total + crs.hours;
+                  }
+                }
+              }
+              return total;
+            }, 0);
+
+          const newTotal = currentLowerDivHours + course.hours;
+
+          if (newTotal > majorData.maxLowerDivision) {
+            const over = newTotal - majorData.maxLowerDivision;
+            const proceed = confirm(
+              `⚠️ Lower-Division Hour Limit Warning\n\n` +
+              `Adding ${code} will bring you to ${newTotal} lower-division hours.\n` +
+              `Your major limits these to ${majorData.maxLowerDivision} hours that count toward the degree.\n` +
+              `You will be ${over} hour${over > 1 ? 's' : ''} over the limit.\n\n` +
+              `Note: If you declared Fall 2025 or later, or have advisor approval, you may have different limits.\n\n` +
+              `Click OK to proceed anyway, or Cancel to reconsider.`
+            );
+
+            if (!proceed) {
+              return;
+            }
           }
         }
       }
@@ -2095,6 +1860,27 @@ export default function TCUEnglishAdvisingApp() {
                 </button>
               );
             })}
+          </div>
+
+          {/* Total Credit Hours Input */}
+          <div className="pb-3 sm:pb-4">
+            <div className="flex items-center gap-3 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
+              <label htmlFor="totalCreditHours" className="text-sm font-medium text-gray-700 whitespace-nowrap">
+                Total Credit Hours Earned:
+              </label>
+              <input
+                id="totalCreditHours"
+                type="number"
+                min="0"
+                max="200"
+                value={totalCreditHours}
+                onChange={(e) => setTotalCreditHours(parseInt(e.target.value) || 0)}
+                className="w-20 px-3 py-1.5 border border-gray-300 rounded-md text-center font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <span className="text-xs text-gray-600 hidden sm:inline">
+                (Include all TCU courses taken)
+              </span>
+            </div>
           </div>
         </div>
       </div>

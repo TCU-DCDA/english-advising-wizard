@@ -1,0 +1,1931 @@
+{
+  "manifestVersion": "1.0",
+  "department": "English",
+  "lastUpdated": "2026-02-13T20:41:52.836Z",
+  "wizardUrl": "https://curtrode.github.io/tcu-english-advising/",
+  "programs": [
+    {
+      "id": "english-ba",
+      "name": "English",
+      "abbreviation": "ENGL",
+      "degree": "BA",
+      "totalHours": 33,
+      "url": "https://addran.tcu.edu/english/academics/undergraduate/major.php",
+      "descriptions": [
+        "The English major focuses on literature, literary theory, and cultural studies across American, British, and global traditions."
+      ],
+      "careerOptions": [
+        "Lawyer",
+        "Digital Content Manager",
+        "Editor",
+        "Publishing Professional",
+        "Teacher / Professor",
+        "Journalist",
+        "Marketing Specialist",
+        "Content Strategist",
+        "Literary Agent",
+        "Technical Writer",
+        "Grant Writer",
+        "Communications Director"
+      ],
+      "contacts": [
+        {
+          "role": "Department Chair",
+          "name": "Dr. Sharon Weltman",
+          "email": "sharon.weltman@tcu.edu",
+          "phone": "817-257-7240",
+          "office": "Reed 314A"
+        },
+        {
+          "role": "Academic Advisor",
+          "name": "English Department Office",
+          "email": "english@tcu.edu",
+          "phone": "817-257-7240",
+          "office": "Reed Hall 3rd Floor"
+        }
+      ],
+      "requirements": {
+        "categories": [
+          {
+            "id": "americanLit",
+            "name": "American Literature",
+            "hours": 6,
+            "courses": [
+              {
+                "code": "ENGL 20503",
+                "title": "American Writers",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20523",
+                "title": "Sports and American Literature",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20533",
+                "title": "The American Dream",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20543",
+                "title": "The American Short Story",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20553",
+                "title": "Introduction to American Studies",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20563",
+                "title": "Introduction to Latina/o Literature",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20573",
+                "title": "Introduction to Native American Literatures",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20683",
+                "title": "Young Adult Literature in American Culture",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 30133",
+                "title": "American Literature to 1865",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30143",
+                "title": "American Literature since 1865",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30163",
+                "title": "Urban American Lit",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30513",
+                "title": "American Poetry",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30523",
+                "title": "American Popular Lit & Culture",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30553",
+                "title": "19th Century American Novel",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30563",
+                "title": "American Drama",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30573",
+                "title": "African American Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30583",
+                "title": "Early American Lit",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30593",
+                "title": "American Fiction, 1960 to Present",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30693",
+                "title": "U.S. Multi-Ethnic Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30703",
+                "title": "Contemporary Latinx Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30713",
+                "title": "Mexican American Culture",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30853",
+                "title": "Asian American Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 38023",
+                "title": "Research Seminar in American Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40513",
+                "title": "U.S. Women's Writing I",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40543",
+                "title": "Studies in Early American Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40553",
+                "title": "Studies in Nineteenth-Century American Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40563",
+                "title": "U.S. Women's Writing II",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40583",
+                "title": "Contemporary American Poetry",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40663",
+                "title": "Transnational American Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40683",
+                "title": "Studies in 20th Century American Literature",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "britishLit",
+            "name": "British Literature",
+            "hours": 6,
+            "courses": [
+              {
+                "code": "ENGL 20403",
+                "title": "British Writers",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20433",
+                "title": "Introduction to Shakespeare",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 30113",
+                "title": "British Literature to 1800",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30123",
+                "title": "British Literature since 1800",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30423",
+                "title": "Early British Drama",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30433",
+                "title": "Renaissance Poetry",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30443",
+                "title": "Twentieth Century Irish Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30453",
+                "title": "The Victorian Novel",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30463",
+                "title": "British Literature: The Bloomsbury Group",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30653",
+                "title": "Jane Austen: Novels and Films",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30673",
+                "title": "King Arthur in Literature and Legend",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 38013",
+                "title": "Research Seminar in British Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40403",
+                "title": "Chaucer",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40413",
+                "title": "Renaissance in England",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40433",
+                "title": "19th Century British Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40443",
+                "title": "British Literature Since 1900",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40453",
+                "title": "British Novel to 1832",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40463",
+                "title": "British Novel since 1832",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40473",
+                "title": "Milton and his Contemporaries",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40483",
+                "title": "Shakespeare and Marlowe",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40493",
+                "title": "Shakespeare",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40613",
+                "title": "King Arthur in Modern Literature and Culture",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40633",
+                "title": "Love, Sex, and Power in Renaissance England",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40643",
+                "title": "British Romanticism",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40653",
+                "title": "Renaissance Literature and the 'New' Science",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40693",
+                "title": "British and Irish Poetry Since 1900",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "globalLit",
+            "name": "Global & Diasporic Literature",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "ENGL 20213",
+                "title": "Global Women's Literature",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20593",
+                "title": "Introduction to Literatures of the Global African Diaspora",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20603",
+                "title": "Western World Literature I",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20613",
+                "title": "Western World Literature II",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20933",
+                "title": "Non-Western World Literature",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 30683",
+                "title": "Post-Colonial Anglophone Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30693",
+                "title": "U.S. Multi-Ethnic Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30773",
+                "title": "India: Texts and Traditions",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30783",
+                "title": "Modern India: Literature and Culture",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30793",
+                "title": "Multi-Ethnic Literature of the World",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "writing",
+            "name": "Writing",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "CRWT 10203",
+                "title": "Introduction to Creative Writing",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "CRWT 20103",
+                "title": "Reading as a Writer",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "CRWT 20123",
+                "title": "Travel Writing",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "CRWT 20133",
+                "title": "Writing for Performance",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20113",
+                "title": "Technical and Professional Writing",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20303",
+                "title": "Writing Games",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20323",
+                "title": "Introduction to Multimedia Authoring",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "CRWT 30233",
+                "title": "Creative Nonfiction Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30343",
+                "title": "Fiction Writing Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30353",
+                "title": "Poetry Writing Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30363",
+                "title": "Digital Creative Writing",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30373",
+                "title": "Drama Writing Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30223",
+                "title": "Advanced Technical Writing",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40133",
+                "title": "Creative Nonfiction Workshop II",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40163",
+                "title": "Multimedia Authoring: Image and Hypertext",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40203",
+                "title": "Fiction Writing Workshop II",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40213",
+                "title": "Poetry Writing Workshop II",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40233",
+                "title": "Writing for Publication",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40243",
+                "title": "Advanced Professional Writing",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40263",
+                "title": "Multimedia Authoring: Animation and Film",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40273",
+                "title": "Writing Internship",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40283",
+                "title": "Editing and Publishing",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40363",
+                "title": "Multimedia Authoring: Mobile Apps and eBooks",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40463",
+                "title": "Multimedia Authoring: Comics Production",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40563",
+                "title": "Multimedia Authoring: Sound & Podcasting",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40703",
+                "title": "Advanced Multi-Genre Workshop",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40803",
+                "title": "Advanced Literary Forms",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "theory",
+            "name": "Theory",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "ENGL 30103",
+                "title": "Intro to Literary Theory",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30803",
+                "title": "Theories of Cinema",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30243",
+                "title": "Rhetorical Practices in Culture",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40333",
+                "title": "Language, Rhetoric & Culture",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40373",
+                "title": "Rhetoric of Revolution",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "electives",
+            "name": "Electives",
+            "hours": 12,
+            "courses": [
+              {
+                "code": "ANY",
+                "title": "Any ENGL, WRIT, or CRWT class",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30390",
+                "title": "Publication Production (3 credits total)",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40003",
+                "title": "Honors Thesis Seminar II",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40013",
+                "title": "Distinction Program: Thesis II",
+                "hours": 3
+              }
+            ],
+            "note": "No more than 9 hours of lower-division courses total"
+          }
+        ],
+        "overlays": [
+          {
+            "id": "earlyLit",
+            "name": "Early Literature & Culture",
+            "hours": 6,
+            "courses": [
+              {
+                "code": "ENGL 30673",
+                "title": "King Arthur: Lit & Legend",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40473",
+                "title": "Milton and His Contemporaries",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "juniorSeminar",
+            "name": "Junior Research Seminar",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "ENGL 38023",
+                "title": "Research Seminar in American Lit",
+                "hours": 3
+              }
+            ]
+          }
+        ],
+        "maxLowerDivision": 9
+      },
+      "maxLowerDivision": 9,
+      "prerequisites": {
+        "CRWT 30343": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30353": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30233": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30373": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30363": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 40203": [
+          "CRWT 30343"
+        ],
+        "CRWT 40213": [
+          "CRWT 30353"
+        ],
+        "CRWT 40133": [
+          "CRWT 30233"
+        ],
+        "CRWT 40223": [
+          "CRWT 30373"
+        ],
+        "CRWT 40703": [
+          "CRWT 30343",
+          "CRWT 30353",
+          "CRWT 30233",
+          "CRWT 30373"
+        ],
+        "CRWT 40803": [
+          "CRWT 30343",
+          "CRWT 30353",
+          "CRWT 30373"
+        ],
+        "ENGL 38023": [
+          "ENGL 20803"
+        ],
+        "ENGL 38013": [
+          "ENGL 20803"
+        ],
+        "WRIT 40273": [
+          "WRIT 38063"
+        ],
+        "WRIT 30390": [],
+        "WRIT 40233": [
+          "WRIT 20113"
+        ],
+        "WRIT 40243": [
+          "WRIT 20113"
+        ],
+        "WRIT 30223": [
+          "WRIT 20113"
+        ]
+      },
+      "fourYearPlan": {
+        "year1": {
+          "fall": [
+            {
+              "code": "ENGL 10803",
+              "title": "Introductory Composition: Writing as Inquiry",
+              "hours": 3,
+              "note": "TCU Core WCO"
+            }
+          ],
+          "spring": [
+            {
+              "code": "ENGL 20XX",
+              "title": "Lower-Division Elective",
+              "hours": 3
+            }
+          ]
+        },
+        "year2": {
+          "fall": [
+            {
+              "code": "ENGL 20803",
+              "title": "Writing Arguments",
+              "hours": 3,
+              "note": "TCU Core WCO (requires 30 hrs)"
+            },
+            {
+              "code": "ENGL 30133",
+              "title": "American Lit to 1865",
+              "hours": 3,
+              "category": "American Lit"
+            },
+            {
+              "code": "ENGL 30103",
+              "title": "Intro to Literary Theory",
+              "hours": 3,
+              "category": "Theory"
+            }
+          ],
+          "spring": [
+            {
+              "code": "ENGL 30673",
+              "title": "King Arthur: Lit & Legend",
+              "hours": 3,
+              "category": "British Lit / Early Lit"
+            },
+            {
+              "code": "ENGL 30693",
+              "title": "U.S. Multi-Ethnic Literature",
+              "hours": 3,
+              "category": "American Lit / Global"
+            }
+          ]
+        },
+        "year3": {
+          "fall": [
+            {
+              "code": "ENGL 30653",
+              "title": "Jane Austen: Novels & Films",
+              "hours": 3,
+              "category": "British Lit"
+            },
+            {
+              "code": "ENGL 38023",
+              "title": "Research Seminar in American Lit",
+              "hours": 3,
+              "category": "Junior Seminar"
+            }
+          ],
+          "spring": [
+            {
+              "code": "ENGL 40473",
+              "title": "Milton and His Contemporaries",
+              "hours": 3,
+              "category": "Early Lit"
+            },
+            {
+              "code": "CRWT 30343",
+              "title": "Fiction Writing Workshop I",
+              "hours": 3,
+              "category": "Writing"
+            }
+          ]
+        },
+        "year4": {
+          "fall": [
+            {
+              "code": "ENGL 30XX",
+              "title": "Upper-Division Elective",
+              "hours": 3,
+              "category": "Elective"
+            },
+            {
+              "code": "ENGL 30XX",
+              "title": "Upper-Division Elective",
+              "hours": 3,
+              "category": "Elective"
+            }
+          ],
+          "spring": [
+            {
+              "code": "ENGL 40XX",
+              "title": "Upper-Division Elective",
+              "hours": 3,
+              "category": "Elective"
+            },
+            {
+              "code": "ENGL 40XX",
+              "title": "Upper-Division Elective",
+              "hours": 3,
+              "category": "Elective"
+            }
+          ]
+        }
+      },
+      "highlightedCourses": {
+        "term": "Spring 2026",
+        "courses": [
+          {
+            "code": "ENGL 30653",
+            "title": "Jane Austen: Novels and Films",
+            "hours": 3,
+            "description": "Explore Jane Austen's novels and their film adaptations"
+          },
+          {
+            "code": "ENGL 30693",
+            "title": "U.S. Multi-Ethnic Literature",
+            "hours": 3,
+            "description": "Study diverse voices in American literature"
+          },
+          {
+            "code": "CRWT 30343",
+            "title": "Fiction Writing Workshop I",
+            "hours": 3,
+            "description": "Workshop-based fiction writing course"
+          },
+          {
+            "code": "WRIT 30603",
+            "title": "Rhetoric of Social Media",
+            "hours": 3,
+            "description": "Analyze rhetorical strategies in digital communication"
+          },
+          {
+            "code": "ENGL 40473",
+            "title": "Milton and his Contemporaries",
+            "hours": 3,
+            "description": "In-depth study of Milton and 17th-century literature"
+          },
+          {
+            "code": "WRIT 40563",
+            "title": "Multimedia Authoring: Sound & Podcasting",
+            "hours": 3,
+            "description": "Create audio content and podcast productions"
+          },
+          {
+            "code": "ENGL 30573",
+            "title": "African American Literature",
+            "hours": 3,
+            "description": "Survey of African American literary traditions"
+          }
+        ]
+      }
+    },
+    {
+      "id": "writing-rhetoric-ba",
+      "name": "Writing & Rhetoric",
+      "abbreviation": "WRIT",
+      "degree": "BA",
+      "totalHours": 33,
+      "url": "https://addran.tcu.edu/english/academics/undergraduate/major-writing.php",
+      "descriptions": [
+        "The Writing & Rhetoric major prepares students for careers in professional writing, digital media, and communication."
+      ],
+      "careerOptions": [
+        "Technical Writer",
+        "Content Strategist",
+        "Digital Marketing Manager",
+        "UX Writer",
+        "Social Media Manager",
+        "Communications Specialist",
+        "Multimedia Producer",
+        "Corporate Trainer",
+        "Grant Writer",
+        "Editor",
+        "Copywriter",
+        "Public Relations Specialist"
+      ],
+      "contacts": [
+        {
+          "role": "Department Chair",
+          "name": "Dr. Sharon Weltman",
+          "email": "sharon.weltman@tcu.edu",
+          "phone": "817-257-7240",
+          "office": "Reed 314A"
+        },
+        {
+          "role": "Academic Advisor",
+          "name": "English Department Office",
+          "email": "english@tcu.edu",
+          "phone": "817-257-7240",
+          "office": "Reed Hall 3rd Floor"
+        }
+      ],
+      "requirements": {
+        "categories": [
+          {
+            "id": "coreWriting",
+            "name": "Core Writing Course",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "ENGL 20803",
+                "title": "Writing Arguments",
+                "hours": 3,
+                "level": "lower"
+              }
+            ]
+          },
+          {
+            "id": "writingPublishing",
+            "name": "Writing & Publishing",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "WRIT 20113",
+                "title": "Technical and Professional Writing",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20323",
+                "title": "Introduction to Multimedia Authoring",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 30213",
+                "title": "Advanced Composition: Writing Genres",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30223",
+                "title": "Advanced Technical Writing",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30263",
+                "title": "Style",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30273",
+                "title": "Argument and Persuasion",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30390",
+                "title": "Publication Production (3 credits total)",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40233",
+                "title": "Writing for Publication",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40243",
+                "title": "Advanced Professional Writing",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40283",
+                "title": "Editing and Publishing",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "rhetoricsCultures",
+            "name": "Rhetorics & Cultures",
+            "hours": 6,
+            "courses": [
+              {
+                "code": "WRIT 20313",
+                "title": "Power & Protest",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20343",
+                "title": "The Rhetoric of Science",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20353",
+                "title": "Black Rhetoric and Language",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 30203",
+                "title": "Urban Rhetorics",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30243",
+                "title": "Rhetorical Practices in Culture",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30253",
+                "title": "Rhetorical Traditions",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30293",
+                "title": "Non-Human Rhetoric and Representation",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30613",
+                "title": "Writing Cross-culture Differences",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30623",
+                "title": "Rhetorics of American Identities",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30663",
+                "title": "Women's Rhetorics",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40253",
+                "title": "Propaganda Analysis & Persuasion",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40333",
+                "title": "Language, Rhetoric, & Culture",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40373",
+                "title": "The Rhetoric of Revolution",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30803",
+                "title": "Theories of Cinema",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "digitalRhetorics",
+            "name": "Digital Rhetorics & Design",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "WRIT 20303",
+                "title": "Writing Games",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20333",
+                "title": "Language, Technology and Society",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 20833",
+                "title": "Intro to Coding in the Humanities",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20813",
+                "title": "Introduction to the Digital Humanities",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "WRIT 30283",
+                "title": "Cyberliteracy",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30603",
+                "title": "Rhetoric of Social Media",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 30893",
+                "title": "Digital Inclusiveness",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40163",
+                "title": "Multimedia Author: Image & Hypertext",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40263",
+                "title": "Multimedia Authoring: Animation & Film",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40363",
+                "title": "Multimedia Authoring: Mobile Apps & eBooks",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40463",
+                "title": "Multimed Author: Comics Production",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40563",
+                "title": "Multimedia Authoring: Sound & Podcasting",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "internship",
+            "name": "Writing Internship",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "WRIT 40273",
+                "title": "Writing Internship",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "juniorSeminar",
+            "name": "Junior Writing Major Seminar",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "WRIT 38063",
+                "title": "Writing Major Seminar",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "electives",
+            "name": "Electives (ENGL, WRIT, CRWT)",
+            "hours": 12,
+            "courses": [
+              {
+                "code": "ANY",
+                "title": "Any ENGL, WRIT, or CRWT class",
+                "hours": 3
+              }
+            ]
+          }
+        ],
+        "maxLowerDivision": 9
+      },
+      "maxLowerDivision": 9,
+      "note": "Students who declared Fall 2025 may count 12 lower-division hours",
+      "internship": {
+        "description": "WRIT 40273 - Writing Internship. Gain real-world experience in professional or creative writing contexts.",
+        "courses": [
+          {
+            "code": "WRIT 40273",
+            "title": "Writing Internship",
+            "hours": 3
+          }
+        ]
+      },
+      "prerequisites": {
+        "CRWT 30343": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30353": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30233": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30373": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30363": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 40203": [
+          "CRWT 30343"
+        ],
+        "CRWT 40213": [
+          "CRWT 30353"
+        ],
+        "CRWT 40133": [
+          "CRWT 30233"
+        ],
+        "CRWT 40223": [
+          "CRWT 30373"
+        ],
+        "CRWT 40703": [
+          "CRWT 30343",
+          "CRWT 30353",
+          "CRWT 30233",
+          "CRWT 30373"
+        ],
+        "CRWT 40803": [
+          "CRWT 30343",
+          "CRWT 30353",
+          "CRWT 30373"
+        ],
+        "ENGL 38023": [
+          "ENGL 20803"
+        ],
+        "ENGL 38013": [
+          "ENGL 20803"
+        ],
+        "WRIT 40273": [
+          "WRIT 38063"
+        ],
+        "WRIT 30390": [],
+        "WRIT 40233": [
+          "WRIT 20113"
+        ],
+        "WRIT 40243": [
+          "WRIT 20113"
+        ],
+        "WRIT 30223": [
+          "WRIT 20113"
+        ]
+      },
+      "fourYearPlan": {
+        "year1": {
+          "fall": [
+            {
+              "code": "ENGL 10803",
+              "title": "Introductory Composition: Writing as Inquiry",
+              "hours": 3,
+              "note": "TCU Core WCO"
+            },
+            {
+              "code": "WRIT 20113",
+              "title": "Technical and Professional Writing",
+              "hours": 3,
+              "category": "Writing & Publishing"
+            }
+          ],
+          "spring": [
+            {
+              "code": "WRIT 20313",
+              "title": "Power & Protest",
+              "hours": 3,
+              "category": "Rhetorics & Cultures"
+            }
+          ]
+        },
+        "year2": {
+          "fall": [
+            {
+              "code": "ENGL 20803",
+              "title": "Writing Arguments",
+              "hours": 3,
+              "note": "TCU Core WCO (requires 30 hrs)"
+            },
+            {
+              "code": "WRIT 30243",
+              "title": "Rhetorical Practices in Culture",
+              "hours": 3,
+              "category": "Rhetorics & Cultures"
+            }
+          ],
+          "spring": [
+            {
+              "code": "WRIT 30213",
+              "title": "Advanced Composition: Writing Genres",
+              "hours": 3,
+              "category": "Writing & Publishing"
+            },
+            {
+              "code": "WRIT 30XX",
+              "title": "Elective",
+              "hours": 3,
+              "category": "Elective"
+            }
+          ]
+        },
+        "year3": {
+          "fall": [
+            {
+              "code": "WRIT 38063",
+              "title": "Writing Major Seminar",
+              "hours": 3,
+              "category": "Junior Seminar"
+            },
+            {
+              "code": "WRIT 40333",
+              "title": "Language, Rhetoric, & Culture",
+              "hours": 3,
+              "category": "Rhetorics & Cultures"
+            }
+          ],
+          "spring": [
+            {
+              "code": "WRIT 40273",
+              "title": "Writing Internship",
+              "hours": 3,
+              "category": "Internship"
+            },
+            {
+              "code": "WRIT 40XX",
+              "title": "Elective",
+              "hours": 3,
+              "category": "Elective"
+            }
+          ]
+        },
+        "year4": {
+          "fall": [
+            {
+              "code": "WRIT 40563",
+              "title": "Multimedia Authoring: Sound & Podcasting",
+              "hours": 3,
+              "category": "Digital Rhetorics"
+            },
+            {
+              "code": "WRIT 40XX",
+              "title": "Elective",
+              "hours": 3,
+              "category": "Elective"
+            }
+          ],
+          "spring": [
+            {
+              "code": "ENGL 30XX",
+              "title": "Elective",
+              "hours": 3,
+              "category": "Elective"
+            },
+            {
+              "code": "CRWT 30XX",
+              "title": "Elective",
+              "hours": 3,
+              "category": "Elective"
+            }
+          ]
+        }
+      },
+      "highlightedCourses": {
+        "term": "Spring 2026",
+        "courses": [
+          {
+            "code": "ENGL 30653",
+            "title": "Jane Austen: Novels and Films",
+            "hours": 3,
+            "description": "Explore Jane Austen's novels and their film adaptations"
+          },
+          {
+            "code": "ENGL 30693",
+            "title": "U.S. Multi-Ethnic Literature",
+            "hours": 3,
+            "description": "Study diverse voices in American literature"
+          },
+          {
+            "code": "CRWT 30343",
+            "title": "Fiction Writing Workshop I",
+            "hours": 3,
+            "description": "Workshop-based fiction writing course"
+          },
+          {
+            "code": "WRIT 30603",
+            "title": "Rhetoric of Social Media",
+            "hours": 3,
+            "description": "Analyze rhetorical strategies in digital communication"
+          },
+          {
+            "code": "ENGL 40473",
+            "title": "Milton and his Contemporaries",
+            "hours": 3,
+            "description": "In-depth study of Milton and 17th-century literature"
+          },
+          {
+            "code": "WRIT 40563",
+            "title": "Multimedia Authoring: Sound & Podcasting",
+            "hours": 3,
+            "description": "Create audio content and podcast productions"
+          },
+          {
+            "code": "ENGL 30573",
+            "title": "African American Literature",
+            "hours": 3,
+            "description": "Survey of African American literary traditions"
+          }
+        ]
+      }
+    },
+    {
+      "id": "creative-writing-ba",
+      "name": "Creative Writing",
+      "abbreviation": "CRWT",
+      "degree": "BA",
+      "totalHours": 33,
+      "url": "https://addran.tcu.edu/english/academics/undergraduate/major-creative.php",
+      "descriptions": [
+        "The Creative Writing major develops skills in fiction, poetry, creative nonfiction, and drama through workshop-based instruction."
+      ],
+      "careerOptions": [
+        "Author / Novelist",
+        "Poet",
+        "Screenwriter",
+        "Playwright",
+        "Editor",
+        "Publishing Professional",
+        "Literary Agent",
+        "Creative Director",
+        "Content Creator",
+        "Copywriter",
+        "Teacher / Professor",
+        "Journalist"
+      ],
+      "contacts": [
+        {
+          "role": "Department Chair",
+          "name": "Dr. Sharon Weltman",
+          "email": "sharon.weltman@tcu.edu",
+          "phone": "817-257-7240",
+          "office": "Reed 314A"
+        },
+        {
+          "role": "Academic Advisor",
+          "name": "English Department Office",
+          "email": "english@tcu.edu",
+          "phone": "817-257-7240",
+          "office": "Reed Hall 3rd Floor"
+        }
+      ],
+      "requirements": {
+        "categories": [
+          {
+            "id": "prerequisite",
+            "name": "Prerequisite",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "CRWT 10203",
+                "title": "Intro to Creative Writing",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "CRWT 20103",
+                "title": "Reading as a Writer",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "CRWT 20133",
+                "title": "Writing for Performance",
+                "hours": 3,
+                "level": "lower"
+              }
+            ]
+          },
+          {
+            "id": "upperDivisionCW",
+            "name": "Upper Division Creative Writing",
+            "hours": 12,
+            "courses": [
+              {
+                "code": "CRWT 30233",
+                "title": "Creative Nonfiction Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30343",
+                "title": "Fiction Writing Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30353",
+                "title": "Poetry Writing Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30363",
+                "title": "Digital Creative Writing",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 30373",
+                "title": "Drama Writing Workshop I",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40133",
+                "title": "Creative Nonfiction Workshop II",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40203",
+                "title": "Fiction Writing Workshop II",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40213",
+                "title": "Poetry Writing Workshop II",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40223",
+                "title": "Drama Writing Workshop II",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40703",
+                "title": "Advanced Multi-Genre Workshop",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40803",
+                "title": "Advanced Literary Forms",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "advancedSeminar",
+            "name": "Advanced Creative Writing Seminar",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "CRWT 40703",
+                "title": "Advanced Multi-Genre Workshop",
+                "hours": 3
+              },
+              {
+                "code": "CRWT 40803",
+                "title": "Advanced Literary Forms",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "internship",
+            "name": "Internship",
+            "hours": 3,
+            "courses": [
+              {
+                "code": "WRIT 30390",
+                "title": "Publication Production (3 credits total)",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40273",
+                "title": "Writing Internship",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "englElectives",
+            "name": "Upper-Division ENGL Electives",
+            "hours": 6,
+            "courses": [
+              {
+                "code": "ENGL 30103",
+                "title": "Intro to Literary Theory",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30133",
+                "title": "American Lit to 1865",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30593",
+                "title": "American Fiction, 1960 to the Present",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30653",
+                "title": "Jane Austen: Novels and Films",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30673",
+                "title": "King Arthur in Literature & Legend",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30693",
+                "title": "U.S. Multi-Ethnic Literature",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 30803",
+                "title": "Theories of Cinema",
+                "hours": 3
+              },
+              {
+                "code": "ENGL 40473",
+                "title": "Milton and his Contemporaries",
+                "hours": 3
+              }
+            ]
+          },
+          {
+            "id": "writElectives",
+            "name": "Upper-Division WRIT Electives",
+            "hours": 6,
+            "courses": [
+              {
+                "code": "WRIT 30243",
+                "title": "Rhetorical Practice in Culture – Global Rhetorics",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40333",
+                "title": "Language, Rhetoric, & Culture",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40373",
+                "title": "The Rhetoric of Revolution",
+                "hours": 3
+              },
+              {
+                "code": "WRIT 40563",
+                "title": "Multimedia Authoring: Sound & Podcast",
+                "hours": 3
+              }
+            ]
+          }
+        ],
+        "maxLowerDivision": 3
+      },
+      "maxLowerDivision": 3,
+      "internship": {
+        "description": "WRIT 40273 - Writing Internship. Gain real-world experience in professional or creative writing contexts.",
+        "courses": [
+          {
+            "code": "WRIT 40273",
+            "title": "Writing Internship",
+            "hours": 3
+          }
+        ]
+      },
+      "prerequisites": {
+        "CRWT 30343": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30353": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30233": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30373": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 30363": [
+          "CRWT 10203",
+          "CRWT 20103",
+          "CRWT 20133"
+        ],
+        "CRWT 40203": [
+          "CRWT 30343"
+        ],
+        "CRWT 40213": [
+          "CRWT 30353"
+        ],
+        "CRWT 40133": [
+          "CRWT 30233"
+        ],
+        "CRWT 40223": [
+          "CRWT 30373"
+        ],
+        "CRWT 40703": [
+          "CRWT 30343",
+          "CRWT 30353",
+          "CRWT 30233",
+          "CRWT 30373"
+        ],
+        "CRWT 40803": [
+          "CRWT 30343",
+          "CRWT 30353",
+          "CRWT 30373"
+        ],
+        "ENGL 38023": [
+          "ENGL 20803"
+        ],
+        "ENGL 38013": [
+          "ENGL 20803"
+        ],
+        "WRIT 40273": [
+          "WRIT 38063"
+        ],
+        "WRIT 30390": [],
+        "WRIT 40233": [
+          "WRIT 20113"
+        ],
+        "WRIT 40243": [
+          "WRIT 20113"
+        ],
+        "WRIT 30223": [
+          "WRIT 20113"
+        ]
+      },
+      "fourYearPlan": {
+        "year1": {
+          "fall": [
+            {
+              "code": "ENGL 10803",
+              "title": "Introductory Composition: Writing as Inquiry",
+              "hours": 3,
+              "note": "TCU Core WCO"
+            },
+            {
+              "code": "CRWT 10203",
+              "title": "Intro to Creative Writing",
+              "hours": 3,
+              "category": "Prerequisite"
+            }
+          ],
+          "spring": [
+            {
+              "code": "CRWT 20103",
+              "title": "Reading as a Writer",
+              "hours": 3,
+              "category": "Prerequisite (alternate)"
+            }
+          ]
+        },
+        "year2": {
+          "fall": [
+            {
+              "code": "ENGL 20803",
+              "title": "Writing Arguments",
+              "hours": 3,
+              "note": "TCU Core WCO (requires 30 hrs)"
+            },
+            {
+              "code": "CRWT 30343",
+              "title": "Fiction Writing Workshop I",
+              "hours": 3,
+              "category": "Upper Division CW"
+            }
+          ],
+          "spring": [
+            {
+              "code": "CRWT 30353",
+              "title": "Poetry Writing Workshop I",
+              "hours": 3,
+              "category": "Upper Division CW"
+            },
+            {
+              "code": "WRIT 30243",
+              "title": "Rhetorical Practice in Culture",
+              "hours": 3,
+              "category": "WRIT Elective"
+            }
+          ]
+        },
+        "year3": {
+          "fall": [
+            {
+              "code": "CRWT 40203",
+              "title": "Fiction Writing Workshop II",
+              "hours": 3,
+              "category": "Upper Division CW"
+            },
+            {
+              "code": "ENGL 30693",
+              "title": "U.S. Multi-Ethnic Literature",
+              "hours": 3,
+              "category": "ENGL Elective"
+            }
+          ],
+          "spring": [
+            {
+              "code": "CRWT 30233",
+              "title": "Creative Nonfiction Workshop I",
+              "hours": 3,
+              "category": "Upper Division CW"
+            },
+            {
+              "code": "WRIT 40333",
+              "title": "Language, Rhetoric, & Culture",
+              "hours": 3,
+              "category": "WRIT Elective"
+            }
+          ]
+        },
+        "year4": {
+          "fall": [
+            {
+              "code": "CRWT 40703",
+              "title": "Advanced Multi-Genre Workshop",
+              "hours": 3,
+              "category": "Advanced Seminar"
+            },
+            {
+              "code": "WRIT 30390",
+              "title": "Publication Production",
+              "hours": 3,
+              "category": "Internship"
+            }
+          ],
+          "spring": [
+            {
+              "code": "WRIT 30390",
+              "title": "Publication Production (cont.)",
+              "hours": 0,
+              "note": "Continue from Fall"
+            },
+            {
+              "code": "ENGL 30XX",
+              "title": "Upper-Division ENGL",
+              "hours": 3,
+              "category": "ENGL Elective"
+            }
+          ]
+        }
+      },
+      "highlightedCourses": {
+        "term": "Spring 2026",
+        "courses": [
+          {
+            "code": "ENGL 30653",
+            "title": "Jane Austen: Novels and Films",
+            "hours": 3,
+            "description": "Explore Jane Austen's novels and their film adaptations"
+          },
+          {
+            "code": "ENGL 30693",
+            "title": "U.S. Multi-Ethnic Literature",
+            "hours": 3,
+            "description": "Study diverse voices in American literature"
+          },
+          {
+            "code": "CRWT 30343",
+            "title": "Fiction Writing Workshop I",
+            "hours": 3,
+            "description": "Workshop-based fiction writing course"
+          },
+          {
+            "code": "WRIT 30603",
+            "title": "Rhetoric of Social Media",
+            "hours": 3,
+            "description": "Analyze rhetorical strategies in digital communication"
+          },
+          {
+            "code": "ENGL 40473",
+            "title": "Milton and his Contemporaries",
+            "hours": 3,
+            "description": "In-depth study of Milton and 17th-century literature"
+          },
+          {
+            "code": "WRIT 40563",
+            "title": "Multimedia Authoring: Sound & Podcasting",
+            "hours": 3,
+            "description": "Create audio content and podcast productions"
+          },
+          {
+            "code": "ENGL 30573",
+            "title": "African American Literature",
+            "hours": 3,
+            "description": "Survey of African American literary traditions"
+          }
+        ]
+      }
+    }
+  ],
+  "advisingNotes": [
+    "Most 30000+ level ENGL courses require: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course",
+    "Students who declared Fall 2025 may count 12 lower-division hours for Writing & Rhetoric (normally 9 hours)",
+    "Only 3 lower-division hours count toward Creative Writing major",
+    "No more than 9 hours of lower-division courses total count toward English major"
+  ]
+}

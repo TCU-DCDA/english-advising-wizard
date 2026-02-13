@@ -146,7 +146,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 10803",
-    "title": "Intro to Literature",
+    "title": "Introductory Composition: Writing as Inquiry",
     "hours": 3,
     "description": "Course satisfies Written Communication 1 (WCO) requirement in the TCU Core Curriculum.  Writing workshop where students compose multiple pieces in a range of genres using appropriate rhetorical conventions, learn strategies for reading texts and visual critically, and incorporate suitable sources.  Students will engage in processes for invention, drafting, critiquing, revising, and editing of prose.  Note: themed sections on a range of topics may be offered and will be designated with a descriptive course title."
   },
