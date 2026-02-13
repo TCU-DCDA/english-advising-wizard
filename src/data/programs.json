@@ -166,8 +166,8 @@
   "writing": {
     "name": "Writing & Rhetoric",
     "totalHours": 33,
-    "maxLowerDivision": 9,
-    "note": "Students who declared Fall 2025 may count 12 lower-division hours",
+    "maxLowerDivision": 12,
+    "note": "Current policy allows 12 lower-division hours (students who declared before Fall 2025 should consult their advisor)",
     "description": "The Writing & Rhetoric major prepares students for careers in professional writing, digital media, and communication.",
     "requirements": {
       "coreWriting": {

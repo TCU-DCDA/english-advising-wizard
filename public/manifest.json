@@ -1,7 +1,7 @@
 {
   "manifestVersion": "1.0",
   "department": "English",
-  "lastUpdated": "2026-02-13T20:41:52.836Z",
+  "lastUpdated": "2026-02-13T21:39:09.040Z",
   "wizardUrl": "https://curtrode.github.io/tcu-english-advising/",
   "programs": [
     {
@@ -1190,10 +1190,10 @@
             ]
           }
         ],
-        "maxLowerDivision": 9
+        "maxLowerDivision": 12
       },
-      "maxLowerDivision": 9,
-      "note": "Students who declared Fall 2025 may count 12 lower-division hours",
+      "maxLowerDivision": 12,
+      "note": "Current policy allows 12 lower-division hours (students who declared before Fall 2025 should consult their advisor)",
       "internship": {
         "description": "WRIT 40273 - Writing Internship. Gain real-world experience in professional or creative writing contexts.",
         "courses": [
