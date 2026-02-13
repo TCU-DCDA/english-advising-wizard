@@ -337,3 +337,85 @@ For this branch (`claude/chatbot-wizard-integration-fRndX`), the deliverable is:
 5. **Verify** the React app still works identically after the data extraction
 
 This establishes the pattern. Phases 2-5 follow in their respective repos.
+
+---
+
+## Key Architectural Decisions
+
+These decisions were made during planning and should be treated as settled unless revisited explicitly.
+
+### 1. DCDA Wizard Is the Template Architecture
+
+Both wizards were evaluated for scalability. The **DCDA wizard's architecture** is the model for future department wizards:
+
+- **TypeScript** with full interfaces in `types/index.ts` — enforces the data contract at compile time
+- **Data separated into JSON files** (`data/requirements.json`, `data/courses.json`, `data/offerings-sp26.json`) — editable without touching application code
+- **Modular components** — 20+ files across `components/`, `hooks/`, `services/` directories
+- **Custom hooks** (`useStudentData`, `useWizardFlow`, `useRequirements`) — reusable logic separated from UI
+- **Generic wizard flow** — `useWizardFlow` takes a list of steps, not hardcoded to any department
+- **Tests** (vitest + Testing Library)
+- **PWA-enabled** (offline, installable)
+
+The English wizard has valuable **content features** that the DCDA wizard lacks (prerequisite chain visualization, four-year planning, PDF export, course catalog search). These should be preserved and eventually generalized, but the DCDA wizard's structural patterns should be adopted.
+
+The English wizard is currently a monolith: `App.jsx` is 2,167 lines containing all data, all components, and all logic. Phase 1 begins the migration by extracting data into standalone files. Full modularization (separate component files, TypeScript, custom hooks) is a future effort.
+
+### 2. No Department Chatbots — Sandra Is the Single Conversational Interface
+
+There is no value in creating per-department chatbots. Sandra already answers department-specific questions for all 60 AddRan programs. With manifest data, she'll have wizard-level depth for every department that publishes one. A department chatbot would just be a worse Sandra that only knows one department.
+
+The correct architecture:
+- **General question** → Sandra (conversational, breadth across all departments)
+- **Degree planning** → Department Wizard (structured UI, interactive, stateful)
+- **Sandra detects planning intent** → Links student to the relevant wizard
+
+### 3. Fallback-First Strategy for Sandra
+
+When Sandra consumes manifests (Phase 3), the design is **additive, not destructive**:
+
+- Sandra keeps all existing `program-data/*.json` files for the ~55 departments without wizards
+- For departments with wizards, manifest data takes priority
+- If a manifest fetch fails, Sandra falls back to her existing data — she never gets *worse*
+- This means the Sandra refactoring can be merged even before any wizards publish manifests
+
+### 4. File-Per-Concern Data Layout
+
+Instead of one large data file per department, data is split by update frequency:
+
+```
+src/data/
+  programs.json        ← requirements, hours, categories (changes rarely)
+  contacts.json        ← names, emails, offices (changes occasionally)
+  prerequisites.json   ← course chains (changes rarely)
+  four-year-plans.json ← suggested sequences (changes per semester)
+  highlights.json      ← featured courses for current term (changes every semester)
+```
+
+This matters because department contacts share data via email. When someone says "here are the highlighted courses for Fall 2027," the maintainer edits only `highlights.json` without risk of breaking requirement logic. Each file is small, focused, and hard to mess up.
+
+### 5. Content Management: Developer-Managed with Structured Files (Option A)
+
+The current workflow: department contacts email updates, a developer translates them into code/JSON and deploys. The integration plan optimizes this handoff rather than replacing it:
+
+- **Phase 1** makes updates faster: editing a focused JSON file instead of a 2,167-line JSX component
+- **Build-time validation** via the manifest generator catches typos before they reach students
+- **No admin panel needed yet** — that's only justified when multiple department admins need self-service
+
+The typical semester rhythm:
+- **Before each semester:** Update `highlights.json` and offerings. ~15 minutes per department.
+- **Once a year (catalog changes):** Update `programs.json`. Less frequent, more careful.
+- **Occasionally:** Update `contacts.json`. Trivial.
+
+This is sustainable for one person managing 3+ department wizards. An admin panel (Option B) would only be built if 10+ departments need updates in the same window.
+
+### 6. Branching Strategy Across Three Repos
+
+Each repo's changes are independent until Phase 3. Nothing depends on anything else until Sandra starts fetching manifests.
+
+| Phase | Repo | Branch | Risk | Can Merge Independently |
+|---|---|---|---|---|
+| 1 | `tcu-english-advising` | `claude/chatbot-wizard-integration-fRndX` | Low — app renders identically, data just moves to files | Yes |
+| 2 | `dcda-advisor-mobile` | `feature/manifest-export` | Very low — purely additive, new files only | Yes |
+| 3 | `chat-ran-bot` | `feature/wizard-manifests` | Medium — refactors index.js, but with fallbacks | Yes (falls back to existing data) |
+
+Each step is independently mergeable and independently revertible. At no point does merging one repo require the others to be done.
