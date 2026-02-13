@@ -178,6 +178,26 @@ Minimum alert at launch:
 - No external monitoring stack beyond Cloud Logging + one log-based alert.
 - No hard requirement for full schema content-hash sync before Phase 5.
 
+## Department Wizard Names
+
+Each department wizard has a named persona for student-facing identity:
+
+| Wizard Name | Department | Code |
+|---|---|---|
+| Sandra | AddRan College (chatbot) | — |
+| Engelina | English | ENGL |
+| Ada | DCDA | DCDA |
+| Polly | Political Science | POSC |
+| Deacon | Economics | ECON |
+| Hester | History | HIST |
+| Cruz | Criminal Justice | CRJU |
+| Anton | Anthropology | ANTH |
+| Sofia/Sophie | Sociology | SOCI |
+| Philomena | Philosophy | PHIL |
+| Lola | Modern Languages | MOLA |
+| George | Geography | GEOG |
+| Aurelia | Religion | RELI |
+
 ## Post-Launch Follow-ups
 
 1. Move this execution plan to `chat-ran-bot` after Phase 1 merges, and keep a permanent pointer file in `tcu-english-advising`.
