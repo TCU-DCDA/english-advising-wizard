@@ -84,6 +84,83 @@ These constraints apply to all current and future projects in the ecosystem:
 | 5 | Wizard repos + Sandra | N/A | Optional automation for faster refresh (if needed) |
 | 6 | Future dept wizard repos | N/A | Onboarding template and registration flow |
 
+## Wizard Baseline Feature Checklist
+
+All department wizards in the ecosystem must meet this baseline before onboarding to Sandra. This checklist defines the template for Phase 6 and identifies where existing wizards need remediation.
+
+Legend: **Y** = has it, **N** = missing (needs work), **P** = partial
+
+### Required
+
+| # | Feature | English | DCDA | Notes |
+|---|---------|---------|------|-------|
+| 1 | FERPA privacy notice dialog | **N** | **Y** | English needs a notice added once user-input features exist (or now, as baseline policy) |
+| 2 | AI accuracy disclaimer | N/A | N/A | Only required if wizard uses AI-generated content |
+| 3 | No authentication | **Y** | **Y** | — |
+| 4 | `localStorage` persistence | **N** | **Y** | English resets on refresh — needs save/restore |
+| 5 | Import/export (CSV or JSON) | **N** | **Y** | English has no way to save/reload student work |
+| 6 | PDF export (jsPDF or equivalent) | **P** | **Y** | English uses browser `window.print` — fragile on mobile, no custom layout |
+| 7 | Advisor scheduling link | **N** | **Y** | English needs Calendly or equivalent link in UI |
+| 8 | Print-friendly output | **Y** | **Y** | — |
+| 9 | PWA manifest + service worker | **N** | **Y** | English has no PWA support — not installable, no offline |
+| 10 | Mobile-first responsive design | **P** | **Y** | English is responsive but not mobile-first |
+| 11 | Accessible UI primitives (ARIA) | **N** | **P** | English uses basic HTML; DCDA uses Radix but has a gap in NameStep |
+| 12 | Keyboard navigation | **Y** | **Y** | — |
+| 13 | TypeScript | **N** | **Y** | English is plain JavaScript — monolithic `App.jsx` |
+| 14 | Modular component architecture | **N** | **Y** | English is a 1,953-line monolith |
+| 15 | Test suite with CI | **N** | **Y** | English has no tests |
+| 16 | GitHub Actions CI/CD | **P** | **Y** | English has deploy only, no test/schema check steps |
+| 17 | App-level error boundary | **N** | **N** | Neither wizard has one |
+| 18 | `data/courses.json` catalog | **P** | **Y** | English courses are hardcoded in `allCourses.js`, not JSON |
+| 19 | `data/requirements.json` | **P** | **Y** | English uses `programs.json` with different structure |
+| 20 | `data/offerings-{term}.json` | **N** | **Y** | English has no semester offerings data |
+| 21 | `data/contacts.json` | **Y** | **Y** | — |
+| 22 | `data/career-options.json` | **Y** | **P** | DCDA has TODO placeholders — career data forthcoming |
+| 23 | `scripts/generate-manifest.js` | **Y** | **Y** | — |
+| 24 | `schemas/manifest.schema.json` | **Y** | **Y** | — |
+| 25 | Build-time schema validation | **Y** | **Y** | — |
+| 26 | CI schema version check | **N** | **Y** | English is the schema source of truth, so not strictly needed — but should self-validate |
+
+### Recommended
+
+| # | Feature | English | DCDA | Notes |
+|---|---------|---------|------|-------|
+| 27 | Prerequisite data per course | **Y** | **N** | DCDA has no prerequisite mappings |
+| 28 | Prerequisite validation/warnings | **Y** | **N** | DCDA relies on offerings data instead |
+| 29 | Visual prerequisite chain/map | **Y** | **N** | — |
+| 30 | Suggested semester sequences (4-year plan) | **Y** | **Y** | Different implementations — both adequate |
+| 31 | Expected graduation date input | **Y** | **Y** | — |
+| 32 | Capstone/senior requirement auto-scheduling | **N** | **Y** | — |
+| 33 | Summer semester toggle | **N** | **Y** | — |
+| 34 | Progress visualization (ring/bar/percentage) | **Y** | **P** | DCDA is text-based checklist only |
+| 35 | Category-by-category completion status | **Y** | **Y** | — |
+| 36 | Student notes field | **N** | **Y** | — |
+
+### Remediation summary
+
+**English wizard (`english-advising-wizard`)** — needs significant work to reach baseline:
+- Add FERPA notice dialog
+- Add `localStorage` persistence (save/restore on refresh)
+- Add CSV/JSON import/export
+- Replace `window.print` with jsPDF export
+- Add advisor scheduling link
+- Add PWA support (manifest, service worker, install prompt)
+- Migrate to TypeScript
+- Refactor monolithic `App.jsx` into modular components
+- Add test suite and CI test step
+- Extract hardcoded course data to JSON files
+- Add semester offerings data
+- Add error boundary
+
+**DCDA wizard (`dcda-advising-wizard`)** — close to baseline, minor gaps:
+- Fill `data/career-options.json` with real career data (in progress)
+- Fix NameStep accessibility gap (add `role="radiogroup"` / `aria-pressed`)
+- Add app-level error boundary
+- Consider adding prerequisite data and validation (recommended, not required)
+- Consider adding visual progress indicator beyond text checklist (recommended)
+
+> **Phase 6 action:** Use DCDA wizard as the template for new department wizards. The English wizard predates the ecosystem architecture and will require a dedicated remediation pass (can be scoped as a separate effort after Phase 3).
+
 ## Detailed Implementation Requirements
 
 ### Phase 1: English Wizard (`english-advising-wizard`)
