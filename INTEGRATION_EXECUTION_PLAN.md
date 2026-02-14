@@ -14,7 +14,30 @@ Use this document for build and rollout work across:
 
 **Related:** [TCU AI Innovation Prize](https://www.tcu.edu/ai/innovation-prize.php)
 
-> **Document location:** This file lives in `english-advising-wizard` alongside all active project repos under `active/`. When a shared coordination repo exists (Phase 5+), move it there as the canonical home.
+> **Document location:** This file lives in `english-advising-wizard` alongside all active project repos under `active/`. When a shared coordination repo exists (Phase 6+), move it there as the canonical home.
+
+## FERPA Compliance
+
+All projects in this ecosystem handle published academic program information (catalogs, requirements, career paths) — not student education records. No project connects to TCU identity systems (SSO, SIS, Registrar) or stores personally identifiable student data on external servers.
+
+### Per-project status
+
+| Project | Data model | FERPA exposure | User-facing notice |
+|---|---|---|---|
+| `english-advising-wizard` | Static program data, no user input | None | None required — add if user input features are added |
+| `dcda-advising-wizard` | Student enters course selections; stored in browser `localStorage` only | None — data never leaves device | FERPA privacy dialog in WelcomeStep |
+| `addran-advisor-chat` | Anonymous chat; conversations logged to Firestore without authentication or student identifiers | None — no PII, no linkage to student records | AI accuracy disclaimer in UI and PDF export |
+
+### Constraints
+
+These constraints apply to all current and future projects in the ecosystem:
+
+1. **No authentication for student-facing tools.** Wizards and Sandra must not require TCU login or link sessions to student identity unless a formal privacy review is completed.
+2. **No education records.** No project stores, transmits, or infers grades, GPA, transcripts, enrollment status, or academic standing.
+3. **Local-first for student input.** When a wizard collects student course selections or planning data, storage must default to `localStorage`. Any transmission to an external server (e.g., Power Automate email workflow) requires explicit user consent and a visible privacy notice.
+4. **Analytics must be aggregate-only.** Conversation analytics (Phase 4) derive anonymous counts and trends. No individual session reconstruction or user profiling.
+5. **Manifest data is public.** Wizard manifests contain published program information (catalog data, requirements, contacts). Manifests must never include student data.
+6. **Review trigger.** If any project adds authentication, integrates with a student records system, or transmits user-entered data to an external service, pause development and complete a FERPA impact review before deployment.
 
 ## Final Decisions
 
@@ -57,8 +80,9 @@ Use this document for build and rollout work across:
 | 1 | `english-advising-wizard` | `claude/chatbot-wizard-integration-fRndX` | Extract data from `App.jsx`, add manifest generator, publish `manifest.json`, add schema |
 | 2 | `dcda-advising-wizard` | `feature/manifest-export` | Add manifest generator, include contacts/career data, publish `manifest.json`, copy schema + CI version check |
 | 3 | `addran-advisor-chat` | `feature/wizard-manifests` | Add registry + loader + manifest-to-context, enable fallbacks, remove hardcoded English/DCDA context sources |
-| 4 | Wizard repos + Sandra | N/A | Optional automation for faster refresh (if needed) |
-| 5 | Future dept wizard repos | N/A | Onboarding template and registration flow |
+| 4 | `addran-advisor-chat` | `feature/analytics` | Enrich conversation documents, add FERPA-safe analytics dashboard |
+| 5 | Wizard repos + Sandra | N/A | Optional automation for faster refresh (if needed) |
+| 6 | Future dept wizard repos | N/A | Onboarding template and registration flow |
 
 ## Detailed Implementation Requirements
 
@@ -119,6 +143,44 @@ Use this document for build and rollout work across:
 - Compare local `schemas/manifest.schema.json` version with source-of-truth schema version.
 - Fail CI when versions diverge.
 
+### Phase 4: Sandra Analytics (`addran-advisor-chat`)
+
+FERPA compliance constraint: Sandra has no authentication and collects no PII. All analytics are anonymous aggregate metrics derived from conversation documents already stored in Firestore. No student identity linkage exists or is introduced. This phase does not change what data is collected — it enriches existing documents at write time and adds dashboard visualizations.
+
+#### Tier 1: Server-side enrichment (low effort)
+
+Enrich the existing `conversations` document written at chat time in `functions/index.js`:
+
+New fields added at write time:
+- `sessionId` — anonymous session token from client (already sent in feedback, not yet stored in conversations).
+- `hour` — integer 0–23, derived from server timestamp.
+- `dayOfWeek` — integer 0–6 (Sunday = 0), derived from server timestamp.
+- `topics` — string array, server-side topic detection (reuse keyword patterns from admin.js `computeTopTopics`, run server-side).
+- `programs` — string array, server-side program mention detection (reuse patterns from admin.js `computeTopPrograms`, run server-side).
+- `exchangeIndex` — integer, nth message in this session (derived from `conversationHistory` length).
+
+Move topic and program detection logic from client-side `admin.js` to a shared server-side function so enrichment happens once at write time rather than recomputed on every admin page load.
+
+#### Tier 2: Admin dashboard visualizations (moderate effort)
+
+New views in `admin.html` / `admin.js`, all computed from enriched conversation documents:
+
+1. **Time-of-use heatmap** — hour (y-axis) x day-of-week (x-axis), cell color = conversation count. Shows when students use Sandra.
+2. **Traffic over time** — daily conversation count line chart. Shows seasonal patterns and registration spikes.
+3. **Session depth histogram** — distribution of exchanges per session. Shows whether students get answers quickly or struggle.
+4. **Topic trend lines** — topic counts per week over time. Shows which advising topics are growing or declining.
+5. **Program popularity ranking** — bar chart with trend arrows (up/down vs. prior period). Shows which programs generate the most interest.
+6. **Content gap report** — topics correlated with negative feedback or single-exchange sessions. Flags where Sandra's data may be incomplete.
+
+No new backend endpoints required — existing `adminConversations` endpoint returns enriched documents. Pagination enhancement: raise or remove the current 200-document limit, or add date-range query parameters.
+
+#### Tier 3: Claude-powered classification (optional, higher effort)
+
+- Use Claude to classify each user message into a structured taxonomy (program inquiry, career question, requirement question, scheduling, general) at write time.
+- Adds ~$0.001 per classification in API cost.
+- Produces higher-quality topic tags than regex patterns.
+- Defer to post-launch if Tier 1+2 prove sufficient.
+
 ## Loader Behavior Spec (Phase 3)
 
 For each department request path:
@@ -173,12 +235,19 @@ Minimum alert at launch:
 - Logging and alerting configured.
 - CI schema version pin check active.
 
+### Phase 4 Done
+- Conversation documents include `sessionId`, `hour`, `dayOfWeek`, `topics`, `programs`, and `exchangeIndex`.
+- Topic and program detection runs server-side at write time.
+- Admin dashboard includes time-of-use heatmap, traffic-over-time chart, session depth histogram, topic trends, program popularity, and content gap report.
+- Admin conversations endpoint supports date-range queries or pagination beyond 200 documents.
+- No PII collected. No authentication added to chat. No linkage to student identity systems.
+
 ## Non-Goals (Current Rollout)
 
 - No admin UI for department self-service editing.
 - No cross-instance distributed lock for manifest refresh.
 - No external monitoring stack beyond Cloud Logging + one log-based alert.
-- No hard requirement for full schema content-hash sync before Phase 5.
+- No hard requirement for full schema content-hash sync before Phase 6.
 
 ## Department Wizard Names
 
