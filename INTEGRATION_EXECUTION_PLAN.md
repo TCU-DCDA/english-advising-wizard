@@ -8,13 +8,13 @@ Status: Execution baseline
 This document is the implementation contract for integrating department wizard data into Sandra as part of the **AddRan Advising Ecosystem**. It captures finalized decisions only.
 
 Use this document for build and rollout work across:
-- [`tcu-english-advising`](https://github.com/curtrode/tcu-english-advising)
-- [`dcda-advisor-mobile`](https://github.com/curtrode/dcda-advisor-mobile)
-- [`chat-ran-bot`](https://github.com/TCU-DCDA/chat-ran-bot)
+- [`english-advising-wizard`](https://github.com/TCU-DCDA/english-advising-wizard)
+- [`dcda-advising-wizard`](https://github.com/TCU-DCDA/dcda-advising-wizard)
+- [`addran-advisor-chat`](https://github.com/TCU-DCDA/addran-advisor-chat)
 
 **Related:** [TCU AI Innovation Prize](https://www.tcu.edu/ai/innovation-prize.php)
 
-> **Document location:** This file currently lives in `tcu-english-advising` because Phase 1 is the active work. After Phase 1, move it once to `chat-ran-bot` (the integration consumer) and keep permanent pointer files in wizard repos. When a shared coordination repo exists (Phase 5+), move it there as the canonical home and preserve pointer files in previous locations.
+> **Document location:** This file lives in `english-advising-wizard` alongside all active project repos under `active/`. When a shared coordination repo exists (Phase 5+), move it there as the canonical home.
 
 ## Final Decisions
 
@@ -42,9 +42,9 @@ Use this document for build and rollout work across:
 - Fail closed per program on invalid schema or unknown `manifestVersion`.
 
 7. **Schema governance (Phases 1-3)**
-- Source of truth: `tcu-english-advising/schemas/manifest.schema.json`.
+- Source of truth: `english-advising-wizard/schemas/manifest.schema.json`.
 - DCDA and Sandra copy schema locally at `schemas/manifest.schema.json`.
-- Add CI version pin checks in wizard repos and `chat-ran-bot` against source schema version.
+- Add CI version pin checks in wizard repos and `addran-advisor-chat` against source schema version.
 
 8. **Observability**
 - Structured logs in Cloud Functions for fetch/validate/fallback events.
@@ -54,15 +54,15 @@ Use this document for build and rollout work across:
 
 | Phase | Repo | Branch | Deliverable |
 |---|---|---|---|
-| 1 | `tcu-english-advising` | `claude/chatbot-wizard-integration-fRndX` | Extract data from `App.jsx`, add manifest generator, publish `manifest.json`, add schema |
-| 2 | `dcda-advisor-mobile` | `feature/manifest-export` | Add manifest generator, include contacts/career data, publish `manifest.json`, copy schema + CI version check |
-| 3 | `chat-ran-bot` | `feature/wizard-manifests` | Add registry + loader + manifest-to-context, enable fallbacks, remove hardcoded English/DCDA context sources |
+| 1 | `english-advising-wizard` | `claude/chatbot-wizard-integration-fRndX` | Extract data from `App.jsx`, add manifest generator, publish `manifest.json`, add schema |
+| 2 | `dcda-advising-wizard` | `feature/manifest-export` | Add manifest generator, include contacts/career data, publish `manifest.json`, copy schema + CI version check |
+| 3 | `addran-advisor-chat` | `feature/wizard-manifests` | Add registry + loader + manifest-to-context, enable fallbacks, remove hardcoded English/DCDA context sources |
 | 4 | Wizard repos + Sandra | N/A | Optional automation for faster refresh (if needed) |
 | 5 | Future dept wizard repos | N/A | Onboarding template and registration flow |
 
 ## Detailed Implementation Requirements
 
-### Phase 1: English Wizard (`tcu-english-advising`)
+### Phase 1: English Wizard (`english-advising-wizard`)
 
 1. Extract data from monolithic `App.jsx` into `src/data/` files:
 - `programs.json`
@@ -84,7 +84,7 @@ Use this document for build and rollout work across:
 - Add `generate-manifest` npm script.
 - Run generator before app build in CI/build pipeline.
 
-### Phase 2: DCDA Wizard (`dcda-advisor-mobile`)
+### Phase 2: DCDA Wizard (`dcda-advising-wizard`)
 
 1. Implement `scripts/generate-manifest.js` for DCDA data sources.
 2. Add missing profile content (contacts/career options) in authoritative DCDA data.
@@ -92,7 +92,7 @@ Use this document for build and rollout work across:
 4. Publish `manifest.json` at deployed app base URL.
 5. Add CI check to compare local schema version with source-of-truth schema version.
 
-### Phase 3: Sandra (`chat-ran-bot`)
+### Phase 3: Sandra (`addran-advisor-chat`)
 
 1. Add `functions/wizard-registry.json` with wizard manifest URLs.
 2. Add `functions/manifest-loader.js` with:
@@ -115,7 +115,7 @@ Use this document for build and rollout work across:
 5. Update `functions/index.js`:
 - Replace hardcoded English/DCDA context sources with loader + converter.
 
-6. Add CI schema version pin check in `chat-ran-bot`:
+6. Add CI schema version pin check in `addran-advisor-chat`:
 - Compare local `schemas/manifest.schema.json` version with source-of-truth schema version.
 - Fail CI when versions diverge.
 
@@ -202,8 +202,7 @@ Each department wizard has a named persona for student-facing identity:
 
 ## Post-Launch Follow-ups
 
-1. Move this execution plan to `chat-ran-bot` after Phase 1 merges, and keep a permanent pointer file in `tcu-english-advising`.
-2. Move schema to shared repo/package when third wizard is onboarded. Move this execution plan there too as the canonical home, keeping pointer files in `chat-ran-bot` and wizard repos.
-3. Add a cross-repo review rule for canonical plan changes (CODEOWNERS or equivalent approvals from `tcu-english-advising`, `dcda-advisor-mobile`, and `chat-ran-bot` maintainers).
+1. Move schema to shared repo/package when third wizard is onboarded. Move this execution plan there too as the canonical home.
+3. Add a cross-repo review rule for canonical plan changes (CODEOWNERS or equivalent approvals from `english-advising-wizard`, `dcda-advising-wizard`, and `addran-advisor-chat` maintainers).
 4. Add stronger CI drift checks (content hash, not just version).
 5. Consider webhook-triggered refresh if near-real-time update latency is needed.
