@@ -203,6 +203,6 @@ Each department wizard has a named persona for student-facing identity:
 ## Post-Launch Follow-ups
 
 1. Move schema to shared repo/package when third wizard is onboarded. Move this execution plan there too as the canonical home.
-3. Add a cross-repo review rule for canonical plan changes (CODEOWNERS or equivalent approvals from `english-advising-wizard`, `dcda-advising-wizard`, and `addran-advisor-chat` maintainers).
-4. Add stronger CI drift checks (content hash, not just version).
-5. Consider webhook-triggered refresh if near-real-time update latency is needed.
+2. Add a cross-repo review rule for canonical plan changes (CODEOWNERS or equivalent approvals from `english-advising-wizard`, `dcda-advising-wizard`, and `addran-advisor-chat` maintainers).
+3. Add stronger CI drift checks (content hash, not just version).
+4. Consider webhook-triggered refresh if near-real-time update latency is needed.
