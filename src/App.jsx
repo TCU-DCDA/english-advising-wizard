@@ -1946,6 +1946,9 @@ export default function TCUEnglishAdvisingApp() {
           <p className="text-xs text-gray-500 text-center mt-2">
             This tool is for planning purposes only. Always verify requirements with your academic advisor.
           </p>
+          <p className="text-xs text-gray-500 text-center mt-1">
+            No personal data is collected or stored. Your selections remain in your browser only.
+          </p>
         </div>
       </footer>
     </div>
