@@ -1,8 +1,8 @@
 {
   "manifestVersion": "1.0",
   "department": "English",
-  "lastUpdated": "2026-02-15T15:31:10.972Z",
-  "wizardUrl": "https://curtrode.github.io/tcu-english-advising/",
+  "lastUpdated": "2026-02-16T03:43:33.234Z",
+  "wizardUrl": "https://tcu-dcda.github.io/english-advising-wizard/",
   "programs": [
     {
       "id": "english-ba",
