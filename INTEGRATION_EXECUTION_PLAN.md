@@ -1,7 +1,7 @@
 # AddRan Advising Ecosystem — Execution Plan
 
 Date: 2026-02-14
-Status: Phase 1 complete, Phase 2 implemented (testing)
+Status: Phases 1–3 complete, Phase 4 ready
 
 ## Purpose
 
@@ -42,7 +42,7 @@ These constraints apply to all current and future projects in the ecosystem:
 ## Final Decisions
 
 1. **Architecture**
-- Use a hub-and-spoke model: each wizard publishes `manifest.json`; Sandra consumes manifests via a registry.
+- Use a hub-and-spoke model: each wizard publishes an advising manifest; Sandra consumes manifests via a registry with explicit URLs per wizard (manifest filenames may vary — e.g., `manifest.json` vs. `advising-manifest.json`).
 
 2. **Manifest schema**
 - Manifest contract is versioned (`manifestVersion`).
@@ -77,8 +77,8 @@ These constraints apply to all current and future projects in the ecosystem:
 
 | Phase | Repo | Branch | Deliverable |
 |---|---|---|---|
-| 1 | `english-advising-wizard` | `claude/chatbot-wizard-integration-fRndX` | Extract data from `App.jsx`, add manifest generator, publish `manifest.json`, add schema |
-| 2 | `dcda-advising-wizard` | `feature/manifest-export` | Add manifest generator, include contacts/career data, publish `manifest.json`, copy schema + CI version check |
+| 1 | `english-advising-wizard` | `claude/chatbot-wizard-integration-fRndX` | Extract data from `App.jsx`, add manifest generator, publish `manifest.json` at `https://tcu-dcda.github.io/english-advising-wizard/manifest.json`, add schema |
+| 2 | `dcda-advising-wizard` | `feature/manifest-export` | Add manifest generator, include contacts/career data, publish `advising-manifest.json` at `https://dcda-advisor-mobile.web.app/advising-manifest.json`, copy schema + CI version check |
 | 3 | `addran-advisor-chat` | `feature/wizard-manifests` | Add registry + loader + manifest-to-context, enable fallbacks, remove hardcoded English/DCDA context sources |
 | 4 | `addran-advisor-chat` | `feature/analytics` | Enrich conversation documents, add FERPA-safe analytics dashboard |
 | 5 | Wizard repos + Sandra | N/A | Optional automation for faster refresh (if needed) |
@@ -115,7 +115,7 @@ Legend: **Y** = has it, **N** = missing (needs work), **P** = partial
 | 19 | `data/requirements.json` | **P** | **Y** | English uses `programs.json` with different structure |
 | 20 | `data/offerings-{term}.json` | **N** | **Y** | English has no semester offerings data |
 | 21 | `data/contacts.json` | **Y** | **Y** | — |
-| 22 | `data/career-options.json` | **Y** | **P** | DCDA has TODO placeholders — career data forthcoming |
+| 22 | `data/career-options.json` | **Y** | **Y** | — |
 | 23 | `scripts/generate-manifest.js` | **Y** | **Y** | — |
 | 24 | `schemas/manifest.schema.json` | **Y** | **Y** | — |
 | 25 | Build-time schema validation | **Y** | **Y** | — |
@@ -153,7 +153,6 @@ Legend: **Y** = has it, **N** = missing (needs work), **P** = partial
 - Add error boundary
 
 **DCDA wizard (`dcda-advising-wizard`)** — close to baseline, minor gaps:
-- Fill `data/career-options.json` with real career data (in progress)
 - Fix NameStep accessibility gap (add `role="radiogroup"` / `aria-pressed`)
 - Add app-level error boundary
 - Consider adding prerequisite data and validation (recommended, not required)
@@ -190,12 +189,12 @@ Legend: **Y** = has it, **N** = missing (needs work), **P** = partial
 1. Implement `scripts/generate-manifest.js` for DCDA data sources.
 2. Add missing profile content (contacts/career options) in authoritative DCDA data.
 3. Copy schema to `schemas/manifest.schema.json` and validate output at build time.
-4. Publish `manifest.json` at deployed app base URL.
+4. Publish `advising-manifest.json` at deployed app URL (`https://dcda-advisor-mobile.web.app/advising-manifest.json` — filename differs from English to avoid PWA manifest collision).
 5. Add CI check to compare local schema version with source-of-truth schema version.
 
 ### Phase 3: Sandra (`addran-advisor-chat`)
 
-1. Add `functions/wizard-registry.json` with wizard manifest URLs.
+1. Add `functions/wizard-registry.json` with explicit manifest URLs per wizard (English: `https://tcu-dcda.github.io/english-advising-wizard/manifest.json`, DCDA: `https://dcda-advisor-mobile.web.app/advising-manifest.json`).
 2. Add `functions/manifest-loader.js` with:
 - Request-time TTL check (`1 hour`).
 - SWR background refresh.
@@ -297,20 +296,23 @@ Minimum alert at launch:
 - Build fails on schema-invalid manifest output.
 
 ### Phase 2 Done
-- DCDA `manifest.json` generated and deployed.
-- Contacts/career profile data included in manifest Layer 1.
+- DCDA `advising-manifest.json` generated and deployed at `https://dcda-advisor-mobile.web.app/advising-manifest.json`.
+- Contacts/career profile data included (12 careers, Dr. Curt Rode contact).
 - Schema version check active in CI.
+- CORS + cache headers configured in Firebase hosting.
 
-### Phase 3 Done
-- Sandra consumes manifests for English/DCDA via registry.
-- Hardcoded English/DCDA context paths removed or no longer authoritative.
-- Fail-closed + fallback chain verified with test scenarios:
-  - live URL failure
-  - schema invalid payload
-  - unknown `manifestVersion`
+### Phase 3 Done ✓
+- Sandra consumes manifests for English/DCDA via registry. **Merged PR #1, deployed 2026-02-15.**
+- Hardcoded English/DCDA context paths removed (`buildDcdaContext()`, 46-line English string, `dcda-data.json` import).
+- Fail-closed + fallback chain verified:
+  - DCDA static fallback files created (`program-data/digital-culture-and-data-analytics*.json`)
+  - Firestore cache revalidated with AJV + version check before use
+  - Invalid cache entries logged at WARNING severity (`firestore_cache_invalid`)
 - Per-department single-flight verified: concurrent requests for same department produce only one live fetch.
-- Logging and alerting configured.
-- CI schema version pin check active.
+- Structured logging active for all fetch/validate/fallback events.
+- CI schema version pin check active (`.github/workflows/schema-check.yml`).
+- Production smoke tests passed: English (manifest), DCDA (manifest), History (program-data unchanged).
+- Runtime updated to Node.js 22.
 
 ### Phase 4 Done
 - Conversation documents include `sessionId`, `hour`, `dayOfWeek`, `topics`, `programs`, and `exchangeIndex`.
