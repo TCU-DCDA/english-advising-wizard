@@ -132,7 +132,7 @@ Legend: **Y** = has it, **N** = missing (needs work), **P** = partial
 | 31 | Expected graduation date input | **Y** | **Y** | — |
 | 32 | Capstone/senior requirement auto-scheduling | **N** | **Y** | — |
 | 33 | Summer semester toggle | **N** | **Y** | — |
-| 34 | Progress visualization (ring/bar/percentage) | **Y** | **P** | DCDA is text-based checklist only |
+| 34 | Progress visualization (ring/bar/percentage) | **Y** | **Y** | DCDA has segmented progress bar + percentage hero (ui-refinement, merged 2026-02-17) |
 | 35 | Category-by-category completion status | **Y** | **Y** | — |
 | 36 | Student notes field | **N** | **Y** | — |
 
@@ -156,7 +156,7 @@ Legend: **Y** = has it, **N** = missing (needs work), **P** = partial
 - Fix NameStep accessibility gap (add `role="radiogroup"` / `aria-pressed`)
 - Add app-level error boundary
 - Consider adding prerequisite data and validation (recommended, not required)
-- Consider adding visual progress indicator beyond text checklist (recommended)
+- ~~Consider adding visual progress indicator beyond text checklist~~ ✅ Done (segmented progress bar + ProgressHero, merged 2026-02-17)
 
 > **Phase 6 action:** Use DCDA wizard as the template for new department wizards. The English wizard predates the ecosystem architecture and will require a dedicated remediation pass (can be scoped as a separate effort after Phase 3).
 
