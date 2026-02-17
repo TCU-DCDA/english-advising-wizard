@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { WizardShell } from '@/components/wizard'
-import type { WizardPhase, WizardStep } from '@/types'
+import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
+import { useStudentData } from '@/hooks/useStudentData'
+import { getProgram } from '@/services/courses'
+import type { WizardPhase, WizardStep, ProgramId } from '@/types'
 import type { PhaseInfo } from '@/components/wizard/StepIndicator'
 
 // Define wizard steps
@@ -35,6 +38,8 @@ function computeStepInPhase(stepIndex: number, steps: WizardStep[]): number {
 
 export default function App() {
   const [stepIndex, setStepIndex] = useState(0)
+  const { studentData, updateStudentData, toggleCompletedCourse, togglePlannedCourse, resetStudentData } = useStudentData()
+
   const currentStep = STEPS[stepIndex]
   const phases = computePhases(STEPS)
   const currentStepInPhase = computeStepInPhase(stepIndex, STEPS)
@@ -49,8 +54,84 @@ export default function App() {
     if (canGoNext) setStepIndex(stepIndex + 1)
   }
 
+  // Per-step validation for Next button
+  const getNextDisabled = (): boolean => {
+    switch (currentStep.id) {
+      case 'setup':
+        return !studentData.program || !studentData.expectedGraduation
+      default:
+        return false
+    }
+  }
+
   // Welcome screen has no progress bar or back button
   const isWelcome = currentStep.id === 'welcome'
+
+  // Render step content based on current step
+  function renderStep() {
+    switch (currentStep.id) {
+      case 'welcome':
+        return <WelcomeStep />
+      case 'setup':
+        return (
+          <SetupStep
+            program={studentData.program}
+            expectedGraduation={studentData.expectedGraduation}
+            totalCreditHours={studentData.totalCreditHours}
+            onProgramChange={(id: ProgramId) => updateStudentData({ program: id })}
+            onGraduationChange={(value: string) => updateStudentData({ expectedGraduation: value })}
+            onCreditHoursChange={(hours: number) => updateStudentData({ totalCreditHours: hours })}
+          />
+        )
+      case 'completed':
+        return (
+          <CompletedCoursesStep
+            programId={studentData.program!}
+            completedCourses={studentData.completedCourses}
+            onToggleCourse={toggleCompletedCourse}
+          />
+        )
+      case 'semester':
+        return (
+          <SemesterStep
+            programId={studentData.program!}
+            completedCourses={studentData.completedCourses}
+            plannedCourses={studentData.plannedCourses}
+            onToggleCourse={togglePlannedCourse}
+          />
+        )
+      case 'future':
+        return (
+          <FutureStep
+            programId={studentData.program!}
+            completedCourses={studentData.completedCourses}
+            plannedCourses={studentData.plannedCourses}
+            expectedGraduation={studentData.expectedGraduation}
+          />
+        )
+      case 'reviewSummary':
+        return (
+          <ReviewSummaryStep
+            programId={studentData.program!}
+            completedCourses={studentData.completedCourses}
+            plannedCourses={studentData.plannedCourses}
+            expectedGraduation={studentData.expectedGraduation}
+          />
+        )
+      case 'reviewActions':
+        return (
+          <ReviewActionsStep
+            studentData={studentData}
+            programData={getProgram(studentData.program!)}
+            updateStudentData={updateStudentData}
+            resetStudentData={resetStudentData}
+            onRestart={() => setStepIndex(0)}
+          />
+        )
+      default:
+        return null
+    }
+  }
 
   return (
     <WizardShell
@@ -63,19 +144,11 @@ export default function App() {
       onBack={goBack}
       onNext={goNext}
       nextLabel={currentStep.id === 'reviewActions' ? 'Finish' : 'Next'}
+      nextDisabled={getNextDisabled()}
       showBackButton={!isWelcome}
-      showNextButton={true}
+      showNextButton={currentStep.id !== 'reviewActions'}
     >
-      {/* Placeholder step content */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold">{currentStep.title}</h2>
-        <p className="text-sm text-muted-foreground">
-          Phase: {currentStep.phase} — Step: {currentStep.id}
-        </p>
-        <div className="p-6 rounded-xl border-2 border-dashed border-border text-center text-muted-foreground">
-          Step content will go here
-        </div>
-      </div>
+      {renderStep()}
     </WizardShell>
   )
 }
