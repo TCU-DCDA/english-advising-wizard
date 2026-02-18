@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { WizardShell } from '@/components/wizard'
 import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
 import { useStudentData } from '@/hooks/useStudentData'
 import { getProgram } from '@/services/courses'
 import type { WizardPhase, WizardStep, ProgramId } from '@/types'
 import type { PhaseInfo } from '@/components/wizard/StepIndicator'
+
+const STEP_STORAGE_KEY = 'english-wizard-step-index'
 
 // Define wizard steps
 const STEPS: WizardStep[] = [
@@ -37,8 +39,30 @@ function computeStepInPhase(stepIndex: number, steps: WizardStep[]): number {
 }
 
 export default function App() {
-  const [stepIndex, setStepIndex] = useState(0)
   const { studentData, updateStudentData, toggleCompletedCourse, togglePlannedCourse, resetStudentData } = useStudentData()
+
+  const [stepIndex, setStepIndex] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STEP_STORAGE_KEY)
+      if (stored) {
+        const index = parseInt(stored, 10)
+        if (!isNaN(index) && index >= 0 && index < STEPS.length) {
+          // If past setup step, validate that required data exists
+          if (index > 1 && !studentData.program) {
+            return 0
+          }
+          return index
+        }
+      }
+    } catch {}
+    return 0
+  })
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STEP_STORAGE_KEY, String(stepIndex))
+    } catch {}
+  }, [stepIndex])
 
   const currentStep = STEPS[stepIndex]
   const phases = computePhases(STEPS)

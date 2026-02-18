@@ -29,10 +29,6 @@ export function exportToCSV(studentData: StudentData): string {
   lines.push(`completedCourses,${studentData.completedCourses.join(';')}`)
   lines.push(`plannedCourses,${studentData.plannedCourses.join(';')}`)
 
-  if (Object.keys(studentData.futureCourses).length > 0) {
-    lines.push(`futureCourses,${escapeCSV(JSON.stringify(studentData.futureCourses))}`)
-  }
-
   if (studentData.notes) {
     lines.push(`notes,${escapeCSV(studentData.notes)}`)
   }

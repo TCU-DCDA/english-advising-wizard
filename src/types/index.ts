@@ -58,7 +58,6 @@ export interface StudentData {
   totalCreditHours: number
   completedCourses: string[]     // Step 1: already taken
   plannedCourses: string[]       // Step 2: next semester
-  futureCourses: Record<string, string[]> // Step 3: by semester
   notes?: string
 }
 

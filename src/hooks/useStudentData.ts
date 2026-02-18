@@ -10,7 +10,6 @@ const defaultStudentData: StudentData = {
   totalCreditHours: 0,
   completedCourses: [],
   plannedCourses: [],
-  futureCourses: {},
   notes: '',
 }
 
@@ -78,19 +77,8 @@ export function useStudentData() {
     }))
   }, [])
 
-  const updateFutureCourses = useCallback((semester: string, courses: string[]) => {
-    setStudentData((prev) => ({
-      ...prev,
-      futureCourses: {
-        ...prev.futureCourses,
-        [semester]: courses,
-      },
-    }))
-  }, [])
-
   const resetStudentData = useCallback(() => {
     setStudentData(defaultStudentData)
-    localStorage.removeItem(STORAGE_KEY)
   }, [])
 
   return {
@@ -99,7 +87,6 @@ export function useStudentData() {
     toggleCompletedCourse,
     togglePlannedCourse,
     setPlannedCourses,
-    updateFutureCourses,
     resetStudentData,
   }
 }
