@@ -67,9 +67,11 @@ export function WelcomeStep() {
         ))}
       </div>
 
-      {/* Privacy notice */}
+      {/* Advisory note + privacy */}
       <p className="text-sm text-muted-foreground text-center">
-        Your data stays on your device unless you choose to share it with your advisor (
+        This tool is for planning purposes only. Always work with your advisor to
+        confirm your degree plan. Your data stays on your device unless you choose
+        to share it (
         <button
           type="button"
           onClick={() => setShowFerpa(true)}
