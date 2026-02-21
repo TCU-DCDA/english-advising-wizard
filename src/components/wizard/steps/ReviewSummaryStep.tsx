@@ -102,7 +102,7 @@ export function ReviewSummaryStep({
 
       {/* Lower-division warning */}
       {maxLowerDiv > 0 && lowerDivHours > maxLowerDiv && (
-        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-lg p-3 flex items-start gap-2">
+        <div role="alert" className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-lg p-3 flex items-start gap-2">
           <AlertTriangle className="size-4 mt-0.5 text-amber-600 shrink-0" />
           <p className="text-sm text-amber-800 dark:text-amber-300">
             Lower-division hours ({lowerDivHours}) exceed the {maxLowerDiv}-hour maximum for {program.name}.
@@ -224,7 +224,7 @@ export function ReviewSummaryStep({
             <CalendarDays className="size-4 text-purple-600" />
             Path to {expectedGraduation}
           </h3>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {semesterPlan.map((sem) => {
               const totalHrs = sem.categories.reduce((s, c) => s + c.hoursNeeded, 0)
               return (

@@ -295,7 +295,7 @@ Submitted via TCU English Advising Wizard`
         open={!!previewUrl}
         onOpenChange={(open) => !open && handleClosePreview()}
       >
-        <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
+        <DialogContent className="max-w-full sm:max-w-4xl h-[90vh] flex flex-col p-0">
           <DialogHeader className="p-4 pb-0">
             <DialogTitle>PDF Preview</DialogTitle>
           </DialogHeader>

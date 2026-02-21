@@ -148,7 +148,7 @@ export function SemesterStep({
 
       {/* Lower-division warning */}
       {maxLowerDiv > 0 && lowerDivHours > maxLowerDiv && (
-        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-lg p-3 flex items-start gap-2">
+        <div role="alert" className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-lg p-3 flex items-start gap-2">
           <AlertTriangle className="size-4 mt-0.5 text-amber-600 shrink-0" />
           <p className="text-sm text-amber-800 dark:text-amber-300">
             You've selected <strong>{lowerDivHours} hours</strong> of lower-division courses
@@ -340,7 +340,7 @@ export function SemesterStep({
 
                             {/* Prerequisite warning — unmet groups */}
                             {prereqCheck && !prereqCheck.met && prereqCheck.unmetGroups.length > 0 && (
-                              <div className="flex items-start gap-1.5 mt-1 ml-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-md px-2.5 py-1.5">
+                              <div role="alert" className="flex items-start gap-1.5 mt-1 ml-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-md px-2.5 py-1.5">
                                 <AlertTriangle className="size-3.5 shrink-0 mt-0.5" />
                                 <div>
                                   {prereqCheck.unmetGroups.map((group, i) => (

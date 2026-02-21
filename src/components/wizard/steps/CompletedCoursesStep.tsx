@@ -103,7 +103,7 @@ export function CompletedCoursesStep({
 
       {/* Lower-division warning */}
       {maxLowerDiv > 0 && lowerDivHours > maxLowerDiv && (
-        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-lg p-3 flex items-start gap-2">
+        <div role="alert" className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800 rounded-lg p-3 flex items-start gap-2">
           <AlertTriangle className="size-4 mt-0.5 text-amber-600 shrink-0" />
           <p className="text-sm text-amber-800 dark:text-amber-300">
             You've selected <strong>{lowerDivHours} hours</strong> of lower-division courses.{' '}
