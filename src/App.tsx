@@ -93,7 +93,7 @@ export default function App() {
   const isWelcome = currentStep.id === 'welcome'
 
   // Build Sandra context from current wizard state
-  const sandraContext = useMemo(
+  const sandraData = useMemo(
     () => buildSandraContext(studentData, currentStep.id),
     [studentData, currentStep.id]
   )
@@ -176,7 +176,8 @@ export default function App() {
       nextDisabled={getNextDisabled()}
       showBackButton={!isWelcome}
       showNextButton={currentStep.id !== 'reviewActions'}
-      sandraContext={sandraContext}
+      sandraContext={sandraData?.context ?? null}
+      sandraProgramName={sandraData?.programName ?? null}
     >
       {renderStep()}
     </WizardShell>

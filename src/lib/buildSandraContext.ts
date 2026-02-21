@@ -18,10 +18,15 @@ function formatCourseList(codes: string[]): string {
   }).join(', ')
 }
 
+export interface SandraContext {
+  context: string
+  programName: string
+}
+
 export function buildSandraContext(
   studentData: StudentData,
   currentStepId: WizardStepId
-): string | null {
+): SandraContext | null {
   if (!studentData.program) return null
 
   const program = getProgram(studentData.program)
@@ -69,5 +74,5 @@ export function buildSandraContext(
     }
   }
 
-  return lines.join('\n')
+  return { context: lines.join('\n'), programName: program.name }
 }
