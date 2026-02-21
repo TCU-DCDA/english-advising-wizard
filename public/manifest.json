@@ -1,7 +1,7 @@
 {
   "manifestVersion": "1.0",
   "department": "English",
-  "lastUpdated": "2026-02-18T02:41:58.093Z",
+  "lastUpdated": "2026-02-20T14:02:46.663Z",
   "wizardUrl": "https://tcu-dcda.github.io/english-advising-wizard/",
   "programs": [
     {
@@ -657,73 +657,1440 @@
       },
       "maxLowerDivision": 9,
       "prerequisites": {
-        "CRWT 30343": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30353": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30233": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30373": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30363": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 40203": [
-          "CRWT 30343"
-        ],
-        "CRWT 40213": [
-          "CRWT 30353"
-        ],
-        "CRWT 40133": [
-          "CRWT 30233"
-        ],
-        "CRWT 40223": [
-          "CRWT 30373"
-        ],
-        "CRWT 40703": [
-          "CRWT 30343",
-          "CRWT 30353",
-          "CRWT 30233",
-          "CRWT 30373"
-        ],
-        "CRWT 40803": [
-          "CRWT 30343",
-          "CRWT 30353",
-          "CRWT 30373"
-        ],
-        "ENGL 38023": [
-          "ENGL 20803"
-        ],
-        "ENGL 38013": [
-          "ENGL 20803"
-        ],
-        "WRIT 40273": [
-          "WRIT 38063"
-        ],
-        "WRIT 30390": [],
-        "WRIT 40233": [
-          "WRIT 20113"
-        ],
-        "WRIT 40243": [
-          "WRIT 20113"
-        ],
-        "WRIT 30223": [
-          "WRIT 20113"
-        ]
+        "CRWT 30233": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30343": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30353": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30363": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30373": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40133": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40203": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40213": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40223": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40703": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ],
+            [
+              "CRWT 30343",
+              "CRWT 30353",
+              "CRWT 30233",
+              "CRWT 30373",
+              "CRWT 30363"
+            ]
+          ],
+          "note": "Grade of B- or higher required in workshop"
+        },
+        "CRWT 40803": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ],
+            [
+              "CRWT 30343",
+              "CRWT 30353",
+              "CRWT 30233",
+              "CRWT 30373",
+              "CRWT 30363"
+            ]
+          ]
+        },
+        "ENGL 20523": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30103": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30113": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30123": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30133": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30143": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30163": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30173": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30183": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30193": {
+          "require": [
+            [
+              "WGST 20003"
+            ]
+          ]
+        },
+        "ENGL 30413": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30423": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30433": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30443": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30453": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30463": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30473": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30493": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30503": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30513": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30523": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30543": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30553": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30563": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30573": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30583": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30593": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30613": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30623": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30633": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30653": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30673": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30683": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30693": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30703": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30713": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30723": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30733": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30743": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30753": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30763": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30773": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30783": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30793": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30803": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30823": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30833": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30843": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30853": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30863": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30883": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30970": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 38013": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "ENGL 38023": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/ WRIT/CRWT course"
+        },
+        "ENGL 38033": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "ENGL 40123": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40323": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40403": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40413": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40423": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40433": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40443": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40453": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40463": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40473": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40483": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40493": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40533": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40543": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40553": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40563": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40583": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40613": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40633": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40643": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40653": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40663": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40673": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40683": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40693": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40733": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40743": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40831": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 20353": {
+          "require": [
+            [
+              "ENGL 10803"
+            ]
+          ]
+        },
+        "WRIT 30203": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30213": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30223": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803",
+              "WRIT 20113"
+            ]
+          ]
+        },
+        "WRIT 30243": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30253": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30263": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30273": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30283": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30390": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30603": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30613": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 30623": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30663": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30803": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 30813": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30893": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 38063": {
+          "note": "Writing majors and minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "WRIT 40233": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40243": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803",
+              "WRIT 20113"
+            ]
+          ]
+        },
+        "WRIT 40253": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40263": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 40273": {
+          "note": "60 credit hours; major GPA of 3.0 or Cum GPA of 2.8 minimum; approval of the department"
+        },
+        "WRIT 40283": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40333": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40373": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40463": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        }
       },
       "fourYearPlan": {
         "year1": {
@@ -1205,73 +2572,1440 @@
         ]
       },
       "prerequisites": {
-        "CRWT 30343": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30353": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30233": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30373": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30363": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 40203": [
-          "CRWT 30343"
-        ],
-        "CRWT 40213": [
-          "CRWT 30353"
-        ],
-        "CRWT 40133": [
-          "CRWT 30233"
-        ],
-        "CRWT 40223": [
-          "CRWT 30373"
-        ],
-        "CRWT 40703": [
-          "CRWT 30343",
-          "CRWT 30353",
-          "CRWT 30233",
-          "CRWT 30373"
-        ],
-        "CRWT 40803": [
-          "CRWT 30343",
-          "CRWT 30353",
-          "CRWT 30373"
-        ],
-        "ENGL 38023": [
-          "ENGL 20803"
-        ],
-        "ENGL 38013": [
-          "ENGL 20803"
-        ],
-        "WRIT 40273": [
-          "WRIT 38063"
-        ],
-        "WRIT 30390": [],
-        "WRIT 40233": [
-          "WRIT 20113"
-        ],
-        "WRIT 40243": [
-          "WRIT 20113"
-        ],
-        "WRIT 30223": [
-          "WRIT 20113"
-        ]
+        "CRWT 30233": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30343": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30353": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30363": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30373": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40133": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40203": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40213": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40223": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40703": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ],
+            [
+              "CRWT 30343",
+              "CRWT 30353",
+              "CRWT 30233",
+              "CRWT 30373",
+              "CRWT 30363"
+            ]
+          ],
+          "note": "Grade of B- or higher required in workshop"
+        },
+        "CRWT 40803": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ],
+            [
+              "CRWT 30343",
+              "CRWT 30353",
+              "CRWT 30233",
+              "CRWT 30373",
+              "CRWT 30363"
+            ]
+          ]
+        },
+        "ENGL 20523": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30103": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30113": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30123": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30133": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30143": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30163": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30173": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30183": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30193": {
+          "require": [
+            [
+              "WGST 20003"
+            ]
+          ]
+        },
+        "ENGL 30413": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30423": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30433": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30443": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30453": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30463": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30473": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30493": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30503": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30513": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30523": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30543": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30553": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30563": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30573": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30583": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30593": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30613": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30623": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30633": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30653": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30673": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30683": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30693": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30703": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30713": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30723": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30733": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30743": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30753": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30763": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30773": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30783": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30793": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30803": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30823": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30833": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30843": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30853": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30863": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30883": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30970": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 38013": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "ENGL 38023": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/ WRIT/CRWT course"
+        },
+        "ENGL 38033": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "ENGL 40123": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40323": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40403": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40413": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40423": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40433": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40443": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40453": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40463": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40473": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40483": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40493": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40533": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40543": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40553": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40563": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40583": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40613": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40633": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40643": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40653": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40663": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40673": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40683": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40693": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40733": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40743": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40831": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 20353": {
+          "require": [
+            [
+              "ENGL 10803"
+            ]
+          ]
+        },
+        "WRIT 30203": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30213": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30223": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803",
+              "WRIT 20113"
+            ]
+          ]
+        },
+        "WRIT 30243": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30253": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30263": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30273": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30283": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30390": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30603": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30613": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 30623": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30663": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30803": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 30813": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30893": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 38063": {
+          "note": "Writing majors and minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "WRIT 40233": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40243": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803",
+              "WRIT 20113"
+            ]
+          ]
+        },
+        "WRIT 40253": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40263": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 40273": {
+          "note": "60 credit hours; major GPA of 3.0 or Cum GPA of 2.8 minimum; approval of the department"
+        },
+        "WRIT 40283": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40333": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40373": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40463": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        }
       },
       "fourYearPlan": {
         "year1": {
@@ -1689,73 +4423,1440 @@
         ]
       },
       "prerequisites": {
-        "CRWT 30343": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30353": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30233": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30373": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 30363": [
-          "CRWT 10203",
-          "CRWT 20103",
-          "CRWT 20133"
-        ],
-        "CRWT 40203": [
-          "CRWT 30343"
-        ],
-        "CRWT 40213": [
-          "CRWT 30353"
-        ],
-        "CRWT 40133": [
-          "CRWT 30233"
-        ],
-        "CRWT 40223": [
-          "CRWT 30373"
-        ],
-        "CRWT 40703": [
-          "CRWT 30343",
-          "CRWT 30353",
-          "CRWT 30233",
-          "CRWT 30373"
-        ],
-        "CRWT 40803": [
-          "CRWT 30343",
-          "CRWT 30353",
-          "CRWT 30373"
-        ],
-        "ENGL 38023": [
-          "ENGL 20803"
-        ],
-        "ENGL 38013": [
-          "ENGL 20803"
-        ],
-        "WRIT 40273": [
-          "WRIT 38063"
-        ],
-        "WRIT 30390": [],
-        "WRIT 40233": [
-          "WRIT 20113"
-        ],
-        "WRIT 40243": [
-          "WRIT 20113"
-        ],
-        "WRIT 30223": [
-          "WRIT 20113"
-        ]
+        "CRWT 30233": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30343": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30353": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30363": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 30373": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40133": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40203": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40213": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40223": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ]
+          ]
+        },
+        "CRWT 40703": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ],
+            [
+              "CRWT 30343",
+              "CRWT 30353",
+              "CRWT 30233",
+              "CRWT 30373",
+              "CRWT 30363"
+            ]
+          ],
+          "note": "Grade of B- or higher required in workshop"
+        },
+        "CRWT 40803": {
+          "require": [
+            [
+              "CRWT 10203",
+              "CRWT 20103",
+              "CRWT 20133"
+            ],
+            [
+              "CRWT 30343",
+              "CRWT 30353",
+              "CRWT 30233",
+              "CRWT 30373",
+              "CRWT 30363"
+            ]
+          ]
+        },
+        "ENGL 20523": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30103": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30113": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30123": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30133": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30143": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30163": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30173": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30183": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30193": {
+          "require": [
+            [
+              "WGST 20003"
+            ]
+          ]
+        },
+        "ENGL 30413": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30423": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30433": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30443": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30453": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30463": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30473": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30493": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30503": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30513": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30523": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30543": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30553": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30563": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30573": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30583": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30593": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30613": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30623": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30633": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30653": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30673": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30683": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30693": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30703": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30713": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30723": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30733": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30743": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30753": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30763": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30773": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30783": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30793": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30803": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "ENGL 30823": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30833": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30843": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30853": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30863": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30883": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 30970": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 38013": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "ENGL 38023": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/ WRIT/CRWT course"
+        },
+        "ENGL 38033": {
+          "note": "English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "ENGL 40123": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40323": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40403": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40413": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40423": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40433": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40443": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40453": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40463": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40473": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40483": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40493": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40533": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40543": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40553": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40563": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40583": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40613": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40633": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40643": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40653": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40663": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40673": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40683": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40693": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40733": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40743": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "ENGL 40831": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 20353": {
+          "require": [
+            [
+              "ENGL 10803"
+            ]
+          ]
+        },
+        "WRIT 30203": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30213": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30223": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803",
+              "WRIT 20113"
+            ]
+          ]
+        },
+        "WRIT 30243": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30253": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30263": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30273": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30283": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30390": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30603": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30613": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 30623": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30663": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 30803": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 30813": {
+          "require": [
+            [
+              "ENGL 10803",
+              "ENGL 10833"
+            ],
+            [
+              "ENGL 20803",
+              "ENGL 20833"
+            ]
+          ]
+        },
+        "WRIT 30893": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 38063": {
+          "note": "Writing majors and minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course"
+        },
+        "WRIT 40233": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40243": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803",
+              "WRIT 20113"
+            ]
+          ]
+        },
+        "WRIT 40253": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40263": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        },
+        "WRIT 40273": {
+          "note": "60 credit hours; major GPA of 3.0 or Cum GPA of 2.8 minimum; approval of the department"
+        },
+        "WRIT 40283": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40333": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40373": {
+          "require": [
+            [
+              "ENGL 10803"
+            ],
+            [
+              "ENGL 20803"
+            ],
+            [
+              "@any-lower-div"
+            ]
+          ]
+        },
+        "WRIT 40463": {
+          "require": [
+            [
+              "ENGL 20803"
+            ]
+          ]
+        }
       },
       "fourYearPlan": {
         "year1": {

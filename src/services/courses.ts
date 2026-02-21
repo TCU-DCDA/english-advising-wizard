@@ -1,11 +1,11 @@
-import type { ProgramId, ProgramData, RequirementCategory } from '@/types'
+import type { ProgramId, ProgramData, RequirementCategory, PrerequisitesData, PrerequisiteEntry, PrerequisiteCheckResult, OrGroup } from '@/types'
 import type { CatalogCourse } from '@/data/allCourses'
 import { allCourses } from '@/data/allCourses'
 import programsData from '@/data/programs.json'
 import prerequisitesData from '@/data/prerequisites.json'
 
 const programs = programsData as Record<ProgramId, ProgramData>
-const prerequisites = prerequisitesData as Record<string, string[]>
+const prerequisites = prerequisitesData as PrerequisitesData
 
 export function getProgram(id: ProgramId): ProgramData {
   return programs[id]
@@ -150,22 +150,38 @@ export function computeProjectedProgress(
   return computeProgress(programId, combined)
 }
 
+const LOWER_DIV_RE = /^(ENGL|WRIT|CRWT) [12]\d{4}$/
+
+function isSatisfied(item: string, all: string[]): boolean {
+  if (item === '@any-lower-div') {
+    return all.some((c) => LOWER_DIV_RE.test(c))
+  }
+  return all.includes(item)
+}
+
 export function checkPrerequisites(
   courseCode: string,
   completedCourses: string[],
   plannedCourses: string[]
-): { met: boolean; required: string[] } {
-  const prereqs = prerequisites[courseCode]
-  if (!prereqs || prereqs.length === 0) {
-    return { met: true, required: [] }
+): PrerequisiteCheckResult {
+  const entry = prerequisites[courseCode] ?? null
+  if (!entry || !entry.require || entry.require.length === 0) {
+    return { met: true, unmetGroups: [], entry }
   }
-  const met = prereqs.some(
-    (p) => completedCourses.includes(p) || plannedCourses.includes(p)
-  )
-  return { met, required: prereqs }
+
+  const all = [...new Set([...completedCourses, ...plannedCourses])]
+  const unmetGroups: OrGroup[] = []
+
+  for (const orGroup of entry.require) {
+    if (!orGroup.some((item) => isSatisfied(item, all))) {
+      unmetGroups.push(orGroup)
+    }
+  }
+
+  return { met: unmetGroups.length === 0, unmetGroups, entry }
 }
 
-export function getPrerequisites(courseCode: string): string[] | null {
+export function getPrerequisites(courseCode: string): PrerequisiteEntry | null {
   return prerequisites[courseCode] ?? null
 }
 

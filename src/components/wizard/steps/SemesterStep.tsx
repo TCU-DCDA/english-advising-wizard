@@ -26,6 +26,11 @@ import {
 import type { ProgramId, Course } from '@/types'
 import type { CatalogCourse } from '@/data/allCourses'
 
+function formatPrereqItem(item: string): string {
+  if (item === '@any-lower-div') return 'a 10000/20000-level ENGL, WRIT, or CRWT course'
+  return item
+}
+
 interface SemesterStepProps {
   programId: ProgramId
   completedCourses: string[]
@@ -260,8 +265,8 @@ export function SemesterStep({
                         const isPlanned = plannedCourses.includes(course.code)
                         const isLower = 'level' in course && course.level === 'lower'
 
-                        // Check prerequisites for non-completed courses
-                        const prereqCheck = !isCompleted
+                        // Check prerequisites for planned courses only
+                        const prereqCheck = isPlanned
                           ? checkPrerequisites(course.code, completedCourses, plannedCourses)
                           : null
 
@@ -332,13 +337,35 @@ export function SemesterStep({
                               </div>
                             </label>
 
-                            {/* Prerequisite warning */}
-                            {prereqCheck && !prereqCheck.met && (isPlanned || !isCompleted) && prereqCheck.required.length > 0 && (
-                              <div className="flex items-center gap-1.5 mt-1 ml-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-md px-2.5 py-1.5">
-                                <AlertTriangle className="size-3.5 shrink-0" />
-                                <span>
-                                  Prerequisite needed: {prereqCheck.required.join(' or ')}
-                                </span>
+                            {/* Prerequisite warning — unmet groups */}
+                            {prereqCheck && !prereqCheck.met && prereqCheck.unmetGroups.length > 0 && (
+                              <div className="flex items-start gap-1.5 mt-1 ml-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-md px-2.5 py-1.5">
+                                <AlertTriangle className="size-3.5 shrink-0 mt-0.5" />
+                                <div>
+                                  {prereqCheck.unmetGroups.map((group, i) => (
+                                    <div key={i}>
+                                      {group.length === 1
+                                        ? `Needs: ${formatPrereqItem(group[0])}`
+                                        : `Needs one of: ${group.map(formatPrereqItem).join(' or ')}`}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Prerequisite note (standing, grade) */}
+                            {prereqCheck?.entry?.note && (
+                              <div className="flex items-center gap-1.5 mt-1 ml-2 text-xs text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/30 rounded-md px-2.5 py-1.5">
+                                <Info className="size-3.5 shrink-0" />
+                                <span>{prereqCheck.entry.note}</span>
+                              </div>
+                            )}
+
+                            {/* Recommended courses */}
+                            {prereqCheck?.entry?.recommend && (
+                              <div className="flex items-center gap-1.5 mt-1 ml-2 text-xs text-muted-foreground bg-muted/50 rounded-md px-2.5 py-1.5">
+                                <Info className="size-3.5 shrink-0" />
+                                <span>Recommended: {prereqCheck.entry.recommend.join(', ')}</span>
                               </div>
                             )}
                           </div>

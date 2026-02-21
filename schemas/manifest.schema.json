@@ -149,11 +149,27 @@
         },
         "prerequisites": {
           "type": "object",
-          "description": "Course prerequisite mapping",
+          "description": "Course prerequisite mapping (AND-of-OR model)",
           "additionalProperties": {
-            "type": "array",
-            "items": {
-              "type": "string"
+            "type": "object",
+            "properties": {
+              "require": {
+                "type": "array",
+                "description": "AND-of-OR groups. Each inner array is an OR-group; ALL groups must be satisfied.",
+                "items": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              },
+              "recommend": {
+                "type": "array",
+                "description": "Recommended but not required courses",
+                "items": { "type": "string" }
+              },
+              "note": {
+                "type": "string",
+                "description": "Free-text note for non-modelable requirements (standing, grade, major-only)"
+              }
             }
           }
         },

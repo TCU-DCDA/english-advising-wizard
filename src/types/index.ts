@@ -33,10 +33,28 @@ export interface ProgramData {
 // All programs keyed by ProgramId
 export type ProgramsData = Record<ProgramId, ProgramData>
 
-// Prerequisite info
-export interface PrerequisiteInfo {
-  requires: string[]
-  message: string
+// Prerequisites — AND-of-OR model
+/** A single OR-group: student must have completed/planned at least ONE of these */
+export type OrGroup = string[]
+
+/** Full prerequisite entry for one course */
+export interface PrerequisiteEntry {
+  /** AND-of-OR groups. Each inner array is an OR-group; ALL groups must be satisfied. */
+  require?: OrGroup[]
+  /** Recommended (not required) courses — shown as info, not warning */
+  recommend?: string[]
+  /** Free-text note for non-modelable requirements (standing, grade, major-only) */
+  note?: string
+}
+
+/** The full prerequisites data structure, keyed by course code */
+export type PrerequisitesData = Record<string, PrerequisiteEntry>
+
+/** Result of checking prerequisites for a single course */
+export interface PrerequisiteCheckResult {
+  met: boolean
+  unmetGroups: OrGroup[]
+  entry: PrerequisiteEntry | null
 }
 
 // Four-year plan data
