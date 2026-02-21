@@ -265,9 +265,10 @@ export function SemesterStep({
                         const isPlanned = plannedCourses.includes(course.code)
                         const isLower = 'level' in course && course.level === 'lower'
 
-                        // Check prerequisites for planned courses only
-                        const prereqCheck = isPlanned
-                          ? checkPrerequisites(course.code, completedCourses, plannedCourses)
+                        // Check prerequisites against completed courses only —
+                        // planned courses in the same semester don't count
+                        const prereqCheck = !isCompleted
+                          ? checkPrerequisites(course.code, completedCourses, [])
                           : null
 
                         return (
