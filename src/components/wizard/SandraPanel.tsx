@@ -9,9 +9,10 @@ interface SandraPanelProps {
   onClose: () => void
   wizardContext: string | null
   programName: string | null
+  programId: string | null
 }
 
-export function SandraPanel({ open, onClose, wizardContext, programName }: SandraPanelProps) {
+export function SandraPanel({ open, onClose, wizardContext, programName, programId }: SandraPanelProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [iframeReady, setIframeReady] = useState(false)
   // Only mount iframe after first open
@@ -24,11 +25,11 @@ export function SandraPanel({ open, onClose, wizardContext, programName }: Sandr
   const sendContext = useCallback(() => {
     if (iframeRef.current?.contentWindow && wizardContext) {
       iframeRef.current.contentWindow.postMessage(
-        { type: 'wizard-context', context: wizardContext, department: 'English', programName: programName },
+        { type: 'wizard-context', context: wizardContext, department: 'English', programName, programId },
         SANDRA_ORIGIN
       )
     }
-  }, [wizardContext])
+  }, [wizardContext, programName, programId])
 
   // When iframe loads, wait briefly for Sandra's JS to initialize, then send context
   const handleIframeLoad = useCallback(() => {

@@ -33,6 +33,7 @@ interface WizardShellProps {
   // Sandra
   sandraContext?: string | null
   sandraProgramName?: string | null
+  sandraProgramId?: string | null
 }
 
 export function WizardShell({
@@ -50,6 +51,7 @@ export function WizardShell({
   showNextButton = true,
   sandraContext,
   sandraProgramName,
+  sandraProgramId,
 }: WizardShellProps) {
   const { isDark, toggleTheme } = useTheme()
   const [sandraOpen, setSandraOpen] = useState(false)
@@ -132,6 +134,7 @@ export function WizardShell({
         onClose={() => setSandraOpen(false)}
         wizardContext={sandraContext ?? null}
         programName={sandraProgramName ?? null}
+        programId={sandraProgramId ?? null}
       />
     </div>
   )

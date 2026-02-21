@@ -178,6 +178,7 @@ export default function App() {
       showNextButton={currentStep.id !== 'reviewActions'}
       sandraContext={sandraData?.context ?? null}
       sandraProgramName={sandraData?.programName ?? null}
+      sandraProgramId={studentData.program ?? null}
     >
       {renderStep()}
     </WizardShell>
