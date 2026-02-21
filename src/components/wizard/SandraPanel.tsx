@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { X } from 'lucide-react'
 
 const SANDRA_ORIGIN = import.meta.env.DEV ? 'http://127.0.0.1:5002' : 'https://sandra.digitcu.org'
@@ -12,6 +12,13 @@ interface SandraPanelProps {
 
 export function SandraPanel({ open, onClose, wizardContext }: SandraPanelProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [iframeReady, setIframeReady] = useState(false)
+  // Only mount iframe after first open
+  const [hasOpened, setHasOpened] = useState(false)
+
+  useEffect(() => {
+    if (open && !hasOpened) setHasOpened(true)
+  }, [open, hasOpened])
 
   const sendContext = useCallback(() => {
     if (iframeRef.current?.contentWindow && wizardContext) {
@@ -22,10 +29,18 @@ export function SandraPanel({ open, onClose, wizardContext }: SandraPanelProps) 
     }
   }, [wizardContext])
 
-  // Send context when panel opens or context changes
+  // When iframe loads, wait briefly for Sandra's JS to initialize, then send context
+  const handleIframeLoad = useCallback(() => {
+    setTimeout(() => {
+      setIframeReady(true)
+      sendContext()
+    }, 500)
+  }, [sendContext])
+
+  // Re-send context when it changes (e.g. user selects more courses)
   useEffect(() => {
-    if (open) sendContext()
-  }, [open, sendContext])
+    if (iframeReady) sendContext()
+  }, [iframeReady, sendContext])
 
   // Close on Escape
   useEffect(() => {
@@ -37,19 +52,19 @@ export function SandraPanel({ open, onClose, wizardContext }: SandraPanelProps) 
     return () => window.removeEventListener('keydown', handleKey)
   }, [open, onClose])
 
-  if (!open) return null
-
   return (
     <>
       {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/30 z-40 transition-opacity"
-        onClick={onClose}
-        aria-hidden="true"
-      />
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/30 z-40 transition-opacity"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
 
-      {/* Panel */}
-      <div className="fixed top-0 right-0 bottom-0 w-full sm:w-[400px] bg-card z-50 shadow-2xl flex flex-col animate-slide-in-right">
+      {/* Panel — stays mounted but hidden so iframe persists */}
+      <div className={`fixed top-0 right-0 bottom-0 w-full sm:w-[400px] bg-card z-50 shadow-2xl flex flex-col transition-transform duration-200 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3 border-b bg-primary text-primary-foreground">
           <div>
@@ -65,15 +80,17 @@ export function SandraPanel({ open, onClose, wizardContext }: SandraPanelProps) 
           </button>
         </div>
 
-        {/* iframe */}
-        <iframe
-          ref={iframeRef}
-          src={SANDRA_URL}
-          onLoad={sendContext}
-          className="flex-1 w-full border-0"
-          title="Sandra AI Advisor"
-          allow="clipboard-write"
-        />
+        {/* iframe — only mount after first open, keep alive after */}
+        {hasOpened && (
+          <iframe
+            ref={iframeRef}
+            src={SANDRA_URL}
+            onLoad={handleIframeLoad}
+            className="flex-1 w-full border-0"
+            title="Sandra AI Advisor"
+            allow="clipboard-write"
+          />
+        )}
       </div>
     </>
   )
