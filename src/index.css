@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -11,6 +13,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -53,13 +56,13 @@
   --foreground: #e8e4df;
   --card: #221e1a;
   --card-foreground: #e8e4df;
-  --primary: #B8647A;
+  --primary: #B87A8C;
   --primary-foreground: #ffffff;
   --primary-light: #D08898;
   --secondary: #2a2622;
   --secondary-foreground: #e8e4df;
   --muted: #2a2622;
-  --muted-foreground: #9a9590;
+  --muted-foreground: #b5b0ab;
   --accent: #3d2028;
   --accent-foreground: #e8a0b2;
   --destructive: #ef4444;
