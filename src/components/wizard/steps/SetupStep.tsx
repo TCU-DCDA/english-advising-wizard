@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { BookOpen, PenTool, FileText, ChevronDown, ChevronUp, Info } from 'lucide-react'
-import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { getAllPrograms, generateGraduationSemesters } from '@/services/courses'
 import type { ProgramId } from '@/types'
@@ -8,10 +7,8 @@ import type { ProgramId } from '@/types'
 interface SetupStepProps {
   program: ProgramId | null
   expectedGraduation: string | null
-  totalCreditHours: number
   onProgramChange: (id: ProgramId) => void
   onGraduationChange: (value: string) => void
-  onCreditHoursChange: (hours: number) => void
 }
 
 const PROGRAM_ICONS: Record<ProgramId, typeof BookOpen> = {
@@ -23,10 +20,8 @@ const PROGRAM_ICONS: Record<ProgramId, typeof BookOpen> = {
 export function SetupStep({
   program,
   expectedGraduation,
-  totalCreditHours,
   onProgramChange,
   onGraduationChange,
-  onCreditHoursChange,
 }: SetupStepProps) {
   const [showComparison, setShowComparison] = useState(false)
   const allPrograms = getAllPrograms()
@@ -182,38 +177,19 @@ export function SetupStep({
         </div>
       </div>
 
-      {/* Section C: Credit Hours */}
-      <div className="space-y-3">
-        <div>
-          <h2 className="text-xl font-semibold mb-1">How many total credit hours have you completed?</h2>
-          <p className="text-sm text-muted-foreground">
-            Include all TCU and transfer hours (helps us track lower-division limits).
-          </p>
-        </div>
-
-        <Input
-          type="number"
-          inputMode="numeric"
-          placeholder="e.g., 60"
-          value={totalCreditHours || ''}
-          onChange={(e) => onCreditHoursChange(parseInt(e.target.value) || 0)}
-          min={0}
-          max={200}
-        />
-
-        {selectedProgram && selectedProgram.program.maxLowerDivision && (
-          <div className="bg-muted/50 border rounded-lg p-3">
-            <div className="flex items-start gap-2">
-              <Info className="size-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-              <p className="text-sm text-muted-foreground">
-                <strong>{selectedProgram.program.name}</strong> allows a maximum of{' '}
-                <strong>{selectedProgram.program.maxLowerDivision} hours</strong> of
-                lower-division (10000–20000 level) courses toward the major.
-              </p>
-            </div>
+      {/* Lower-division info */}
+      {selectedProgram && selectedProgram.program.maxLowerDivision && (
+        <div className="bg-muted/50 border rounded-lg p-3">
+          <div className="flex items-start gap-2">
+            <Info className="size-4 mt-0.5 text-muted-foreground flex-shrink-0" />
+            <p className="text-sm text-muted-foreground">
+              <strong>{selectedProgram.program.name}</strong> allows a maximum of{' '}
+              <strong>{selectedProgram.program.maxLowerDivision} hours</strong> of
+              lower-division (10000–20000 level) courses toward the major.
+            </p>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }

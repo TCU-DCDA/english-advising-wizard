@@ -1,10 +1,11 @@
-import type { ReactNode } from 'react'
+import { type ReactNode, useState } from 'react'
 import { StepIndicator } from './StepIndicator'
 import type { PhaseInfo } from './StepIndicator'
+import { SandraPanel } from './SandraPanel'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useTheme } from '@/hooks/useTheme'
-import { Moon, Sun, BookOpen } from 'lucide-react'
+import { Moon, Sun, BookOpen, MessageCircle } from 'lucide-react'
 import type { WizardPhase } from '@/types'
 
 interface WizardShellProps {
@@ -28,6 +29,9 @@ interface WizardShellProps {
   nextDisabled?: boolean
   showBackButton?: boolean
   showNextButton?: boolean
+
+  // Sandra
+  sandraContext?: string | null
 }
 
 export function WizardShell({
@@ -43,8 +47,10 @@ export function WizardShell({
   nextDisabled = false,
   showBackButton = true,
   showNextButton = true,
+  sandraContext,
 }: WizardShellProps) {
   const { isDark, toggleTheme } = useTheme()
+  const [sandraOpen, setSandraOpen] = useState(false)
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -106,6 +112,24 @@ export function WizardShell({
           )}
         </nav>
       )}
+
+      {/* Ask Sandra floating button — hidden until program is selected */}
+      {sandraContext && (
+        <button
+          onClick={() => setSandraOpen(true)}
+          className="fixed bottom-20 right-4 z-30 bg-primary text-primary-foreground p-3.5 rounded-full shadow-lg hover:shadow-xl active:scale-95 transition-all"
+          aria-label="Ask Sandra for help"
+          title="Ask Sandra"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </button>
+      )}
+
+      <SandraPanel
+        open={sandraOpen}
+        onClose={() => setSandraOpen(false)}
+        wizardContext={sandraContext ?? null}
+      />
     </div>
   )
 }

@@ -25,7 +25,6 @@ export function exportToCSV(studentData: StudentData): string {
   lines.push(`name,${escapeCSV(studentData.name)}`)
   lines.push(`program,${studentData.program || ''}`)
   lines.push(`expectedGraduation,${studentData.expectedGraduation || ''}`)
-  lines.push(`totalCreditHours,${studentData.totalCreditHours}`)
   lines.push(`completedCourses,${studentData.completedCourses.join(';')}`)
   lines.push(`plannedCourses,${studentData.plannedCourses.join(';')}`)
 
@@ -106,7 +105,6 @@ export function generatePdfBlob(
 
   const infoRight = [
     `Date: ${today}`,
-    `Credit Hours: ${studentData.totalCreditHours || 'N/A'}`,
   ]
 
   infoLeft.forEach((line, i) => {

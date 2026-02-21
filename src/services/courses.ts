@@ -7,6 +7,10 @@ import prerequisitesData from '@/data/prerequisites.json'
 const programs = programsData as Record<ProgramId, ProgramData>
 const prerequisites = prerequisitesData as PrerequisitesData
 
+export function getCourseTitle(code: string): string | undefined {
+  return allCourses.find(c => c.code === code)?.title
+}
+
 export function getProgram(id: ProgramId): ProgramData {
   return programs[id]
 }

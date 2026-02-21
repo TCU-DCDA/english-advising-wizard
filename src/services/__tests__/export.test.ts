@@ -38,7 +38,6 @@ function makeStudentData(overrides: Partial<StudentData> = {}): StudentData {
     name: 'Jane Doe',
     program: 'english',
     expectedGraduation: 'Spring 2027',
-    totalCreditHours: 45,
     completedCourses: ['ENGL 20503', 'ENGL 20403'],
     plannedCourses: ['ENGL 30133'],
     notes: '',
@@ -65,9 +64,8 @@ describe('exportToCSV', () => {
     expect(lines[1]).toBe('name,Jane Doe')
     expect(lines[2]).toBe('program,english')
     expect(lines[3]).toBe('expectedGraduation,Spring 2027')
-    expect(lines[4]).toBe('totalCreditHours,45')
-    expect(lines[5]).toBe('completedCourses,ENGL 20503;ENGL 20403')
-    expect(lines[6]).toBe('plannedCourses,ENGL 30133')
+    expect(lines[4]).toBe('completedCourses,ENGL 20503;ENGL 20403')
+    expect(lines[5]).toBe('plannedCourses,ENGL 30133')
   })
 
   it('escapes CSV values with commas', () => {

@@ -7,7 +7,6 @@ const defaultStudentData: StudentData = {
   name: '',
   program: null,
   expectedGraduation: null,
-  totalCreditHours: 0,
   completedCourses: [],
   plannedCourses: [],
   notes: '',

@@ -23,7 +23,6 @@ describe('useStudentData', () => {
         name: 'Jane',
         program: 'english',
         expectedGraduation: null,
-        totalCreditHours: 30,
         completedCourses: ['ENGL 20503'],
         plannedCourses: [],
         notes: '',

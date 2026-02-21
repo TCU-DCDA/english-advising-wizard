@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { WizardShell } from '@/components/wizard'
 import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
 import { useStudentData } from '@/hooks/useStudentData'
 import { getProgram } from '@/services/courses'
+import { buildSandraContext } from '@/lib/buildSandraContext'
 import type { WizardPhase, WizardStep, ProgramId } from '@/types'
 import type { PhaseInfo } from '@/components/wizard/StepIndicator'
 
@@ -91,6 +92,12 @@ export default function App() {
   // Welcome screen has no progress bar or back button
   const isWelcome = currentStep.id === 'welcome'
 
+  // Build Sandra context from current wizard state
+  const sandraContext = useMemo(
+    () => buildSandraContext(studentData, currentStep.id),
+    [studentData, currentStep.id]
+  )
+
   // Render step content based on current step
   function renderStep() {
     switch (currentStep.id) {
@@ -101,10 +108,8 @@ export default function App() {
           <SetupStep
             program={studentData.program}
             expectedGraduation={studentData.expectedGraduation}
-            totalCreditHours={studentData.totalCreditHours}
             onProgramChange={(id: ProgramId) => updateStudentData({ program: id })}
             onGraduationChange={(value: string) => updateStudentData({ expectedGraduation: value })}
-            onCreditHoursChange={(hours: number) => updateStudentData({ totalCreditHours: hours })}
           />
         )
       case 'completed':
@@ -171,6 +176,7 @@ export default function App() {
       nextDisabled={getNextDisabled()}
       showBackButton={!isWelcome}
       showNextButton={currentStep.id !== 'reviewActions'}
+      sandraContext={sandraContext}
     >
       {renderStep()}
     </WizardShell>

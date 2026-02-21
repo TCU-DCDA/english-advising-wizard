@@ -73,7 +73,6 @@ export interface StudentData {
   name: string
   program: ProgramId | null
   expectedGraduation: string | null
-  totalCreditHours: number
   completedCourses: string[]     // Step 1: already taken
   plannedCourses: string[]       // Step 2: next semester
   notes?: string
