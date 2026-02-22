@@ -1,5 +1,5 @@
 import type { StudentData, WizardStepId } from '@/types'
-import { getProgram, computeProgress, getLowerDivisionHours, getCourseTitle } from '@/services/courses'
+import { getProgram, computeProgress, getLowerDivisionHours, getCourseTitle, getNextSemesterTerm } from '@/services/courses'
 
 const STEP_LABELS: Record<WizardStepId, string> = {
   welcome: 'Welcome',
@@ -52,7 +52,7 @@ export function buildSandraContext(
   }
 
   if (studentData.plannedCourses.length > 0) {
-    lines.push(`Planned for next semester: ${formatCourseList(studentData.plannedCourses)}`)
+    lines.push(`Planned for ${getNextSemesterTerm()}: ${formatCourseList(studentData.plannedCourses)}`)
     lines.push(`Projected total with planned: ${totalProgress.completedHours} of ${program.totalHours} hours`)
   }
 

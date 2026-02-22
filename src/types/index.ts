@@ -57,6 +57,13 @@ export interface PrerequisiteCheckResult {
   entry: PrerequisiteEntry | null
 }
 
+// Course offerings for a specific term (from scraper JSON)
+export interface CourseOfferings {
+  term: string
+  updated: string
+  offeredCodes: string[]
+}
+
 // Four-year plan data
 export interface FourYearPlanSemester {
   semester: string

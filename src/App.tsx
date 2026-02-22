@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { WizardShell } from '@/components/wizard'
 import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
 import { useStudentData } from '@/hooks/useStudentData'
-import { getProgram, getCategoriesForProgram, isElectiveCategory } from '@/services/courses'
+import { getProgram, getCategoriesForProgram, isElectiveCategory, getNextSemesterTerm } from '@/services/courses'
 import { buildSandraContext } from '@/lib/buildSandraContext'
 import type { WizardPhase, WizardStep, ProgramId } from '@/types'
 import type { PhaseInfo } from '@/components/wizard/StepIndicator'
@@ -14,7 +14,7 @@ const STEPS: WizardStep[] = [
   { id: 'welcome', phase: 'setup', title: 'Welcome' },
   { id: 'setup', phase: 'setup', title: 'Setup' },
   { id: 'completed', phase: 'completed', title: 'Completed Courses' },
-  { id: 'semester', phase: 'semester', title: 'Coming Semester' },
+  { id: 'semester', phase: 'semester', title: getNextSemesterTerm() },
   { id: 'future', phase: 'future', title: 'Future Plan' },
   { id: 'reviewSummary', phase: 'review', title: 'Review' },
   { id: 'reviewActions', phase: 'review', title: 'Save & Submit' },

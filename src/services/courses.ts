@@ -1,11 +1,23 @@
-import type { ProgramId, ProgramData, RequirementCategory, PrerequisitesData, PrerequisiteEntry, PrerequisiteCheckResult, OrGroup } from '@/types'
+import type { ProgramId, ProgramData, RequirementCategory, PrerequisitesData, PrerequisiteEntry, PrerequisiteCheckResult, OrGroup, CourseOfferings } from '@/types'
 import type { CatalogCourse } from '@/data/allCourses'
 import { allCourses } from '@/data/allCourses'
 import programsData from '@/data/programs.json'
 import prerequisitesData from '@/data/prerequisites.json'
+import offeringsData from '@/data/offerings-sp26.json'
 
 const programs = programsData as Record<ProgramId, ProgramData>
 const prerequisites = prerequisitesData as PrerequisitesData
+const offerings = offeringsData as CourseOfferings
+
+/** Returns the term label from the offerings file (e.g. "Spring 2026") */
+export function getNextSemesterTerm(): string {
+  return offerings.term
+}
+
+/** Returns true if the course appears in this term's offerings */
+export function isCourseOffered(courseCode: string): boolean {
+  return offerings.offeredCodes.includes(courseCode)
+}
 
 export function getCourseTitle(code: string): string | undefined {
   return allCourses.find(c => c.code === code)?.title
@@ -312,7 +324,7 @@ export function generateGraduationSemesters(): Array<{
   let semester: 'Spring' | 'Summer' | 'Fall' = 'Spring'
   let year = 2026
 
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 15; i++) {
     const value = `${semester} ${year}`
     semesters.push({ label: value, value })
 

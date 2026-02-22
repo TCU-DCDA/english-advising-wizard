@@ -10,6 +10,7 @@ import {
   isElectiveCategory,
   getRemainingCategories,
   generateSemesterPlan,
+  getNextSemesterTerm,
 } from '@/services/courses'
 import type { ProgramId } from '@/types'
 
@@ -28,6 +29,7 @@ export function ReviewSummaryStep({
   notYetCategories,
   expectedGraduation,
 }: ReviewSummaryStepProps) {
+  const term = getNextSemesterTerm()
   const program = getProgram(programId)
   const categories = getCategoriesForProgram(programId)
   const completedProgress = computeProgress(programId, completedCourses)
@@ -212,7 +214,7 @@ export function ReviewSummaryStep({
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-foreground flex items-center gap-2">
             <CalendarDays className="size-4 text-blue-600" />
-            Coming Semester ({plannedHours} hrs planned)
+            {term} ({plannedHours} hrs planned)
           </h3>
           <div className="border border-blue-200 dark:border-blue-800 rounded-lg p-3 bg-blue-50/50 dark:bg-blue-950/20">
             <div className="space-y-1">

@@ -22,6 +22,8 @@ import {
   isElectiveCategory,
   getElectiveCourses,
   checkPrerequisites,
+  getNextSemesterTerm,
+  isCourseOffered,
 } from '@/services/courses'
 import { CourseInfoButton } from '@/components/wizard/CourseInfoButton'
 import type { ProgramId, Course } from '@/types'
@@ -45,6 +47,7 @@ export function SemesterStep({
   plannedCourses,
   onToggleCourse,
 }: SemesterStepProps) {
+  const term = getNextSemesterTerm()
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set())
   const [searchQueries, setSearchQueries] = useState<Record<string, string>>({})
 
@@ -89,10 +92,10 @@ export function SemesterStep({
         <CalendarDays className="size-5 text-blue-600 dark:text-blue-400 shrink-0" />
         <div>
           <div className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-            Coming Semester
+            {term}
           </div>
           <div className="text-xs text-blue-600/70 dark:text-blue-400/70">
-            Select courses you plan to take next semester. Completed courses are locked.
+            Select courses you plan to take in {term}. Completed courses are locked.
           </div>
         </div>
       </div>
@@ -169,13 +172,20 @@ export function SemesterStep({
           const isExpanded = expandedCategories.has(key)
           const searchQuery = searchQueries[key] || ''
 
-          // Get courses for this category
+          // Get courses for this category, sort offered first
           const rawCourses: Array<Course | CatalogCourse> = isElective
             ? electiveCourses
             : category.courses.filter((c) => c.code !== 'ANY')
 
+          const sortedCourses = [...rawCourses].sort((a, b) => {
+            const aOff = isCourseOffered(a.code) ? 0 : 1
+            const bOff = isCourseOffered(b.code) ? 0 : 1
+            if (aOff !== bOff) return aOff - bOff
+            return a.code.localeCompare(b.code)
+          })
+
           // Apply search filter
-          const courses = rawCourses.filter((c) => {
+          const courses = sortedCourses.filter((c) => {
             if (!searchQuery) return true
             const q = searchQuery.toLowerCase()
             return (
@@ -326,6 +336,11 @@ export function SemesterStep({
                                     {isLower && (
                                       <span className="text-xs px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400">
                                         Lower Div
+                                      </span>
+                                    )}
+                                    {!isCompleted && isCourseOffered(course.code) && (
+                                      <span className="text-xs px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400">
+                                        Offered {term}
                                       </span>
                                     )}
                                   </div>

@@ -1,7 +1,7 @@
 {
   "manifestVersion": "1.0",
   "department": "English",
-  "lastUpdated": "2026-02-22T14:01:16.854Z",
+  "lastUpdated": "2026-02-22T22:33:58.328Z",
   "wizardUrl": "https://tcu-dcda.github.io/english-advising-wizard/",
   "programs": [
     {
@@ -2245,12 +2245,6 @@
             "title": "Multimedia Authoring: Sound & Podcasting",
             "hours": 3,
             "description": "Create audio content and podcast productions"
-          },
-          {
-            "code": "ENGL 30573",
-            "title": "African American Literature",
-            "hours": 3,
-            "description": "Survey of African American literary traditions"
           }
         ]
       }
@@ -4161,12 +4155,6 @@
             "title": "Multimedia Authoring: Sound & Podcasting",
             "hours": 3,
             "description": "Create audio content and podcast productions"
-          },
-          {
-            "code": "ENGL 30573",
-            "title": "African American Literature",
-            "hours": 3,
-            "description": "Survey of African American literary traditions"
           }
         ]
       }
@@ -6012,12 +6000,6 @@
             "title": "Multimedia Authoring: Sound & Podcasting",
             "hours": 3,
             "description": "Create audio content and podcast productions"
-          },
-          {
-            "code": "ENGL 30573",
-            "title": "African American Literature",
-            "hours": 3,
-            "description": "Survey of African American literary traditions"
           }
         ]
       }

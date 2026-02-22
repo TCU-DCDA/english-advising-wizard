@@ -13,6 +13,8 @@ import {
   getRemainingCategories,
   generateSemesterPlan,
   generateGraduationSemesters,
+  getNextSemesterTerm,
+  isCourseOffered,
 } from '../courses'
 
 describe('getProgram', () => {
@@ -344,9 +346,9 @@ describe('generateSemesterPlan', () => {
 })
 
 describe('generateGraduationSemesters', () => {
-  it('returns 9 semester options', () => {
+  it('returns 15 semester options', () => {
     const semesters = generateGraduationSemesters()
-    expect(semesters).toHaveLength(9)
+    expect(semesters).toHaveLength(15)
   })
 
   it('starts with Spring 2026', () => {
@@ -367,5 +369,22 @@ describe('generateGraduationSemesters', () => {
     for (const sem of semesters) {
       expect(sem.label).toBe(sem.value)
     }
+  })
+})
+
+describe('getNextSemesterTerm', () => {
+  it('returns a properly formatted term', () => {
+    const term = getNextSemesterTerm()
+    expect(term).toMatch(/^(Spring|Summer|Fall) \d{4}$/)
+  })
+})
+
+describe('isCourseOffered', () => {
+  it('returns false for a non-existent course', () => {
+    expect(isCourseOffered('FAKE 99999')).toBe(false)
+  })
+
+  it('returns a boolean for any course code', () => {
+    expect(typeof isCourseOffered('ENGL 10103')).toBe('boolean')
   })
 })
