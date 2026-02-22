@@ -11,6 +11,7 @@ import {
   isElectiveCategory,
   getElectiveCourses,
 } from '@/services/courses'
+import { CourseInfoButton } from '@/components/wizard/CourseInfoButton'
 import type { ProgramId, Course } from '@/types'
 import type { CatalogCourse } from '@/data/allCourses'
 
@@ -246,9 +247,11 @@ export function CompletedCoursesStep({
                                   {course.title}
                                 </div>
                               </div>
-                              <span className="text-xs text-muted-foreground shrink-0">
-                                {course.hours} hrs
-                              </span>
+                              <CourseInfoButton
+                                courseCode={course.code}
+                                courseTitle={course.title}
+                                courseHours={course.hours}
+                              />
                             </div>
                           </label>
                         )
