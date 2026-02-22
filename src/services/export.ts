@@ -27,6 +27,9 @@ export function exportToCSV(studentData: StudentData): string {
   lines.push(`expectedGraduation,${studentData.expectedGraduation || ''}`)
   lines.push(`completedCourses,${studentData.completedCourses.join(';')}`)
   lines.push(`plannedCourses,${studentData.plannedCourses.join(';')}`)
+  if (studentData.notYetCategories?.length) {
+    lines.push(`notYetCategories,${studentData.notYetCategories.join(';')}`)
+  }
 
   if (studentData.notes) {
     lines.push(`notes,${escapeCSV(studentData.notes)}`)
@@ -228,8 +231,13 @@ export function generatePdfBlob(
 
       if (completedInCat.length === 0 && plannedInCatCourses.length === 0) {
         doc.setFontSize(8)
-        doc.setTextColor(...GRAY)
-        doc.text('No courses selected', margin + 9, y)
+        if (studentData.notYetCategories?.includes(key)) {
+          doc.setTextColor(180, 130, 40)
+          doc.text('Not yet taken', margin + 9, y)
+        } else {
+          doc.setTextColor(...GRAY)
+          doc.text('No courses selected', margin + 9, y)
+        }
         y += 4
       }
     } else {

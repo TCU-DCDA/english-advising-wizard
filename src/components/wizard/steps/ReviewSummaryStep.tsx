@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { CheckCircle, Circle, CalendarDays, AlertTriangle } from 'lucide-react'
+import { CheckCircle, Circle, CalendarDays, AlertTriangle, Info } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
   getProgram,
@@ -17,6 +17,7 @@ interface ReviewSummaryStepProps {
   programId: ProgramId
   completedCourses: string[]
   plannedCourses: string[]
+  notYetCategories: string[]
   expectedGraduation: string | null
 }
 
@@ -24,6 +25,7 @@ export function ReviewSummaryStep({
   programId,
   completedCourses,
   plannedCourses,
+  notYetCategories,
   expectedGraduation,
 }: ReviewSummaryStepProps) {
   const program = getProgram(programId)
@@ -119,6 +121,7 @@ export function ReviewSummaryStep({
           const completedCat = completedProgress.byCategory[key]
           const projectedCat = projectedProgress.byCategory[key]
           const isCatComplete = projectedCat && projectedCat.completed >= projectedCat.required
+          const isNotYet = notYetCategories.includes(key)
           const completedHrsInCat = completedCat?.completed ?? 0
           const projectedHrsInCat = projectedCat?.completed ?? 0
           const plannedHrsInCat = projectedHrsInCat - completedHrsInCat
@@ -136,26 +139,38 @@ export function ReviewSummaryStep({
               key={key}
               className={cn(
                 'border rounded-lg p-3',
-                isCatComplete ? 'border-green-200 dark:border-green-900 bg-green-50/50 dark:bg-green-950/20' : ''
+                isCatComplete
+                  ? 'border-green-200 dark:border-green-900 bg-green-50/50 dark:bg-green-950/20'
+                  : isNotYet
+                    ? 'border-amber-300 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20'
+                    : ''
               )}
             >
               <div className="flex items-center gap-2 mb-1">
                 {isCatComplete ? (
                   <CheckCircle className="size-4 text-green-600 dark:text-green-400 shrink-0" />
+                ) : isNotYet ? (
+                  <AlertTriangle className="size-4 text-amber-500 dark:text-amber-400 shrink-0" />
                 ) : (
                   <Circle className="size-4 text-muted-foreground shrink-0" />
                 )}
                 <span className="font-medium text-sm text-foreground flex-1">{category.name}</span>
-                <span className="text-xs text-muted-foreground">
-                  {completedHrsInCat}/{category.hours} hrs
-                  {plannedHrsInCat > 0 && (
-                    <span className="text-blue-600 dark:text-blue-400"> +{plannedHrsInCat}</span>
-                  )}
-                </span>
+                {isNotYet ? (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400 font-medium">
+                    Not yet taken
+                  </span>
+                ) : (
+                  <span className="text-xs text-muted-foreground">
+                    {completedHrsInCat}/{category.hours} hrs
+                    {plannedHrsInCat > 0 && (
+                      <span className="text-blue-600 dark:text-blue-400"> +{plannedHrsInCat}</span>
+                    )}
+                  </span>
+                )}
               </div>
 
-              {/* Course list (non-elective only) */}
-              {!isElective && (completedInCat.length > 0 || plannedInCat.length > 0) && (
+              {/* Course list (non-elective only, not when "not yet") */}
+              {!isNotYet && !isElective && (completedInCat.length > 0 || plannedInCat.length > 0) && (
                 <div className="ml-6 mt-1 space-y-0.5">
                   {completedInCat.map((c) => (
                     <div key={c.code} className="flex items-center gap-2 text-xs">
@@ -174,8 +189,15 @@ export function ReviewSummaryStep({
                 </div>
               )}
 
+              {/* "Not yet" message */}
+              {isNotYet && (
+                <p className="ml-6 mt-1 text-xs text-amber-600 dark:text-amber-400">
+                  Still needed — no courses completed in this category
+                </p>
+              )}
+
               {/* Elective summary */}
-              {isElective && (completedHrsInCat > 0 || plannedHrsInCat > 0) && (
+              {!isNotYet && isElective && (completedHrsInCat > 0 || plannedHrsInCat > 0) && (
                 <p className="ml-6 mt-1 text-xs text-muted-foreground">
                   Elective courses from department catalog
                 </p>
@@ -249,6 +271,15 @@ export function ReviewSummaryStep({
           </div>
         </div>
       )}
+
+      {/* Optional submit note */}
+      <div className="flex items-start gap-2 bg-muted/50 border rounded-lg p-3">
+        <Info className="size-4 mt-0.5 text-muted-foreground shrink-0" />
+        <p className="text-sm text-muted-foreground">
+          On the next screen you can optionally export your plan as a PDF
+          and submit it to your advisor with an appointment request.
+        </p>
+      </div>
     </div>
   )
 }

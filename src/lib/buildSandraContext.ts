@@ -65,6 +65,14 @@ export function buildSandraContext(
     lines.push(`Still needed: ${remaining.join(', ')}`)
   }
 
+  if (studentData.notYetCategories?.length) {
+    const notYetNames = studentData.notYetCategories.map(key => {
+      const cat = completedProgress.byCategory[key]
+      return cat?.name ?? key
+    })
+    lines.push(`Categories student hasn't started: ${notYetNames.join(', ')}`)
+  }
+
   // Lower-division warning
   if (program.maxLowerDivision) {
     const lowerHours = getLowerDivisionHours(allCourses, studentData.program)

@@ -11,16 +11,14 @@ import {
   Eye,
   Printer,
   Download,
-  Mail,
   Send,
-  ChevronDown,
-  ChevronUp,
   RotateCcw,
   Phone,
   MapPin,
+  Mail,
 } from 'lucide-react'
 import type { StudentData, ProgramData } from '@/types'
-import { exportToCSV, generatePdfBlob, downloadPdf } from '@/services/export'
+import { generatePdfBlob, downloadPdf } from '@/services/export'
 import contactsData from '@/data/contacts.json'
 
 const advisor = contactsData.find((c) => c.role === 'Academic Advisor') ?? contactsData[0]
@@ -42,7 +40,6 @@ export function ReviewActionsStep({
 }: ReviewActionsStepProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [previewFilename, setPreviewFilename] = useState('')
-  const [showExportOptions, setShowExportOptions] = useState(false)
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false)
   const [submitFilename, setSubmitFilename] = useState('')
   const [showResetConfirm, setShowResetConfirm] = useState(false)
@@ -81,10 +78,6 @@ export function ReviewActionsStep({
     }
   }
 
-  const handleDownloadCsv = () => {
-    exportToCSV(studentData)
-  }
-
   const handleDownloadPdf = () => {
     if (previewUrl) {
       downloadPdf(previewUrl, previewFilename)
@@ -92,15 +85,17 @@ export function ReviewActionsStep({
   }
 
   const handleSubmitToAdvisor = () => {
-    const filename = exportToCSV(studentData)
+    const { blobUrl, filename } = generatePdfBlob(studentData, programData)
+    downloadPdf(blobUrl, filename)
+    URL.revokeObjectURL(blobUrl)
     setSubmitFilename(filename)
     setShowSubmitConfirm(true)
   }
 
   const handleOpenEmail = () => {
     const date = new Date().toLocaleDateString()
-    const subject = `English Advising Plan: ${studentData.name || 'Student'}`
-    const body = `English Department Advising Plan
+    const subject = `English Advising Plan & Appointment Request: ${studentData.name || 'Student'}`
+    const body = `English Department Advising Plan & Appointment Request
 
 Student: ${studentData.name || 'Not specified'}
 Program: ${programData.name}
@@ -110,11 +105,14 @@ Date: ${date}
 Notes/Questions:
 ${studentData.notes || 'None'}
 
+I would also like to schedule an advising appointment at your earliest convenience.
+
 ---
-Advising plan CSV attached.
+Advising plan PDF attached.
 Submitted via TCU English Advising Wizard`
 
-    const mailtoUrl = `mailto:${advisor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    const cc = studentData.email ? `&cc=${encodeURIComponent(studentData.email)}` : ''
+    const mailtoUrl = `mailto:${advisor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}${cc}`
     window.location.href = mailtoUrl
     setShowSubmitConfirm(false)
   }
@@ -130,13 +128,36 @@ Submitted via TCU English Advising Wizard`
       <div>
         <h2 className="text-xl font-semibold mb-2">Save & Submit</h2>
         <p className="text-sm text-muted-foreground">
-          Schedule an appointment, add notes, and submit your plan.
+          Export your plan, send it to your advisor, and request an appointment.
         </p>
       </div>
 
-      {/* 1. Advisor contact */}
+      {/* 1. Export PDF for yourself */}
+      <div className="border rounded-xl p-5 space-y-3">
+        <h3 className="font-semibold text-foreground">Export Your Plan</h3>
+        <p className="text-sm text-muted-foreground">
+          Save a copy of your advising plan for your records.
+        </p>
+        <div className="flex gap-3">
+          <Button className="flex-1 gap-2" size="lg" onClick={handlePreview}>
+            <Eye className="size-5" />
+            Preview PDF
+          </Button>
+          {!isMobile && (
+            <Button variant="outline" size="lg" onClick={handlePrint}>
+              <Printer className="size-5" />
+            </Button>
+          )}
+        </div>
+      </div>
+
+      {/* 2. Submit to advisor & request appointment */}
       <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 space-y-3">
-        <h3 className="font-semibold text-primary text-lg">Contact Your Advisor</h3>
+        <h3 className="font-semibold text-primary">Submit to Advisor</h3>
+        <p className="text-sm text-muted-foreground">
+          Downloads your plan as a PDF and opens an email to your advisor
+          with an appointment request. Attach the downloaded PDF before sending.
+        </p>
         <div className="space-y-2 text-sm">
           <div className="font-medium text-foreground">{advisor.name}</div>
           <div className="flex items-center gap-2 text-muted-foreground">
@@ -154,94 +175,22 @@ Submitted via TCU English Advising Wizard`
             <span>{advisor.office}</span>
           </div>
         </div>
-        <Button asChild className="w-full" size="lg">
-          <a
-            href={`mailto:${advisor.email}?subject=${encodeURIComponent(`Advising Appointment Request: ${studentData.name || 'Student'}`)}`}
-          >
-            <Mail className="size-5 mr-2" />
-            Schedule an Appointment
-          </a>
+        <div className="space-y-3">
+          <label htmlFor="notes" className="text-sm font-semibold block">
+            Notes or Questions for Advisor
+          </label>
+          <Textarea
+            id="notes"
+            placeholder="Add any questions about transfer credits, courses, or career goals..."
+            value={studentData.notes || ''}
+            onChange={(e) => updateStudentData({ notes: e.target.value })}
+            className="text-base"
+          />
+        </div>
+        <Button className="w-full gap-2" size="lg" onClick={handleSubmitToAdvisor}>
+          <Send className="size-5" />
+          Submit Plan & Request Appointment
         </Button>
-      </div>
-
-      {/* 2. Notes */}
-      <div className="space-y-3">
-        <label htmlFor="notes" className="text-sm font-semibold block px-1">
-          Notes or Questions for Advisor
-        </label>
-        <Textarea
-          id="notes"
-          placeholder="Add any questions about transfer credits, courses, or career goals..."
-          value={studentData.notes || ''}
-          onChange={(e) => updateStudentData({ notes: e.target.value })}
-          className="text-base"
-        />
-      </div>
-
-      {/* 3. Submit — primary action */}
-      <Button className="w-full gap-2" size="lg" onClick={handleSubmitToAdvisor}>
-        <Send className="size-5" />
-        Submit Plan to Advisor
-      </Button>
-      <p className="text-xs text-muted-foreground text-center -mt-3">
-        Downloads your plan as CSV and opens an email to your advisor.
-      </p>
-
-      {/* 4. More export options — collapsed */}
-      <div className="border rounded-xl overflow-hidden">
-        <button
-          type="button"
-          onClick={() => setShowExportOptions(!showExportOptions)}
-          className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-muted/50 transition-colors"
-        >
-          <span>More export options</span>
-          {showExportOptions ? (
-            <ChevronUp className="size-4" />
-          ) : (
-            <ChevronDown className="size-4" />
-          )}
-        </button>
-        {showExportOptions && (
-          <div className="grid grid-cols-2 gap-3 p-4 pt-0 border-t">
-            <Button
-              variant="outline"
-              className="flex-col h-auto py-3 gap-1.5"
-              onClick={handlePreview}
-            >
-              <Eye className="size-4" />
-              <span className="text-xs">Preview PDF</span>
-            </Button>
-
-            {!isMobile && (
-              <Button
-                variant="outline"
-                className="flex-col h-auto py-3 gap-1.5"
-                onClick={handlePrint}
-              >
-                <Printer className="size-4" />
-                <span className="text-xs">Print PDF</span>
-              </Button>
-            )}
-
-            <Button
-              variant="outline"
-              className="flex-col h-auto py-3 gap-1.5"
-              onClick={handleDownloadCsv}
-            >
-              <Download className="size-4" />
-              <span className="text-xs">Save CSV</span>
-            </Button>
-          </div>
-        )}
-      </div>
-
-      {/* Tip */}
-      <div className="flex items-start gap-3 text-sm text-muted-foreground px-1">
-        <Mail className="size-4 mt-0.5 shrink-0" />
-        <p>
-          <strong>Tip:</strong> Save your PDF or CSV and email it before your
-          meeting so your advisor can review it in advance.
-        </p>
       </div>
 
       {/* Start Over */}
@@ -271,7 +220,7 @@ Submitted via TCU English Advising Wizard`
             </div>
             <p className="text-sm text-muted-foreground">
               An email will open next. Please{' '}
-              <strong>attach the downloaded file</strong> before sending.
+              <strong>attach the downloaded PDF</strong> before sending.
             </p>
             <div className="flex gap-2">
               <Button

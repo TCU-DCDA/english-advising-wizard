@@ -16,9 +16,28 @@ describe('useStudentData', () => {
       expect(result.current.studentData.program).toBeNull()
       expect(result.current.studentData.completedCourses).toEqual([])
       expect(result.current.studentData.plannedCourses).toEqual([])
+      expect(result.current.studentData.notYetCategories).toEqual([])
     })
 
     it('restores state from localStorage', () => {
+      const stored = {
+        name: 'Jane',
+        program: 'english',
+        expectedGraduation: null,
+        completedCourses: ['ENGL 20503'],
+        plannedCourses: [],
+        notYetCategories: [],
+        notes: '',
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stored))
+
+      const { result } = renderHook(() => useStudentData())
+      expect(result.current.studentData.name).toBe('Jane')
+      expect(result.current.studentData.program).toBe('english')
+      expect(result.current.studentData.completedCourses).toEqual(['ENGL 20503'])
+    })
+
+    it('migrates legacy data without notYetCategories', () => {
       const stored = {
         name: 'Jane',
         program: 'english',
@@ -30,9 +49,7 @@ describe('useStudentData', () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(stored))
 
       const { result } = renderHook(() => useStudentData())
-      expect(result.current.studentData.name).toBe('Jane')
-      expect(result.current.studentData.program).toBe('english')
-      expect(result.current.studentData.completedCourses).toEqual(['ENGL 20503'])
+      expect(result.current.studentData.notYetCategories).toEqual([])
     })
   })
 
@@ -129,6 +146,64 @@ describe('useStudentData', () => {
       })
 
       expect(result.current.studentData.plannedCourses).toEqual(['ENGL 30133', 'ENGL 30143'])
+    })
+  })
+
+  describe('toggleNotYetCategory', () => {
+    it('adds a category to notYetCategories', () => {
+      const { result } = renderHook(() => useStudentData())
+
+      act(() => {
+        result.current.toggleNotYetCategory('americanLit', ['ENGL 20503', 'ENGL 30133'])
+      })
+
+      expect(result.current.studentData.notYetCategories).toContain('americanLit')
+    })
+
+    it('removes completed courses in category when marking not yet', () => {
+      const { result } = renderHook(() => useStudentData())
+
+      act(() => {
+        result.current.toggleCompletedCourse('ENGL 20503')
+      })
+      expect(result.current.studentData.completedCourses).toContain('ENGL 20503')
+
+      act(() => {
+        result.current.toggleNotYetCategory('americanLit', ['ENGL 20503', 'ENGL 30133'])
+      })
+
+      expect(result.current.studentData.completedCourses).not.toContain('ENGL 20503')
+      expect(result.current.studentData.notYetCategories).toContain('americanLit')
+    })
+
+    it('toggles off when called again', () => {
+      const { result } = renderHook(() => useStudentData())
+
+      act(() => {
+        result.current.toggleNotYetCategory('americanLit', [])
+      })
+      expect(result.current.studentData.notYetCategories).toContain('americanLit')
+
+      act(() => {
+        result.current.toggleNotYetCategory('americanLit', [])
+      })
+      expect(result.current.studentData.notYetCategories).not.toContain('americanLit')
+    })
+  })
+
+  describe('clearNotYetCategory', () => {
+    it('removes a category from notYetCategories', () => {
+      const { result } = renderHook(() => useStudentData())
+
+      act(() => {
+        result.current.toggleNotYetCategory('britishLit', [])
+      })
+      expect(result.current.studentData.notYetCategories).toContain('britishLit')
+
+      act(() => {
+        result.current.clearNotYetCategory('britishLit')
+      })
+      expect(result.current.studentData.notYetCategories).not.toContain('britishLit')
     })
   })
 

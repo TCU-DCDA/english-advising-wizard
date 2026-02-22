@@ -71,10 +71,12 @@ export interface FourYearPlan {
 // Student data (stored in localStorage)
 export interface StudentData {
   name: string
+  email?: string
   program: ProgramId | null
   expectedGraduation: string | null
   completedCourses: string[]     // Step 1: already taken
   plannedCourses: string[]       // Step 2: next semester
+  notYetCategories: string[]     // Step 1: categories marked "haven't taken"
   notes?: string
 }
 

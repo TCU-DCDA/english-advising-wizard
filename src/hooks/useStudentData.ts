@@ -9,6 +9,7 @@ const defaultStudentData: StudentData = {
   expectedGraduation: null,
   completedCourses: [],
   plannedCourses: [],
+  notYetCategories: [],
   notes: '',
 }
 
@@ -17,7 +18,12 @@ export function useStudentData() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) {
-        return JSON.parse(stored) as StudentData
+        const parsed = JSON.parse(stored) as Partial<StudentData>
+        return {
+          ...defaultStudentData,
+          ...parsed,
+          notYetCategories: parsed.notYetCategories ?? [],
+        }
       }
     } catch (error) {
       console.error('Failed to load student data:', error)
@@ -76,6 +82,28 @@ export function useStudentData() {
     }))
   }, [])
 
+  const toggleNotYetCategory = useCallback((categoryKey: string, coursesInCategory: string[]) => {
+    setStudentData((prev) => {
+      const isAdding = !prev.notYetCategories.includes(categoryKey)
+      return {
+        ...prev,
+        notYetCategories: isAdding
+          ? [...prev.notYetCategories, categoryKey]
+          : prev.notYetCategories.filter((k) => k !== categoryKey),
+        completedCourses: isAdding
+          ? prev.completedCourses.filter((c) => !coursesInCategory.includes(c))
+          : prev.completedCourses,
+      }
+    })
+  }, [])
+
+  const clearNotYetCategory = useCallback((categoryKey: string) => {
+    setStudentData((prev) => ({
+      ...prev,
+      notYetCategories: prev.notYetCategories.filter((k) => k !== categoryKey),
+    }))
+  }, [])
+
   const resetStudentData = useCallback(() => {
     setStudentData(defaultStudentData)
   }, [])
@@ -86,6 +114,8 @@ export function useStudentData() {
     toggleCompletedCourse,
     togglePlannedCourse,
     setPlannedCourses,
+    toggleNotYetCategory,
+    clearNotYetCategory,
     resetStudentData,
   }
 }

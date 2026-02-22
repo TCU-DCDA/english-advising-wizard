@@ -40,6 +40,7 @@ function makeStudentData(overrides: Partial<StudentData> = {}): StudentData {
     expectedGraduation: 'Spring 2027',
     completedCourses: ['ENGL 20503', 'ENGL 20403'],
     plannedCourses: ['ENGL 30133'],
+    notYetCategories: [],
     notes: '',
     ...overrides,
   }
@@ -92,5 +93,17 @@ describe('exportToCSV', () => {
     exportToCSV(makeStudentData({ notes: '' }))
 
     expect(capturedBlobContent).not.toContain('notes,')
+  })
+
+  it('includes notYetCategories when present', () => {
+    exportToCSV(makeStudentData({ notYetCategories: ['globalLit', 'theory'] }))
+
+    expect(capturedBlobContent).toContain('notYetCategories,globalLit;theory')
+  })
+
+  it('omits notYetCategories line when empty', () => {
+    exportToCSV(makeStudentData({ notYetCategories: [] }))
+
+    expect(capturedBlobContent).not.toContain('notYetCategories')
   })
 })

@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import { BookOpen, PenTool, FileText, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { getAllPrograms, generateGraduationSemesters } from '@/services/courses'
 import type { ProgramId } from '@/types'
 
 interface SetupStepProps {
+  name: string
+  email: string
   program: ProgramId | null
   expectedGraduation: string | null
+  onNameChange: (value: string) => void
+  onEmailChange: (value: string) => void
   onProgramChange: (id: ProgramId) => void
   onGraduationChange: (value: string) => void
 }
@@ -18,8 +23,12 @@ const PROGRAM_ICONS: Record<ProgramId, typeof BookOpen> = {
 }
 
 export function SetupStep({
+  name,
+  email,
   program,
   expectedGraduation,
+  onNameChange,
+  onEmailChange,
   onProgramChange,
   onGraduationChange,
 }: SetupStepProps) {
@@ -31,7 +40,33 @@ export function SetupStep({
 
   return (
     <div className="space-y-8">
-      {/* Section A: Program Picker */}
+      {/* Section A: Name & Email */}
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold mb-1">Your name</h2>
+          <Input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => onNameChange(e.target.value)}
+            autoFocus
+          />
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-1">Your TCU email</h2>
+          <p className="text-sm text-muted-foreground mb-2">
+            You'll receive a copy if you choose to submit your plan to your advisor.
+          </p>
+          <Input
+            type="email"
+            placeholder="name@tcu.edu"
+            value={email}
+            onChange={(e) => onEmailChange(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Section B: Program Picker */}
       <div className="space-y-3">
         <div>
           <h2 className="text-xl font-semibold mb-1">Which program are you in?</h2>

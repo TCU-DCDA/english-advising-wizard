@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { WizardShell } from '@/components/wizard'
 import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
 import { useStudentData } from '@/hooks/useStudentData'
-import { getProgram } from '@/services/courses'
+import { getProgram, getCategoriesForProgram, isElectiveCategory } from '@/services/courses'
 import { buildSandraContext } from '@/lib/buildSandraContext'
 import type { WizardPhase, WizardStep, ProgramId } from '@/types'
 import type { PhaseInfo } from '@/components/wizard/StepIndicator'
@@ -40,7 +40,7 @@ function computeStepInPhase(stepIndex: number, steps: WizardStep[]): number {
 }
 
 export default function App() {
-  const { studentData, updateStudentData, toggleCompletedCourse, togglePlannedCourse, resetStudentData } = useStudentData()
+  const { studentData, updateStudentData, toggleCompletedCourse, togglePlannedCourse, toggleNotYetCategory, clearNotYetCategory, resetStudentData } = useStudentData()
 
   const [stepIndex, setStepIndex] = useState(() => {
     try {
@@ -83,7 +83,25 @@ export default function App() {
   const getNextDisabled = (): boolean => {
     switch (currentStep.id) {
       case 'setup':
-        return !studentData.program || !studentData.expectedGraduation
+        return !studentData.name.trim() || !studentData.program || !studentData.expectedGraduation
+      case 'completed': {
+        if (!studentData.program) return true
+        const cats = getCategoriesForProgram(studentData.program)
+        // Build set of all codes in specific (non-elective) categories
+        const specificCodes = new Set<string>()
+        for (const { category } of cats) {
+          if (!isElectiveCategory(category)) {
+            for (const c of category.courses) specificCodes.add(c.code)
+          }
+        }
+        return !cats.every(({ key, category }) => {
+          if (studentData.notYetCategories.includes(key)) return true
+          if (isElectiveCategory(category)) {
+            return studentData.completedCourses.some((c) => !specificCodes.has(c))
+          }
+          return category.courses.some((c) => studentData.completedCourses.includes(c.code))
+        })
+      }
       default:
         return false
     }
@@ -106,8 +124,12 @@ export default function App() {
       case 'setup':
         return (
           <SetupStep
+            name={studentData.name}
+            email={studentData.email || ''}
             program={studentData.program}
             expectedGraduation={studentData.expectedGraduation}
+            onNameChange={(value: string) => updateStudentData({ name: value })}
+            onEmailChange={(value: string) => updateStudentData({ email: value })}
             onProgramChange={(id: ProgramId) => updateStudentData({ program: id })}
             onGraduationChange={(value: string) => updateStudentData({ expectedGraduation: value })}
           />
@@ -117,7 +139,10 @@ export default function App() {
           <CompletedCoursesStep
             programId={studentData.program!}
             completedCourses={studentData.completedCourses}
+            notYetCategories={studentData.notYetCategories}
             onToggleCourse={toggleCompletedCourse}
+            onToggleNotYet={toggleNotYetCategory}
+            onClearNotYet={clearNotYetCategory}
           />
         )
       case 'semester':
@@ -144,6 +169,7 @@ export default function App() {
             programId={studentData.program!}
             completedCourses={studentData.completedCourses}
             plannedCourses={studentData.plannedCourses}
+            notYetCategories={studentData.notYetCategories}
             expectedGraduation={studentData.expectedGraduation}
           />
         )

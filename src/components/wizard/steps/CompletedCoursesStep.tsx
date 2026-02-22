@@ -18,13 +18,19 @@ import type { CatalogCourse } from '@/data/allCourses'
 interface CompletedCoursesStepProps {
   programId: ProgramId
   completedCourses: string[]
+  notYetCategories: string[]
   onToggleCourse: (code: string) => void
+  onToggleNotYet: (categoryKey: string, coursesInCategory: string[]) => void
+  onClearNotYet: (categoryKey: string) => void
 }
 
 export function CompletedCoursesStep({
   programId,
   completedCourses,
+  notYetCategories,
   onToggleCourse,
+  onToggleNotYet,
+  onClearNotYet,
 }: CompletedCoursesStepProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set())
   const [searchQueries, setSearchQueries] = useState<Record<string, string>>({})
@@ -54,6 +60,13 @@ export function CompletedCoursesStep({
 
   const setSearch = (key: string, query: string) => {
     setSearchQueries((prev) => ({ ...prev, [key]: query }))
+  }
+
+  const handleToggleCourse = (code: string, categoryKey: string) => {
+    if (notYetCategories.includes(categoryKey)) {
+      onClearNotYet(categoryKey)
+    }
+    onToggleCourse(code)
   }
 
   return (
@@ -149,11 +162,15 @@ export function CompletedCoursesStep({
                   'w-full px-4 py-3 flex items-center gap-3 text-left transition-colors',
                   isComplete
                     ? 'bg-green-50 dark:bg-green-950/30 hover:bg-green-100 dark:hover:bg-green-950/50'
-                    : 'bg-muted/50 hover:bg-muted'
+                    : notYetCategories.includes(key)
+                      ? 'bg-amber-50 dark:bg-amber-950/30 hover:bg-amber-100 dark:hover:bg-amber-950/50'
+                      : 'bg-muted/50 hover:bg-muted'
                 )}
               >
                 {isComplete ? (
                   <CheckCircle className="size-5 text-green-600 dark:text-green-400 shrink-0" />
+                ) : notYetCategories.includes(key) ? (
+                  <AlertTriangle className="size-5 text-amber-500 dark:text-amber-400 shrink-0" />
                 ) : (
                   <Circle className="size-5 text-muted-foreground shrink-0" />
                 )}
@@ -162,6 +179,11 @@ export function CompletedCoursesStep({
                   <span className="ml-2 text-sm text-muted-foreground">
                     ({catProgress?.completed ?? 0} / {category.hours} hrs)
                   </span>
+                  {notYetCategories.includes(key) && (
+                    <span className="ml-2 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400 font-medium">
+                      Not yet
+                    </span>
+                  )}
                 </div>
                 {isExpanded ? (
                   <ChevronUp className="size-5 text-muted-foreground shrink-0" />
@@ -173,6 +195,41 @@ export function CompletedCoursesStep({
               {/* Accordion body */}
               {isExpanded && (
                 <div className="px-4 py-3 space-y-3">
+                  {/* "Haven't taken this yet" option */}
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => onToggleNotYet(
+                      key,
+                      isElective ? electiveCourses.map(c => c.code) : category.courses.map(c => c.code)
+                    )}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        onToggleNotYet(
+                          key,
+                          isElective ? electiveCourses.map(c => c.code) : category.courses.map(c => c.code)
+                        )
+                      }
+                    }}
+                    className={cn(
+                      'w-full flex items-center gap-3 p-3 rounded-xl border-2 border-dashed cursor-pointer transition-all text-left',
+                      notYetCategories.includes(key)
+                        ? 'border-amber-400 bg-amber-50 dark:border-amber-600 dark:bg-amber-950/30'
+                        : 'border-border hover:border-amber-300 dark:hover:border-amber-700'
+                    )}
+                  >
+                    <Checkbox
+                      checked={notYetCategories.includes(key)}
+                      className="pointer-events-none"
+                      tabIndex={-1}
+                    />
+                    <div className="flex-1">
+                      <div className="text-sm font-semibold text-foreground">Haven't taken this yet</div>
+                      <div className="text-xs text-muted-foreground">I haven't completed courses in this category yet</div>
+                    </div>
+                  </div>
+
                   {/* Search input */}
                   {showSearch && (
                     <div className="relative">
@@ -230,7 +287,7 @@ export function CompletedCoursesStep({
                             <div className="flex items-center gap-3 p-3 flex-1 min-w-0">
                               <Checkbox
                                 checked={isChecked}
-                                onCheckedChange={() => onToggleCourse(course.code)}
+                                onCheckedChange={() => handleToggleCourse(course.code, key)}
                               />
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-0.5 flex-wrap">
