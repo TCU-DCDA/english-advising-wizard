@@ -298,9 +298,7 @@
           { "code": "CRWT 40133", "title": "Creative Nonfiction Workshop II", "hours": 3 },
           { "code": "CRWT 40203", "title": "Fiction Writing Workshop II", "hours": 3 },
           { "code": "CRWT 40213", "title": "Poetry Writing Workshop II", "hours": 3 },
-          { "code": "CRWT 40223", "title": "Drama Writing Workshop II", "hours": 3 },
-          { "code": "CRWT 40703", "title": "Advanced Multi-Genre Workshop", "hours": 3 },
-          { "code": "CRWT 40803", "title": "Advanced Literary Forms", "hours": 3 }
+          { "code": "CRWT 40223", "title": "Drama Writing Workshop II", "hours": 3 }
         ]
       },
       "advancedSeminar": {

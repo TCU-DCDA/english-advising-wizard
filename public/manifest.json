@@ -1,7 +1,7 @@
 {
   "manifestVersion": "1.0",
   "department": "English",
-  "lastUpdated": "2026-02-23T12:18:42.959Z",
+  "lastUpdated": "2026-02-23T16:25:12.289Z",
   "wizardUrl": "https://tcu-dcda.github.io/english-advising-wizard/",
   "programs": [
     {
@@ -4359,16 +4359,6 @@
               {
                 "code": "CRWT 40223",
                 "title": "Drama Writing Workshop II",
-                "hours": 3
-              },
-              {
-                "code": "CRWT 40703",
-                "title": "Advanced Multi-Genre Workshop",
-                "hours": 3
-              },
-              {
-                "code": "CRWT 40803",
-                "title": "Advanced Literary Forms",
                 "hours": 3
               }
             ]
