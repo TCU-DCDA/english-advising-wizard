@@ -12,6 +12,10 @@ import {
 // --- CSV Export ---
 
 function escapeCSV(value: string): string {
+  // Prefix formula characters to prevent CSV injection in Excel/Sheets
+  if (/^[=+@\-\t]/.test(value)) {
+    value = "'" + value
+  }
   if (value.includes(',') || value.includes('"') || value.includes('\n')) {
     return `"${value.replace(/"/g, '""')}"`
   }

@@ -106,6 +106,7 @@ export function useStudentData() {
 
   const resetStudentData = useCallback(() => {
     setStudentData(defaultStudentData)
+    localStorage.removeItem(STORAGE_KEY)
   }, [])
 
   return {
