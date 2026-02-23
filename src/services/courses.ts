@@ -157,6 +157,44 @@ export function getElectiveCourses(programId: ProgramId): CatalogCourse[] {
   return allCourses.filter((c) => !specificCodes.has(c.code))
 }
 
+export interface OverlayProgress {
+  key: string
+  name: string
+  required: number
+  completed: number
+  courses: Array<{ code: string; title: string; completed: boolean }>
+}
+
+export function getOverlayProgress(
+  programId: ProgramId,
+  completedCourses: string[]
+): OverlayProgress[] {
+  const program = programs[programId]
+  if (!program.overlays) return []
+
+  return Object.entries(program.overlays).map(([key, overlay]) => {
+    const courses = overlay.courses.map((c) => ({
+      code: c.code,
+      title: c.title,
+      completed: completedCourses.includes(c.code),
+    }))
+    const completed = courses
+      .filter((c) => c.completed)
+      .reduce((sum, c) => {
+        const course = overlay.courses.find((oc) => oc.code === c.code)
+        return sum + (course?.hours ?? 0)
+      }, 0)
+
+    return {
+      key,
+      name: overlay.name,
+      required: overlay.hours,
+      completed: Math.min(completed, overlay.hours),
+      courses,
+    }
+  })
+}
+
 export function computeProjectedProgress(
   programId: ProgramId,
   completedCourses: string[],
@@ -167,6 +205,23 @@ export function computeProjectedProgress(
 }
 
 const LOWER_DIV_RE = /^(ENGL|WRIT|CRWT) [12]\d{4}$/
+
+// Courses that, when completed, imply other courses were completed as prerequisites.
+// e.g. ENGL 20803 requires ENGL 10803, so completing 20803 implies 10803.
+const IMPLIED_COMPLETIONS: Record<string, string[]> = {
+  'ENGL 20803': ['ENGL 10803'],
+}
+
+function expandImplied(courses: string[]): string[] {
+  const expanded = new Set(courses)
+  for (const code of courses) {
+    const implied = IMPLIED_COMPLETIONS[code]
+    if (implied) {
+      for (const imp of implied) expanded.add(imp)
+    }
+  }
+  return [...expanded]
+}
 
 function isSatisfied(item: string, all: string[]): boolean {
   if (item === '@any-lower-div') {
@@ -185,7 +240,7 @@ export function checkPrerequisites(
     return { met: true, unmetGroups: [], entry }
   }
 
-  const all = [...new Set([...completedCourses, ...plannedCourses])]
+  const all = expandImplied([...new Set([...completedCourses, ...plannedCourses])])
   const unmetGroups: OrGroup[] = []
 
   for (const orGroup of entry.require) {

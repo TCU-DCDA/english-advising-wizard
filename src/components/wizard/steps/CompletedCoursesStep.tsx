@@ -10,6 +10,7 @@ import {
   getLowerDivisionHours,
   isElectiveCategory,
   getElectiveCourses,
+  getOverlayProgress,
 } from '@/services/courses'
 import { CourseInfoButton } from '@/components/wizard/CourseInfoButton'
 import type { ProgramId, Course } from '@/types'
@@ -44,6 +45,11 @@ export function CompletedCoursesStep({
   const electiveCourses = useMemo(
     () => getElectiveCourses(programId),
     [programId]
+  )
+
+  const overlays = useMemo(
+    () => getOverlayProgress(programId, completedCourses),
+    [programId, completedCourses]
   )
 
   const toggleCategory = (key: string) => {
@@ -185,6 +191,38 @@ export function CompletedCoursesStep({
                     </span>
                   )}
                 </div>
+                {/* Skip / Undo button on header — avoids opening accordion */}
+                {!isComplete && (
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onToggleNotYet(
+                        key,
+                        isElective ? electiveCourses.map(c => c.code) : category.courses.map(c => c.code)
+                      )
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        onToggleNotYet(
+                          key,
+                          isElective ? electiveCourses.map(c => c.code) : category.courses.map(c => c.code)
+                        )
+                      }
+                    }}
+                    className={cn(
+                      'text-xs font-medium px-2 py-1 rounded-md shrink-0 transition-colors',
+                      notYetCategories.includes(key)
+                        ? 'text-amber-700 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-900/50'
+                        : 'text-muted-foreground hover:bg-muted-foreground/10'
+                    )}
+                  >
+                    {notYetCategories.includes(key) ? 'Undo' : 'Skip'}
+                  </span>
+                )}
                 {isExpanded ? (
                   <ChevronUp className="size-5 text-muted-foreground shrink-0" />
                 ) : (
@@ -322,46 +360,53 @@ export function CompletedCoursesStep({
         })}
       </div>
 
-      {/* Overlay notes (English program only) */}
-      {programId === 'english' && <OverlayNotes />}
-    </div>
-  )
-}
-
-function OverlayNotes() {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <div className="border rounded-xl overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-3 flex items-center gap-3 text-left bg-muted/50 hover:bg-muted transition-colors"
-      >
-        <Info className="size-5 text-muted-foreground shrink-0" />
-        <span className="font-medium flex-1">Additional Requirements</span>
-        {isOpen ? (
-          <ChevronUp className="size-4 text-muted-foreground" />
-        ) : (
-          <ChevronDown className="size-4 text-muted-foreground" />
-        )}
-      </button>
-      {isOpen && (
-        <div className="px-4 py-3 space-y-3 text-sm text-muted-foreground">
-          <div>
-            <p className="font-medium text-foreground mb-1">Early Literature & Culture (6 hrs)</p>
-            <p>
-              At least 6 hours must come from courses focused on literature and culture before 1800.
-              This is satisfied by courses already counting in other categories (e.g., King Arthur,
-              Milton, Chaucer, Renaissance Poetry, Early American Lit).
-            </p>
-          </div>
-          <div>
-            <p className="font-medium text-foreground mb-1">Junior Research Seminar (3 hrs)</p>
-            <p>
-              One 38000-level research seminar is required (e.g., ENGL 38023 or ENGL 38013).
-              This counts toward the American or British Literature category.
-            </p>
-          </div>
+      {/* Overlay requirements — auto-tracked from selections above */}
+      {overlays.length > 0 && (
+        <div className="space-y-2">
+          <h3 className="text-sm font-medium text-foreground flex items-center gap-2">
+            <Info className="size-4 text-muted-foreground" />
+            Additional Requirements
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            These are satisfied by courses already counting in categories above.
+          </p>
+          {overlays.map((overlay) => {
+            const isMet = overlay.completed >= overlay.required
+            return (
+              <div
+                key={overlay.key}
+                className={cn(
+                  'border rounded-lg p-3',
+                  isMet
+                    ? 'border-green-200 dark:border-green-900 bg-green-50/50 dark:bg-green-950/20'
+                    : 'border-amber-300 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20'
+                )}
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  {isMet ? (
+                    <CheckCircle className="size-4 text-green-600 dark:text-green-400 shrink-0" />
+                  ) : (
+                    <AlertTriangle className="size-4 text-amber-500 dark:text-amber-400 shrink-0" />
+                  )}
+                  <span className="font-medium text-sm text-foreground flex-1">{overlay.name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {overlay.completed}/{overlay.required} hrs
+                  </span>
+                </div>
+                <div className="ml-6 space-y-0.5">
+                  {overlay.courses.map((c) => (
+                    <div key={c.code} className="flex items-center gap-2 text-xs">
+                      <span className={c.completed ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}>
+                        {c.completed ? '✓' : '○'}
+                      </span>
+                      <span className="font-mono text-primary/70">{c.code}</span>
+                      <span className="text-muted-foreground truncate">{c.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 import type { StudentData, WizardStepId } from '@/types'
-import { getProgram, computeProgress, getLowerDivisionHours, getCourseTitle, getNextSemesterTerm } from '@/services/courses'
+import { getProgram, computeProgress, getLowerDivisionHours, getCourseTitle, getNextSemesterTerm, getOverlayProgress } from '@/services/courses'
 
 const STEP_LABELS: Record<WizardStepId, string> = {
   welcome: 'Welcome',
@@ -71,6 +71,16 @@ export function buildSandraContext(
       return cat?.name ?? key
     })
     lines.push(`Categories student hasn't started: ${notYetNames.join(', ')}`)
+  }
+
+  // Overlay requirements
+  const overlays = getOverlayProgress(studentData.program, allCourses)
+  if (overlays.length > 0) {
+    const overlayLines = overlays.map(o => {
+      const status = o.completed >= o.required ? 'met' : `${o.completed}/${o.required} hrs`
+      return `${o.name} (${status})`
+    })
+    lines.push(`Overlay requirements: ${overlayLines.join(', ')}`)
   }
 
   // Lower-division warning

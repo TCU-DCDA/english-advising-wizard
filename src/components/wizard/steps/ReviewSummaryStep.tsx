@@ -11,6 +11,7 @@ import {
   getRemainingCategories,
   generateSemesterPlan,
   getNextSemesterTerm,
+  getOverlayProgress,
 } from '@/services/courses'
 import type { ProgramId } from '@/types'
 
@@ -50,6 +51,11 @@ export function ReviewSummaryStep({
   const semesterPlan = useMemo(
     () => expectedGraduation ? generateSemesterPlan(expectedGraduation, remaining) : [],
     [expectedGraduation, remaining]
+  )
+
+  const overlays = useMemo(
+    () => getOverlayProgress(programId, combinedCourses),
+    [programId, combinedCourses]
   )
 
   return (
@@ -208,6 +214,53 @@ export function ReviewSummaryStep({
           )
         })}
       </div>
+
+      {/* Overlay requirements */}
+      {overlays.length > 0 && (
+        <div className="space-y-2">
+          <h3 className="text-sm font-medium text-foreground flex items-center gap-2">
+            <Info className="size-4 text-muted-foreground" />
+            Additional Requirements
+          </h3>
+          {overlays.map((overlay) => {
+            const isMet = overlay.completed >= overlay.required
+            return (
+              <div
+                key={overlay.key}
+                className={cn(
+                  'border rounded-lg p-3',
+                  isMet
+                    ? 'border-green-200 dark:border-green-900 bg-green-50/50 dark:bg-green-950/20'
+                    : 'border-amber-300 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20'
+                )}
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  {isMet ? (
+                    <CheckCircle className="size-4 text-green-600 dark:text-green-400 shrink-0" />
+                  ) : (
+                    <AlertTriangle className="size-4 text-amber-500 dark:text-amber-400 shrink-0" />
+                  )}
+                  <span className="font-medium text-sm text-foreground flex-1">{overlay.name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {overlay.completed}/{overlay.required} hrs
+                  </span>
+                </div>
+                <div className="ml-6 space-y-0.5">
+                  {overlay.courses.map((c) => (
+                    <div key={c.code} className="flex items-center gap-2 text-xs">
+                      <span className={c.completed ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}>
+                        {c.completed ? '✓' : '○'}
+                      </span>
+                      <span className="font-mono text-primary/70">{c.code}</span>
+                      <span className="text-muted-foreground truncate">{c.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
 
       {/* Coming semester summary */}
       {plannedCourses.length > 0 && (

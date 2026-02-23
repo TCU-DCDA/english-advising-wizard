@@ -28,6 +28,7 @@ export interface ProgramData {
   maxLowerDivision?: number
   description: string
   requirements: Record<string, RequirementCategory>
+  overlays?: Record<string, RequirementCategory>
 }
 
 // All programs keyed by ProgramId
