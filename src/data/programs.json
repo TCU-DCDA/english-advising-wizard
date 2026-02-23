@@ -150,15 +150,32 @@
         "name": "Early Literature & Culture",
         "hours": 6,
         "courses": [
-          { "code": "ENGL 30673", "title": "King Arthur: Lit & Legend", "hours": 3 },
-          { "code": "ENGL 40473", "title": "Milton and His Contemporaries", "hours": 3 }
+          { "code": "ENGL 20433", "title": "Introduction to Shakespeare", "hours": 3 },
+          { "code": "ENGL 20603", "title": "Western World Literature I", "hours": 3 },
+          { "code": "ENGL 30113", "title": "British Literature to 1800", "hours": 3 },
+          { "code": "ENGL 30133", "title": "American Literature to 1865", "hours": 3 },
+          { "code": "ENGL 30423", "title": "Early British Drama", "hours": 3 },
+          { "code": "ENGL 30433", "title": "Renaissance Poetry", "hours": 3 },
+          { "code": "ENGL 30583", "title": "Early American Lit", "hours": 3 },
+          { "code": "ENGL 30673", "title": "King Arthur in Literature and Legend", "hours": 3 },
+          { "code": "ENGL 40403", "title": "Chaucer", "hours": 3 },
+          { "code": "ENGL 40413", "title": "Renaissance in England", "hours": 3 },
+          { "code": "ENGL 40453", "title": "British Novel to 1832", "hours": 3 },
+          { "code": "ENGL 40473", "title": "Milton and his Contemporaries", "hours": 3 },
+          { "code": "ENGL 40483", "title": "Shakespeare and Marlowe", "hours": 3 },
+          { "code": "ENGL 40493", "title": "Shakespeare", "hours": 3 },
+          { "code": "ENGL 40543", "title": "Studies in Early American Literature", "hours": 3 },
+          { "code": "ENGL 40633", "title": "Love, Sex, and Power in Renaissance England", "hours": 3 },
+          { "code": "ENGL 40653", "title": "Renaissance Literature and the 'New' Science", "hours": 3 }
         ]
       },
       "juniorSeminar": {
         "name": "Junior Research Seminar",
         "hours": 3,
         "courses": [
-          { "code": "ENGL 38023", "title": "Research Seminar in American Lit", "hours": 3 }
+          { "code": "ENGL 38013", "title": "Research Seminar in British Literature", "hours": 3 },
+          { "code": "ENGL 38023", "title": "Research Seminar in American Literature", "hours": 3 },
+          { "code": "ENGL 38033", "title": "Research Seminar in Global Literature", "hours": 3 }
         ]
       }
     }

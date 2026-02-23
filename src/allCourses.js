@@ -254,7 +254,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 20583",
-    "title": "Course Title Unavailable",
+    "title": "The Western",
     "hours": 3,
     "description": "The American West and the Western hero in fiction, from James Fenimore Cooper to selected contemporary authors."
   },
@@ -344,7 +344,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 20753",
-    "title": "Course Title Unavailable",
+    "title": "Genre in Film",
     "hours": 3,
     "description": "Studies of the aesthetic, ideological, and historical dimensions of film genre(s) such as film noir, horror, romantic comedy, the musical, etc, with examples drawn from global film industries.  Topics will vary by semester and may include a comparative approach to genre."
   },
@@ -377,12 +377,6 @@ export const ALL_COURSES = [
     "title": "Non-Western World Literature",
     "hours": 3,
     "description": "Examines a broad survey of non-Western literature, including work from Asia, Africa, the Middle East, and Latin America.  This course approaches the literature from a variety of cultural perspectives such as dissent and conformity, urbanity and rural life, religion and secular identity, and sex and gender.  Students will gain an understanding of non-Western authors and the cultures they represent, as well as investigate the ways literature contributes to global conversations about identity and creativity."
-  },
-  {
-    "code": "ENGL 20990",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
   },
   {
     "code": "ENGL 30000",
@@ -446,7 +440,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30173",
-    "title": "Course Title Unavailable",
+    "title": "Marxist Cultural Theory",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and one 10000-20000 level ENGL/WRIT/CRWT class.  This course provides an introduction to the early tradition of Marxist Cultural Theory.  Students will analyze and evaluate theoretical arguments and apply them to literary and visual texts."
   },
@@ -458,7 +452,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30193",
-    "title": "Course Title Unavailable",
+    "title": "Queer Theories",
     "hours": 3,
     "description": "Prerequisites:  WGST 20003.  This course will serve as an introduction to the diverse theories, political movements, histories, identities, and arts that could be called queer.  In this class, students will utilize queer theories to better understand and respond to the complex systems of marginalization, violence, and privilege that organize our social worlds today and to better understand our own positionality within those systems."
   },
@@ -506,7 +500,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30493",
-    "title": "Course Title Unavailable",
+    "title": "Women Poets & Poetic Tradition",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A survey of British, American and Anglophone women poets from the 16th century to the present. Emphasis will be given to women writers' engagement with, contribution to, and rewriting of poetic tradition; to the social and historical conditions affecting women's poetic production; and to the relation between poetry, poetics, and theories of gender."
   },
@@ -578,7 +572,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30623",
-    "title": "Course Title Unavailable",
+    "title": "Medieval Literature",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 , ENGL 20803 , and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  A survey of major thinkers and writers of the West from the fall of Rome to 1500, in part devoted to drawing a coherent picture of medieval thought: Heavenly versus earthly order; the nature of desire; the power of human agency; the value and uses of the past, including the classical past; gender roles. The often surprising ways in which individual writers deviate from and even criticize this cultural heritage."
   },
@@ -638,7 +632,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30743",
-    "title": "Course Title Unavailable",
+    "title": "Illustrated Storytelling",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  The course examines sequential illustrated storytelling -- including comic books, graphic novels, political cartoons, and engravings -- from a variety of cultures over the past 300 years.  The perspective will be literary and historical."
   },
@@ -650,7 +644,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30763",
-    "title": "Course Title Unavailable",
+    "title": "LGBT Authors & Themes in Lit",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  This course examines themes of sexual identity in literature by authors from antiquity to the present."
   },
@@ -686,7 +680,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30833",
-    "title": "Course Title Unavailable",
+    "title": "Serials Franchises Fan Culture",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  This course critically examines consumer-driven participatory culture through multiple media, including magazine and newspaper serial publication, film franchises, television series, parodies, pastiches and interactive fan cultures.  Case studies vary by semester."
   },
@@ -704,19 +698,19 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 30863",
-    "title": "Course Title Unavailable",
+    "title": "Lit of Mid East & N. Africa",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 and ENGL 20803 and at least one ENGL/WRIT/CRWT class.  This class examines literature from across the Middle East and North Africa, addressing a wide range of topics such as dissent and conformity, religious and secular identity, sex and gender, conflict and reconciliation, etc. Discussions will be grounded in critical race theory & cultural, constructivist approaches to literature.  Student cannot receive credit for ENGL 55773 and ENGL 30863."
   },
   {
     "code": "ENGL 30873",
-    "title": "Course Title Unavailable",
+    "title": "Digital Textual Problems",
     "hours": 3,
     "description": "Students will explore the methods and theories that underlie big data in the humanities.  Students will examine how we can better ask and answer research questions in rhetoric, culture, and literature through the use of digital tools such as R and/or Python.  Students will work independently and collaboratively to perform humanities research using these tools.  Through a series of close reading, distant reading, writing, and programming assignments, students will also examine issues of race, class, gender, and sexuality.  Students will learn to think critically about the uses and limitations of digital methods and theories.  Student cannot receive credit for ENGL 55493 and ENGL 30873."
   },
   {
     "code": "ENGL 30883",
-    "title": "Course Title Unavailable",
+    "title": "MidEast Diaspora Lit",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, 20803 and at least one ENGL/ WRIT/CRWT class.  This course examines the political and social histories of Middle Eastern and North African diasporic communities, paying close attention to how they address creativity and concerns about cultural preservation and assimilation.  Class discussion will be grounded in critical race theory & constructivist approaches to literature and culture.  Student cannot receive credit for ENGL 55463 and ENGL 30883."
   },
@@ -725,42 +719,6 @@ export const ALL_COURSES = [
     "title": "Directed Studies in English",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  Directed Study in English."
-  },
-  {
-    "code": "ENGL 30990",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
-  },
-  {
-    "code": "ENGL 31990",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
-  },
-  {
-    "code": "ENGL 32290",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
-  },
-  {
-    "code": "ENGL 34990",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
-  },
-  {
-    "code": "ENGL 35590",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
-  },
-  {
-    "code": "ENGL 37990",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
   },
   {
     "code": "ENGL 38013",
@@ -776,15 +734,9 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 38033",
-    "title": "Course Title Unavailable",
+    "title": "Research Sem in Global Lit",
     "hours": 3,
     "description": "Prerequisites: English majors or minors only; students must have junior or senior standing and must have completed one 30000-level ENGL/WRIT/CRWT course.  Introduces English majors and minors to a sustained, long-format research project over the course of the semester.  Students will discuss and examine the practical and professional aspects of the English major while attempting to synthesize and integrate their various learning experiences in global and diasporic literatures and writing.  This course is not repeatable for credit.  Student cannot receive credit for ENGL 55843 and ENGL 38033."
-  },
-  {
-    "code": "ENGL 39990",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
   },
   {
     "code": "ENGL 40003",
@@ -800,13 +752,13 @@ export const ALL_COURSES = [
   },
   {
     "code": "ENGL 40123",
-    "title": "Course Title Unavailable",
+    "title": "Literary Criticism",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  An historical study of major developments in the theory of literature since Plato. The first half of the course surveys representatives of the most important positions; the second half surveys how these positions remain influential in 20th century thought.  Student cannot receive credit for ENGL 55123 and ENGL 40123."
   },
   {
     "code": "ENGL 40323",
-    "title": "Course Title Unavailable",
+    "title": "History of the Language",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803, ENGL 20803, and at least one 10000- or 20000-level ENGL/WRIT/CRWT course.  The study of the origins and development of Modern English.  Student cannot receive credit for ENGL 55143 and ENGL 40323."
   },
@@ -1022,7 +974,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "WRIT 30013",
-    "title": "Course Title Unavailable",
+    "title": "Distinction Program: Thesis I",
     "hours": 3,
     "description": "Course meets to support students' independent distinction projects in literature and writing."
   },
@@ -1112,7 +1064,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "WRIT 30803",
-    "title": "Course Title Unavailable",
+    "title": "Theories of Cinema",
     "hours": 3,
     "description": "Prerequisites: ENGL 10803 and ENGL 20803.  A study of theories of cinema as text in the humanities, including areas such as analytic approaches to film, rhetorical approaches to film, and/or film criticism.  Course includes an integrated lab for viewing required films."
   },
@@ -1129,12 +1081,6 @@ export const ALL_COURSES = [
     "description": "Prerequisite:  ENGL 20803  Critical examination of how digital authorship technologies impact and are changed by cultural identities, especially with inclusivity with regard to race, class, gender , sexual identity, and ability."
   },
   {
-    "code": "WRIT 30990",
-    "title": "Course Title Unavailable",
-    "hours": 3,
-    "description": "This course represents credit earned through a semester study abroad experience with an institution or program with which Texas Christian University has an official agreement to accept credit.  The site and specific content will be identified on the official transcript. Courses appearing on a student's official transcript have been included in the student's grade point average."
-  },
-  {
     "code": "WRIT 38063",
     "title": "Writing Major Seminar (Junior)",
     "hours": 3,
@@ -1142,7 +1088,7 @@ export const ALL_COURSES = [
   },
   {
     "code": "WRIT 40013",
-    "title": "Course Title Unavailable",
+    "title": "Distinction Program: Thesis II",
     "hours": 3,
     "description": "Independent study to complete a distinction project in literature or writing."
   },
