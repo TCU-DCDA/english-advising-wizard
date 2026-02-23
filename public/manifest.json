@@ -1,7 +1,7 @@
 {
   "manifestVersion": "1.0",
   "department": "English",
-  "lastUpdated": "2026-02-23T16:25:12.289Z",
+  "lastUpdated": "2026-02-23T16:45:57.608Z",
   "wizardUrl": "https://tcu-dcda.github.io/english-advising-wizard/",
   "programs": [
     {
@@ -94,8 +94,26 @@
                 "level": "lower"
               },
               {
+                "code": "ENGL 20623",
+                "title": "Introduction to Women's Writing",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
                 "code": "ENGL 20683",
                 "title": "Young Adult Literature in American Culture",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20703",
+                "title": "Introduction to Law and Literature",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20733",
+                "title": "Science Fiction",
                 "hours": 3,
                 "level": "lower"
               },
@@ -219,6 +237,12 @@
               {
                 "code": "ENGL 20403",
                 "title": "British Writers",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20423",
+                "title": "Introduction to Medieval Literature",
                 "hours": 3,
                 "level": "lower"
               },
@@ -362,6 +386,12 @@
                 "level": "lower"
               },
               {
+                "code": "ENGL 20223",
+                "title": "Gender, Culture, Representation",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
                 "code": "ENGL 20593",
                 "title": "Introduction to Literatures of the Global African Diaspora",
                 "hours": 3,
@@ -376,6 +406,18 @@
               {
                 "code": "ENGL 20613",
                 "title": "Western World Literature II",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20723",
+                "title": "Introduction to Disability Studies",
+                "hours": 3,
+                "level": "lower"
+              },
+              {
+                "code": "ENGL 20753",
+                "title": "Genre in Film",
                 "hours": 3,
                 "level": "lower"
               },
