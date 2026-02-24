@@ -60,12 +60,45 @@ The `build` script runs manifest generation automatically before `vite build`.
 - Other wizards and Sandra copy this schema and CI-check their version against it
 - See [`INTEGRATION_EXECUTION_PLAN.md`](INTEGRATION_EXECUTION_PLAN.md) for full integration spec
 
+## Admin Panel
+
+A password-protected admin interface is available at `/#/admin` for managing data without code changes.
+
+**Live:** https://english-advising-wizard.web.app/#/admin
+
+### Tabs
+
+| Tab | Firestore Doc | Description |
+|-----|--------------|-------------|
+| Analytics | `english_analytics`, `english_submissions` | Anonymous usage metrics — wizard starts, step funnel, program popularity, exports |
+| Courses | `english_config/courses` | Course catalog (194 courses: ENGL, WRIT, CRWT) |
+| Programs | `english_config/programs` | Degree requirements for all 3 majors |
+| Offerings | `english_config/offerings_*` | Per-semester course offerings |
+| Frequency | `english_config/frequency` | Course offering patterns across semesters |
+
+### Authentication
+- Google OAuth via shared Firebase project (`dcda-advisor-mobile`)
+- Email whitelist: `c.rode@tcu.edu`, `0expatriate0@gmail.com`
+
+### Data Architecture
+- **Firestore-first with static JSON fallback** — the student-facing wizard reads live from Firestore; if Firestore is unavailable (offline/PWA), it falls back to the bundled static JSON files in `src/data/`
+- All admin editors support **Import/Export JSON** for bulk data management
+
 ## Tech Stack
 
-- React 18
-- Vite
+- React 19 + TypeScript 5.9
+- Vite 7
 - Tailwind CSS
+- Radix UI (shadcn/ui)
+- Firebase (Auth, Firestore, Hosting)
 - Lucide React Icons
+
+## Deployment
+
+- **Hosting:** Firebase Hosting (site: `english-advising-wizard`)
+- **Live URL:** https://english-advising-wizard.web.app
+- **Deploy:** `npm run build && npx firebase-tools deploy --only hosting`
+- DCDA wizard CI/CD auto-deploys on push to `main`; English wizard is deployed manually for now
 
 ## Data Source
 
@@ -74,9 +107,10 @@ Official advising page: https://addran.tcu.edu/english/academics/advising/
 
 ## Maintenance Notes
 
-- **Updating Offerings for a New Semester:** From `addran-course-scraper/`, run `node scrape.mjs -t "Fall 2026" -s ENGL,CRWT,WRIT -l 49999 -o ../english-advising-wizard/src/data/offerings-fa26.json`. Then update the import in `src/services/courses.ts` to point to the new file.
-- **Updating Requirements:** Edit `src/data/programs.json` to adjust categories, courses, or credit hours.
+- **Updating Offerings for a New Semester:** From `addran-course-scraper/`, run `node scrape.mjs -t "Fall 2026" -s ENGL,CRWT,WRIT -l 49999 -o ../english-advising-wizard/src/data/offerings-fa26.json`. Then import the JSON via the admin Offerings tab (or update `src/services/courses.ts` for the static fallback).
+- **Updating Requirements:** Edit via the admin Programs tab, or edit `src/data/programs.json` directly.
 - **Updating Contacts/Careers:** Edit `src/data/contacts.json` and `src/data/career-options.json`, then run `npm run generate-manifest`.
+- **Updating Course Catalog:** Use the admin Courses tab to add/edit/remove courses, or import a JSON array via the Import button.
 
 ## License
 
