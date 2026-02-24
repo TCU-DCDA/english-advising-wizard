@@ -1,0 +1,35 @@
+{
+  "term": "Wintersession 2026",
+  "updated": "2026-02-24",
+  "offeredCodes": [
+    "CRWT 20103",
+    "ENGL 20593",
+    "ENGL 20803"
+  ],
+  "sections": [
+    {
+      "code": "CRWT 20103",
+      "title": "Reading as a Writer",
+      "modality": "Online Only",
+      "coreCode": "LT,HUM",
+      "section": "010\n2W2",
+      "schedule": "MTWRF\n 9:00-13:00"
+    },
+    {
+      "code": "ENGL 20593",
+      "title": "Lits of Global Afr. Diaspora",
+      "modality": "Online Only",
+      "coreCode": "GA,LT",
+      "section": "010\n2W2",
+      "schedule": "MTWRF\n 9:00-13:00"
+    },
+    {
+      "code": "ENGL 20803",
+      "title": "Intermed Comp:Writing Argument",
+      "modality": "Online Only",
+      "coreCode": "WCO",
+      "section": "010\nMIN",
+      "schedule": "MTWR\n 9:00-11:30"
+    }
+  ]
+}
