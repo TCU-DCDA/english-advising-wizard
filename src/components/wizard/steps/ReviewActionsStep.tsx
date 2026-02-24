@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import type { StudentData, ProgramData } from '@/types'
 import { generatePdfBlob, downloadPdf } from '@/services/export'
+import { recordAnonymousSubmission, trackExport } from '@/services/analytics'
 import contactsData from '@/data/contacts.json'
 
 const advisor = contactsData.find((c) => c.role === 'Academic Advisor') ?? contactsData[0]
@@ -60,6 +61,7 @@ export function ReviewActionsStep({
     const { blobUrl, filename } = generatePdfBlob(studentData, programData)
     setPreviewUrl(blobUrl)
     setPreviewFilename(filename)
+    trackExport('pdf')
   }, [studentData, programData, revokePreviewUrl])
 
   const handleClosePreview = useCallback(() => {
@@ -76,6 +78,7 @@ export function ReviewActionsStep({
         URL.revokeObjectURL(blobUrl)
       })
     }
+    trackExport('print')
   }
 
   const handleDownloadPdf = () => {
@@ -90,6 +93,8 @@ export function ReviewActionsStep({
     URL.revokeObjectURL(blobUrl)
     setSubmitFilename(filename)
     setShowSubmitConfirm(true)
+    recordAnonymousSubmission(studentData)
+    trackExport('email')
   }
 
   const handleOpenEmail = () => {

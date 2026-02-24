@@ -1,13 +1,28 @@
 import type { ProgramId, ProgramData, RequirementCategory, PrerequisitesData, PrerequisiteEntry, PrerequisiteCheckResult, OrGroup, CourseOfferings } from '@/types'
 import type { CatalogCourse } from '@/data/allCourses'
-import { allCourses } from '@/data/allCourses'
+import { allCourses as staticCourses } from '@/data/allCourses'
 import programsData from '@/data/programs.json'
 import prerequisitesData from '@/data/prerequisites.json'
 import offeringsData from '@/data/offerings-sp26.json'
 
-const programs = programsData as Record<ProgramId, ProgramData>
-const prerequisites = prerequisitesData as PrerequisitesData
-const offerings = offeringsData as CourseOfferings
+// Mutable data — initialized from static JSON, updated by EnglishDataProvider when Firestore data arrives
+let programs = programsData as Record<ProgramId, ProgramData>
+let prerequisites = prerequisitesData as PrerequisitesData
+let offerings = offeringsData as CourseOfferings
+let allCourses: CatalogCourse[] = staticCourses
+
+/** Called by EnglishDataProvider to update the live data from Firestore */
+export function updateCourseServiceData(data: {
+  programs: Record<ProgramId, ProgramData>
+  prerequisites: PrerequisitesData
+  offerings: CourseOfferings
+  courses: CatalogCourse[]
+}): void {
+  programs = data.programs
+  prerequisites = data.prerequisites
+  offerings = data.offerings
+  allCourses = data.courses
+}
 
 /** Returns the term label from the offerings file (e.g. "Spring 2026") */
 export function getNextSemesterTerm(): string {

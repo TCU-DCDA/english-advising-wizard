@@ -45,6 +45,7 @@ export default defineConfig(() => {
               'tailwind-merge',
             ],
             'vendor-pdf': ['jspdf'],
+            'vendor-firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore'],
           },
         },
       },

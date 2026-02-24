@@ -1,9 +1,10 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { WizardShell } from '@/components/wizard'
 import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
 import { useStudentData } from '@/hooks/useStudentData'
 import { getProgram, getCategoriesForProgram, isElectiveCategory, getNextSemesterTerm } from '@/services/courses'
 import { buildSandraContext } from '@/lib/buildSandraContext'
+import { trackWizardStart, trackStepVisit } from '@/services/analytics'
 import type { WizardPhase, WizardStep, ProgramId } from '@/types'
 import type { PhaseInfo } from '@/components/wizard/StepIndicator'
 
@@ -63,6 +64,20 @@ export default function App() {
     try {
       localStorage.setItem(STEP_STORAGE_KEY, String(stepIndex))
     } catch {}
+  }, [stepIndex])
+
+  // Track wizard start (once per session)
+  const hasTrackedStart = useRef(false)
+  useEffect(() => {
+    if (!hasTrackedStart.current) {
+      hasTrackedStart.current = true
+      trackWizardStart()
+    }
+  }, [])
+
+  // Track step visits
+  useEffect(() => {
+    trackStepVisit(STEPS[stepIndex].id)
   }, [stepIndex])
 
   const currentStep = STEPS[stepIndex]

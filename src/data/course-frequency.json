@@ -1,0 +1,344 @@
+{
+  "terms": [
+    "Fall 2025",
+    "Spring 2026",
+    "Fall 2026"
+  ],
+  "courses": {
+    "CRWT 10203": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "CRWT 20103": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "CRWT 20133": [
+      "Fall 2026"
+    ],
+    "CRWT 30233": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "CRWT 30343": [
+      "Fall 2026"
+    ],
+    "CRWT 30353": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "CRWT 30373": [
+      "Spring 2026"
+    ],
+    "CRWT 40133": [
+      "Fall 2026"
+    ],
+    "CRWT 40203": [
+      "Spring 2026"
+    ],
+    "CRWT 40223": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "CRWT 40703": [
+      "Spring 2026"
+    ],
+    "CRWT 40803": [
+      "Fall 2025"
+    ],
+    "ENGL 10103": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 10113": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 10123": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 10133": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 10303": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 10803": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20213": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 20223": [
+      "Fall 2025",
+      "Spring 2026"
+    ],
+    "ENGL 20233": [
+      "Fall 2026"
+    ],
+    "ENGL 20403": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20423": [
+      "Spring 2026"
+    ],
+    "ENGL 20433": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20503": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 20533": [
+      "Fall 2026"
+    ],
+    "ENGL 20563": [
+      "Spring 2026"
+    ],
+    "ENGL 20573": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 20593": [
+      "Fall 2025"
+    ],
+    "ENGL 20623": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20633": [
+      "Fall 2026"
+    ],
+    "ENGL 20703": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20713": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 20723": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20733": [
+      "Spring 2026"
+    ],
+    "ENGL 20753": [
+      "Spring 2026"
+    ],
+    "ENGL 20803": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20813": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "ENGL 20923": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 30003": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 30013": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "ENGL 30103": [
+      "Spring 2026"
+    ],
+    "ENGL 30113": [
+      "Fall 2025"
+    ],
+    "ENGL 30123": [
+      "Fall 2026"
+    ],
+    "ENGL 30133": [
+      "Spring 2026"
+    ],
+    "ENGL 30443": [
+      "Fall 2025"
+    ],
+    "ENGL 30503": [
+      "Fall 2026"
+    ],
+    "ENGL 30523": [
+      "Fall 2025"
+    ],
+    "ENGL 30543": [
+      "Fall 2026"
+    ],
+    "ENGL 30553": [
+      "Fall 2026"
+    ],
+    "ENGL 30573": [
+      "Fall 2026"
+    ],
+    "ENGL 30633": [
+      "Fall 2026"
+    ],
+    "ENGL 30653": [
+      "Spring 2026"
+    ],
+    "ENGL 30673": [
+      "Spring 2026"
+    ],
+    "ENGL 30693": [
+      "Spring 2026"
+    ],
+    "ENGL 30733": [
+      "Fall 2025"
+    ],
+    "ENGL 30803": [
+      "Spring 2026"
+    ],
+    "ENGL 30833": [
+      "Fall 2026"
+    ],
+    "ENGL 30853": [
+      "Fall 2026"
+    ],
+    "ENGL 30873": [
+      "Fall 2026"
+    ],
+    "ENGL 30970": [
+      "Spring 2026"
+    ],
+    "ENGL 38013": [
+      "Fall 2025"
+    ],
+    "ENGL 38023": [
+      "Spring 2026"
+    ],
+    "ENGL 38033": [
+      "Fall 2026"
+    ],
+    "ENGL 40003": [
+      "Spring 2026"
+    ],
+    "ENGL 40013": [
+      "Spring 2026"
+    ],
+    "ENGL 40473": [
+      "Spring 2026"
+    ],
+    "ENGL 40533": [
+      "Fall 2025"
+    ],
+    "ENGL 40643": [
+      "Fall 2026"
+    ],
+    "ENGL 40663": [
+      "Fall 2025"
+    ],
+    "WRIT 20113": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "WRIT 20303": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "WRIT 20313": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "WRIT 20333": [
+      "Fall 2025"
+    ],
+    "WRIT 20353": [
+      "Spring 2026"
+    ],
+    "WRIT 20833": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "WRIT 30013": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "WRIT 30213": [
+      "Fall 2025"
+    ],
+    "WRIT 30253": [
+      "Fall 2026"
+    ],
+    "WRIT 30263": [
+      "Fall 2026"
+    ],
+    "WRIT 30283": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "WRIT 30293": [
+      "Fall 2025"
+    ],
+    "WRIT 30390": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "WRIT 30663": [
+      "Fall 2025"
+    ],
+    "WRIT 38063": [
+      "Spring 2026"
+    ],
+    "WRIT 40013": [
+      "Spring 2026"
+    ],
+    "WRIT 40233": [
+      "Fall 2025"
+    ],
+    "WRIT 40243": [
+      "Fall 2026"
+    ],
+    "WRIT 40273": [
+      "Fall 2025",
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "WRIT 40333": [
+      "Spring 2026"
+    ],
+    "WRIT 40363": [
+      "Fall 2025",
+      "Fall 2026"
+    ],
+    "WRIT 40373": [
+      "Fall 2025"
+    ],
+    "WRIT 40463": [
+      "Fall 2025"
+    ],
+    "WRIT 40563": [
+      "Spring 2026"
+    ]
+  }
+}

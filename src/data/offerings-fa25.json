@@ -1,0 +1,447 @@
+{
+  "term": "Fall 2025",
+  "updated": "2026-02-24",
+  "offeredCodes": [
+    "CRWT 10203",
+    "CRWT 20103",
+    "CRWT 30233",
+    "CRWT 30353",
+    "CRWT 40223",
+    "CRWT 40803",
+    "ENGL 10103",
+    "ENGL 10113",
+    "ENGL 10123",
+    "ENGL 10133",
+    "ENGL 10303",
+    "ENGL 10803",
+    "ENGL 20213",
+    "ENGL 20223",
+    "ENGL 20403",
+    "ENGL 20433",
+    "ENGL 20503",
+    "ENGL 20573",
+    "ENGL 20593",
+    "ENGL 20623",
+    "ENGL 20703",
+    "ENGL 20713",
+    "ENGL 20723",
+    "ENGL 20803",
+    "ENGL 20813",
+    "ENGL 20923",
+    "ENGL 30003",
+    "ENGL 30013",
+    "ENGL 30113",
+    "ENGL 30443",
+    "ENGL 30523",
+    "ENGL 30733",
+    "ENGL 38013",
+    "ENGL 40533",
+    "ENGL 40663",
+    "WRIT 20113",
+    "WRIT 20303",
+    "WRIT 20313",
+    "WRIT 20333",
+    "WRIT 20833",
+    "WRIT 30013",
+    "WRIT 30213",
+    "WRIT 30283",
+    "WRIT 30293",
+    "WRIT 30390",
+    "WRIT 30663",
+    "WRIT 40233",
+    "WRIT 40273",
+    "WRIT 40363",
+    "WRIT 40373",
+    "WRIT 40463"
+  ],
+  "sections": [
+    {
+      "code": "CRWT 10203",
+      "title": "Intro Creative Writing",
+      "modality": "In Person",
+      "coreCode": "FAR",
+      "sectionCount": 7
+    },
+    {
+      "code": "CRWT 20103",
+      "title": "Reading as a Writer",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 4
+    },
+    {
+      "code": "CRWT 30233",
+      "title": "Creative Nonfiction Workshop I",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "080\nREG",
+      "schedule": "T\n17:00-19:40"
+    },
+    {
+      "code": "CRWT 30353",
+      "title": "Poetry Writing Workshop I",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "020\nREG",
+      "schedule": "MWF\n10:00-10:50"
+    },
+    {
+      "code": "CRWT 40223",
+      "title": "Drama Writing Workshop II",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "035\nREG",
+      "schedule": "TR\n11:00-12:20"
+    },
+    {
+      "code": "CRWT 40803",
+      "title": "Advanced Literary Forms - Art of the Novella",
+      "modality": "In Person",
+      "section": "055\nREG",
+      "schedule": "TR\n14:00-15:20"
+    },
+    {
+      "code": "ENGL 10103",
+      "title": "Intro To Fiction",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 15
+    },
+    {
+      "code": "ENGL 10113",
+      "title": "Intro To Poetry - Avant-Garde Poetry",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "section": "020\nREG",
+      "schedule": "MWF\n10:00-10:50"
+    },
+    {
+      "code": "ENGL 10123",
+      "title": "Intro To Drama - Irish National Theatres",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "section": "015\nREG",
+      "schedule": "TR\n 9:30-10:50"
+    },
+    {
+      "code": "ENGL 10133",
+      "title": "Introduction to Literature",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 11
+    },
+    {
+      "code": "ENGL 10303",
+      "title": "Approaches to Film - Studies in Ecohorror",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 2
+    },
+    {
+      "code": "ENGL 10803",
+      "title": "Intro Comp:Writing as Inquiry",
+      "modality": "In Person",
+      "coreCode": "WCO",
+      "sectionCount": 49
+    },
+    {
+      "code": "ENGL 20213",
+      "title": "Global Women's Literature - Global Indigenous Women Voices",
+      "modality": "In Person",
+      "coreCode": "GA,LT",
+      "section": "030\nREG",
+      "schedule": "MWF\n11:00-11:50"
+    },
+    {
+      "code": "ENGL 20223",
+      "title": "Gender Culture Representation - Black Culturl Prod&Hip Hop",
+      "modality": "In Person",
+      "coreCode": "CA,HUM",
+      "section": "035\nREG",
+      "schedule": "TR\n11:00-12:20"
+    },
+    {
+      "code": "ENGL 20403",
+      "title": "British Writers",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "section": "050\nREG",
+      "schedule": "MWF\n13:00-13:50"
+    },
+    {
+      "code": "ENGL 20433",
+      "title": "Intro to Shakespeare",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "section": "050\nREG",
+      "schedule": "MWF\n13:00-13:50"
+    },
+    {
+      "code": "ENGL 20503",
+      "title": "American Writers",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 2
+    },
+    {
+      "code": "ENGL 20573",
+      "title": "Intro to Native American Lit - Native Horror & Fantasy",
+      "modality": "In Person",
+      "coreCode": "CA,LT",
+      "section": "015\nREG",
+      "schedule": "TR\n 9:30-10:50"
+    },
+    {
+      "code": "ENGL 20593",
+      "title": "Lits of Global Afr. Diaspora",
+      "modality": "In Person",
+      "coreCode": "GA,LT",
+      "section": "074\nREG",
+      "schedule": "MW\n16:00-17:20"
+    },
+    {
+      "code": "ENGL 20623",
+      "title": "Intro to Women's Writing - Global Asian Women",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 3
+    },
+    {
+      "code": "ENGL 20703",
+      "title": "Intro to Law and Literature - Criminals and Outlaws",
+      "modality": "In Person",
+      "coreCode": "CSV,HUM",
+      "sectionCount": 2
+    },
+    {
+      "code": "ENGL 20713",
+      "title": "Literature and Medicine",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 2
+    },
+    {
+      "code": "ENGL 20723",
+      "title": "Intro to Disability Studies",
+      "modality": "In Person",
+      "coreCode": "CSV,HUM",
+      "section": "015\nREG",
+      "schedule": "TR\n 9:30-10:50"
+    },
+    {
+      "code": "ENGL 20803",
+      "title": "Intermed Comp:Writing Argument - Argument as Storytelling",
+      "modality": "In Person",
+      "coreCode": "WCO",
+      "sectionCount": 38
+    },
+    {
+      "code": "ENGL 20813",
+      "title": "Intro to Digital Humanities",
+      "modality": "In Person",
+      "coreCode": "CA,HUM",
+      "section": "030\nREG",
+      "schedule": "MWF\n11:00-11:50"
+    },
+    {
+      "code": "ENGL 20923",
+      "title": "Literature & Civilizations II - Finding Home:Diasporas-Hon",
+      "modality": "In Person",
+      "coreCode": "GA,LT",
+      "section": "665\nREG",
+      "schedule": "TR\n15:30-16:50"
+    },
+    {
+      "code": "ENGL 30003",
+      "title": "Honors Thesis Seminar I",
+      "modality": "In Person",
+      "section": "680\nREG",
+      "schedule": "R\n17:00-18:20"
+    },
+    {
+      "code": "ENGL 30013",
+      "title": "Distinction Program:  Thesis I",
+      "modality": "In Person",
+      "section": "080\nREG",
+      "schedule": "R\n17:00-18:20"
+    },
+    {
+      "code": "ENGL 30113",
+      "title": "British Lit to 1800",
+      "modality": "In Person",
+      "coreCode": "HUM",
+      "section": "010\nREG",
+      "schedule": "MWF\n 9:00- 9:50"
+    },
+    {
+      "code": "ENGL 30443",
+      "title": "20th Century Irish Lit",
+      "modality": "In Person",
+      "coreCode": "HT,LT,WEM",
+      "section": "035\nREG",
+      "schedule": "TR\n11:00-12:20"
+    },
+    {
+      "code": "ENGL 30523",
+      "title": "Popular Literature - Fanfiction",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "060\nREG",
+      "schedule": "MWF\n14:00-14:50"
+    },
+    {
+      "code": "ENGL 30733",
+      "title": "Satire - Black Humor & Satire",
+      "modality": "In Person",
+      "coreCode": "HUM",
+      "section": "055\nREG",
+      "schedule": "TR\n14:00-15:20"
+    },
+    {
+      "code": "ENGL 38013",
+      "title": "Research Seminar:British Lit - Plague Years",
+      "modality": "In Person",
+      "section": "055\nREG",
+      "schedule": "TR\n14:00-15:20"
+    },
+    {
+      "code": "ENGL 40533",
+      "title": "Toni Morrison",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "065\nREG",
+      "schedule": "TR\n15:30-16:50"
+    },
+    {
+      "code": "ENGL 40663",
+      "title": "Transnational American Lit",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "section": "020\nREG",
+      "schedule": "MWF\n10:00-10:50"
+    },
+    {
+      "code": "WRIT 20113",
+      "title": "Technical-Professional Writing",
+      "modality": "In Person",
+      "coreCode": "CSV",
+      "section": "074\nREG",
+      "schedule": "MW\n16:00-17:20"
+    },
+    {
+      "code": "WRIT 20303",
+      "title": "Writing Games - Gender & Sex in Video Games",
+      "modality": "In Person",
+      "coreCode": "CA,HUM",
+      "section": "045\nREG",
+      "schedule": "TR\n12:30-13:50"
+    },
+    {
+      "code": "WRIT 20313",
+      "title": "Power and Protest",
+      "modality": "In Person",
+      "coreCode": "CSV,HUM",
+      "section": "065\nREG",
+      "schedule": "TR\n15:30-16:50"
+    },
+    {
+      "code": "WRIT 20333",
+      "title": "Language,  Technology & Society - Tools of the State",
+      "modality": "In Person",
+      "coreCode": "GA,HUM",
+      "section": "035\nREG",
+      "schedule": "TR\n11:00-12:20"
+    },
+    {
+      "code": "WRIT 20833",
+      "title": "Intro to Coding in Humanities",
+      "modality": "In Person",
+      "coreCode": "CSV,HUM",
+      "section": "020\nREG",
+      "schedule": "MWF\n10:00-10:50"
+    },
+    {
+      "code": "WRIT 30013",
+      "title": "Distinction Program:  Thesis I",
+      "modality": "In Person",
+      "section": "080\nREG",
+      "schedule": "R\n17:00-18:20"
+    },
+    {
+      "code": "WRIT 30213",
+      "title": "Advanced Comp:Writing Genres",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "074\nREG",
+      "schedule": "MW\n16:00-17:20"
+    },
+    {
+      "code": "WRIT 30283",
+      "title": "Cyberliteracy",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "060\nREG",
+      "schedule": "MWF\n14:00-14:50"
+    },
+    {
+      "code": "WRIT 30293",
+      "title": "Non-Human Rhet & Rep",
+      "modality": "In Person",
+      "coreCode": "HUM",
+      "section": "015\nREG",
+      "schedule": "TR\n 9:30-10:50"
+    },
+    {
+      "code": "WRIT 30390",
+      "title": "Publication Production",
+      "modality": "In Person",
+      "sectionCount": 2
+    },
+    {
+      "code": "WRIT 30663",
+      "title": "Women's Rhetorics",
+      "modality": "In Person",
+      "coreCode": "CA,WEM",
+      "section": "035\nREG",
+      "schedule": "TR\n11:00-12:20"
+    },
+    {
+      "code": "WRIT 40233",
+      "title": "Writing for Publication",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "065\nREG",
+      "schedule": "TR\n15:30-16:50"
+    },
+    {
+      "code": "WRIT 40273",
+      "title": "Writing Internship",
+      "modality": "In Person",
+      "section": "079\nREG",
+      "schedule": "TBA\nARR"
+    },
+    {
+      "code": "WRIT 40363",
+      "title": "Multimedia Authrng:Apps&eBooks",
+      "modality": "In Person",
+      "section": "045\nREG",
+      "schedule": "TR\n12:30-13:50"
+    },
+    {
+      "code": "WRIT 40373",
+      "title": "The Rhetoric of Revolution",
+      "modality": "In Person",
+      "coreCode": "GA",
+      "section": "045\nREG",
+      "schedule": "TR\n12:30-13:50"
+    },
+    {
+      "code": "WRIT 40463",
+      "title": "MM Auth: Comics Production",
+      "modality": "In Person",
+      "coreCode": "WEM",
+      "section": "015\nREG",
+      "schedule": "TR\n 9:30-10:50"
+    }
+  ]
+}
