@@ -53,7 +53,7 @@ function generateManifest() {
     manifestVersion: "1.0",
     department: "English",
     lastUpdated: new Date().toISOString(),
-    wizardUrl: "https://tcu-dcda.github.io/english-advising-wizard/",
+    wizardUrl: "https://english.digitcu.org/",
     programs: []
   };
 

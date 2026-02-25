@@ -1,8 +1,8 @@
 {
   "manifestVersion": "1.0",
   "department": "English",
-  "lastUpdated": "2026-02-24T23:22:34.268Z",
-  "wizardUrl": "https://tcu-dcda.github.io/english-advising-wizard/",
+  "lastUpdated": "2026-02-25T22:21:01.621Z",
+  "wizardUrl": "https://english.digitcu.org/",
   "programs": [
     {
       "id": "english-ba",
@@ -2335,7 +2335,7 @@
         }
       },
       "highlightedCourses": {
-        "term": "Spring 2026",
+        "term": "Fall 2026",
         "courses": [
           {
             "code": "ENGL 30653",
@@ -4245,7 +4245,7 @@
         }
       },
       "highlightedCourses": {
-        "term": "Spring 2026",
+        "term": "Fall 2026",
         "courses": [
           {
             "code": "ENGL 30653",
@@ -6080,7 +6080,7 @@
         }
       },
       "highlightedCourses": {
-        "term": "Spring 2026",
+        "term": "Fall 2026",
         "courses": [
           {
             "code": "ENGL 30653",
