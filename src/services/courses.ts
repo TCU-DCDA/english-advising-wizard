@@ -3,7 +3,7 @@ import type { CatalogCourse } from '@/data/allCourses'
 import { allCourses as staticCourses } from '@/data/allCourses'
 import programsData from '@/data/programs.json'
 import prerequisitesData from '@/data/prerequisites.json'
-import offeringsData from '@/data/offerings-sp26.json'
+import offeringsData from '@/data/offerings-fa26.json'
 
 // Mutable data — initialized from static JSON, updated by EnglishDataProvider when Firestore data arrives
 let programs = programsData as Record<ProgramId, ProgramData>
@@ -391,8 +391,9 @@ export function generateGraduationSemesters(): Array<{
   value: string
 }> {
   const semesters: Array<{ label: string; value: string }> = []
-  let semester: 'Spring' | 'Summer' | 'Fall' = 'Spring'
-  let year = 2026
+  const termMatch = getNextSemesterTerm().match(/^(Spring|Summer|Fall)\s+(\d{4})/)
+  let semester: 'Spring' | 'Summer' | 'Fall' = termMatch ? (termMatch[1] as 'Spring' | 'Summer' | 'Fall') : 'Fall'
+  let year = termMatch ? parseInt(termMatch[2]) : 2026
 
   for (let i = 0; i < 15; i++) {
     const value = `${semester} ${year}`

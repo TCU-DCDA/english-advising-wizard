@@ -34,7 +34,7 @@ interface Course {
 }
 
 export function OfferingsEditor() {
-  const [termId, setTermId] = useState('offerings_sp26')
+  const [termId, setTermId] = useState('offerings_fa26')
   const [showNewTerm, setShowNewTerm] = useState(false)
   const { data, loading, error, save } = useFirestoreDoc<CourseOfferings>(
     'english_config',

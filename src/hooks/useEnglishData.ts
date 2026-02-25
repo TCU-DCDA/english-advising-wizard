@@ -7,7 +7,7 @@ import type { CatalogCourse } from '@/data/allCourses'
 // Static fallback imports (bundled at build time)
 import staticPrograms from '@/data/programs.json'
 import staticPrerequisites from '@/data/prerequisites.json'
-import staticOfferings from '@/data/offerings-sp26.json'
+import staticOfferings from '@/data/offerings-fa26.json'
 import { allCourses as staticCourses } from '@/data/allCourses'
 
 export interface EnglishData {
@@ -89,7 +89,7 @@ export function useEnglishDataLoader(): EnglishData {
 
     // Subscribe to current term offerings
     const unsubOfferings = onSnapshot(
-      doc(db, 'english_config', 'offerings_sp26'),
+      doc(db, 'english_config', 'offerings_fa26'),
       (snap) => {
         if (snap.exists()) {
           setData((prev) => ({

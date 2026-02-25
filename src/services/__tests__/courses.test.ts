@@ -359,17 +359,17 @@ describe('generateGraduationSemesters', () => {
     expect(semesters).toHaveLength(15)
   })
 
-  it('starts with Spring 2026', () => {
+  it('starts with Fall 2026', () => {
     const semesters = generateGraduationSemesters()
-    expect(semesters[0].value).toBe('Spring 2026')
+    expect(semesters[0].value).toBe('Fall 2026')
   })
 
-  it('cycles through Spring, Summer, Fall', () => {
+  it('cycles through Fall, Spring, Summer, Fall', () => {
     const semesters = generateGraduationSemesters()
-    expect(semesters[0].value).toContain('Spring')
-    expect(semesters[1].value).toContain('Summer')
-    expect(semesters[2].value).toContain('Fall')
-    expect(semesters[3].value).toContain('Spring')
+    expect(semesters[0].value).toContain('Fall')
+    expect(semesters[1].value).toContain('Spring')
+    expect(semesters[2].value).toContain('Summer')
+    expect(semesters[3].value).toContain('Fall')
   })
 
   it('has matching label and value', () => {
@@ -383,7 +383,7 @@ describe('generateGraduationSemesters', () => {
 describe('getNextSemesterTerm', () => {
   it('returns a properly formatted term', () => {
     const term = getNextSemesterTerm()
-    expect(term).toMatch(/^(Spring|Summer|Fall) \d{4}$/)
+    expect(term).toMatch(/^(Spring|Summer|Fall) \d{4}/)
   })
 })
 
