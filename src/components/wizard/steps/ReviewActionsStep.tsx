@@ -100,7 +100,12 @@ export function ReviewActionsStep({
   const handleOpenEmail = () => {
     const date = new Date().toLocaleDateString()
     const subject = `English Advising Plan & Appointment Request: ${studentData.name || 'Student'}`
-    const body = `English Department Advising Plan & Appointment Request
+    const body = `Hello,
+
+I've completed my English advising plan using the advising wizard and wanted to share it with you. Please find my plan attached — I'd also love to schedule an appointment to go over it together at your earliest convenience.
+
+---
+English Department Advising Plan
 
 Student: ${studentData.name || 'Not specified'}
 Program: ${programData.name}
@@ -109,8 +114,6 @@ Date: ${date}
 
 Notes/Questions:
 ${studentData.notes || 'None'}
-
-I would also like to schedule an advising appointment at your earliest convenience.
 
 ---
 Advising plan PDF attached.
