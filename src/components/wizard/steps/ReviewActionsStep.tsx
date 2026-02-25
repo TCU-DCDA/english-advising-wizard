@@ -158,10 +158,10 @@ Submitted via TCU English Advising Wizard`
 
       {/* 2. Submit to advisor & request appointment */}
       <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 space-y-3">
-        <h3 className="font-semibold text-primary">Submit to Advisor</h3>
+        <h3 className="font-semibold text-primary">Submit to Advisor <span className="font-normal text-muted-foreground text-sm">(optional)</span></h3>
         <p className="text-sm text-muted-foreground">
-          Downloads your plan as a PDF and opens an email to your advisor
-          with an appointment request. Attach the downloaded PDF before sending.
+          Optionally share your plan with your advisor and request an appointment.
+          Downloads your plan as a PDF and opens an email — attach the downloaded PDF before sending.
         </p>
         <div className="space-y-2 text-sm">
           <div className="font-medium text-foreground">{advisor.name}</div>
