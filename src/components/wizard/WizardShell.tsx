@@ -135,6 +135,7 @@ export function WizardShell({
         wizardContext={chatContext ?? null}
         programName={chatProgramName ?? null}
         programId={chatProgramId ?? null}
+        department="English"
       />
     </div>
   )
