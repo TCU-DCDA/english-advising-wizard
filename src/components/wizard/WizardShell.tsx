@@ -1,7 +1,7 @@
 import { type ReactNode, useState } from 'react'
 import { StepIndicator } from './StepIndicator'
 import type { PhaseInfo } from './StepIndicator'
-import { SandraPanel } from './SandraPanel'
+import { EngelinaPanel } from './EngelinaPanel'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useTheme } from '@/hooks/useTheme'
@@ -30,10 +30,10 @@ interface WizardShellProps {
   showBackButton?: boolean
   showNextButton?: boolean
 
-  // Sandra
-  sandraContext?: string | null
-  sandraProgramName?: string | null
-  sandraProgramId?: string | null
+  // Chat assistant
+  chatContext?: string | null
+  chatProgramName?: string | null
+  chatProgramId?: string | null
 }
 
 export function WizardShell({
@@ -49,12 +49,12 @@ export function WizardShell({
   nextDisabled = false,
   showBackButton = true,
   showNextButton = true,
-  sandraContext,
-  sandraProgramName,
-  sandraProgramId,
+  chatContext,
+  chatProgramName,
+  chatProgramId,
 }: WizardShellProps) {
   const { isDark, toggleTheme } = useTheme()
-  const [sandraOpen, setSandraOpen] = useState(false)
+  const [chatOpen, setChatOpen] = useState(false)
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -117,24 +117,24 @@ export function WizardShell({
         </nav>
       )}
 
-      {/* Ask Sandra floating button — hidden until program is selected */}
-      {sandraContext && (
+      {/* Ask Engelina floating button — hidden until program is selected */}
+      {chatContext && (
         <button
-          onClick={() => setSandraOpen(true)}
+          onClick={() => setChatOpen(true)}
           className="fixed bottom-20 right-4 z-30 bg-primary text-primary-foreground p-3.5 rounded-full shadow-lg hover:shadow-xl active:scale-95 transition-all"
-          aria-label="Ask Sandra for help"
-          title="Ask Sandra"
+          aria-label="Ask Engelina for help"
+          title="Ask Engelina"
         >
           <MessageCircle className="w-6 h-6" />
         </button>
       )}
 
-      <SandraPanel
-        open={sandraOpen}
-        onClose={() => setSandraOpen(false)}
-        wizardContext={sandraContext ?? null}
-        programName={sandraProgramName ?? null}
-        programId={sandraProgramId ?? null}
+      <EngelinaPanel
+        open={chatOpen}
+        onClose={() => setChatOpen(false)}
+        wizardContext={chatContext ?? null}
+        programName={chatProgramName ?? null}
+        programId={chatProgramId ?? null}
       />
     </div>
   )

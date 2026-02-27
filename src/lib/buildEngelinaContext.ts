@@ -18,15 +18,15 @@ function formatCourseList(codes: string[]): string {
   }).join(', ')
 }
 
-export interface SandraContext {
+export interface ChatContext {
   context: string
   programName: string
 }
 
-export function buildSandraContext(
+export function buildEngelinaContext(
   studentData: StudentData,
   currentStepId: WizardStepId
-): SandraContext | null {
+): ChatContext | null {
   if (!studentData.program) return null
 
   const program = getProgram(studentData.program)

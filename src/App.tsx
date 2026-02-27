@@ -3,7 +3,7 @@ import { WizardShell } from '@/components/wizard'
 import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
 import { useStudentData } from '@/hooks/useStudentData'
 import { getProgram, getCategoriesForProgram, isElectiveCategory, getNextSemesterTerm } from '@/services/courses'
-import { buildSandraContext } from '@/lib/buildSandraContext'
+import { buildEngelinaContext } from '@/lib/buildEngelinaContext'
 import { trackWizardStart, trackStepVisit } from '@/services/analytics'
 import type { WizardPhase, WizardStep, ProgramId } from '@/types'
 import type { PhaseInfo } from '@/components/wizard/StepIndicator'
@@ -125,9 +125,9 @@ export default function App() {
   // Welcome screen has no progress bar or back button
   const isWelcome = currentStep.id === 'welcome'
 
-  // Build Sandra context from current wizard state
-  const sandraData = useMemo(
-    () => buildSandraContext(studentData, currentStep.id),
+  // Build chat context from current wizard state
+  const chatData = useMemo(
+    () => buildEngelinaContext(studentData, currentStep.id),
     [studentData, currentStep.id]
   )
 
@@ -217,9 +217,9 @@ export default function App() {
       nextDisabled={getNextDisabled()}
       showBackButton={!isWelcome}
       showNextButton={currentStep.id !== 'reviewActions'}
-      sandraContext={sandraData?.context ?? null}
-      sandraProgramName={sandraData?.programName ?? null}
-      sandraProgramId={studentData.program ?? null}
+      chatContext={chatData?.context ?? null}
+      chatProgramName={chatData?.programName ?? null}
+      chatProgramId={studentData.program ?? null}
     >
       {renderStep()}
     </WizardShell>
