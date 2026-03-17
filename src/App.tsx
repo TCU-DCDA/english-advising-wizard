@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { WizardShell } from '@/components/wizard'
 import { WelcomeStep, SetupStep, CompletedCoursesStep, SemesterStep, FutureStep, ReviewSummaryStep, ReviewActionsStep } from '@/components/wizard/steps'
 import { useStudentData } from '@/hooks/useStudentData'
@@ -125,6 +125,11 @@ export default function App() {
   // Welcome screen has no progress bar or back button
   const isWelcome = currentStep.id === 'welcome'
 
+  const handleStartOver = useCallback(() => {
+    resetStudentData()
+    setStepIndex(0)
+  }, [resetStudentData])
+
   // Build chat context from current wizard state
   const chatData = useMemo(
     () => buildEngelinaContext(studentData, currentStep.id),
@@ -217,6 +222,7 @@ export default function App() {
       nextDisabled={getNextDisabled()}
       showBackButton={!isWelcome}
       showNextButton={currentStep.id !== 'reviewActions'}
+      onStartOver={!isWelcome ? handleStartOver : undefined}
       chatContext={chatData?.context ?? null}
       chatProgramName={chatData?.programName ?? null}
       chatProgramId={studentData.program ?? null}

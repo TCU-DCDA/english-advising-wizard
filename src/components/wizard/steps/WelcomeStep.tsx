@@ -70,8 +70,9 @@ export function WelcomeStep() {
       {/* Advisory note + privacy */}
       <p className="text-sm text-muted-foreground text-center">
         This tool is for <strong>planning purposes only.</strong> Always work with
-        your (human!) advisor to discuss your degree plan. Your data stays on your
-        device unless you choose to share it (
+        your (human!) advisor to discuss your degree plan. This tool stores your
+        plan in your browser on this device and sends limited anonymous usage
+        analytics to secure TCU-managed servers (
         <button
           type="button"
           onClick={() => setShowFerpa(true)}
@@ -89,9 +90,13 @@ export function WelcomeStep() {
             <DialogTitle>FERPA Privacy Notice</DialogTitle>
           </DialogHeader>
           <p className="text-sm text-muted-foreground">
-            This planning tool stores data locally on your device only. No information
-            is sent to external servers. Your course selections and academic data remain
-            private and are protected under FERPA (Family Educational Rights and Privacy Act).
+            This planning tool stores your plan in your browser on this device. It also
+            sends limited anonymous usage analytics to secure TCU-managed servers. If
+            you use the AI assistant, your messages and relevant planning context (such
+            as selected courses and program) are sent to the assistant service and may
+            be logged for quality and safety review. Do not include personal identifiers
+            (for example TCU ID, SSN, or financial/medical details). This tool supports
+            planning and is not the official student record system.
           </p>
         </DialogContent>
       </Dialog>
