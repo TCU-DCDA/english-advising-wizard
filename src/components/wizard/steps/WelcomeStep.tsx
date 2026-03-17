@@ -71,8 +71,9 @@ export function WelcomeStep() {
       <p className="text-sm text-muted-foreground text-center">
         This tool is for <strong>planning purposes only.</strong> Always work with
         your (human!) advisor to discuss your degree plan. This tool stores your
-        plan in your browser on this device and sends limited anonymous usage
-        analytics to secure TCU-managed servers (
+        plan in your browser on this device and sends limited anonymous usage and
+        planning analytics to Firebase-hosted services managed by the project team
+        for this pilot (
         <button
           type="button"
           onClick={() => setShowFerpa(true)}
@@ -90,13 +91,17 @@ export function WelcomeStep() {
             <DialogTitle>FERPA Privacy Notice</DialogTitle>
           </DialogHeader>
           <p className="text-sm text-muted-foreground">
-            This planning tool stores your plan in your browser on this device. It also
-            sends limited anonymous usage analytics to secure TCU-managed servers. If
-            you use the AI assistant, your messages and relevant planning context (such
-            as selected courses and program) are sent to the assistant service and may
-            be logged for quality and safety review. Do not include personal identifiers
-            (for example TCU ID, SSN, or financial/medical details). This tool supports
-            planning and is not the official student record system.
+            This planning tool stores your plan in your browser on this device. For
+            development, testing, and limited pilot use, it sends limited anonymous
+            usage and planning analytics to Firebase-hosted services managed by the
+            project team. If you use the AI assistant, your messages and relevant
+            planning context (such as selected courses and program) are sent to the
+            assistant service and may be logged for quality and safety review. Do not
+            include personal identifiers (for example TCU ID, SSN, or financial/medical
+            details). Any broader institutional deployment is contingent on formal TCU
+            privacy/security/legal review and implementation on TCU-approved
+            infrastructure and controls. This tool supports planning and is not the
+            official student record system.
           </p>
         </DialogContent>
       </Dialog>
