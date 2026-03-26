@@ -290,6 +290,7 @@ export function EngelinaPanel({ open, onClose, wizardContext, programName, progr
           message: text,
           conversationHistory: conversationHistory.map(({ role, content }) => ({ role, content })),
           personaName,
+          stream: true,
           ...(wizardContext ? { wizardContext } : {}),
         }),
       })
@@ -304,14 +305,53 @@ export function EngelinaPanel({ open, onClose, wizardContext, programName, progr
 
       if (!response.ok) throw new Error('Failed to get response')
 
-      const data = await response.json()
-      const assistantMessage: Message = {
-        role: 'assistant',
-        content: data.message,
-        programMentions: data.programMentions,
+      // Add empty assistant message and stream text into it
+      setMessages(prev => [...prev, { role: 'assistant' as const, content: '' }])
+      setIsLoading(false)
+
+      const reader = response.body!.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+
+        const lines = buffer.split('\n')
+        buffer = lines.pop() || ''
+
+        let eventType = ''
+        for (const line of lines) {
+          if (line.startsWith('event: ')) {
+            eventType = line.slice(7).trim()
+          } else if (line.startsWith('data: ')) {
+            const data = JSON.parse(line.slice(6))
+
+            if (eventType === 'text') {
+              setMessages(prev => {
+                const updated = [...prev]
+                const last = updated[updated.length - 1]
+                updated[updated.length - 1] = { ...last, content: last.content + data.text }
+                return updated
+              })
+            } else if (eventType === 'done') {
+              setMessages(prev => {
+                const updated = [...prev]
+                const last = updated[updated.length - 1]
+                updated[updated.length - 1] = { ...last, programMentions: data.programMentions }
+                return updated
+              })
+              setConversationHistory(data.conversationHistory)
+            } else if (eventType === 'error') {
+              setError(data.error || 'Something went wrong.')
+            }
+
+            eventType = ''
+          }
+        }
       }
-      setMessages(prev => [...prev, assistantMessage])
-      setConversationHistory(data.conversationHistory)
     } catch {
       setError('Sorry, I encountered an error. Please try again.')
     } finally {
