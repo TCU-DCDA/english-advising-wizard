@@ -58,17 +58,24 @@ describe('Engelina chat smoke tests', () => {
   })
 
   it('sends a chat message and renders assistant response', async () => {
+    // Build an SSE stream that the component's reader will consume
+    const ssePayload = [
+      'event: text\ndata: {"text":"You should take ENGL 20503 next semester."}\n\n',
+      'event: done\ndata: {"programMentions":[],"conversationHistory":[{"role":"user","content":"What should I take next?"},{"role":"assistant","content":"You should take ENGL 20503 next semester."}]}\n\n',
+    ].join('')
+
+    const encoder = new TextEncoder()
+    const stream = new ReadableStream({
+      start(controller) {
+        controller.enqueue(encoder.encode(ssePayload))
+        controller.close()
+      },
+    })
+
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
       status: 200,
-      json: async () => ({
-        message: 'You should take ENGL 20503 next semester.',
-        programMentions: [],
-        conversationHistory: [
-          { role: 'user', content: 'What should I take next?' },
-          { role: 'assistant', content: 'You should take ENGL 20503 next semester.' },
-        ],
-      }),
+      body: stream,
     })
     vi.stubGlobal('fetch', fetchMock)
 
