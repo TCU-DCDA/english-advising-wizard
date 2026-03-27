@@ -1,5 +1,5 @@
 import type { StudentData, WizardStepId } from '@/types'
-import { getProgram, computeProgress, getLowerDivisionHours, getCourseTitle, getNextSemesterTerm, getOverlayProgress } from '@/services/courses'
+import { getProgram, computeProgress, getLowerDivisionHours, getCourseTitle, getNextSemesterTerm, getOverlayProgress, getCategoriesForProgram, isElectiveCategory, isCourseOffered, getElectiveCourses } from '@/services/courses'
 
 const STEP_LABELS: Record<WizardStepId, string> = {
   welcome: 'Welcome',
@@ -56,13 +56,40 @@ export function buildEngelinaContext(
     lines.push(`Projected total with planned: ${totalProgress.completedHours} of ${program.totalHours} hours`)
   }
 
-  // Remaining categories
+  // Remaining categories with offering awareness
+  const term = getNextSemesterTerm()
+  const categories = getCategoriesForProgram(studentData.program)
   const remaining = Object.entries(completedProgress.byCategory)
     .filter(([, cat]) => cat.completed < cat.required)
-    .map(([, cat]) => `${cat.name} (${cat.required - cat.completed} hrs needed)`)
+    .map(([key, cat]) => {
+      let desc = `${cat.name} (${cat.required - cat.completed} hrs needed)`
+      const catData = categories.find(c => c.key === key)
+      if (catData && !isElectiveCategory(catData.category)) {
+        const codes = catData.category.courses.map(c => c.code)
+        const offered = codes.filter(c => isCourseOffered(c))
+        const notOffered = codes.filter(c => !isCourseOffered(c))
+        if (offered.length > 0) desc += ` — offered ${term}: ${offered.join(', ')}`
+        if (notOffered.length > 0) desc += ` — NOT offered ${term}: ${notOffered.join(', ')}`
+      }
+      return desc
+    })
 
   if (remaining.length > 0) {
-    lines.push(`Still needed: ${remaining.join(', ')}`)
+    lines.push(`Still needed: ${remaining.join('; ')}`)
+  }
+
+  // All English courses offered next semester
+  const electiveOffered = getElectiveCourses(studentData.program)
+    .filter(c => isCourseOffered(c.code))
+    .map(c => `${c.code} (${c.title})`)
+  const specificOffered = categories
+    .filter(c => !isElectiveCategory(c.category))
+    .flatMap(c => c.category.courses)
+    .filter(c => isCourseOffered(c.code))
+    .map(c => `${c.code} (${c.title})`)
+  const allOffered = [...new Set([...specificOffered, ...electiveOffered])]
+  if (allOffered.length > 0) {
+    lines.push(`All English dept courses offered ${term}: ${allOffered.join('; ')}`)
   }
 
   if (studentData.notYetCategories?.length) {

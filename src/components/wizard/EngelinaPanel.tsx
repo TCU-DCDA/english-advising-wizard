@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback, type FormEvent } from 'react'
-import { X, Send, ThumbsUp, ThumbsDown, ChevronDown } from 'lucide-react'
+import { X, Send, ThumbsUp, ThumbsDown, ChevronDown, Trash2 } from 'lucide-react'
 
 const ENGELINA_API_URL = import.meta.env.VITE_SANDRA_API_URL || 'http://127.0.0.1:5001/addran-advisor-9125e/us-central1/api'
 const ENGELINA_FEEDBACK_URL = import.meta.env.VITE_SANDRA_FEEDBACK_URL || 'http://127.0.0.1:5001/addran-advisor-9125e/us-central1/feedback'
@@ -394,6 +394,16 @@ export function EngelinaPanel({ open, onClose, wizardContext, programName, progr
     }
   }
 
+  const clearChat = useCallback(() => {
+    setMessages([])
+    setConversationHistory([])
+    setShowChips(true)
+    setPromptChips(getPromptChips(programId))
+    setError(null)
+    setFeedbackGiven(new Set())
+    localStorage.removeItem(storageKey)
+  }, [storageKey, programId])
+
   const greeting = programName
     ? `Hi! I'm ${personaName}, your advising assistant. I can see your ${programName} degree progress \u2014 ask me anything about your courses, requirements, or what to take next!`
     : `Hi! I'm ${personaName}, your AddRan advising assistant. How can I help?`
@@ -417,13 +427,25 @@ export function EngelinaPanel({ open, onClose, wizardContext, programName, progr
             <p className="font-semibold text-sm">Ask {personaName}</p>
             <p className="text-xs text-primary-foreground/70">AI advising assistant</p>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-            aria-label={`Close ${personaName} panel`}
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-1">
+            {messages.length > 0 && (
+              <button
+                onClick={clearChat}
+                className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                aria-label="Clear chat"
+                title="Clear chat"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            )}
+            <button
+              onClick={onClose}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label={`Close ${personaName} panel`}
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Messages */}
