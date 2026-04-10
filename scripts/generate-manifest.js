@@ -163,8 +163,12 @@ if (firestoreCoursesDoc?.courses) {
   catalogCourses = mod.ALL_COURSES;
 }
 
-// Remaining static-only data
-const prerequisites = loadJSON('prerequisites.json');
+// Remaining static-only data.
+// Note: prerequisites.json is intentionally NOT loaded — Sandra's converter
+// ignores the prerequisites field, and English's nested-array {require: [[...]]}
+// shape violates Firestore's no-arrays-of-arrays rule, causing Sandra's
+// manifest-cache write to fail after successful validation. The wizard's own
+// client code still imports prerequisites.json directly for its prereq-check UI.
 const fourYearPlans = loadJSON('four-year-plans.json');
 const contacts = loadJSON('contacts.json');
 const careerOptions = loadJSON('career-options.json');
@@ -290,8 +294,6 @@ function generateManifest() {
         ],
       };
     }
-
-    program.prerequisites = prerequisites;
 
     if (fourYearPlans[config.key]) {
       program.fourYearPlan = fourYearPlans[config.key];
