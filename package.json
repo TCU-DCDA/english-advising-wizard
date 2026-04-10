@@ -39,6 +39,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "@vitest/coverage-v8": "^4.0.18",
+    "firebase-admin": "^13.7.0",
     "jsdom": "^28.1.0",
     "tailwindcss": "^4.1.18",
     "typescript": "~5.9.3",

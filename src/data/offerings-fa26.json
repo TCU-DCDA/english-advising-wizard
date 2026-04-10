@@ -1,6 +1,6 @@
 {
   "term": "Fall 2026",
-  "updated": "2026-03-09",
+  "updated": "2026-04-10",
   "offeredCodes": [
     "CRWT 10203",
     "CRWT 20103",
@@ -12,7 +12,6 @@
     "CRWT 40223",
     "ENGL 10103",
     "ENGL 10113",
-    "ENGL 10123",
     "ENGL 10133",
     "ENGL 10303",
     "ENGL 10803",
@@ -21,10 +20,12 @@
     "ENGL 20433",
     "ENGL 20503",
     "ENGL 20533",
+    "ENGL 20593",
     "ENGL 20623",
     "ENGL 20633",
     "ENGL 20703",
     "ENGL 20713",
+    "ENGL 20733",
     "ENGL 20803",
     "ENGL 20813",
     "ENGL 20923",
@@ -41,6 +42,8 @@
     "ENGL 30873",
     "ENGL 38033",
     "ENGL 40643",
+    "ENGL 50133",
+    "ENGL 50233",
     "WRIT 20113",
     "WRIT 20303",
     "WRIT 20833",
@@ -59,14 +62,14 @@
       "title": "Intro Creative Writing",
       "modality": "In Person",
       "coreCode": "FAR",
-      "sectionCount": 8
+      "sectionCount": 6
     },
     {
       "code": "CRWT 20103",
       "title": "Reading as a Writer",
       "modality": "In Person",
       "coreCode": "LT,HUM",
-      "sectionCount": 4
+      "sectionCount": 2
     },
     {
       "code": "CRWT 20133",
@@ -119,7 +122,7 @@
       "title": "Intro To Fiction",
       "modality": "In Person",
       "coreCode": "LT,HUM",
-      "sectionCount": 10
+      "sectionCount": 9
     },
     {
       "code": "ENGL 10113",
@@ -129,19 +132,11 @@
       "sectionCount": 2
     },
     {
-      "code": "ENGL 10123",
-      "title": "Intro To Drama",
-      "modality": "In Person",
-      "coreCode": "LT,HUM",
-      "section": "015\nREG",
-      "schedule": "TR\n 9:30-10:50"
-    },
-    {
       "code": "ENGL 10133",
       "title": "Introduction to Literature",
       "modality": "In Person",
       "coreCode": "LT,HUM",
-      "sectionCount": 11
+      "sectionCount": 9
     },
     {
       "code": "ENGL 10303",
@@ -155,7 +150,7 @@
       "title": "Intro Comp:Writing as Inquiry - Indigenous Horror Stories",
       "modality": "In Person",
       "coreCode": "WCO",
-      "sectionCount": 49
+      "sectionCount": 46
     },
     {
       "code": "ENGL 20233",
@@ -169,8 +164,7 @@
       "title": "British Writers",
       "modality": "In Person",
       "coreCode": "LT,HUM",
-      "section": "050\nREG",
-      "schedule": "MWF\n13:00-13:50"
+      "sectionCount": 2
     },
     {
       "code": "ENGL 20433",
@@ -192,8 +186,15 @@
       "title": "The American Dream - Black Inheritance",
       "modality": "In Person",
       "coreCode": "LT,HUM",
-      "section": "015\nREG",
-      "schedule": "TR\n 9:30-10:50"
+      "sectionCount": 3
+    },
+    {
+      "code": "ENGL 20593",
+      "title": "Lits of Global Afr. Diaspora",
+      "modality": "In Person",
+      "coreCode": "GA,LT",
+      "section": "045\nREG",
+      "schedule": "TR\n12:30-13:50"
     },
     {
       "code": "ENGL 20623",
@@ -214,8 +215,7 @@
       "title": "Intro to Law and Literature",
       "modality": "In Person",
       "coreCode": "CSV,HUM",
-      "section": "035\nREG",
-      "schedule": "TR\n11:00-12:20"
+      "sectionCount": 2
     },
     {
       "code": "ENGL 20713",
@@ -225,11 +225,18 @@
       "sectionCount": 2
     },
     {
+      "code": "ENGL 20733",
+      "title": "Science Fiction - Cyberpunk Futures",
+      "modality": "In Person",
+      "coreCode": "LT,HUM",
+      "sectionCount": 2
+    },
+    {
       "code": "ENGL 20803",
-      "title": "Intermed Comp:Writing Argument",
+      "title": "Intermed Comp:Writing Argument - Voices of Change",
       "modality": "In Person",
       "coreCode": "WCO",
-      "sectionCount": 39
+      "sectionCount": 40
     },
     {
       "code": "ENGL 20813",
@@ -244,8 +251,8 @@
       "title": "Literature & Civilizations II - Finding Home:Diasporas-Hon",
       "modality": "In Person",
       "coreCode": "GA,LT",
-      "section": "635\nREG",
-      "schedule": "TR\n11:00-12:20"
+      "section": "665\nREG",
+      "schedule": "TR\n15:30-16:50"
     },
     {
       "code": "ENGL 30003",
@@ -319,8 +326,8 @@
       "title": "Asian American Literature",
       "modality": "In Person",
       "coreCode": "LT,HUM",
-      "section": "035\nREG",
-      "schedule": "TR\n11:00-12:20"
+      "section": "080\nREG",
+      "schedule": "TR\n17:00-18:20"
     },
     {
       "code": "ENGL 30873",
@@ -344,6 +351,20 @@
       "coreCode": "LT,HUM,WEM",
       "section": "055\nREG",
       "schedule": "TR\n14:00-15:20"
+    },
+    {
+      "code": "ENGL 50133",
+      "title": "Seminar in Literature&History",
+      "modality": "In Person",
+      "section": "050\nREG",
+      "schedule": "M\n13:00-15:40"
+    },
+    {
+      "code": "ENGL 50233",
+      "title": "Studies in Creative Writing",
+      "modality": "In Person",
+      "section": "050\nREG",
+      "schedule": "W\n13:00-15:40"
     },
     {
       "code": "WRIT 20113",
