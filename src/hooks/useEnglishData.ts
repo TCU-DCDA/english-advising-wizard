@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext, useContext } from 'react'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '@/services/firebase'
+import { currentTermId } from '@/services/terms'
 import type { ProgramId, ProgramData, PrerequisitesData, CourseOfferings } from '@/types'
 import type { CatalogCourse } from '@/data/allCourses'
 
@@ -87,9 +88,13 @@ export function useEnglishDataLoader(): EnglishData {
       }
     )
 
-    // Subscribe to current term offerings
+    // Subscribe to current term offerings. Term ID resolved at mount so the
+    // hook keeps working past the Aug 20 / Dec 20 academic-year rollovers;
+    // falls back silently to the bundled static offerings if the Firestore
+    // doc for the resolved term does not yet exist.
+    const offeringsTermId = currentTermId('fa')
     const unsubOfferings = onSnapshot(
-      doc(db, 'english_config', 'offerings_fa26'),
+      doc(db, 'english_config', offeringsTermId),
       (snap) => {
         if (snap.exists()) {
           setData((prev) => ({

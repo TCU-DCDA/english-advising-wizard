@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
-import { useFirestoreDoc } from '../hooks/useFirestoreData'
+import { useFirestoreDoc, useFirestoreCollection } from '../hooks/useFirestoreData'
+import { currentTermId, parseTermId, sortOfferingIds } from '@/services/terms'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -34,7 +35,7 @@ interface Course {
 }
 
 export function OfferingsEditor() {
-  const [termId, setTermId] = useState('offerings_fa26')
+  const [termId, setTermId] = useState(() => currentTermId('fa'))
   const [showNewTerm, setShowNewTerm] = useState(false)
   const { data, loading, error, save } = useFirestoreDoc<CourseOfferings>(
     'english_config',
@@ -42,6 +43,17 @@ export function OfferingsEditor() {
   )
   const coursesDoc = useFirestoreDoc<{ courses: Course[] }>('english_config', 'courses')
   const allCourses = coursesDoc.data?.courses ?? []
+
+  // Enumerate every offerings_* doc in english_config so the term selector
+  // does not need to be redeployed when a new term is provisioned.
+  const configCollection = useFirestoreCollection<Record<string, unknown>>('english_config')
+  const termOptions = useMemo(() => {
+    const ids = sortOfferingIds(configCollection.data.map((d) => d.id))
+    return ids.map((id) => {
+      const parsed = parseTermId(id)
+      return { id, label: parsed ? parsed.label : id }
+    })
+  }, [configCollection.data])
 
   const [search, setSearch] = useState('')
   const [editingSection, setEditingSection] = useState<CourseSection | null>(null)
@@ -133,6 +145,9 @@ export function OfferingsEditor() {
       offeredCodes: [],
       sections: [],
     })
+    // Refresh the collection so the new term appears in the dropdown; the
+    // collection hook is getDocs-based and will not auto-observe the write.
+    await configCollection.refresh()
   }
 
   if (loading || coursesDoc.loading) {
@@ -153,8 +168,14 @@ export function OfferingsEditor() {
             onChange={(e) => setTermId(e.target.value)}
             className="border rounded-lg px-3 py-1.5 text-sm bg-card"
           >
-            <option value="offerings_su26">Summer 2026</option>
-            <option value="offerings_fa26">Fall 2026</option>
+            {termOptions.length === 0 && (
+              <option value={termId}>{parseTermId(termId)?.label ?? termId}</option>
+            )}
+            {termOptions.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.label}
+              </option>
+            ))}
           </select>
           <Button variant="outline" size="sm" onClick={() => setShowNewTerm(true)}>
             <Plus className="size-4" />
